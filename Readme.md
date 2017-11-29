@@ -1,0 +1,1 @@
+Interpretap mobile application built with Xamarin.Forms 2.5 (.Net Standard 2.0)
