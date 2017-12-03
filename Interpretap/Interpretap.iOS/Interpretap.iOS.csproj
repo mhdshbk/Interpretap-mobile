@@ -115,6 +115,9 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\logo%402x.png" />
+    <BundleResource Include="Resources\logo%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -136,7 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interpretap\Interpretap.csproj">
-      <Project>{07f69ef1-2c20-4122-a45a-09dfea9d8b11}</Project>
+      <Project>{9C6AEE38-6329-4557-A28A-30125E4F7A0C}</Project>
       <Name>Interpretap</Name>
     </ProjectReference>
   </ItemGroup>
