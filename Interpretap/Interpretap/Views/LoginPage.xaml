@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Interpretap"
+             x:Class="Interpretap.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="MasterLayout">
+
+            <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
+                <Image x:Name="Img_Logo" Source="logo.png" Margin="0,80,0,0" />
+            </StackLayout>
+
+            <StackLayout x:Name="LoginEntriesStack" VerticalOptions="StartAndExpand">
+
+                <ActivityIndicator x:Name="LoginRequestSpinner" Color="Red" IsRunning="True" />
+
+                <Label x:Name="Lbl_Username" Text="Username"/>
+                <Entry x:Name="Entry_Username" Placeholder="Username" />
+                <Label x:Name="Lbl_Password" Text="Password"/>
+                <Entry x:Name="Entry_Password" Placeholder="Password" />
+                <Button x:Name="Btn_Login" Text="Login" Clicked="LoginProcedure"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
