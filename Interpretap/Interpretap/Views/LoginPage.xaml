@@ -1,24 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Interpretap"
-             x:Class="Interpretap.Views.MainPage">
+             x:Class="Interpretap.Views.LoginPage"
+             Title="Login">
     <ContentPage.Content>
         <StackLayout x:Name="MasterLayout">
 
             <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
-                <Image x:Name="Img_Logo" Source="logo.png" Margin="0,80,0,0" />
+                <Image x:Name="Img_Logo" Source="logo.png" Margin="0,80,0,0" Scale="1.1"/>
             </StackLayout>
 
-            <StackLayout x:Name="LoginEntriesStack" VerticalOptions="StartAndExpand">
+            <StackLayout x:Name="LoginEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
 
                 <ActivityIndicator x:Name="LoginRequestSpinner" Color="Red" IsRunning="True" />
 
                 <Label x:Name="Lbl_Username" Text="Username"/>
                 <Entry x:Name="Entry_Username" Placeholder="Username" />
                 <Label x:Name="Lbl_Password" Text="Password"/>
-                <Entry x:Name="Entry_Password" Placeholder="Password" />
-                <Button x:Name="Btn_Login" Text="Login" Clicked="LoginProcedure"/>
+                <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True" />
+
+                <StackLayout x:Name="LoginButtonsStack" Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                    <Button x:Name="Btn_User_Login" Text="User Login" Clicked="UserLoginProcedure"/>
+                    <Button x:Name="Btn_Interpreter_Login" Text="Interpreter Login" Clicked="InterpreterLoginProcedure"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout x:Name="RegisterStack" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="Btn_Registration" Text="Registration" Clicked="RegistrationProcedure"/> 
             </StackLayout>
             
         </StackLayout>

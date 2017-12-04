@@ -9,19 +9,28 @@ using Xamarin.Forms.Xaml;
 namespace Interpretap.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        public MainPage()
+        public LoginPage()
         {
             InitializeComponent();
             LoginRequestSpinner.IsVisible = false;
             Entry_Username.Completed += (s, e) => Entry_Password.Focus();
-            Entry_Password.Completed += (s, e) => LoginProcedure(s, e);
         }
 
-        private void LoginProcedure(object sender, EventArgs e)
+        private void UserLoginProcedure(object sender, EventArgs e)
         {
-            DisplayAlert("Login", "Login Success.", "Ok");
+            DisplayAlert("User", "Login Success.", "Ok");
+        }
+
+        private void InterpreterLoginProcedure(object sender, EventArgs e)
+        {
+            DisplayAlert("Interpreter", "Login Success.", "Ok");
+        }
+
+        private void RegistrationProcedure(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RegisterPage());
         }
 
     }

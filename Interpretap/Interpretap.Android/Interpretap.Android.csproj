@@ -37,9 +37,6 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -159,7 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interpretap\Interpretap.csproj">
-      <Project>{07f69ef1-2c20-4122-a45a-09dfea9d8b11}</Project>
+      <Project>{9C6AEE38-6329-4557-A28A-30125E4F7A0C}</Project>
       <Name>Interpretap</Name>
     </ProjectReference>
   </ItemGroup>

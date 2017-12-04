@@ -13,7 +13,7 @@ namespace Interpretap
         {
             InitializeComponent();
 
-            MainPage = new Interpretap.Views.MainPage();
+            MainPage = new NavigationPage(new Interpretap.Views.LoginPage());
         }
 
         protected override void OnStart()
