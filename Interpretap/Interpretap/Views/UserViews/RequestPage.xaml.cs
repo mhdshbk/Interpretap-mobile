@@ -11,5 +11,10 @@ namespace Interpretap.Views.UserViews
         {
             InitializeComponent();
         }
+
+        private void CreateCallRequest(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

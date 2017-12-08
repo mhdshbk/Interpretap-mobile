@@ -5,5 +5,30 @@
             x:Class="Interpretap.Views.UserViews.RequestPage"
             Title="Request">
 	<ContentPage.Content>
-	</ContentPage.Content>
+        <StackLayout x:Name="MasterLayout">
+            
+            <StackLayout x:Name="EntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
+
+                <Label x:Name="Lbl_Call_Ref" Text="Call Reference Number"/>
+                <Entry x:Name="Entry_Call_Ref" Placeholder="Call Reference Number" Keyboard="Numeric"/>
+
+                <Label x:Name="Lbl_Language" Text="Your Language"/>
+                <Picker x:Name="picker" Title="Select a language">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>English</x:String>
+                            <x:String>German</x:String>
+                            <x:String>Bosnian</x:String>
+                            <x:String>C Sharp</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+
+            <StackLayout x:Name="SubmitStack" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="Btn_CallReq" Text="Request Interpreter" Clicked="CreateCallRequest"/>
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
 </ContentPage>

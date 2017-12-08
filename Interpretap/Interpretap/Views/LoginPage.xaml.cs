@@ -18,9 +18,9 @@ namespace Interpretap.Views
             Entry_Username.Completed += (s, e) => Entry_Password.Focus();
         }
 
-        private async void UserLoginProcedure(object sender, EventArgs e)
+        private async Task UserLoginProcedure(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new TabbedPage
+            Page page = new TabbedPage
             {
                 Children =
                 {
@@ -28,13 +28,14 @@ namespace Interpretap.Views
                     new UserViews.CallLogPage(),
                     new UserViews.ProfilePage()
                 }
-            });
+            };
 
+            await NavigateAfterSuccessfulLogin(page);
         }
 
-        private async void InterpreterLoginProcedure(object sender, EventArgs e)
+        private async Task InterpreterLoginProcedure(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new TabbedPage
+            Page page = new TabbedPage
             {
                 Children =
                 {
@@ -42,12 +43,22 @@ namespace Interpretap.Views
                     new InterpreterViews.CallLogPage(),
                     new InterpreterViews.ProfilePage()
                 }
-            });
+            };
+
+            await NavigateAfterSuccessfulLogin(page);
         }
 
-        private void RegistrationProcedure(object sender, EventArgs e)
+        private async Task NavigateAfterSuccessfulLogin(Page navigateTo)
         {
-            Navigation.PushAsync(new RegisterPage());
+            NavigationPage.SetHasNavigationBar(navigateTo, false);
+
+            Navigation.InsertPageBefore(navigateTo, Navigation.NavigationStack.First());
+            await Navigation.PopToRootAsync();
+        }
+
+        private async Task RegistrationProcedure(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RegisterPage());
         }
 
     }
