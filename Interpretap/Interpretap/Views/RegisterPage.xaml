@@ -10,8 +10,17 @@
                 
                 <StackLayout x:Name="RegisterEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
                     
+                    <Label x:Name="Lbl_Profile_Type" Text="Select Profile Type"/>
+                    <Picker x:Name="ProfileTypePicker" Title="Select profile type" />
+
+                    <Label x:Name="Lbl_Registration_Key" Text="Registration Key" IsVisible="False" />
+                    <Entry x:Name="Entry_Registration_Key" Placeholder="Registration Key" IsVisible="False" />
+                    
                     <Label x:Name="Lbl_Password" Text="Password"/>
                     <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
+                    
+                    <Label x:Name="Lbl_Password_Confirm" Text="Confirm Password"/>
+                    <Entry x:Name="Entry_Password_Confirm" Placeholder="Confirm Password" IsPassword="True"/>
 
                     <Label x:Name="Lbl_First_Name" Text="First Name"/>
                     <Entry x:Name="Entry_First_Name" Placeholder="First Name" />

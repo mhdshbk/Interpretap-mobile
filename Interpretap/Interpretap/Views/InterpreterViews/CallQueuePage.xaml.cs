@@ -27,9 +27,22 @@ namespace Interpretap.Views.InterpreterViews
             };
         }
 
+        
+
         public class QueueCall
         {
             public String Name { get; set; }
+
+            public ICommand StartTimerCommand
+            {
+                get
+                {
+                    return new Command((e) =>
+                    {
+                        Application.Current.MainPage.Navigation.PushAsync(new InterpreterViews.TimerPage());
+                    });
+                }
+            }
         }
 
     }

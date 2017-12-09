@@ -13,7 +13,7 @@
                         <ViewCell>
                             <StackLayout x:Name="blabla" Orientation="Horizontal">
                                 <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand"/>
-                                <Button x:Name="btn" Text="Accept" HorizontalOptions="EndAndExpand" /> 
+                                <Button x:Name="btn" Text="Accept" HorizontalOptions="EndAndExpand" Command="{Binding StartTimerCommand}"  CommandParameter=""/> 
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

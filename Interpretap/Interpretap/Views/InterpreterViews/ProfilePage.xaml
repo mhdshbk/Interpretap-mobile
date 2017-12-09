@@ -13,6 +13,9 @@
 
                     <Label x:Name="Lbl_Password" Text="Password"/>
                     <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
+                    
+                    <Label x:Name="Lbl_Password_Confirm" Text="Confirm Password"/>
+                    <Entry x:Name="Entry_Password_Confirm" Placeholder="Confirm Password" IsPassword="True"/>
 
                     <Label x:Name="Lbl_First_Name" Text="First Name"/>
                     <Entry x:Name="Entry_First_Name" Placeholder="First Name" />

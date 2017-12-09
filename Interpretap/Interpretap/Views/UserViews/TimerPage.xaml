@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.UserViews.TimerPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" BackgroundColor="AliceBlue">
+            <Label Text="00:00:00"
+                   FontSize="52" 
+                HorizontalOptions="CenterAndExpand" />
+            <BoxView Color="Black" WidthRequest="100" HeightRequest="2" />
+
+            <Label Text="Agency: UpWork" FontSize="24" />
+            <Label Text="Gender: Male" FontSize="24" />
+            <Label Text="ID: 13" FontSize="24" />
+
+            <Label x:Name="Lbl_Call_Status" Text="Waiting for interpreter to start call..." HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,50"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
