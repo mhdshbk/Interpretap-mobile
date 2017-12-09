@@ -3,7 +3,22 @@
             xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="Interpretap.Views.InterpreterViews.CallQueuePage"
+            x:Name="CallQueuePage2"
             Title="Call Queue">
 	<ContentPage.Content>
+        <ScrollView>
+            <ListView  x:Name="listView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout x:Name="blabla" Orientation="Horizontal">
+                                <Label Text="{Binding Name}" HorizontalOptions="StartAndExpand"/>
+                                <Button x:Name="btn" Text="Accept" HorizontalOptions="EndAndExpand" /> 
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
 	</ContentPage.Content>
 </ContentPage>

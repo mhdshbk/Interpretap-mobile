@@ -11,5 +11,10 @@ namespace Interpretap.Views.InterpreterViews
         {
             InitializeComponent();
         }
+
+        private void UpdateUserProfile(object sender, EventArgs e)
+        {
+
+        }
     }
 }

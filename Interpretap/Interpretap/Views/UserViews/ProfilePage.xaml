@@ -9,7 +9,7 @@
 
             <StackLayout x:Name="MasterLayout">
 
-                <StackLayout x:Name="RegisterEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
+                <StackLayout x:Name="ProfileEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
 
                     <Label x:Name="Lbl_Password" Text="Password"/>
                     <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
