@@ -15,7 +15,10 @@
 
                     <Label x:Name="Lbl_Registration_Key" Text="Registration Key" IsVisible="False" />
                     <Entry x:Name="Entry_Registration_Key" Placeholder="Registration Key" IsVisible="False" />
-                    
+
+                    <Label x:Name="Lbl_Username" Text="Username"/>
+                    <Entry x:Name="Entry_Username" Placeholder="Username" />
+
                     <Label x:Name="Lbl_Password" Text="Password"/>
                     <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
                     

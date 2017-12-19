@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Interpretap.Common;
+using Interpretap.Services;
+using System;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,31 +20,60 @@ namespace Interpretap.Views
 
         private async Task UserLoginProcedure(object sender, EventArgs e)
         {
-            Page page = new TabbedPage
+            UserService _userService = new UserService();
+            var loginResponse = await _userService.Login(new Models.LoginModel(Entry_Username.Text, Entry_Password.Text, "client"));
+
+            if (!loginResponse.Status)
+            {
+                await DisplayAlert("Error", loginResponse.Message, "Ok");
+                return;
+            }
+
+            LocalStorage.LoginResponseLS = loginResponse;
+
+            var page = new TabbedPage
             {
                 Children =
                 {
                     new UserViews.RequestPage(),
-                    new UserViews.CallLogPage(),
-                    new UserViews.ProfilePage()
+                    new UserViews.CallLogPage()
                 }
             };
 
+            if (loginResponse.UserInfo.IsManager)
+                page.Children.Add(new UserViews.BusinessCallsPage());
+
+
+            page.Children.Add(new UserViews.ProfilePage());
             await NavigateAfterSuccessfulLogin(page);
         }
 
         private async Task InterpreterLoginProcedure(object sender, EventArgs e)
         {
-            Page page = new TabbedPage
+            UserService _userService = new UserService();
+            var loginResponse = await _userService.Login(new Models.LoginModel(Entry_Username.Text, Entry_Password.Text, "interpreter"));
+
+            if (!loginResponse.Status)
+            {
+                await DisplayAlert("Error", loginResponse.Message, "Ok");
+                return;
+            }
+
+            LocalStorage.LoginResponseLS = loginResponse;
+
+            var page = new TabbedPage
             {
                 Children =
                 {
                     new InterpreterViews.CallQueuePage(),
-                    new InterpreterViews.CallLogPage(),
-                    new InterpreterViews.ProfilePage()
+                    new InterpreterViews.CallLogPage()
                 }
             };
 
+            if (loginResponse.UserInfo.IsManager)
+                page.Children.Add(new InterpreterViews.AgencyCallsPage());
+
+            page.Children.Add(new InterpreterViews.ProfilePage());
             await NavigateAfterSuccessfulLogin(page);
         }
 
