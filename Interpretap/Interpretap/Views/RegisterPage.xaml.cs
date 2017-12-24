@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using static Interpretap.Common.Constants;
 using Xamarin.Forms;
+using Interpretap.Models;
 
 namespace Interpretap.Views
 {
@@ -43,7 +44,19 @@ namespace Interpretap.Views
 
         private void RegisterProcedure(object sender, EventArgs e)
         {
-            DisplayAlert("Registered", "Registration Completed.", "Ok");
+            var registrationModel = new RegisterModel();
+            registrationModel.Username = Entry_Username.Text;
+            registrationModel.Password = Entry_Password.Text;
+            registrationModel.PasswordConfirmation = Entry_Password_Confirm.Text;
+            registrationModel.FirstName = Entry_First_Name.Text;
+            registrationModel.LastName = Entry_Last_Name.Text;
+            registrationModel.PhoneNumber = Entry_Phone_Number.Text;
+            registrationModel.City = Entry_City.Text;
+            registrationModel.Address = Entry_Address.Text;
+            registrationModel.Province = Entry_Province.Text;
+            registrationModel.ZipCode = Entry_Zip_Code.Text;
+            registrationModel.UserType = ProfileTypePicker.SelectedItem.ToString().ToLower();
+
         }
     }
 }
