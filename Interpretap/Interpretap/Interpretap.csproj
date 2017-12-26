@@ -87,6 +87,12 @@
     <Compile Include="Views\UserViews\TimerPage.xaml.cs">
       <DependentUpon>TimerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\MiscServices.cs" />
+    <Compile Include="Models\OpenCallModel.cs" />
+    <Compile Include="Models\RespondModels\FetchOpenCallsResponse.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Services\InterpreterService.cs" />
+    <Compile Include="ViewModels\CallQueueViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

@@ -51,7 +51,7 @@ namespace Interpretap.Views
         private async Task InterpreterLoginProcedure(object sender, EventArgs e)
         {
             UserService _userService = new UserService();
-            var loginResponse = await _userService.Login(new Models.LoginModel(Entry_Username.Text, Entry_Password.Text, "interpreter"));
+            var loginResponse = await _userService.Login(new Models.LoginModel("chuy2", "password", "interpreter"));
 
             if (!loginResponse.Status)
             {
@@ -60,6 +60,7 @@ namespace Interpretap.Views
             }
 
             LocalStorage.LoginResponseLS = loginResponse;
+            //var loginResponse = LocalStorage.LoginResponseLS;
 
             var page = new TabbedPage
             {

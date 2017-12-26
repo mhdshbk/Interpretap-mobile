@@ -47,7 +47,7 @@
                     <Entry x:Name="Entry_Province" Placeholder="Province" />
 
                     <Label x:Name="Lbl_Zip_Code" Text="Zip Code"/>
-                    <Entry x:Name="Entry_Zip_Code" Placeholder="Zip Code" />
+                    <Entry x:Name="Entry_Zip_Code" Placeholder="Zip Code" Keyboard="Numeric" />
                     
                     <Button x:Name="Btn_Register" Text="Register" Clicked="RegisterProcedure"/>
                 </StackLayout>

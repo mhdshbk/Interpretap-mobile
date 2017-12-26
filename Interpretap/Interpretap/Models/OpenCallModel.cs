@@ -1,0 +1,66 @@
+﻿using System;
+using System.Windows.Input;
+using Newtonsoft.Json;
+using Xamarin.Forms;
+
+namespace Interpretap.Models
+{
+    public class OpenCallModel
+    {
+        [JsonProperty("call_info_id")]
+        public int CallInfoId { get; set; }
+
+        [JsonProperty("call_status_id")]
+        public int CallStatusId { get; set; }
+
+        [JsonProperty("call_ref_id")]
+        public string CallRefId { get; set; }
+
+        [JsonProperty("client_id")]
+        public int ClientId { get; set; }
+
+        [JsonProperty("interpreter_id")]
+        public int InterpreterId { get; set; }
+
+        [JsonProperty("client_language_id")]
+        public int ClientLanguageId { get; set; }
+
+        [JsonProperty("requested_language_id")]
+        public int RequestedLanguageId { get; set; }
+
+        [JsonProperty("start_call_date")]
+        public string StartCallDate { get; set; }
+
+        [JsonProperty("end_call_date")]
+        public string EndCallDate { get; set; }
+
+        [JsonProperty("canceled_date")]
+        public string CaneledDate { get; set; }
+
+        [JsonProperty("created_date")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("modified_date")]
+        public string ModifitedDate { get; set; }
+
+        [JsonProperty("created_by")]
+        public int CreatedBy { get; set; }
+
+        [JsonProperty("modified_by")]
+        public int ModifitedBy { get; set; }
+
+        [JsonProperty("client_business_id")]
+        public int ClientBusinessId { get; set; }
+
+        public ICommand StartTimerCommand
+        {
+            get
+            {
+                return new Command((e) =>
+                {
+                    //Application.Current.MainPage.Navigation.PushAsync(new InterpreterViews.TimerPage());
+                });
+            }
+        }
+    }
+}

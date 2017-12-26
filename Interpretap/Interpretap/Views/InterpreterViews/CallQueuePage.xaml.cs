@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Interpretap.Models;
+using Interpretap.Services;
+using Interpretap.ViewModels;
 using Xamarin.Forms;
 
 namespace Interpretap.Views.InterpreterViews
@@ -11,14 +14,16 @@ namespace Interpretap.Views.InterpreterViews
     {
         public ICommand AcceptCallCommand { get; private set; }
 
+        private CallQueueViewModel _viewModel { get; set; }
+
         public CallQueuePage()
         {
             InitializeComponent();
-            ObservableCollection<QueueCall> queueCalls = new ObservableCollection<QueueCall>
-            {
-                new QueueCall{ Name = "Ippo Makunouchi"},
-                new QueueCall{ Name = "Haris Botic"}
-            };
+
+            _viewModel = new CallQueueViewModel();
+            BindingContext = _viewModel;
+
+            ObservableCollection<OpenCallModel> queueCalls = new ObservableCollection<OpenCallModel>{};
 
             listView.ItemsSource = queueCalls;
 
@@ -27,7 +32,11 @@ namespace Interpretap.Views.InterpreterViews
             };
         }
 
-        
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.LoadData().GetAwaiter();
+        }
 
         public class QueueCall
         {

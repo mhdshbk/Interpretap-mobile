@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using static Interpretap.Common.Constants;
 using Xamarin.Forms;
 using Interpretap.Models;
+using System.Threading.Tasks;
+using Interpretap.Services;
+using Xamarin.Forms.Xaml;
 
 namespace Interpretap.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterPage : ContentPage
     {
-
         public RegisterPage()
         {
             InitializeComponent();
@@ -21,7 +24,6 @@ namespace Interpretap.Views
             Entry_Address.Completed += (s, e) => Entry_City.Focus();
             Entry_City.Completed += (s, e) => Entry_Province.Focus();
             Entry_Province.Completed += (s, e) => Entry_Zip_Code.Focus();
-            Entry_Zip_Code.Completed += (s, e) => RegisterProcedure(s, e);
 
             foreach (String profileTypeName in ProfileTypes.Keys)
                 ProfileTypePicker.Items.Add(profileTypeName);
@@ -42,7 +44,7 @@ namespace Interpretap.Views
             };
         }
 
-        private void RegisterProcedure(object sender, EventArgs e)
+        private async Task RegisterProcedure(object sender, EventArgs e)
         {
             var registrationModel = new RegisterModel();
             registrationModel.Username = Entry_Username.Text;
@@ -57,6 +59,22 @@ namespace Interpretap.Views
             registrationModel.ZipCode = Entry_Zip_Code.Text;
             registrationModel.UserType = ProfileTypePicker.SelectedItem.ToString().ToLower();
 
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    registrationModel.DeviceId = 1;
+                    registrationModel.DeviceType = "iOS";
+                    break;
+                case Device.Android:
+                    registrationModel.DeviceId = 2;
+                    registrationModel.DeviceType = "Android";
+                    break;
+            }
+
+            UserService _userService = new UserService();
+            var insertUserResponse = await _userService.InsertUser(registrationModel);
+
+            await DisplayAlert("Message", insertUserResponse.Message, "Ok");
         }
     }
 }

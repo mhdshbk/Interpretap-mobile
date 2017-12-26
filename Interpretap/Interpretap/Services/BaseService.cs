@@ -44,7 +44,8 @@ namespace Interpretap.Services
             request.Content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.SendAsync(request);
             string result = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<TResult>(result);
+            var e = JsonConvert.DeserializeObject<TResult>(result);
+            return e;
         }
 
         protected async Task<TResult> Put<TResult>(string endPoint, string id, TResult data) where TResult : class
