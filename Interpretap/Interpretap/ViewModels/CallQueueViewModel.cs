@@ -16,11 +16,17 @@ namespace Interpretap.ViewModels
             set { _queueCalls = value; INotifyPropertyChanged(); }
         }
 
+        public CallQueueViewModel()
+        {
+            _queueCalls = new ObservableCollection<OpenCallModel>();
+        }
+
         public async Task LoadData()
         {
             InterpreterService _interpreterService = new InterpreterService();
-            var callResponse = await _interpreterService.FetchOpenCallsResponse(new BaseModel());
-            //QueueCalls = new ObservableCollection<OpenCallModel>(callResponse.Calls);
+            var callResponse = await _interpreterService.FetchOpenCalls(new BaseModel());
+            foreach (var call in callResponse.Calls)
+                QueueCalls.Add(call);
         }
     }
 }

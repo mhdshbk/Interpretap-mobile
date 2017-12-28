@@ -8,7 +8,7 @@ namespace Interpretap.Services
 {
     public class InterpreterService : BaseService
     {
-        public async Task<FetchOpenCallsResponse> FetchOpenCallsResponse(BaseModel baseModel)
+        public async Task<FetchOpenCallsResponse> FetchOpenCalls(BaseModel baseModel)
         {
             FetchOpenCallsResponse fetchOpenCallsResponse = new FetchOpenCallsResponse();
 

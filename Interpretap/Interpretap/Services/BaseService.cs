@@ -41,6 +41,7 @@ namespace Interpretap.Services
             HttpClient httpClient = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, endPoint);
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var z = JsonConvert.SerializeObject(data);
             request.Content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await httpClient.SendAsync(request);
             string result = await response.Content.ReadAsStringAsync();

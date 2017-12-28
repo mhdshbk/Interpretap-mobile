@@ -12,8 +12,6 @@ namespace Interpretap.Views.InterpreterViews
 {
     public partial class CallQueuePage : ContentPage
     {
-        public ICommand AcceptCallCommand { get; private set; }
-
         private CallQueueViewModel _viewModel { get; set; }
 
         public CallQueuePage()
@@ -23,9 +21,7 @@ namespace Interpretap.Views.InterpreterViews
             _viewModel = new CallQueueViewModel();
             BindingContext = _viewModel;
 
-            ObservableCollection<OpenCallModel> queueCalls = new ObservableCollection<OpenCallModel>{};
-
-            listView.ItemsSource = queueCalls;
+            listView.ItemsSource = _viewModel.QueueCalls;
 
             listView.ItemSelected += (sender, e) => {
                 ((ListView)sender).SelectedItem = null;
@@ -36,22 +32,6 @@ namespace Interpretap.Views.InterpreterViews
         {
             base.OnAppearing();
             _viewModel.LoadData().GetAwaiter();
-        }
-
-        public class QueueCall
-        {
-            public String Name { get; set; }
-
-            public ICommand StartTimerCommand
-            {
-                get
-                {
-                    return new Command((e) =>
-                    {
-                        Application.Current.MainPage.Navigation.PushAsync(new InterpreterViews.TimerPage());
-                    });
-                }
-            }
         }
 
     }

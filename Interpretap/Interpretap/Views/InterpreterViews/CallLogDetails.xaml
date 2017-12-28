@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.InterpreterViews.CallLogDetails">
+    <ContentPage.Content>
+        <ScrollView>
+            <ListView  x:Name="listView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="#eee"
+                            Orientation="Horizontal">
+                                <Image Source="call_icon.png" />
+                                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                    <Label Text="Monthly call report" />
+                                    <Label Text="{Binding DateFromTo} " />
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="End">
+                                    <Label Text="Total Calls:" />
+                                    <Label Text="{Binding TotalCalls} " />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,34 +1,37 @@
-﻿using System;
+﻿using Interpretap.Models;
+using Interpretap.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Interpretap.Views.InterpreterViews
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CallLogPage : ContentPage
     {
+        private CallLogViewModel _viewModel { get; set; }
+
         public CallLogPage()
         {
             InitializeComponent();
-            ObservableCollection<MonthlyCallReport> employees = new ObservableCollection<MonthlyCallReport>
-            {
-                new MonthlyCallReport{ DateFromTo = "2017-07-01 to 2017-07-31", TotalCalls="1"},
-                new MonthlyCallReport{ DateFromTo = "2017-06-01 to 2017-07-30", TotalCalls="12"}
-            };
 
-            listView.ItemsSource = employees;
+            _viewModel = new CallLogViewModel();
+            BindingContext = _viewModel;
+
+            listView.ItemsSource = _viewModel.CallLogs;
 
             listView.ItemSelected += (sender, e) => {
-                MonthlyCallReport selectedCallReport = ((ListView)sender).SelectedItem as MonthlyCallReport;
+                MonthlyCallReportModel selectedCallReport = ((ListView)sender).SelectedItem as MonthlyCallReportModel;
                 DisplayAlert("Item Selected", selectedCallReport.DateFromTo, "Ok");
             };
         }
 
-    }
-
-    public class MonthlyCallReport
-    {
-        public String DateFromTo { get; set; }
-        public String TotalCalls { get; set; }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd")).GetAwaiter();
+        }
     }
 }

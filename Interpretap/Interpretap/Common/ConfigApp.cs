@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interpretap.Common
+﻿namespace Interpretap.Common
 {
     public class ConfigApp
     {
@@ -13,8 +7,11 @@ namespace Interpretap.Common
         public const string LoginUserAPI = RestApiBaseUrl + "user/key_with_login";
         public const string FetchUserAPI = RestApiBaseUrl + "user/fetch_user_info";
         public const string InsertUserAPI = RestApiBaseUrl + "user/insert_user";
+        public const string UpdateUserAPI = RestApiBaseUrl + "user/update_user";
 
 
         public const string FetchOpenCallsAPI = RestApiBaseUrl + "interpreter/fetch_open_calls";
+
+        public const string FetchCallLogAPI = RestApiBaseUrl + "call/fetch_monthly_call_amounts";
     }
 }

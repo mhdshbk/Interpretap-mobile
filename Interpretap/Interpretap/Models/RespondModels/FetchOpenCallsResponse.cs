@@ -7,6 +7,6 @@ namespace Interpretap.Models.RespondModels
     public class FetchOpenCallsResponse : BaseRespond
     {
         [JsonProperty("calls")]
-        public OpenCallModel Calls { get; set; }
+        public List<OpenCallModel> Calls { get; set; }
     }
 }

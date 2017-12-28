@@ -17,10 +17,10 @@ namespace Interpretap.Models
         public string CallRefId { get; set; }
 
         [JsonProperty("client_id")]
-        public int ClientId { get; set; }
+        public int? ClientId { get; set; }
 
         [JsonProperty("interpreter_id")]
-        public int InterpreterId { get; set; }
+        public int? InterpreterId { get; set; }
 
         [JsonProperty("client_language_id")]
         public int ClientLanguageId { get; set; }
@@ -50,7 +50,7 @@ namespace Interpretap.Models
         public int ModifitedBy { get; set; }
 
         [JsonProperty("client_business_id")]
-        public int ClientBusinessId { get; set; }
+        public int? ClientBusinessId { get; set; }
 
         public ICommand StartTimerCommand
         {
@@ -58,7 +58,7 @@ namespace Interpretap.Models
             {
                 return new Command((e) =>
                 {
-                    //Application.Current.MainPage.Navigation.PushAsync(new InterpreterViews.TimerPage());
+                    Application.Current.MainPage.Navigation.PushAsync(new Views.InterpreterViews.TimerPage());
                 });
             }
         }

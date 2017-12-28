@@ -73,7 +73,7 @@ namespace Interpretap.Views
 
             if (loginResponse.UserInfo.IsManager)
                 page.Children.Add(new InterpreterViews.AgencyCallsPage());
-
+            if(true)
             page.Children.Add(new InterpreterViews.ProfilePage());
             await NavigateAfterSuccessfulLogin(page);
         }

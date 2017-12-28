@@ -5,8 +5,9 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" BackgroundColor="AliceBlue">
             <Label Text="00:00:00"
-                   FontSize="52" 
-                HorizontalOptions="CenterAndExpand" />
+                   FontSize="52"
+                   x:Name="Lbl_Time"
+                   HorizontalOptions="CenterAndExpand" />
             <BoxView Color="Black" WidthRequest="100" HeightRequest="2" />
 
             <Label Text="Company: Ruby Hospital" FontSize="24" />
@@ -14,7 +15,17 @@
             <Label Text="MR#: 41" FontSize="24" />
             <Label Text="Emp ID: 41" FontSize="24" />
 
-            <Button Text="Start Call" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,0,50"/>
+            <StackLayout x:Name="StartCallsStack" Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="0,0,0,51" IsVisible="True">
+                <Button Text="Start Call" HorizontalOptions="CenterAndExpand" Clicked="StartCallProcedure" />
+            </StackLayout>
+
+
+            <StackLayout x:Name="EndCallStack" Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="0,0,0,50" IsVisible="False">
+                <Button Text="Pause Call" HorizontalOptions="StartAndExpand" Clicked="PauseCallProcedure" />
+                <Button Text="End Call" HorizontalOptions="EndAndExpand" Clicked="EndCallProcedure" />
+            </StackLayout>
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

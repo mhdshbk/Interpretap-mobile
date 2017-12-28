@@ -15,6 +15,8 @@ namespace Interpretap.Views
         public RegisterPage()
         {
             InitializeComponent();
+            Entry_Registration_Key.Completed += (s, e) => Entry_Username.Focus();
+            Entry_Username.Completed += (s, e) => Entry_Password.Focus();
             Entry_Password.Completed += (s, e) => Entry_Password_Confirm.Focus();
             Entry_Password_Confirm.Completed += (s, e) => Entry_First_Name.Focus();
             Entry_First_Name.Completed += (s, e) => Entry_Last_Name.Focus();
@@ -47,11 +49,13 @@ namespace Interpretap.Views
         private async Task RegisterProcedure(object sender, EventArgs e)
         {
             var registrationModel = new RegisterModel();
+            registrationModel.InterpreterTerpcode = Entry_Registration_Key.Text;
             registrationModel.Username = Entry_Username.Text;
             registrationModel.Password = Entry_Password.Text;
             registrationModel.PasswordConfirmation = Entry_Password_Confirm.Text;
             registrationModel.FirstName = Entry_First_Name.Text;
             registrationModel.LastName = Entry_Last_Name.Text;
+            registrationModel.Email = Entry_Email.Text;
             registrationModel.PhoneNumber = Entry_Phone_Number.Text;
             registrationModel.City = Entry_City.Text;
             registrationModel.Address = Entry_Address.Text;

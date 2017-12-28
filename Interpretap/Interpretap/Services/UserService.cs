@@ -55,5 +55,21 @@ namespace Interpretap.Services
 
             return insertUserRespond;
         }
+
+        public async Task<BaseRespond> UpdateUser(RegisterModel registeModel)
+        {
+            BaseRespond updateUserRespond = new BaseRespond();
+
+            try
+            {
+                updateUserRespond = await Post<BaseRespond, RegisterModel>(UpdateUserAPI, registeModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return updateUserRespond;
+        }
     }
 }
