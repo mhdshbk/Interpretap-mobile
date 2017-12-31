@@ -13,5 +13,10 @@ namespace Interpretap.Common
             { "User", "user" },
             { "Interpreter", "interpreter" }
         };
+
+        public enum UserTypes
+        {
+            Client, Interpreter, Business, Agency
+        }
     }
 }

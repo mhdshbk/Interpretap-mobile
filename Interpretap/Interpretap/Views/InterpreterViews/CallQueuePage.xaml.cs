@@ -12,6 +12,7 @@ namespace Interpretap.Views.InterpreterViews
 {
     public partial class CallQueuePage : ContentPage
     {
+        private bool firstTime = true; //Xamarin bug workaround
         private CallQueueViewModel _viewModel { get; set; }
 
         public CallQueuePage()
@@ -31,7 +32,12 @@ namespace Interpretap.Views.InterpreterViews
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.LoadData().GetAwaiter();
+
+            if(firstTime)
+            if (_viewModel.QueueCalls.Count == 0)
+                _viewModel.LoadData().GetAwaiter();
+
+            firstTime = false;
         }
 
     }

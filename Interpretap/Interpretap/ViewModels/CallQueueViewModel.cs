@@ -8,7 +8,6 @@ namespace Interpretap.ViewModels
 {
     public class CallQueueViewModel : BaseViewModel
     {
-
         private ObservableCollection<OpenCallModel> _queueCalls;
         public ObservableCollection<OpenCallModel> QueueCalls
         {

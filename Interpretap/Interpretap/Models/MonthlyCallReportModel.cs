@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Interpretap.Models
 {
-    class MonthlyCallReportModel
+    public class MonthlyCallReportModel
     {
         [JsonProperty("start_of_month")]
         public String StartOfMonth { get; set; }

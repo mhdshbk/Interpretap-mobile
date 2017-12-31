@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace Interpretap.Models
 {
-    public class OpenCallModel
+    public class FifteenCallModel
     {
         [JsonProperty("call_info_id")]
         public int CallInfoId { get; set; }
@@ -60,7 +64,7 @@ namespace Interpretap.Models
 
         public string FullName { get { return $"{FirstName} {LastName}"; } }
 
-        public ICommand StartTimerCommand
+        public ICommand OpebSingleCallCommand
         {
             get
             {

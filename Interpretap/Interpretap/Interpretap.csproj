@@ -44,24 +44,31 @@
     <Compile Include="Common\LocalStorage.cs" />
     <Compile Include="Common\MyTimer.cs" />
     <Compile Include="Models\CallLogRequestModel.cs" />
+    <Compile Include="Models\FifteenCallModel.cs" />
+    <Compile Include="Models\FifteenCallsRequestModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\RespondModels\BaseRespond.cs" />
     <Compile Include="Models\RespondModels\FetchCallLogResponse.cs" />
+    <Compile Include="Models\RespondModels\FetchFifteenCallsRespnse.cs" />
     <Compile Include="Models\RespondModels\FetchUserRespond.cs" />
     <Compile Include="Models\RespondModels\LoginRespond.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Services\AgencyService.cs" />
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\BusinessService.cs" />
     <Compile Include="Services\CallService.cs" />
+    <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CallLogDetailsViewModel.cs" />
     <Compile Include="ViewModels\CallLogViewModel.cs" />
+    <Compile Include="Views\CallLogDetails.xaml.cs">
+      <DependentUpon>CallLogDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InterpreterViews\AgencyCallsPage.xaml.cs">
       <DependentUpon>AgencyCallsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\InterpreterViews\CallLogDetails.xaml.cs">
-      <DependentUpon>CallLogDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\TimerPage.xaml.cs">
       <DependentUpon>TimerPage.xaml</DependentUpon>
@@ -184,7 +191,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\InterpreterViews\CallLogDetails.xaml">
+    <EmbeddedResource Include="Views\CallLogDetails.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

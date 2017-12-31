@@ -23,5 +23,21 @@ namespace Interpretap.Services
 
             return fetchOpenCallsResponse;
         }
+
+        public async Task<FetchFifteenCallsRespnse> FetchFifteenCalls(FifteenCallsRequestModel requestModel)
+        {
+            FetchFifteenCallsRespnse fetchFifteenCallsResponse = new FetchFifteenCallsRespnse();
+
+            try
+            {
+                fetchFifteenCallsResponse = await Post<FetchFifteenCallsRespnse, FifteenCallsRequestModel>(FetchFifteenCallsInterpreterAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return fetchFifteenCallsResponse;
+        }
     }
 }

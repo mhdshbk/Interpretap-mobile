@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.CallLogDetails"
+             Title="Call Log Details">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="Lbl_Title" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
+            <Button Text="View Full month report1" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
+            <ScrollView VerticalOptions="FillAndExpand">
+                <ListView  x:Name="listView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout BackgroundColor="#eee"
+                            Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                        <Label Text="Monthly call report" />
+                                        <Label Text="{Binding ModifitedDate}" FontSize="11" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                                        <Label Text="Total calls:" HorizontalTextAlignment="Center"/>
+                                        <Label Text="{Binding FullName}" HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -23,15 +23,21 @@ namespace Interpretap.Views.InterpreterViews
             listView.ItemsSource = _viewModel.CallLogs;
 
             listView.ItemSelected += (sender, e) => {
+                if (((ListView)sender).SelectedItem == null)
+                    return;
+
                 MonthlyCallReportModel selectedCallReport = ((ListView)sender).SelectedItem as MonthlyCallReportModel;
-                DisplayAlert("Item Selected", selectedCallReport.DateFromTo, "Ok");
+                Navigation.PushAsync(new CallLogDetails(selectedCallReport));
+                ((ListView)sender).SelectedItem = null;
             };
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd")).GetAwaiter();
+
+            if(_viewModel.CallLogs.Count == 0)
+                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd")).GetAwaiter();
         }
     }
 }
