@@ -64,6 +64,23 @@ namespace Interpretap.Models
 
         public string FullName { get { return $"{FirstName} {LastName}"; } }
 
+        public string ClientName { get { return $"{ClientInfo?.ClientFirstName} {ClientInfo?.ClientLastName}"; } }
+
+        [JsonProperty("call_duration")]
+        public string CallDuration { get; set; }
+
+        [JsonProperty("call_duration_seconds")]
+        public int? CallDurationSeconds { get; set; }
+
+        [JsonProperty("status_info")]
+        public String StatusInfo { get; set; }
+
+        [JsonProperty("client_info")]
+        public ClientInfo ClientInfo { get; set; }
+
+        [JsonProperty("interpreter_info")]
+        public InterpreterInfo InterpreterInfo { get; set; }
+
         public ICommand OpebSingleCallCommand
         {
             get

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static Interpretap.Common.Constants;
 
 namespace Interpretap.Views.InterpreterViews
 {
@@ -22,12 +23,13 @@ namespace Interpretap.Views.InterpreterViews
 
             listView.ItemsSource = _viewModel.CallLogs;
 
-            listView.ItemSelected += (sender, e) => {
+            listView.ItemSelected += (sender, e) =>
+            {
                 if (((ListView)sender).SelectedItem == null)
                     return;
 
                 MonthlyCallReportModel selectedCallReport = ((ListView)sender).SelectedItem as MonthlyCallReportModel;
-                Navigation.PushAsync(new CallLogDetails(selectedCallReport));
+                Navigation.PushAsync(new CallLogDetails(selectedCallReport, UserTypes.Interpreter));
                 ((ListView)sender).SelectedItem = null;
             };
         }
@@ -37,7 +39,7 @@ namespace Interpretap.Views.InterpreterViews
             base.OnAppearing();
 
             if(_viewModel.CallLogs.Count == 0)
-                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd")).GetAwaiter();
+                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd"), UserTypes.Interpreter).GetAwaiter();
         }
     }
 }

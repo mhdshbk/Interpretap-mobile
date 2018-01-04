@@ -1,12 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Interpretap.Models;
+using Interpretap.Models.RespondModels;
+using System;
+using static Interpretap.Common.ConfigApp;
 using System.Threading.Tasks;
 
 namespace Interpretap.Services
 {
-    public class BusinessService
+    public class BusinessService : BaseService
     {
+        public async Task<FetchCallLogResponse> FetchCallLogs(CallLogRequestModel callLogRequestModel)
+        {
+            FetchCallLogResponse fetchCallLogResponse = new FetchCallLogResponse();
+
+            try
+            {
+                fetchCallLogResponse = await Post<FetchCallLogResponse, CallLogRequestModel>(FetchMonthlyCallAmountBusinessAPI, callLogRequestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return fetchCallLogResponse;
+        }
+
+        public async Task<FetchFifteenCallsABResponse> FetchFifteenCalls(FifteenCallsRequestModel requestModel)
+        {
+            FetchFifteenCallsABResponse fetchFifteenCallsResponse = new FetchFifteenCallsABResponse();
+
+            try
+            {
+                fetchFifteenCallsResponse = await Post<FetchFifteenCallsABResponse, FifteenCallsRequestModel>(FetchFifteenCallsBusinessAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return fetchFifteenCallsResponse;
+        }
     }
 }

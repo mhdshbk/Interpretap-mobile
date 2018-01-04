@@ -8,13 +8,13 @@ using static Interpretap.Common.Constants;
 namespace Interpretap.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CallLogDetails : ContentPage
+    public partial class CallLogDetailsAB : ContentPage
     {
         private CallLogDetailsViewModel _viewModel { get; set; }
         private MonthlyCallReportModel _monthlyCallReportModel;
         private UserTypes _userType;
 
-        public CallLogDetails(MonthlyCallReportModel monthlyCallReportModel, UserTypes userType)
+        public CallLogDetailsAB(MonthlyCallReportModel monthlyCallReportModel, UserTypes userType)
         {
             InitializeComponent();
 
@@ -38,11 +38,11 @@ namespace Interpretap.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if(_monthlyCallReportModel != null)
-            _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd") + " 00:00:00",
-                _monthlyCallReportModel.StartOfMonth,
-                _monthlyCallReportModel.EndOfMonth,
-                _userType).GetAwaiter();
+            if (_monthlyCallReportModel != null)
+                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd") + " 00:00:00",
+                    _monthlyCallReportModel.StartOfMonth,
+                    _monthlyCallReportModel.EndOfMonth,
+                    _userType).GetAwaiter();
         }
     }
 }

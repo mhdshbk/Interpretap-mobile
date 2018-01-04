@@ -1,4 +1,5 @@
-﻿using Interpretap.Models;
+﻿using Interpretap.Common;
+using Interpretap.Models;
 using Interpretap.Models.RespondModels;
 using Interpretap.Services;
 using System;
@@ -32,6 +33,7 @@ namespace Interpretap.ViewModels
             fifteenCallsRequestModel.MinDay = minDay;
             fifteenCallsRequestModel.MaxDay = maxDay;
             FetchFifteenCallsRespnse response = null;
+            FetchFifteenCallsABResponse ABresponse = null;
             switch (userType)
             {
                 case UserTypes.Interpreter:
@@ -39,23 +41,29 @@ namespace Interpretap.ViewModels
                     response = await interpreterService.FetchFifteenCalls(fifteenCallsRequestModel);
                     break;
 
-                //case UserTypes.Client:
-                //    InterpreterService interpreterService = new InterpreterService();
-                //    response = await interpreterService.FetchFifteenCalls(fifteenCallsRequestModel);
-                //    break;
+                case UserTypes.Client:
+                    ClientService clientService = new ClientService();
+                    response = await clientService.FetchFifteenCalls(fifteenCallsRequestModel);
+                    break;
 
-                //case UserTypes.Business:
-                //    InterpreterService interpreterService = new InterpreterService();
-                //    response = await interpreterService.FetchFifteenCalls(fifteenCallsRequestModel);
-                //    break;
+                case UserTypes.Business:
+                    BusinessService businessService = new BusinessService();
+                    fifteenCallsRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId;
+                    ABresponse = await businessService.FetchFifteenCalls(fifteenCallsRequestModel);
+                    break;
 
-                //case UserTypes.Agency:
-                //    InterpreterService interpreterService = new InterpreterService();
-                //    response = await interpreterService.FetchFifteenCalls(fifteenCallsRequestModel);
-                //    break;
+                case UserTypes.Agency:
+                    AgencyService agencyService = new AgencyService();
+                    fifteenCallsRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
+                    ABresponse = await agencyService.FetchFifteenCalls(fifteenCallsRequestModel);
+                    break;
             }
             if(response != null)
             foreach (var call in response.Calls)
+                CallLogs.Add(call);
+
+            if (ABresponse != null)
+            foreach (var call in ABresponse.Call.Calls)
                 CallLogs.Add(call);
 
         }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static Interpretap.Common.Constants;
 
 namespace Interpretap.Views.UserViews
 {
@@ -23,15 +24,20 @@ namespace Interpretap.Views.UserViews
 
             listView.ItemSelected += (sender, e) =>
             {
+                if (((ListView)sender).SelectedItem == null)
+                    return;
+
                 MonthlyCallReportModel selectedCallReport = ((ListView)sender).SelectedItem as MonthlyCallReportModel;
-                DisplayAlert("Item Selected", selectedCallReport.DateFromTo, "Ok");
+                Navigation.PushAsync(new CallLogDetails(selectedCallReport, UserTypes.Client));
+                ((ListView)sender).SelectedItem = null;
             };
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd")).GetAwaiter();
+            if (_viewModel.CallLogs.Count == 0)
+                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd"), UserTypes.Client).GetAwaiter();
         }
     }
 }

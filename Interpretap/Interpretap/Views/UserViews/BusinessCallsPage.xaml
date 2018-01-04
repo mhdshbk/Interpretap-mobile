@@ -4,10 +4,27 @@
              x:Class="Interpretap.Views.UserViews.BusinessCallsPage"
              Title="Business Calls">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <ListView  x:Name="listView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="#eee"
+                            Orientation="Horizontal">
+                                <Image Source="call_icon.png" />
+                                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                    <Label Text="Monthly call report" />
+                                    <Label Text="{Binding DateFromTo}" FontSize="11" />
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                                    <Label Text="Total calls:" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding TotalCalls}" HorizontalTextAlignment="Center"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

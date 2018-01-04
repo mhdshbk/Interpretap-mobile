@@ -8,4 +8,16 @@ namespace Interpretap.Models.RespondModels
         [JsonProperty("calls")]
         public List<FifteenCallModel> Calls { get; set; }
     }
+
+    public class FetchFifteenCallsABResponse
+    {
+        [JsonProperty("calls")]
+        public FetchFifteenCallsABResponseContent Call { get; set; }
+    }
+
+    public class FetchFifteenCallsABResponseContent
+    {
+        [JsonProperty("call_info")]
+        public List<FifteenCallModel> Calls { get; set; }
+    }
 }

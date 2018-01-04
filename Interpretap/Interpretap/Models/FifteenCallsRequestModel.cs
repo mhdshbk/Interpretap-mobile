@@ -4,11 +4,11 @@ namespace Interpretap.Models
 {
     public class FifteenCallsRequestModel : BaseModel
     {
-        //[JsonProperty("agency_id")]
-        //public string AgencyId { get; set; }
+        [JsonProperty("agency_id")]
+        public int AgencyId { get; set; }
 
-        //[JsonProperty("business_id")]
-        //public string BusinessId { get; set; }
+        [JsonProperty("client_business_id")]
+        public int ClientBusinessId { get; set; }
 
         [JsonProperty("min_day")]
         public string MinDay { get; set; }

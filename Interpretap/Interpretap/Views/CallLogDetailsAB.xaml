@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Interpretap.Views.CallLogDetails"
+             x:Class="Interpretap.Views.CallLogDetailsAB"
              Title="Call Log Details">
     <ContentPage.Content>
         <StackLayout>
@@ -15,8 +15,8 @@
                                 <StackLayout BackgroundColor="#eee"
                             Orientation="Horizontal">
                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding FullName}" FontAttributes="Bold"/>
-                                        <Label Text="{Binding CreatedDate}" FontSize="12" />
+                                        <Label Text="{Binding ClientName}" FontAttributes="Bold"/>
+                                        <Label Text="{Binding CreatedDate}" FontSize="11" />
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                                         <Label Text="Bill Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
