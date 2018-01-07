@@ -1,6 +1,7 @@
 ﻿using Interpretap.Models;
 using Interpretap.ViewModels;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static Interpretap.Common.Constants;
@@ -43,6 +44,11 @@ namespace Interpretap.Views
                     _monthlyCallReportModel.StartOfMonth,
                     _monthlyCallReportModel.EndOfMonth,
                     _userType).GetAwaiter();
+        }
+
+        private async Task ShowReportProcedure(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ReportPage(_monthlyCallReportModel, _userType));
         }
     }
 }

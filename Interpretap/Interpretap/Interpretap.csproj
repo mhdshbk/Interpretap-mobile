@@ -44,12 +44,15 @@
     <Compile Include="Common\LocalStorage.cs" />
     <Compile Include="Common\MyTimer.cs" />
     <Compile Include="Models\CallLogRequestModel.cs" />
+    <Compile Include="Models\CallReportRequestModel.cs" />
     <Compile Include="Models\FifteenCallModel.cs" />
     <Compile Include="Models\FifteenCallsRequestModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Models\RespondModels\BaseRespond.cs" />
+    <Compile Include="Models\RespondModels\FetchABReportResponse.cs" />
     <Compile Include="Models\RespondModels\FetchCallLogResponse.cs" />
     <Compile Include="Models\RespondModels\FetchFifteenCallsRespnse.cs" />
     <Compile Include="Models\RespondModels\FetchUserRespond.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CallLogDetailsViewModel.cs" />
     <Compile Include="ViewModels\CallLogViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="Views\CallLogDetails.xaml.cs">
       <DependentUpon>CallLogDetails.xaml</DependentUpon>
     </Compile>
@@ -82,6 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportPage.xaml.cs">
+      <DependentUpon>ReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\BusinessCallsPage.xaml.cs">
       <DependentUpon>BusinessCallsPage.xaml</DependentUpon>
@@ -201,6 +208,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CallLogDetailsAB.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ReportPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

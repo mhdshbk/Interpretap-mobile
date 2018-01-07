@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="Lbl_Title" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
-            <Button Text="View Full month report" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
+            <Button Text="View Full month report" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Clicked="ShowReportProcedure" />
             <ScrollView VerticalOptions="FillAndExpand">
                 <ListView  x:Name="listView">
                     <ListView.ItemTemplate>

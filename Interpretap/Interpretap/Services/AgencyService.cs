@@ -39,5 +39,21 @@ namespace Interpretap.Services
 
             return fetchFifteenCallsResponse;
         }
+
+        public async Task<FetchABReportResponse> FetchAgencyReport(CallReportRequestModel requestModel)
+        {
+            FetchABReportResponse fetchABReportResponse = new FetchABReportResponse();
+
+            try
+            {
+                fetchABReportResponse = await Post<FetchABReportResponse, CallReportRequestModel>(FetchAgencyReportAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return fetchABReportResponse;
+        }
     }
 }
