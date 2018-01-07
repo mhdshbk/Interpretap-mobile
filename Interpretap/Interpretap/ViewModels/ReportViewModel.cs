@@ -66,10 +66,12 @@ namespace Interpretap.ViewModels
 
             var reportInfo = userType == UserTypes.Agency ? response.AgencyReport : response.BusinessReport;
             var fee = userType == UserTypes.Agency ? reportInfo.FeeInfos.First().FeePerMinute : reportInfo.BillInfo.First().FeePerMinute;
+            var billOrFeeAmount = userType == UserTypes.Agency ? reportInfo.Report.TotalFee : reportInfo.Report.TotalBill;
+
             TotalCallSeconds = reportInfo.Report.TotalCall.ToString();
             TotalPausedSeconds = reportInfo.Report.TotalPause.ToString();
             BusinessFee = fee.ToString();
-            TotalBill = (reportInfo.Report.TotalCall * fee).ToString();
+            TotalBill = billOrFeeAmount.ToString();
         }
     }
 }

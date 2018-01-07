@@ -12,6 +12,9 @@ namespace Interpretap.Models
 
         [JsonProperty("total_call_amount")]
         public int TotalCall { get; set; }
+
+        [JsonProperty("total_bill_amount")]
+        public double TotalBill { get; set; }
     }
 
     public class FeeInfo

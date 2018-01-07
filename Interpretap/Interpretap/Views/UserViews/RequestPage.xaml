@@ -7,7 +7,7 @@
 	<ContentPage.Content>
         <StackLayout x:Name="MasterLayout">
             
-            <StackLayout x:Name="EntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
+            <StackLayout x:Name="EntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0" Margin="0,30,0,0">
 
                 <Label x:Name="Lbl_Call_Ref" Text="Call Reference Number"/>
                 <Entry x:Name="Entry_Call_Ref" Placeholder="Call Reference Number" Keyboard="Numeric"/>

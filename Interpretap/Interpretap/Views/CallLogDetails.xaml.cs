@@ -38,7 +38,7 @@ namespace Interpretap.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if(_monthlyCallReportModel != null)
+            if(_monthlyCallReportModel != null && _viewModel.CallLogs.Count == 0)
             _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd") + " 00:00:00",
                 _monthlyCallReportModel.StartOfMonth,
                 _monthlyCallReportModel.EndOfMonth,

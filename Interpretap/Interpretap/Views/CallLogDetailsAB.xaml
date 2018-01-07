@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.CallLogDetailsAB"
@@ -15,12 +15,12 @@
                                 <StackLayout BackgroundColor="#eee"
                             Orientation="Horizontal">
                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding ClientName}" FontAttributes="Bold"/>
+                                        <Label Text="{Binding ClientName}" FontAttributes="Bold" FontSize="15"/>
                                         <Label Text="{Binding CreatedDate}" FontSize="11" />
                                     </StackLayout>
-                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                                        <Label Text="Bill Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
-                                        <Label Text="Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold"/>
+                                    <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                        <Label Text="Bill Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15"/>
+                                        <Label Text="Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
