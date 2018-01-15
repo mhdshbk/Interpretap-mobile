@@ -22,6 +22,7 @@
         public const string FetchMonthlyCallAmountBusinessAPI = RestApiBaseUrl + "business/fetch_monthly_call_amount";
         public const string FetchBusinessReportAPI = RestApiBaseUrl + "business/fetch_client_business_report";
 
-        public const string FetchCallLogAPI = RestApiBaseUrl + "call/fetch_monthly_call_amounts";
+        public const string FetchCallLogAPI = RestApiBaseUrl + "call/fetch_monthly_call_amounts";        public const string FetchCallAPI = RestApiBaseUrl + "call/fetch_call_info";
+
     }
 }

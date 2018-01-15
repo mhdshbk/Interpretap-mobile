@@ -12,36 +12,48 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Margin="16" Spacing="0">
-            <Label Text="Call information:" />
-            
-            <BoxView HeightRequest="12" BackgroundColor="Transparent"/>
+        <AbsoluteLayout>
+            <StackLayout 
+                Margin="16" 
+                Spacing="0"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <Label Text="Call information:" />
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Call info id:" />
-                <Label Text="{Binding InfoId}" />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Call Reference id:" />
-                <Label Text="{Binding ReferenceId}" />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Created Date:" />
-                <Label Text="{Binding CreatedDate}" />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Call Start Date:" />
-                <Label Text="{Binding StartDate}" />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Call End Date:" />
-                <Label Text="{Binding EndDate}" />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Call Duration:" />
-                <Label Text="{Binding Duration}" />
+                <BoxView HeightRequest="12" BackgroundColor="Transparent"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Call info id:" />
+                    <Label Text="{Binding InfoId}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Call Reference id:" />
+                    <Label Text="{Binding ReferenceId}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Created Date:" />
+                    <Label Text="{Binding CreatedDate}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Call Start Date:" />
+                    <Label Text="{Binding StartDate}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Call End Date:" />
+                    <Label Text="{Binding EndDate}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Call Duration:" />
+                    <Label Text="{Binding Duration}" />
+                </StackLayout>
+
             </StackLayout>
 
-        </StackLayout>
+            <ActivityIndicator 
+                IsRunning="True" 
+                IsVisible="{Binding IsBusy}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
