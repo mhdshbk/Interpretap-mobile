@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.CallInfo"
+             Title="Call Info">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" >
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="16" Spacing="0">
+            <Label Text="Call information:" />
+            
+            <BoxView HeightRequest="12" BackgroundColor="Transparent"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Call info id:" />
+                <Label Text="{Binding InfoId}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Call Reference id:" />
+                <Label Text="{Binding ReferenceId}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Created Date:" />
+                <Label Text="{Binding CreatedDate}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Call Start Date:" />
+                <Label Text="{Binding StartDate}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Call End Date:" />
+                <Label Text="{Binding EndDate}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Call Duration:" />
+                <Label Text="{Binding Duration}" />
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

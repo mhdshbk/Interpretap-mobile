@@ -30,8 +30,10 @@ namespace Interpretap.Views
 
             listView.ItemSelected += (sender, e) =>
             {
+                if (((ListView)sender).SelectedItem == null) return;
                 FifteenCallModel selectedCall = ((ListView)sender).SelectedItem as FifteenCallModel;
                 //DisplayAlert("Item Selected", selectedCall., "Ok");
+                Navigation.PushAsync(new CallInfo(selectedCall));
                 ((ListView)sender).SelectedItem = null;
             };
         }
