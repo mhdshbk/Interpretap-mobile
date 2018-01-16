@@ -21,6 +21,20 @@ namespace Interpretap.ViewModels
             set { _callLogs = value; INotifyPropertyChanged(); }
         }
 
+        bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set
+            {
+                _isBusy = value;
+                INotifyPropertyChanged();
+            }
+        }
+
+        public AssosiateAgencies Agency { get; set; }
+        public AssosiateBusiness Business { get; set; }
+
         public CallLogViewModel()
         {
             _callLogs = new ObservableCollection<MonthlyCallReportModel>();
@@ -28,6 +42,7 @@ namespace Interpretap.ViewModels
 
         public async Task LoadData(String fromDate, UserTypes userType)
         {
+            IsBusy = true;
             var callLogRequestModel = new CallLogRequestModel();
             callLogRequestModel.FromDate = fromDate;
             FetchCallLogResponse response = null;
@@ -45,18 +60,36 @@ namespace Interpretap.ViewModels
 
                 case UserTypes.Business:
                     BusinessService businessService = new BusinessService();
-                    callLogRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId;
+                    if (Business != null)
+                    {
+                        callLogRequestModel.ClientBusinessId = Business.ClientBusinessId;
+                    }
+                    else
+                    {
+                        callLogRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId;
+                    }
                     response = await businessService.FetchCallLogs(callLogRequestModel);
                     break;
 
                 case UserTypes.Agency:
                     AgencyService agencyService = new AgencyService();
-                    callLogRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
+                    if (Agency != null)
+                    {
+                        callLogRequestModel.AgencyId = Agency.InterpreterBusinessId;
+                    }
+                    else
+                    {
+                        callLogRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
+                    }
                     response = await agencyService.FetchCallLogs(callLogRequestModel);
                     break;
             }
-            foreach (var call in response.CallLogs)
-                CallLogs.Add(call);
+            if (response.CallLogs != null)
+            {
+                foreach (var call in response.CallLogs)
+                    CallLogs.Add(call);
+            }
+            IsBusy = false;
         }
     }
 }

@@ -17,11 +17,11 @@ namespace Interpretap.Views.InterpreterViews
     {
         private CallLogViewModel _viewModel { get; set; }
 
-        public AgencyCallsPage()
+        public AgencyCallsPage(AssosiateAgencies agency = null)
         {
             InitializeComponent();
-
-            _viewModel = new CallLogViewModel();
+            
+            _viewModel = new CallLogViewModel() { Agency = agency };
             BindingContext = _viewModel;
 
             listView.ItemsSource = _viewModel.CallLogs;

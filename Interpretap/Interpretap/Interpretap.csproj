@@ -67,6 +67,8 @@
     <Compile Include="Services\CallService.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModels\BusinessesViewModel.cs" />
+    <Compile Include="ViewModels\AgenciesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CallInfoViewModel.cs" />
     <Compile Include="ViewModels\CallLogDetailsViewModel.cs" />
@@ -80,6 +82,9 @@
     </Compile>
     <Compile Include="Views\CallLogDetailsAB.xaml.cs">
       <DependentUpon>CallLogDetailsAB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InterpreterViews\AgenciesPage.xaml.cs">
+      <DependentUpon>AgenciesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\AgencyCallsPage.xaml.cs">
       <DependentUpon>AgencyCallsPage.xaml</DependentUpon>
@@ -96,6 +101,9 @@
     </Compile>
     <Compile Include="Views\ReportPage.xaml.cs">
       <DependentUpon>ReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\BusinessesPage.xaml.cs">
+      <DependentUpon>BusinessesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\BusinessCallsPage.xaml.cs">
       <DependentUpon>BusinessCallsPage.xaml</DependentUpon>
@@ -227,6 +235,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CallInfo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\InterpreterViews\AgenciesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\UserViews\BusinessesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

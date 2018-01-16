@@ -41,7 +41,7 @@ namespace Interpretap.Views
             };
 
             if (loginResponse.UserInfo.IsManager)
-                page.Children.Add(new UserViews.BusinessCallsPage());
+                page.Children.Add(new UserViews.BusinessesPage());
 
 
             page.Children.Add(new UserViews.ProfilePage());
@@ -72,7 +72,7 @@ namespace Interpretap.Views
             };
 
             if (loginResponse.UserInfo.IsManager)
-                page.Children.Add(new InterpreterViews.AgencyCallsPage());
+                page.Children.Add(new InterpreterViews.AgenciesPage());
             if(true)
             page.Children.Add(new InterpreterViews.ProfilePage());
             await NavigateAfterSuccessfulLogin(page);

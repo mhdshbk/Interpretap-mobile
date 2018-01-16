@@ -12,11 +12,11 @@ namespace Interpretap.Views.UserViews
     {
         private CallLogViewModel _viewModel { get; set; }
 
-        public BusinessCallsPage()
+        public BusinessCallsPage(AssosiateBusiness business = null)
         {
             InitializeComponent();
 
-            _viewModel = new CallLogViewModel();
+            _viewModel = new CallLogViewModel() { Business = business };
             BindingContext = _viewModel;
 
             listView.ItemsSource = _viewModel.CallLogs;
