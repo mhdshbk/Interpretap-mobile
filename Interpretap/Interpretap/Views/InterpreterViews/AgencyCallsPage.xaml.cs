@@ -32,7 +32,9 @@ namespace Interpretap.Views.InterpreterViews
                     return;
 
                 MonthlyCallReportModel selectedCallReport = ((ListView)sender).SelectedItem as MonthlyCallReportModel;
-                Navigation.PushAsync(new CallLogDetailsAB(selectedCallReport, UserTypes.Agency));
+                var callLogDetailsPage = new CallLogDetailsAB(selectedCallReport, UserTypes.Agency);
+                callLogDetailsPage.Agency = _viewModel.Agency;
+                Navigation.PushAsync(callLogDetailsPage);
                 ((ListView)sender).SelectedItem = null;
             };
         }

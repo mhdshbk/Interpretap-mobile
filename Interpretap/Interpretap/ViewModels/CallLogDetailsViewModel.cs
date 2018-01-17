@@ -21,6 +21,9 @@ namespace Interpretap.ViewModels
             set { _callLogs = value; INotifyPropertyChanged(); }
         }
 
+        public AgencyModel Agency { get; set; }
+        public BusinessModel Business { get; set; }
+
         public CallLogDetailsViewModel()
         {
             _callLogs = new ObservableCollection<FifteenCallModel>();
@@ -54,7 +57,14 @@ namespace Interpretap.ViewModels
 
                 case UserTypes.Agency:
                     AgencyService agencyService = new AgencyService();
-                    fifteenCallsRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
+                    if (Agency != null)
+                    {
+                        fifteenCallsRequestModel.AgencyId = int.Parse(Agency.InterpreterBusinessId);
+                    }
+                    else
+                    {
+                        fifteenCallsRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
+                    }
                     ABresponse = await agencyService.FetchFifteenCalls(fifteenCallsRequestModel);
                     break;
             }
