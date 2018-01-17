@@ -63,12 +63,8 @@ namespace Interpretap.ViewModels
                     if (Business != null)
                     {
                         callLogRequestModel.ClientBusinessId = int.Parse(Business.ClientBusinessId);
+                        response = await businessService.FetchCallLogs(callLogRequestModel);
                     }
-                    else
-                    {
-                        callLogRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId;
-                    }
-                    response = await businessService.FetchCallLogs(callLogRequestModel);
                     break;
 
                 case UserTypes.Agency:
@@ -76,12 +72,8 @@ namespace Interpretap.ViewModels
                     if (Agency != null)
                     {
                         callLogRequestModel.AgencyId = int.Parse(Agency.InterpreterBusinessId);
+                        response = await agencyService.FetchCallLogs(callLogRequestModel);
                     }
-                    else
-                    {
-                        callLogRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
-                    }
-                    response = await agencyService.FetchCallLogs(callLogRequestModel);
                     break;
             }
             if (response.CallLogs != null)

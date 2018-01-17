@@ -54,12 +54,8 @@ namespace Interpretap.ViewModels
                     if (Business != null)
                     {
                         fifteenCallsRequestModel.ClientBusinessId = int.Parse(Business.ClientBusinessId);
+                        ABresponse = await businessService.FetchFifteenCalls(fifteenCallsRequestModel);
                     }
-                    else
-                    {
-                        fifteenCallsRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId; 
-                    }
-                    ABresponse = await businessService.FetchFifteenCalls(fifteenCallsRequestModel);
                     break;
 
                 case UserTypes.Agency:
@@ -67,12 +63,8 @@ namespace Interpretap.ViewModels
                     if (Agency != null)
                     {
                         fifteenCallsRequestModel.AgencyId = int.Parse(Agency.InterpreterBusinessId);
+                        ABresponse = await agencyService.FetchFifteenCalls(fifteenCallsRequestModel);
                     }
-                    else
-                    {
-                        fifteenCallsRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
-                    }
-                    ABresponse = await agencyService.FetchFifteenCalls(fifteenCallsRequestModel);
                     break;
             }
             if (response != null)
