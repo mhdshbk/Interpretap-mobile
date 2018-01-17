@@ -44,6 +44,7 @@
     <Compile Include="Common\LocalStorage.cs" />
     <Compile Include="Common\MyTimer.cs" />
     <Compile Include="Models\AgencyModel.cs" />
+    <Compile Include="Models\BusinessModel.cs" />
     <Compile Include="Models\CallInfoModel.cs" />
     <Compile Include="Models\CallLogRequestModel.cs" />
     <Compile Include="Models\CallReportRequestModel.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Models\RespondModels\FetchAgenciesResponce.cs" />
     <Compile Include="Models\RespondModels\BaseRespond.cs" />
     <Compile Include="Models\RespondModels\FetchABReportResponse.cs" />
+    <Compile Include="Models\RespondModels\FetchBusinessesResponce.cs" />
     <Compile Include="Models\RespondModels\FetchCallInfoResponce.cs" />
     <Compile Include="Models\RespondModels\FetchCallLogResponse.cs" />
     <Compile Include="Models\RespondModels\FetchFifteenCallsRespnse.cs" />

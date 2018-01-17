@@ -14,9 +14,46 @@ namespace Interpretap.ViewModels
 {
     public class BusinessesViewModel : BaseViewModel
     {
-        public List<AssosiateBusiness> Businesses => LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses;
+        public ObservableCollection<BusinessModel> Businesses { get; set; }
 
-        public void ShowMounthlyCallReportForBusiness(AssosiateBusiness business)
+        bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set
+            {
+                _isBusy = value;
+                INotifyPropertyChanged();
+            }
+        }
+
+        public BusinessesViewModel()
+        {
+            Businesses = new ObservableCollection<BusinessModel>();
+        }
+
+        public async Task LoadDataAsync()
+        {
+            if (Businesses.Count == 0)
+            {
+                IsBusy = true;
+                var callRequestModel = new BaseModel();
+                var service = new BusinessService();
+                var responce = await service.FetchAssociatedBusiness(callRequestModel);
+                foreach (var business in responce.Businesses)
+                {
+                    if (business.IsManager == "1")
+                    {
+                        Businesses.Add(business);
+                    }
+                }
+                INotifyPropertyChanged(nameof(Businesses));
+                IsBusy = false;
+
+            }
+        }
+
+        public void ShowMounthlyCallReportForBusiness(BusinessModel business)
         {
             App.Current.MainPage.Navigation.PushAsync(new BusinessCallsPage(business));
         }

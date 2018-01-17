@@ -33,7 +33,7 @@ namespace Interpretap.ViewModels
         }
 
         public AgencyModel Agency { get; set; }
-        public AssosiateBusiness Business { get; set; }
+        public BusinessModel Business { get; set; }
 
         public CallLogViewModel()
         {
@@ -62,7 +62,7 @@ namespace Interpretap.ViewModels
                     BusinessService businessService = new BusinessService();
                     if (Business != null)
                     {
-                        callLogRequestModel.ClientBusinessId = Business.ClientBusinessId;
+                        callLogRequestModel.ClientBusinessId = int.Parse(Business.ClientBusinessId);
                     }
                     else
                     {

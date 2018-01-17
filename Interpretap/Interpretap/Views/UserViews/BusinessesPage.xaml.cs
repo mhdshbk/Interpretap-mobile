@@ -1,11 +1,5 @@
 ﻿using Interpretap.Models;
 using Interpretap.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,10 +22,16 @@ namespace Interpretap.Views.UserViews
         {
             if (((ListView)sender).SelectedItem == null) return;
 
-            var selectedBusiness = ((ListView)sender).SelectedItem as AssosiateBusiness;
+            var selectedBusiness = ((ListView)sender).SelectedItem as BusinessModel;
             _businessesViewModel.ShowMounthlyCallReportForBusiness(selectedBusiness);
 
             ((ListView)sender).SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _businessesViewModel.LoadDataAsync().GetAwaiter();
         }
     }
 }

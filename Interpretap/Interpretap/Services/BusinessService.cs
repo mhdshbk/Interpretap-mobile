@@ -55,5 +55,21 @@ namespace Interpretap.Services
 
             return fetchABReportResponse;
         }
+
+        public async Task<FetchBusinessesResponce> FetchAssociatedBusiness(BaseModel requestModel)
+        {
+            FetchBusinessesResponce fetchAssociatedBusinessResponse = new FetchBusinessesResponce();
+
+            try
+            {
+                fetchAssociatedBusinessResponse = await Post<FetchBusinessesResponce, BaseModel>(FetchAssociatedBusinessAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return fetchAssociatedBusinessResponse;
+        }
     }
 }

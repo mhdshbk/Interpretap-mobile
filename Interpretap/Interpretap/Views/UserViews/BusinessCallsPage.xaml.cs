@@ -12,7 +12,7 @@ namespace Interpretap.Views.UserViews
     {
         private CallLogViewModel _viewModel { get; set; }
 
-        public BusinessCallsPage(AssosiateBusiness business = null)
+        public BusinessCallsPage(BusinessModel business = null)
         {
             InitializeComponent();
 
