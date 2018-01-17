@@ -13,6 +13,29 @@ namespace Interpretap.Views
         private MonthlyCallReportModel _monthlyCallReportModel;
         private UserTypes _userType;
 
+        public AgencyModel Agency
+        {
+            get => _viewModel?.Agency;
+            set
+            {
+                if (value != _viewModel.Agency)
+                {
+                    _viewModel.Agency = value;
+                }
+            }
+        }
+        public BusinessModel Business
+        {
+            get => _viewModel?.Business;
+            set
+            {
+                if (value != _viewModel.Business)
+                {
+                    _viewModel.Business = value;
+                }
+            }
+        }
+
         public ReportPage (MonthlyCallReportModel monthlyCallReportModel, UserTypes userType)
 		{
             InitializeComponent ();

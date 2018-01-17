@@ -42,6 +42,8 @@ namespace Interpretap.ViewModels
             set { _totalBill = "$" + value; INotifyPropertyChanged(); }
         }
 
+        public AgencyModel Agency { get; set; }
+        public BusinessModel Business { get; set; }
 
         public async Task LoadData(String minDay, String maxDay, UserTypes userType)
         {
@@ -53,13 +55,27 @@ namespace Interpretap.ViewModels
             {
                 case UserTypes.Business:
                     BusinessService businessService = new BusinessService();
-                    callLogRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId;
+                    if (Business != null)
+                    {
+                        callLogRequestModel.ClientBusinessId = int.Parse(Business.ClientBusinessId);
+                    }
+                    else
+                    {
+                        callLogRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId; 
+                    }
                     response = await businessService.FetchBusinessReport(callLogRequestModel);
                     break;
 
                 case UserTypes.Agency:
                     AgencyService agencyService = new AgencyService();
-                    callLogRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
+                    if (Agency != null)
+                    {
+                        callLogRequestModel.AgencyId = int.Parse(Agency.InterpreterBusinessId);
+                    }
+                    else
+                    {
+                        callLogRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId; 
+                    }
                     response = await agencyService.FetchAgencyReport(callLogRequestModel);
                     break;
             }

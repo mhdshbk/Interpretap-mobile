@@ -73,7 +73,10 @@ namespace Interpretap.Views
 
         private async Task ShowReportProcedure(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ReportPage(_monthlyCallReportModel, _userType));
+            var reportPage = new ReportPage(_monthlyCallReportModel, _userType);
+            reportPage.Agency = _viewModel.Agency;
+            reportPage.Business = _viewModel.Business;
+            await Navigation.PushAsync(reportPage);
         }
     }
 }
