@@ -17,7 +17,7 @@ namespace Interpretap.Views.InterpreterViews
     {
         private CallLogViewModel _viewModel { get; set; }
 
-        public AgencyCallsPage(AssosiateAgencies agency = null)
+        public AgencyCallsPage(AgencyModel agency = null)
         {
             InitializeComponent();
             

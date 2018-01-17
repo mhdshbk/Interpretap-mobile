@@ -13,22 +13,33 @@
     </ContentPage.Resources>
     <ContentPage.Content>
 
-        <ListView 
-            x:Name="listView"
-            ItemSelected="listView_ItemSelected"
-            HasUnevenRows="True">
+        <AbsoluteLayout>
+        
+            <ListView 
+                x:Name="listView"
+                ItemSelected="listView_ItemSelected"
+                HasUnevenRows="True"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1">
 
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout BackgroundColor="#eee" Orientation="Horizontal">
-                            <Image Source="briefbag.png" MinimumWidthRequest="20" MinimumHeightRequest="20" Margin="8"/>
-                            <Label Text="{Binding BusinessInfo.BusinessName}" VerticalOptions="Center"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="#eee" Orientation="Horizontal">
+                                <Image Source="briefbag.png" MinimumWidthRequest="20" MinimumHeightRequest="20" Margin="8"/>
+                                <Label Text="{Binding BusinessInfo.BusinessName}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <ActivityIndicator 
+                IsRunning="True" 
+                IsVisible="{Binding IsBusy}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+        
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

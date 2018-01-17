@@ -28,10 +28,16 @@ namespace Interpretap.Views.InterpreterViews
         {
             if (((ListView)sender).SelectedItem == null) return;
 
-            var selectedAgency = ((ListView)sender).SelectedItem as AssosiateAgencies;
+            var selectedAgency = ((ListView)sender).SelectedItem as AgencyModel;
             _agenciesViewModel.ShowMounthlyCallReportForAgency(selectedAgency);
 
             ((ListView)sender).SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _agenciesViewModel.LoadDataAsync().GetAwaiter();
         }
     }
 }

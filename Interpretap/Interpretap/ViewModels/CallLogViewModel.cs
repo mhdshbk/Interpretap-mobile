@@ -32,7 +32,7 @@ namespace Interpretap.ViewModels
             }
         }
 
-        public AssosiateAgencies Agency { get; set; }
+        public AgencyModel Agency { get; set; }
         public AssosiateBusiness Business { get; set; }
 
         public CallLogViewModel()
@@ -75,11 +75,11 @@ namespace Interpretap.ViewModels
                     AgencyService agencyService = new AgencyService();
                     if (Agency != null)
                     {
-                        callLogRequestModel.AgencyId = Agency.InterpreterBusinessId;
+                        callLogRequestModel.ClientBusinessId = int.Parse(Agency.InterpreterBusinessId);
                     }
                     else
                     {
-                        callLogRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
+                        callLogRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
                     }
                     response = await agencyService.FetchCallLogs(callLogRequestModel);
                     break;
