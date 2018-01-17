@@ -27,7 +27,9 @@ namespace Interpretap.Views.UserViews
                     return;
 
                 MonthlyCallReportModel selectedCallReport = ((ListView)sender).SelectedItem as MonthlyCallReportModel;
-                Navigation.PushAsync(new CallLogDetailsAB(selectedCallReport, UserTypes.Business));
+                var callLogDetailsPage = new CallLogDetailsAB(selectedCallReport, UserTypes.Business);
+                callLogDetailsPage.Business = _viewModel?.Business;
+                Navigation.PushAsync(callLogDetailsPage);
                 ((ListView)sender).SelectedItem = null;
             };
         }

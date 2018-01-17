@@ -26,7 +26,17 @@ namespace Interpretap.Views
                 }
             }
         }
-        public BusinessModel Business { get; set; }
+        public BusinessModel Business
+        {
+            get => _viewModel?.Business;
+            set
+            {
+                if (value != _viewModel.Business)
+                {
+                    _viewModel.Business = value;
+                }
+            }
+        }
 
         public CallLogDetailsAB(MonthlyCallReportModel monthlyCallReportModel, UserTypes userType)
         {

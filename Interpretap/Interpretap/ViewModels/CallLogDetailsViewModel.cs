@@ -51,7 +51,14 @@ namespace Interpretap.ViewModels
 
                 case UserTypes.Business:
                     BusinessService businessService = new BusinessService();
-                    fifteenCallsRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId;
+                    if (Business != null)
+                    {
+                        fifteenCallsRequestModel.ClientBusinessId = int.Parse(Business.ClientBusinessId);
+                    }
+                    else
+                    {
+                        fifteenCallsRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId; 
+                    }
                     ABresponse = await businessService.FetchFifteenCalls(fifteenCallsRequestModel);
                     break;
 
@@ -68,13 +75,13 @@ namespace Interpretap.ViewModels
                     ABresponse = await agencyService.FetchFifteenCalls(fifteenCallsRequestModel);
                     break;
             }
-            if(response != null)
-            foreach (var call in response.Calls)
-                CallLogs.Add(call);
+            if (response != null)
+                foreach (var call in response.Calls)
+                    CallLogs.Add(call);
 
             if (ABresponse != null)
-            foreach (var call in ABresponse.Call.Calls)
-                CallLogs.Add(call);
+                foreach (var call in ABresponse.Call.Calls)
+                    CallLogs.Add(call);
 
         }
     }
