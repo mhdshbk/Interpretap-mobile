@@ -75,11 +75,11 @@ namespace Interpretap.ViewModels
                     AgencyService agencyService = new AgencyService();
                     if (Agency != null)
                     {
-                        callLogRequestModel.ClientBusinessId = int.Parse(Agency.InterpreterBusinessId);
+                        callLogRequestModel.AgencyId = int.Parse(Agency.InterpreterBusinessId);
                     }
                     else
                     {
-                        callLogRequestModel.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
+                        callLogRequestModel.AgencyId = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId;
                     }
                     response = await agencyService.FetchCallLogs(callLogRequestModel);
                     break;
