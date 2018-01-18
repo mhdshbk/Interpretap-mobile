@@ -10,6 +10,9 @@
         public const string UpdateUserAPI = RestApiBaseUrl + "user/update_user";
 
         public const string FetchFifteenCallsClientAPI = RestApiBaseUrl + "client/fetch_fifteen_calls";
+        public const string CreateCallRequestClientAPI = RestApiBaseUrl + "client/create_call_request";
+        public const string FetchOpenCallClientAPI = RestApiBaseUrl + "client/fetch_open_call";
+        public const string CancelCallClientAPI = RestApiBaseUrl + "client/cancel_call";
 
         public const string FetchOpenCallsAPI = RestApiBaseUrl + "interpreter/fetch_open_calls";
         public const string FetchFifteenCallsInterpreterAPI = RestApiBaseUrl + "interpreter/fetch_fifteen_calls";
@@ -26,6 +29,8 @@
         
         public const string FetchCallLogAPI = RestApiBaseUrl + "call/fetch_monthly_call_amounts";
         public const string FetchCallAPI = RestApiBaseUrl + "call/fetch_call_info";
+
+        public const string FetchAllLanguagesAPI = RestApiBaseUrl + "misc/fetch_all_languages";
 
     }
 }

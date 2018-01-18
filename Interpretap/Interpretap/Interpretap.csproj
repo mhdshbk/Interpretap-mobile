@@ -43,18 +43,25 @@
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\LocalStorage.cs" />
     <Compile Include="Common\MyTimer.cs" />
+    <Compile Include="CustomElements\ActiveCallView.xaml.cs">
+      <DependentUpon>ActiveCallView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\AgencyModel.cs" />
     <Compile Include="Models\BusinessModel.cs" />
     <Compile Include="Models\CallInfoModel.cs" />
     <Compile Include="Models\CallLogRequestModel.cs" />
     <Compile Include="Models\CallReportRequestModel.cs" />
     <Compile Include="Models\CallRequestModel.cs" />
+    <Compile Include="Models\CancelCallRequestModel.cs" />
+    <Compile Include="Models\CreateCallRequestModel.cs" />
     <Compile Include="Models\FifteenCallModel.cs" />
     <Compile Include="Models\FifteenCallsRequestModel.cs" />
+    <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\RespondModels\CreateCallRequestResponce.cs" />
     <Compile Include="Models\RespondModels\FetchAgenciesResponce.cs" />
     <Compile Include="Models\RespondModels\BaseRespond.cs" />
     <Compile Include="Models\RespondModels\FetchABReportResponse.cs" />
@@ -62,7 +69,9 @@
     <Compile Include="Models\RespondModels\FetchCallInfoResponce.cs" />
     <Compile Include="Models\RespondModels\FetchCallLogResponse.cs" />
     <Compile Include="Models\RespondModels\FetchFifteenCallsRespnse.cs" />
+    <Compile Include="Models\RespondModels\FetchOpenCallResponce.cs" />
     <Compile Include="Models\RespondModels\FetchUserRespond.cs" />
+    <Compile Include="Models\RespondModels\LanguagesResponce.cs" />
     <Compile Include="Models\RespondModels\LoginRespond.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Services\AgencyService.cs" />
@@ -71,6 +80,7 @@
     <Compile Include="Services\CallService.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModels\ActiveCallViewModel.cs" />
     <Compile Include="ViewModels\BusinessesViewModel.cs" />
     <Compile Include="ViewModels\AgenciesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -78,6 +88,7 @@
     <Compile Include="ViewModels\CallLogDetailsViewModel.cs" />
     <Compile Include="ViewModels\CallLogViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="Views\CallInfo.xaml.cs">
       <DependentUpon>CallInfo.xaml</DependentUpon>
     </Compile>
@@ -263,6 +274,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\ActiveCallView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

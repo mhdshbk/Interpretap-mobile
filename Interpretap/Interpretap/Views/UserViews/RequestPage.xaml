@@ -4,31 +4,47 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="Interpretap.Views.UserViews.RequestPage"
             Title="Request">
-	<ContentPage.Content>
-        <StackLayout x:Name="MasterLayout">
-            
-            <StackLayout x:Name="EntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0" Margin="0,30,0,0">
+    <ContentPage.Content>
 
-                <Label x:Name="Lbl_Call_Ref" Text="Call Reference Number"/>
-                <Entry x:Name="Entry_Call_Ref" Placeholder="Call Reference Number" Keyboard="Numeric"/>
+        <AbsoluteLayout>
 
-                <Label x:Name="Lbl_Language" Text="Your Language"/>
-                <Picker x:Name="picker" Title="Select a language">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>English</x:String>
-                            <x:String>German</x:String>
-                            <x:String>Bosnian</x:String>
-                            <x:String>C Sharp</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+            <StackLayout 
+                x:Name="MasterLayout" 
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <StackLayout x:Name="EntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0" Margin="0,30,0,0">
+
+                    <Label x:Name="Lbl_Call_Ref" Text="Call Reference Number"/>
+                    <Entry 
+                        x:Name="Entry_Call_Ref" 
+                        Placeholder="Call Reference Number" 
+                        Keyboard="Numeric"
+                        Text="{Binding CallRef}"/>
+
+                    <Label x:Name="Lbl_Language" Text="Your Language"/>
+                    <Picker 
+                        x:Name="picker" 
+                        Title="Select a language" 
+                        ItemsSource="{Binding Languages}" 
+                        ItemDisplayBinding="{Binding Name}" 
+                        SelectedItem="{Binding SelectedLanguage}"/>
+                </StackLayout>
+
+                <StackLayout x:Name="SubmitStack" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+                    <Button 
+                        x:Name="Btn_CallReq" 
+                        Text="Request Interpreter" 
+                        IsEnabled="{Binding RequestCallEnabled}"
+                        Command="{Binding CreateCallRequestCommand}"/>
+                </StackLayout>
             </StackLayout>
 
-            <StackLayout x:Name="SubmitStack" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
-                <Button x:Name="Btn_CallReq" Text="Request Interpreter" Clicked="CreateCallRequest"/>
-            </StackLayout>
-        </StackLayout>
-
+            <ActivityIndicator 
+                IsRunning="True" 
+                IsVisible="{Binding IsBusy}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

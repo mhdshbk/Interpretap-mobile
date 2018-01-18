@@ -2,30 +2,53 @@
 <ContentPage
             xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:cv="clr-namespace:Interpretap.CustomElements"
             x:Class="Interpretap.Views.UserViews.CallLogPage"
             Title="Calls">
-	<ContentPage.Content>
-        <ScrollView>
-            <ListView  x:Name="listView">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout BackgroundColor="#eee"
+    <ContentPage.Content>
+
+        <AbsoluteLayout>
+
+            <StackLayout
+                Spacing="0"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <cv:ActiveCallView 
+                    x:Name="ActiveCallView" 
+                    IsVisible="{Binding IsVisible}"/>
+
+                <ScrollView>
+
+                    <ListView  x:Name="listView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout BackgroundColor="#eee"
                             Orientation="Horizontal">
-                                <Image Source="call_icon.png" />
-                                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                                    <Label Text="Monthly call report" />
-                                    <Label Text="{Binding DateFromTo}" FontSize="11" />
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                                    <Label Text="Total calls:" HorizontalTextAlignment="Center"/>
-                                    <Label Text="{Binding TotalCalls}" HorizontalTextAlignment="Center"/>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
+                                        <Image Source="call_icon.png" />
+                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                            <Label Text="Monthly call report" />
+                                            <Label Text="{Binding DateFromTo}" FontSize="11" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                                            <Label Text="Total calls:" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding TotalCalls}" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+
+            </StackLayout>
+
+            <ActivityIndicator 
+                IsRunning="True" 
+                IsVisible="{Binding IsBusy}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,7 +1,6 @@
 ﻿using Interpretap.Models;
 using Interpretap.ViewModels;
 using System;
-using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static Interpretap.Common.Constants;
@@ -12,6 +11,7 @@ namespace Interpretap.Views.UserViews
     public partial class CallLogPage : ContentPage
     {
         private CallLogViewModel _viewModel { get; set; }
+        private ActiveCallViewModel _activeCallViewModel;
 
         public CallLogPage()
         {
@@ -19,6 +19,11 @@ namespace Interpretap.Views.UserViews
 
             _viewModel = new CallLogViewModel();
             BindingContext = _viewModel;
+
+            _activeCallViewModel = new ActiveCallViewModel();
+            ActiveCallView.BindingContext = _activeCallViewModel;
+            
+
 
             listView.ItemsSource = _viewModel.CallLogs;
 
@@ -38,6 +43,7 @@ namespace Interpretap.Views.UserViews
             base.OnAppearing();
             if (_viewModel.CallLogs.Count == 0)
                 _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd"), UserTypes.Client).GetAwaiter();
+            _activeCallViewModel.OnAppearing();
         }
     }
 }

@@ -23,5 +23,53 @@ namespace Interpretap.Services
 
             return fetchFifteenCallsResponse;
         }
+
+        public async Task<CreateCallRequestResponce> CreateCallRequest(CreateCallRequestModel requestModel)
+        {
+            var responce = new CreateCallRequestResponce();
+
+            try
+            {
+                responce = await Post<CreateCallRequestResponce, CreateCallRequestModel>(CreateCallRequestClientAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<FetchOpenCallResponce> FetchOpenCallRequest(BaseModel requestModel)
+        {
+            var responce = new FetchOpenCallResponce();
+
+            try
+            {
+                responce = await Post<FetchOpenCallResponce, BaseModel>(FetchOpenCallClientAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> CancelCallRequest(CancelCallRequestModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, CancelCallRequestModel>(CancelCallClientAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }
