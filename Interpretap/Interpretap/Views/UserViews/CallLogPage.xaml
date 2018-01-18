@@ -5,7 +5,15 @@
             xmlns:cv="clr-namespace:Interpretap.CustomElements"
             x:Class="Interpretap.Views.UserViews.CallLogPage"
             Title="Calls">
+
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,20,0,0" />
+    </ContentPage.Padding>
+    
     <ContentPage.Content>
+        
 
         <AbsoluteLayout>
 

@@ -4,6 +4,13 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="Interpretap.Views.UserViews.RequestPage"
             Title="Request">
+
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,20,0,0" />
+    </ContentPage.Padding>
+    
     <ContentPage.Content>
 
         <AbsoluteLayout>
