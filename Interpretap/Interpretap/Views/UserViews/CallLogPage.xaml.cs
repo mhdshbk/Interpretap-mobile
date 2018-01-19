@@ -42,7 +42,6 @@ namespace Interpretap.Views.UserViews
         {
             base.OnAppearing();
             if (_viewModel.CallLogs.Count == 0)
-                //_viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd"), UserTypes.Client).GetAwaiter();
                 _viewModel.LoadData(string.Empty, UserTypes.Client).GetAwaiter();
             _activeCallViewModel.OnAppearing();
         }

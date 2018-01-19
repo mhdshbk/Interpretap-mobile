@@ -39,7 +39,7 @@ namespace Interpretap.Views.InterpreterViews
             base.OnAppearing();
 
             if(_viewModel.CallLogs.Count == 0)
-                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd"), UserTypes.Interpreter).GetAwaiter();
+                _viewModel.LoadData(string.Empty, UserTypes.Interpreter).GetAwaiter();
         }
     }
 }
