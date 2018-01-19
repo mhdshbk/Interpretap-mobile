@@ -24,7 +24,6 @@ namespace Interpretap.Common
                 object callRecentsString = "";
                 if (Application.Current.Properties.TryGetValue(request_call_recents_key, out callRecentsString))
                 {
-                    //Application.Current.Properties[request_call_recents_key] as String
                     return JsonConvert.DeserializeObject<RequestCallRecents>(callRecentsString.ToString());
                 }
                 else

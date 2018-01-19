@@ -13,11 +13,12 @@ using System.Collections.Generic;
 
 namespace Interpretap.ViewModels
 {
-    [AddINotifyPropertyChangedInterface]
-    public class RequestViewModel
+    public class RequestViewModel : INotifyPropertyChanged
     {
         bool _isLoadingLanguages;
         bool _isRecentsApplied;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public LanguageModel[] ClientLanguages { get; set; }
         public LanguageModel SelectedClientLanguage { get; set; }
@@ -34,8 +35,9 @@ namespace Interpretap.ViewModels
             {
                 return
                     SelectedRequestLanguage != null
-                    && CallRef != null
-                    && SelectedClientLanguage != null;
+                    && !string.IsNullOrEmpty(CallRef)
+                    && SelectedClientLanguage != null
+                    && SelectedBusiness != null;
             }
         }
         public bool CanSelectBusiness => Businesses.Count > 1;
@@ -49,7 +51,7 @@ namespace Interpretap.ViewModels
             Businesses = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses;
             if (Businesses.Count == 1)
             {
-                SelectedBusiness = Businesses.Last(); 
+                SelectedBusiness = Businesses.Last();
             }
             CreateCallRequestCommand = new Command(async () => await ExecuteCreateCallRequestAsync());
         }
@@ -145,7 +147,7 @@ namespace Interpretap.ViewModels
                 SelectedRequestLanguage = RequestLanguages.FirstOrDefault(l => l.Id == recents.SelectedRequestLanguage);
                 if (SelectedBusiness == null)
                 {
-                    SelectedBusiness = Businesses.FirstOrDefault(l => l.ClientBusinessId.ToString() == recents.SelectedBusiness); 
+                    SelectedBusiness = Businesses.FirstOrDefault(l => l.ClientBusinessId.ToString() == recents.SelectedBusiness);
                 }
             }
             _isRecentsApplied = true;
@@ -157,6 +159,7 @@ namespace Interpretap.ViewModels
             {
                 await LoadLanguagesAsync();
             }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RequestCallEnabled)));
         }
     }
 }
