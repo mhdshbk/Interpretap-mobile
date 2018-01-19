@@ -43,6 +43,7 @@
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\LocalStorage.cs" />
     <Compile Include="Common\MyTimer.cs" />
+    <Compile Include="Common\RequestCallRecents.cs" />
     <Compile Include="CustomElements\ActiveCallView.xaml.cs">
       <DependentUpon>ActiveCallView.xaml</DependentUpon>
     </Compile>

@@ -9,6 +9,7 @@ using System;
 using System.Threading.Tasks;
 using Interpretap.Common;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Interpretap.ViewModels
 {
@@ -16,19 +17,40 @@ namespace Interpretap.ViewModels
     public class RequestViewModel
     {
         bool _isLoadingLanguages;
+        bool _isRecentsApplied;
 
-        public ObservableCollection<LanguageModel> Languages { get; set; }
-        public LanguageModel SelectedLanguage { get; set; }
+        public LanguageModel[] ClientLanguages { get; set; }
+        public LanguageModel SelectedClientLanguage { get; set; }
+        public ObservableCollection<LanguageModel> RequestLanguages { get; set; }
+        public LanguageModel SelectedRequestLanguage { get; set; }
+        public List<AssosiateBusiness> Businesses { get; set; }
+        public AssosiateBusiness SelectedBusiness { get; set; }
         public string CallRef { get; set; }
 
         public bool IsBusy { get; set; }
-        public bool RequestCallEnabled => SelectedLanguage != null && CallRef != null;
+        public bool RequestCallEnabled
+        {
+            get
+            {
+                return
+                    SelectedRequestLanguage != null
+                    && CallRef != null
+                    && SelectedClientLanguage != null;
+            }
+        }
+        public bool CanSelectBusiness => Businesses.Count > 1;
 
         public ICommand CreateCallRequestCommand { get; set; }
 
         public RequestViewModel()
         {
-            Languages = new ObservableCollection<LanguageModel>();
+            ClientLanguages = LocalStorage.LoginResponseLS.UserInfo.LanguageInfo;
+            RequestLanguages = new ObservableCollection<LanguageModel>();
+            Businesses = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses;
+            if (Businesses.Count == 1)
+            {
+                SelectedBusiness = Businesses.Last(); 
+            }
             CreateCallRequestCommand = new Command(async () => await ExecuteCreateCallRequestAsync());
         }
 
@@ -41,9 +63,9 @@ namespace Interpretap.ViewModels
                 var service = new ClientService();
                 var request = new CreateCallRequestModel();
                 request.CallRefId = CallRef;
-                request.ClientLanguageId = "1"; // TODO: fetch correct value from proper source
-                request.RequestedLanguageId = SelectedLanguage.Id;
-                request.ClientBusinessId = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses.Last().ClientBusinessId.ToString();
+                request.ClientLanguageId = SelectedClientLanguage.Id;
+                request.RequestedLanguageId = SelectedRequestLanguage.Id;
+                request.ClientBusinessId = SelectedBusiness.ClientBusinessId.ToString();
                 var responce = await service.CreateCallRequest(request);
 
                 var isSuccessfull = responce.Status == true;
@@ -55,8 +77,10 @@ namespace Interpretap.ViewModels
                 {
                     await App.Current.MainPage.DisplayAlert("Error", responce.Message, "Ok");
                 }
+
+                StoreRecentValues();
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -80,11 +104,15 @@ namespace Interpretap.ViewModels
 
                 foreach (var language in responce.Languages)
                 {
-                    Languages.Add(language);
+                    RequestLanguages.Add(language);
                 }
 
+                if (!_isRecentsApplied)
+                {
+                    ApplyRecentValues();
+                }
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -95,11 +123,39 @@ namespace Interpretap.ViewModels
             }
         }
 
-        public void OnAppearing()
+        void StoreRecentValues()
         {
-            if (Languages.Count == 0)
+            LocalStorage.RequestCallRecents = new RequestCallRecents()
             {
-                LoadLanguagesAsync();
+                CallRef = this.CallRef,
+                SelectedClientLanguage = this.SelectedClientLanguage.Id,
+                SelectedRequestLanguage = this.SelectedRequestLanguage.Id,
+                SelectedBusiness = this.SelectedBusiness.ClientBusinessId.ToString()
+            };
+        }
+
+        void ApplyRecentValues()
+        {
+            var recents = LocalStorage.RequestCallRecents;
+            var recentsExisted = recents != null;
+            if (recentsExisted)
+            {
+                CallRef = recents.CallRef;
+                SelectedClientLanguage = ClientLanguages.FirstOrDefault(l => l.Id == recents.SelectedClientLanguage);
+                SelectedRequestLanguage = RequestLanguages.FirstOrDefault(l => l.Id == recents.SelectedRequestLanguage);
+                if (SelectedBusiness == null)
+                {
+                    SelectedBusiness = Businesses.FirstOrDefault(l => l.ClientBusinessId.ToString() == recents.SelectedBusiness); 
+                }
+            }
+            _isRecentsApplied = true;
+        }
+
+        public async Task OnAppearingAsync()
+        {
+            if (RequestLanguages.Count == 0)
+            {
+                await LoadLanguagesAsync();
             }
         }
     }

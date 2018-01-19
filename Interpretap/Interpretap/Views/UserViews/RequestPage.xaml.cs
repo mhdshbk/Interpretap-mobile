@@ -20,7 +20,7 @@ namespace Interpretap.Views.UserViews
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.OnAppearing();
+            _viewModel.OnAppearingAsync().GetAwaiter();
         }
     }
 }

@@ -36,6 +36,9 @@ namespace Interpretap.Models
         [JsonProperty("zip_code")]
         public string ZipCode { get; set; }
 
+        [JsonProperty("language_info")]
+        public LanguageModel[] LanguageInfo { get; set; }
+
         [JsonProperty("is_manager")]
         public bool IsManager { get; set; }
 
