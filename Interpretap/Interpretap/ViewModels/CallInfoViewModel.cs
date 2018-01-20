@@ -11,7 +11,6 @@ namespace Interpretap.ViewModels
 {
     public class CallInfoViewModel : BaseViewModel
     {
-        int _callInfoId;
         CallInfoModel _callInfoModel;
 
         public string InfoId => _callInfoModel.CallInfoId;
