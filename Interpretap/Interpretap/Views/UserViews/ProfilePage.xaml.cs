@@ -21,6 +21,7 @@ namespace Interpretap.Views.UserViews
             Entry_Password_Confirm.Text = "";
             Entry_First_Name.Text = user.FirstName;
             Entry_Last_Name.Text = user.LastName;
+            Entry_Email.Text = user.Email;
             Entry_Phone_Number.Text = user.PhoneNumber;
             Entry_City.Text = user.City;
             Entry_Address.Text = user.Address;
@@ -35,6 +36,7 @@ namespace Interpretap.Views.UserViews
             registrationModel.PasswordConfirmation = Entry_Password_Confirm.Text;
             registrationModel.FirstName = Entry_First_Name.Text;
             registrationModel.LastName = Entry_Last_Name.Text;
+            registrationModel.Email = Entry_Email.Text;
             registrationModel.PhoneNumber = Entry_Phone_Number.Text;
             registrationModel.City = Entry_City.Text;
             registrationModel.Address = Entry_Address.Text;
