@@ -14,6 +14,8 @@ namespace Interpretap.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class ActiveCallViewModel
     {
+        public event EventHandler CallCanceled;
+
         public bool IsVisible { get; set; }
         public bool IsActivityIndicatorVisible { get; set; }
 
@@ -35,6 +37,7 @@ namespace Interpretap.ViewModels
             if (responce.Status == true)
             {
                 IsVisible = false;
+                CallCanceled?.Invoke(this, new EventArgs());
             }
         }
 

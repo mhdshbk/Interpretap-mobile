@@ -22,7 +22,7 @@ namespace Interpretap.Views.UserViews
 
             _activeCallViewModel = new ActiveCallViewModel();
             ActiveCallView.BindingContext = _activeCallViewModel;
-            
+            _activeCallViewModel.CallCanceled += _activeCallViewModel_CallCanceled;
 
 
             listView.ItemsSource = _viewModel.CallLogs;
@@ -36,6 +36,17 @@ namespace Interpretap.Views.UserViews
                 Navigation.PushAsync(new CallLogDetails(selectedCallReport, UserTypes.Client));
                 ((ListView)sender).SelectedItem = null;
             };
+        }
+
+        private void _activeCallViewModel_CallCanceled(object sender, EventArgs e)
+        {
+            ReloadCallLog();
+        }
+
+        private void ReloadCallLog()
+        {
+            _viewModel.CallLogs.Clear();
+            _viewModel.LoadData(string.Empty, UserTypes.Client).GetAwaiter();
         }
 
         protected override void OnAppearing()
