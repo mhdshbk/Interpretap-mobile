@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Interpretap.Models
 {
-    public class RegisterModel
+    public class RegisterModel : BaseModel
     {
-        [JsonProperty("first_name")]
+        [JsonProperty("user_first_name")]
         public string FirstName { get; set; }
 
-        [JsonProperty("last_name")]
+        [JsonProperty("user_last_name")]
         public string LastName { get; set; }
 
         [JsonProperty("user_name")]
@@ -33,22 +33,22 @@ namespace Interpretap.Models
         [JsonProperty("user_gender_id")]
         public string GenderId { get; set; }
 
-        [JsonProperty("phone_number")]
+        [JsonProperty("user_phone_number")]
         public string PhoneNumber { get; set; }
 
-        [JsonProperty("address")]
+        [JsonProperty("user_address")]
         public string Address { get; set; }
 
-        [JsonProperty("email")]
+        [JsonProperty("user_email")]
         public string Email { get; set; }
 
-        [JsonProperty("city")]
+        [JsonProperty("user_city")]
         public string City { get; set; }
 
-        [JsonProperty("province")]
+        [JsonProperty("user_province")]
         public string Province { get; set; }
 
-        [JsonProperty("zip_code")]
+        [JsonProperty("user_zip_code")]
         public string ZipCode { get; set; }
 
         [JsonProperty("user_type")]
