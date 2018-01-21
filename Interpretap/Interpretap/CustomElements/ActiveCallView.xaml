@@ -34,7 +34,8 @@
                     BackgroundColor="Red" 
                     TextColor="White" 
                     VerticalOptions="Center" 
-                    Command="{Binding CancelCallCommand}"/>
+                    Command="{Binding CancelCallCommand}"
+                    IsEnabled="{Binding CancelCallCommandCanExecute}"/>
                 </StackLayout>
             </StackLayout>
 

@@ -22,6 +22,7 @@ namespace Interpretap.ViewModels
         public string CallId { get; set; }
 
         public ICommand CancelCallCommand { get; set; }
+        public bool CancelCallCommandCanExecute { get; set; }
 
         public ActiveCallViewModel()
         {
@@ -30,6 +31,7 @@ namespace Interpretap.ViewModels
 
         private async Task ExecuteCancelCallAsync()
         {
+            CancelCallCommandCanExecute = false;
             var service = new ClientService();
             var request = new CancelCallRequestModel();
             request.CallId = CallId;
@@ -52,7 +54,10 @@ namespace Interpretap.ViewModels
                 var request = new BaseModel();
                 var responce = await service.FetchOpenCallRequest(request);
 
-                IsVisible = responce.CallId != "0";
+                var callExists = responce.CallId != "0";
+                IsVisible = callExists;
+                CancelCallCommandCanExecute = callExists;
+
                 CallId = responce.CallId;
             }
             catch (Exception ex)
