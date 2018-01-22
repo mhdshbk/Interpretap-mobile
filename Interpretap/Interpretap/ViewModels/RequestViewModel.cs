@@ -73,6 +73,7 @@ namespace Interpretap.ViewModels
                 var isSuccessfull = responce.Status == true;
                 if (isSuccessfull)
                 {
+                    App.FetchActiveCallRequestAsync();
                     await App.Current.MainPage.DisplayAlert("Success", responce.Message, "Ok");
                 }
                 else
