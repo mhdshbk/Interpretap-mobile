@@ -30,6 +30,7 @@ namespace Interpretap.Views
             }
 
             LocalStorage.LoginResponseLS = loginResponse;
+            App.FetchActiveCallRequestAsync();
 
             var page = new TabbedPage
             {
