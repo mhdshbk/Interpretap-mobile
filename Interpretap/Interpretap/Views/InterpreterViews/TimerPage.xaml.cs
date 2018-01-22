@@ -1,4 +1,6 @@
 ﻿using Interpretap.Common;
+using Interpretap.Models;
+using Interpretap.Services;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -11,6 +13,9 @@ namespace Interpretap.Views.InterpreterViews
     {
         private bool _timerActive = false;
         private MyTimer timer;
+
+        string _callId { get; set; }
+        bool _isPaused { get; set; }
 
         private void SetTimerActive(bool activeStatus)
         {
@@ -28,13 +33,19 @@ namespace Interpretap.Views.InterpreterViews
             }
         }
 
-        public TimerPage()
+        public TimerPage(string callId = null)
         {
+            _callId = callId;
             InitializeComponent();
         }
 
-        private void StartCallProcedure(object sender, EventArgs e)
+        private async Task StartCallProcedureAsync(object sender, EventArgs e)
         {
+            var service = new InterpreterService();
+            var request = new BaseInterpreterApiRequest();
+            request.CallId = _callId;
+            await service.StartCall(request);
+
             SetTimerActive(true);
 
             if (timer == null) {
@@ -47,15 +58,42 @@ namespace Interpretap.Views.InterpreterViews
             }
         }
 
-        private void PauseCallProcedure(object sender, EventArgs e)
+        private async Task TogglePauseCallProcedureAsync(object sender, EventArgs e)
         {
-            SetTimerActive(false);
-            timer.Stop();
+            var service = new InterpreterService();
+            var request = new BaseInterpreterApiRequest();
+            request.CallId = _callId;
+
+            if (_isPaused)
+            {
+                // unpausing
+                await service.UnpauseCall(request);
+                timer.Start();
+                ((Button)sender).Text = "Pause";
+                BtnEndCall.IsEnabled = true;
+            }
+            else
+            {
+                // pausing
+                await service.PauseCall(request);
+                timer.Stop();
+                ((Button)sender).Text = "Unpause";
+                BtnEndCall.IsEnabled = false;
+            }
+
+            _isPaused = !_isPaused;
         }
 
-        private void EndCallProcedure(object sender, EventArgs e)
+        private async Task EndCallProcedureAsync(object sender, EventArgs e)
         {
+            var service = new InterpreterService();
+            var request = new BaseInterpreterApiRequest();
+            request.CallId = _callId;
+            await service.EndCall(request);
             timer.Stop();
+            App.ToUpdateLogsFlag = true;
+            App.ToUpdateQueueFlag = true;
+            await App.Current.MainPage.Navigation.PopAsync();
         }
 
         private void UpdateTimerLabel()
@@ -68,6 +106,22 @@ namespace Interpretap.Views.InterpreterViews
 
 
             Lbl_Time.Text = timer.GetTimePassed();
+        }
+
+        private async Task CancelCallButtonClickedAsync(object sender, EventArgs e)
+        {
+            var confirmed = await DisplayAlert("Confirmation", "Cancel call?", "Yes", "No");
+            if (confirmed)
+            {
+                var service = new InterpreterService();
+                var request = new BaseInterpreterApiRequest();
+                request.CallId = _callId;
+                await service.CancelCall(request);
+                App.ToUpdateLogsFlag = true;
+                App.ToUpdateQueueFlag = true;
+                await App.Current.MainPage.Navigation.PopAsync();
+
+            }
         }
     }
 }

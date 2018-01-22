@@ -39,5 +39,101 @@ namespace Interpretap.Services
 
             return fetchFifteenCallsResponse;
         }
+
+        public async Task<AssignInterpreterResponce> AssignInterpreterToCall(AssignInterpreterRequestModel requestModel)
+        {
+            var responce = new AssignInterpreterResponce();
+
+            try
+            {
+                responce = await Post<AssignInterpreterResponce, AssignInterpreterRequestModel>(AssignInterpreterToCallInterpreterAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> StartCall(BaseInterpreterApiRequest requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, BaseInterpreterApiRequest>(StartCallInterpreterAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> PauseCall(BaseInterpreterApiRequest requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, BaseInterpreterApiRequest>(EndPauseCallInterpreterAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> UnpauseCall(BaseInterpreterApiRequest requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, BaseInterpreterApiRequest>(EndPauseCallInterpreterAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> EndCall(BaseInterpreterApiRequest requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, BaseInterpreterApiRequest>(EndCallInterpreterAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> CancelCall(BaseInterpreterApiRequest requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, BaseInterpreterApiRequest>(CancelCallInterpreterAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }

@@ -16,6 +16,12 @@
 
         public const string FetchOpenCallsAPI = RestApiBaseUrl + "interpreter/fetch_open_calls";
         public const string FetchFifteenCallsInterpreterAPI = RestApiBaseUrl + "interpreter/fetch_fifteen_calls";
+        public const string AssignInterpreterToCallInterpreterAPI = RestApiBaseUrl + "interpreter/assign_interpreter_to_call";
+        public const string StartCallInterpreterAPI = RestApiBaseUrl + "interpreter/start_call";
+        public const string PauseCallInterpreterAPI = RestApiBaseUrl + "interpreter/start_call_pause";
+        public const string EndPauseCallInterpreterAPI = RestApiBaseUrl + "interpreter/end_call_pause";
+        public const string EndCallInterpreterAPI = RestApiBaseUrl + "interpreter/end_call";
+        public const string CancelCallInterpreterAPI = RestApiBaseUrl + "interpreter/cancel_call";
 
         public const string FetchFifteenCallsAgencyAPI = RestApiBaseUrl + "agency/fetch_fifteen_calls";
         public const string FetchMonthlyCallAmountAgencyAPI = RestApiBaseUrl + "agency/fetch_monthly_call_amount";

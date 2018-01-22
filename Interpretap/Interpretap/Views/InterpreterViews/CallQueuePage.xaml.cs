@@ -33,9 +33,22 @@ namespace Interpretap.Views.InterpreterViews
         {
             base.OnAppearing();
 
-            if(firstTime)
-            if (_viewModel.QueueCalls.Count == 0)
-                _viewModel.LoadData().GetAwaiter();
+            if (firstTime)
+            {
+                if (_viewModel.QueueCalls.Count == 0)
+                    _viewModel.LoadData().GetAwaiter();
+            }
+            else
+            {
+                if (App.ToUpdateQueueFlag)
+                {
+                    _viewModel.QueueCalls.Clear();
+                    _viewModel.LoadData().GetAwaiter();
+                    App.ToUpdateQueueFlag = false;
+                }
+            }
+
+            
 
             firstTime = false;
         }

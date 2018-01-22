@@ -38,8 +38,19 @@ namespace Interpretap.Views.InterpreterViews
         {
             base.OnAppearing();
 
-            if(_viewModel.CallLogs.Count == 0)
+            if (_viewModel.CallLogs.Count == 0)
+            {
                 _viewModel.LoadData(string.Empty, UserTypes.Interpreter).GetAwaiter();
+            }
+            else
+            {
+                if (App.ToUpdateLogsFlag)
+                {
+                    _viewModel.CallLogs.Clear();
+                    _viewModel.LoadData(string.Empty, UserTypes.Interpreter).GetAwaiter();
+                    App.ToUpdateLogsFlag = false;
+                }
+            }
         }
     }
 }

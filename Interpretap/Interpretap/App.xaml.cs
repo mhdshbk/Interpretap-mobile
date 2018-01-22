@@ -10,6 +10,8 @@ namespace Interpretap
     public partial class App : Application
     {
         public static FetchOpenCallResponce ActiveCallRequest { get; set; }
+        public static bool ToUpdateLogsFlag { get; set; }
+        public static bool ToUpdateQueueFlag { get; set; }
 
         public App()
         {

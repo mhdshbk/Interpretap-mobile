@@ -15,14 +15,15 @@
             <Label Text="MR#: 41" FontSize="24" />
             <Label Text="Emp ID: 41" FontSize="24" />
 
-            <StackLayout x:Name="StartCallsStack" Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="0,0,0,51" IsVisible="True">
-                <Button Text="Start Call" HorizontalOptions="CenterAndExpand" Clicked="StartCallProcedure" />
+            <StackLayout x:Name="StartCallsStack" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,51" IsVisible="True">
+                <Button Text="Start Call"  Clicked="StartCallProcedureAsync" />
+                <Button Text="Cancel Call"  Clicked="CancelCallButtonClickedAsync" />
             </StackLayout>
 
 
             <StackLayout x:Name="EndCallStack" Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="0,0,0,50" IsVisible="False">
-                <Button Text="Pause Call" HorizontalOptions="StartAndExpand" Clicked="PauseCallProcedure" />
-                <Button Text="End Call" HorizontalOptions="EndAndExpand" Clicked="EndCallProcedure" />
+                <Button Text="Pause Call" HorizontalOptions="StartAndExpand" Clicked="TogglePauseCallProcedureAsync" />
+                <Button x:Name="BtnEndCall" Text="End Call" HorizontalOptions="EndAndExpand" Clicked="EndCallProcedureAsync" />
             </StackLayout>
             
             

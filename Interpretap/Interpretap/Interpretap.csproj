@@ -48,6 +48,9 @@
       <DependentUpon>ActiveCallView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\AgencyModel.cs" />
+    <Compile Include="Models\AssignInterpreterRequestModel.cs" />
+    <Compile Include="Models\AssignInterpreterResponce.cs" />
+    <Compile Include="Models\BaseInterpreterApiRequest.cs" />
     <Compile Include="Models\BusinessModel.cs" />
     <Compile Include="Models\CallInfoModel.cs" />
     <Compile Include="Models\CallLogRequestModel.cs" />
