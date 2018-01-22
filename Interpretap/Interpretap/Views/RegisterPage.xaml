@@ -31,6 +31,9 @@
                     <Label x:Name="Lbl_Last_Name" Text="Last Name"/>
                     <Entry x:Name="Entry_Last_Name" Placeholder="Last Name" />
 
+                    <Label x:Name="Lbl_Gender" Text="Select Gender"/>
+                    <Picker x:Name="GenderPicker" Title="Select gender" />
+
                     <Label x:Name="Lbl_Email" Text="Email"/>
                     <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
 

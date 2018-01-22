@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Interpretap.Models
 {
-    public class RegisterModel : BaseModel
+    public class RegisterModel 
     {
         [JsonProperty("user_first_name")]
         public string FirstName { get; set; }
@@ -28,7 +28,7 @@ namespace Interpretap.Models
         public int DeviceId { get; set; }
 
         [JsonProperty("user_device_type")]
-        public string DeviceType { get; set; }
+        public int DeviceType { get; set; }
 
         [JsonProperty("user_gender_id")]
         public string GenderId { get; set; }

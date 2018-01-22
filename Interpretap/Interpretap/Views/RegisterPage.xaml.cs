@@ -20,7 +20,8 @@ namespace Interpretap.Views
             Entry_Password.Completed += (s, e) => Entry_Password_Confirm.Focus();
             Entry_Password_Confirm.Completed += (s, e) => Entry_First_Name.Focus();
             Entry_First_Name.Completed += (s, e) => Entry_Last_Name.Focus();
-            Entry_Last_Name.Completed += (s, e) => Entry_Email.Focus();
+            Entry_Last_Name.Completed += (s, e) => GenderPicker.Focus();
+            GenderPicker.SelectedIndexChanged += (s,e) => Entry_Email.Focus();
             Entry_Email.Completed += (s, e) => Entry_Phone_Number.Focus();
             Entry_Phone_Number.Completed += (s, e) => Entry_Address.Focus();
             Entry_Address.Completed += (s, e) => Entry_City.Focus();
@@ -43,6 +44,9 @@ namespace Interpretap.Views
                     Lbl_Registration_Key.IsVisible = profileTypeId.Equals("interpreter") ? true : false;
                     Entry_Registration_Key.IsVisible = profileTypeId.Equals("interpreter") ? true : false;
                 }
+
+                foreach (String genderName in Genders.Keys)
+                    GenderPicker.Items.Add(genderName);
             };
         }
 
@@ -55,6 +59,7 @@ namespace Interpretap.Views
             registrationModel.PasswordConfirmation = Entry_Password_Confirm.Text;
             registrationModel.FirstName = Entry_First_Name.Text;
             registrationModel.LastName = Entry_Last_Name.Text;
+            registrationModel.GenderId = Genders[GenderPicker.Items[GenderPicker.SelectedIndex]];
             registrationModel.Email = Entry_Email.Text;
             registrationModel.PhoneNumber = Entry_Phone_Number.Text;
             registrationModel.City = Entry_City.Text;
@@ -63,15 +68,16 @@ namespace Interpretap.Views
             registrationModel.ZipCode = Entry_Zip_Code.Text;
             registrationModel.UserType = ProfileTypePicker.SelectedItem.ToString().ToLower();
 
+            var r = new Random();
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
-                    registrationModel.DeviceId = 1;
-                    registrationModel.DeviceType = "iOS";
+                    registrationModel.DeviceId = r.Next(1000000);
+                    registrationModel.DeviceType = 1;
                     break;
                 case Device.Android:
-                    registrationModel.DeviceId = 2;
-                    registrationModel.DeviceType = "Android";
+                    registrationModel.DeviceId = r.Next(1000000);
+                    registrationModel.DeviceType = 2;
                     break;
             }
 

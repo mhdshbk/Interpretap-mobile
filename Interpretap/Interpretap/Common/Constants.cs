@@ -10,8 +10,14 @@ namespace Interpretap.Common
     {
         public static Dictionary<String, String> ProfileTypes = new Dictionary<String, String>
         {
-            { "User", "user" },
+            { "Client", "client" },
             { "Interpreter", "interpreter" }
+        };
+
+        public static Dictionary<String, String> Genders = new Dictionary<String, String>
+        {
+            { "Male", "1" },
+            { "Female", "2" }
         };
 
         public enum UserTypes
