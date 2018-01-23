@@ -91,9 +91,7 @@ namespace Interpretap.Views.InterpreterViews
             request.CallId = _callId;
             await service.EndCall(request);
             timer.Stop();
-            App.ToUpdateLogsFlag = true;
-            App.ToUpdateQueueFlag = true;
-            await App.Current.MainPage.Navigation.PopAsync();
+            await CloseTimerPage();
         }
 
         private void UpdateTimerLabel()
@@ -117,11 +115,16 @@ namespace Interpretap.Views.InterpreterViews
                 var request = new BaseInterpreterApiRequest();
                 request.CallId = _callId;
                 await service.CancelCall(request);
-                App.ToUpdateLogsFlag = true;
-                App.ToUpdateQueueFlag = true;
-                await App.Current.MainPage.Navigation.PopAsync();
-
+                await CloseTimerPage();
             }
+        }
+
+        private static async Task CloseTimerPage()
+        {
+            App.ToUpdateLogsFlag = true;
+            App.ToUpdateQueueFlag = true;
+            await App.Current.MainPage.Navigation.PopAsync();
+            App.ActivateLogsTab();
         }
     }
 }

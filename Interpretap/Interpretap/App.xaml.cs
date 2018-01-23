@@ -52,5 +52,15 @@ namespace Interpretap
             }
         }
 
+        public static void ActivateLogsTab()
+        {
+            var mainNavPage = Current.MainPage as NavigationPage;
+            if (mainNavPage == null) return;
+            var mainTabbedPage = mainNavPage.CurrentPage as TabbedPage;
+            if (mainTabbedPage == null) return;
+            var logsTabIndex = 1;
+            if (mainTabbedPage.Children.Count < logsTabIndex + 1) return;
+            mainTabbedPage.CurrentPage = mainTabbedPage.Children[logsTabIndex];
+        }
     }
 }
