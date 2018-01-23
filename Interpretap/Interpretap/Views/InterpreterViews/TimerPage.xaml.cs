@@ -119,11 +119,11 @@ namespace Interpretap.Views.InterpreterViews
             }
         }
 
-        private static async Task CloseTimerPage()
+        private async Task CloseTimerPage()
         {
             App.ToUpdateLogsFlag = true;
             App.ToUpdateQueueFlag = true;
-            await App.Current.MainPage.Navigation.PopAsync();
+            await Navigation.PopAsync();
             App.ActivateLogsTab();
         }
     }

@@ -15,7 +15,7 @@ namespace Interpretap.Common
             {
                 options.Add(business.BusinessInfo.BusinessName);
             }
-            var selectedBusinessName = await App.Current.MainPage.DisplayActionSheet(title, cancel, "", options.ToArray());
+            var selectedBusinessName = await App.Current.MainPage.DisplayActionSheet(title, cancel, null, options.ToArray());
             var canceled = selectedBusinessName == cancel;
             if (selectedBusinessName != null && !canceled)
             {
