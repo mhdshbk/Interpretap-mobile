@@ -40,6 +40,7 @@
     </Compile>
     <Compile Include="Common\ConfigApp.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Dialogs.cs" />
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\LocalStorage.cs" />
     <Compile Include="Common\MyTimer.cs" />

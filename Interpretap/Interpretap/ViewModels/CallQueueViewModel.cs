@@ -41,33 +41,37 @@ namespace Interpretap.ViewModels
             var callResponse = await _interpreterService.FetchOpenCalls(new BaseModel());
             foreach (var call in callResponse.Calls)
             {
-                call.AcceptCallRequested += async (s,e) => await AcceptCallRequestedAsync(s,e);
+                call.AcceptCallRequested += async (s, e) => await AcceptCallRequestedAsync(s, e);
                 QueueCalls.Add(call);
             }
         }
 
         private async Task AcceptCallRequestedAsync(object sender, EventArgs e)
         {
-            IsBusy = true;
-            var responce = await AssignInterpreterToCallAsync((OpenCallModel)sender);
-            var acceptSuccess = responce.Status;
-            if (acceptSuccess)
+            var businessIdInt = await Dialogs.SelectInterpreterBusinessActionSheetAsync("Agency", "Cancel");
+            if (businessIdInt != 0)
             {
-                await Application.Current.MainPage.Navigation.PushAsync(new Views.InterpreterViews.TimerPage(responce.CallId));
+                IsBusy = true;
+                var responce = await AssignInterpreterToCallAsync((OpenCallModel)sender, businessIdInt.ToString());
+                var acceptSuccess = responce.Status;
+                if (acceptSuccess)
+                {
+                    await Application.Current.MainPage.Navigation.PushAsync(new Views.InterpreterViews.TimerPage(responce.CallId));
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", responce.Message, "Ok");
+                }
+                IsBusy = false;
             }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("Error", responce.Message, "Ok");
-            }
-            IsBusy = false;
         }
 
-        private async Task<AssignInterpreterResponce> AssignInterpreterToCallAsync(OpenCallModel call)
+        private async Task<AssignInterpreterResponce> AssignInterpreterToCallAsync(OpenCallModel call, string businessId)
         {
             IsBusy = true;
             var service = new InterpreterService();
             var request = new AssignInterpreterRequestModel();
-            request.AssociatedInterpreterBusiness = LocalStorage.LoginResponseLS.UserInfo.InterpreterInfo.Agencies.Last().InterpreterBusinessId.ToString();
+            request.AssociatedInterpreterBusiness = businessId;
             request.CallId = call.CallInfoId.ToString();
             var responce = await service.AssignInterpreterToCall(request);
             return responce;
