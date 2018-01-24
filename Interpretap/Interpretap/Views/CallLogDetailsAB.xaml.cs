@@ -65,7 +65,7 @@ namespace Interpretap.Views
         {
             base.OnAppearing();
             if (_monthlyCallReportModel != null && _viewModel.CallLogs.Count == 0)
-                _viewModel.LoadData(string.Empty,//DateTime.Now.ToString("yyyy-MM-dd") + " 00:00:00",
+                _viewModel.LoadData(string.Empty,
                     _monthlyCallReportModel.StartOfMonth,
                     _monthlyCallReportModel.EndOfMonth,
                     _userType).GetAwaiter();
