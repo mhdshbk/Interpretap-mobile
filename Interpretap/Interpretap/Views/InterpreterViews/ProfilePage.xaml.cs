@@ -51,6 +51,47 @@ namespace Interpretap.Views.InterpreterViews
             _user.Province = _userOld.Province != Entry_Province.Text ? Entry_Province.Text : null;
             _user.ZipCode = _userOld.ZipCode != Entry_Zip_Code.Text ? Entry_Zip_Code.Text : null;
 
+            var nothingToUpdate = true;
+            if (!string.IsNullOrEmpty(_user.FirstName))
+            {
+                nothingToUpdate = false;
+            }
+            if (!string.IsNullOrEmpty(_user.LastName))
+            {
+                nothingToUpdate = false;
+            }
+            if (!string.IsNullOrEmpty(_user.Email))
+            {
+                nothingToUpdate = false;
+            }
+            if (!string.IsNullOrEmpty(_user.PhoneNumber))
+            {
+                nothingToUpdate = false;
+            }
+            if (!string.IsNullOrEmpty(_user.City))
+            {
+                nothingToUpdate = false;
+            }
+            if (!string.IsNullOrEmpty(_user.Address))
+            {
+                nothingToUpdate = false;
+            }
+            if (!string.IsNullOrEmpty(_user.Province))
+            {
+                nothingToUpdate = false;
+            }
+            if (!string.IsNullOrEmpty(_user.ZipCode))
+            {
+                nothingToUpdate = false;
+            }
+
+            if (nothingToUpdate)
+            {
+                await DisplayAlert("Message", "Nothing is changed", "Ok");
+                UpdatePage();
+                return;
+            };
+
             updateModel.Password = !string.IsNullOrEmpty(Entry_Password.Text) ? Entry_Password.Text : "";
             updateModel.PasswordConfirmation = !string.IsNullOrEmpty(Entry_Password_Confirm.Text) ? Entry_Password_Confirm.Text : "";
             updateModel.FirstName = _user.FirstName;
