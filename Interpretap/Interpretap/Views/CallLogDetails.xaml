@@ -7,7 +7,7 @@
         <StackLayout>
             <Label x:Name="Lbl_Title" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
             <ScrollView VerticalOptions="FillAndExpand">
-                <ListView  x:Name="listView" IsRefreshing="{Binding IsLoading}">
+                <ListView  x:Name="listView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
