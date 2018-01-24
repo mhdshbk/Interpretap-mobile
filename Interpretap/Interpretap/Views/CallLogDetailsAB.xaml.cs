@@ -59,6 +59,7 @@ namespace Interpretap.Views
                 Navigation.PushAsync(new CallInfo(selectedCall));
                 ((ListView)sender).SelectedItem = null;
             };
+            listView.ItemAppearing += ListView_ItemAppearing;
         }
 
         protected override void OnAppearing()
@@ -69,6 +70,12 @@ namespace Interpretap.Views
                     _monthlyCallReportModel.StartOfMonth,
                     _monthlyCallReportModel.EndOfMonth,
                     _userType).GetAwaiter();
+        }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var itemModel = e.Item as FifteenCallModel;
+            _viewModel.OnItemAppearingAsync(itemModel).GetAwaiter();
         }
 
         private async Task ShowReportProcedure(object sender, EventArgs e)
