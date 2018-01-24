@@ -12,40 +12,98 @@ namespace Interpretap.Views.InterpreterViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
+        UserModel _user;
+        UserModel _userOld;
         public ProfilePage()
         {
             InitializeComponent();
 
-            UserModel user = LocalStorage.LoginResponseLS.UserInfo;
+            UpdatePage();
+        }
+
+        private void UpdatePage()
+        {
+            _user = LocalStorage.LoginResponseLS.UserInfo;
+            _userOld = _user;
+
             Entry_Password.Text = "";
             Entry_Password_Confirm.Text = "";
-            Entry_First_Name.Text = user.FirstName;
-            Entry_Last_Name.Text = user.LastName;
-            Entry_Email.Text = user.Email;
-            Entry_Phone_Number.Text = user.PhoneNumber;
-            Entry_City.Text = user.City;
-            Entry_Address.Text = user.Address;
-            Entry_Province.Text = user.Province;
-            Entry_Zip_Code.Text = user.ZipCode;
-
+            Entry_First_Name.Text = _user.FirstName;
+            Entry_Last_Name.Text = _user.LastName;
+            Entry_Email.Text = _user.Email;
+            Entry_Phone_Number.Text = _user.PhoneNumber;
+            Entry_City.Text = _user.City;
+            Entry_Address.Text = _user.Address;
+            Entry_Province.Text = _user.Province;
+            Entry_Zip_Code.Text = _user.ZipCode;
         }
 
         private async Task UpdateUserProfile(object sender, EventArgs e)
         {
-            var registrationModel = new RegisterModel();
-            registrationModel.Password = Entry_Password.Text;
-            registrationModel.PasswordConfirmation = Entry_Password_Confirm.Text;
-            registrationModel.FirstName = Entry_First_Name.Text;
-            registrationModel.Email = Entry_Email.Text;
-            registrationModel.LastName = Entry_Last_Name.Text;
-            registrationModel.PhoneNumber = Entry_Phone_Number.Text;
-            registrationModel.City = Entry_City.Text;
-            registrationModel.Address = Entry_Address.Text;
-            registrationModel.Province = Entry_Province.Text;
-            registrationModel.ZipCode = Entry_Zip_Code.Text;
+            var updateModel = new UpdateModel();
+
+            _user.FirstName = _userOld.FirstName != Entry_First_Name.Text ? Entry_First_Name.Text : null;
+            _user.LastName = _userOld.LastName != Entry_Last_Name.Text ? Entry_Last_Name.Text : null;
+            _user.Email = _userOld.Email != Entry_Email.Text ? Entry_Email.Text : null;
+            _user.PhoneNumber = _userOld.PhoneNumber != Entry_Phone_Number.Text ? Entry_Phone_Number.Text : null;
+            _user.City = _userOld.City != Entry_City.Text ? Entry_City.Text : null;
+            _user.Address = _userOld.Address != Entry_Address.Text ? Entry_Address.Text : null;
+            _user.Province = _userOld.Province != Entry_Province.Text ? Entry_Province.Text : null;
+            _user.ZipCode = _userOld.ZipCode != Entry_Zip_Code.Text ? Entry_Zip_Code.Text : null;
+
+            updateModel.Password = !string.IsNullOrEmpty(Entry_Password.Text) ? Entry_Password.Text : "";
+            updateModel.PasswordConfirmation = !string.IsNullOrEmpty(Entry_Password_Confirm.Text) ? Entry_Password_Confirm.Text : "";
+            updateModel.FirstName = _user.FirstName;
+            updateModel.Email = _user.Email;
+            updateModel.LastName = _user.LastName;
+            updateModel.PhoneNumber = _user.PhoneNumber;
+            updateModel.City = _user.City;
+            updateModel.Address = _user.Address;
+            updateModel.Province = _user.Province;
+            updateModel.ZipCode = _user.ZipCode;
 
             UserService _userService = new UserService();
-            var updateUserRespond = await _userService.UpdateUser(registrationModel);
+            var updateUserRespond = await _userService.UpdateUser(updateModel);
+
+            var updateSuccess = updateUserRespond.Status;
+            if (updateSuccess)
+            {
+                var loginInfo = LocalStorage.LoginResponseLS;
+                if (!string.IsNullOrEmpty(_user.FirstName))
+                {
+                    loginInfo.UserInfo.FirstName = _user.FirstName;
+                }
+                if (!string.IsNullOrEmpty(_user.LastName))
+                {
+                    loginInfo.UserInfo.LastName = _user.LastName;
+                }
+                if (!string.IsNullOrEmpty(_user.Email))
+                {
+                    loginInfo.UserInfo.Email = _user.Email;
+                }
+                if (!string.IsNullOrEmpty(_user.PhoneNumber))
+                {
+                    loginInfo.UserInfo.PhoneNumber = _user.PhoneNumber;
+                }
+                if (!string.IsNullOrEmpty(_user.City))
+                {
+                    loginInfo.UserInfo.City = _user.City;
+                }
+                if (!string.IsNullOrEmpty(_user.Address))
+                {
+                    loginInfo.UserInfo.Address = _user.Address;
+                }
+                if (!string.IsNullOrEmpty(_user.Province))
+                {
+                    loginInfo.UserInfo.Province = _user.Province;
+                }
+                if (!string.IsNullOrEmpty(_user.ZipCode))
+                {
+                    loginInfo.UserInfo.ZipCode = _user.ZipCode;
+                }
+                LocalStorage.LoginResponseLS = loginInfo;
+                UpdatePage();
+            }
 
             await DisplayAlert("Message", updateUserRespond.Message, "Ok");
         }

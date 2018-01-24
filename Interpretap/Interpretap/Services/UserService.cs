@@ -6,7 +6,7 @@ using Interpretap.Models.RespondModels;
 
 namespace Interpretap.Services
 {
-    class UserService : BaseService
+    class UserService : BaseServiceNoNulls
     {
         public async Task<LoginRespond> Login(LoginModel loginModel)
         {
@@ -56,13 +56,13 @@ namespace Interpretap.Services
             return insertUserRespond;
         }
 
-        public async Task<BaseRespond> UpdateUser(RegisterModel registeModel)
+        public async Task<BaseRespond> UpdateUser(UpdateModel registeModel)
         {
             BaseRespond updateUserRespond = new BaseRespond();
 
             try
             {
-                updateUserRespond = await Post<BaseRespond, RegisterModel>(UpdateUserAPI, registeModel);
+                updateUserRespond = await PostNoNulls<BaseRespond, UpdateModel>(UpdateUserAPI, registeModel);
             }
             catch (Exception e)
             {

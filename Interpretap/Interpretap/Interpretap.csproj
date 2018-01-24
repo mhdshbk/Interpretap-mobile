@@ -64,6 +64,7 @@
     <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
+    <Compile Include="Models\UpdateModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Models\RespondModels\CreateCallRequestResponce.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Services\AgencyService.cs" />
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\BaseServiceNoNulls.cs" />
     <Compile Include="Services\BusinessService.cs" />
     <Compile Include="Services\CallService.cs" />
     <Compile Include="Services\ClientService.cs" />
