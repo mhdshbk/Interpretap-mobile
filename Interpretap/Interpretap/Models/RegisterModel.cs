@@ -25,7 +25,7 @@ namespace Interpretap.Models
         public string PasswordConfirmation { get; set; }
 
         [JsonProperty("user_device_id")]
-        public int DeviceId { get; set; }
+        public string DeviceId { get; set; }
 
         [JsonProperty("user_device_type")]
         public int DeviceType { get; set; }

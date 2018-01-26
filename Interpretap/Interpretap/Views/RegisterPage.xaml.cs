@@ -6,12 +6,15 @@ using Interpretap.Models;
 using System.Threading.Tasks;
 using Interpretap.Services;
 using Xamarin.Forms.Xaml;
+using Com.OneSignal;
 
 namespace Interpretap.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterPage : ContentPage
     {
+        string _oneSignalId;
+
         public RegisterPage()
         {
             InitializeComponent();
@@ -48,6 +51,13 @@ namespace Interpretap.Views
                 foreach (String genderName in Genders.Keys)
                     GenderPicker.Items.Add(genderName);
             };
+
+            OneSignal.Current.IdsAvailable(OnIdsAvailable);
+        }
+
+        private void OnIdsAvailable(string playerID, string pushToken)
+        {
+            _oneSignalId = playerID;
         }
 
         private async Task RegisterProcedure(object sender, EventArgs e)
@@ -72,11 +82,11 @@ namespace Interpretap.Views
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
-                    registrationModel.DeviceId = r.Next(1000000);
+                    registrationModel.DeviceId = _oneSignalId;
                     registrationModel.DeviceType = 1;
                     break;
                 case Device.Android:
-                    registrationModel.DeviceId = r.Next(1000000);
+                    registrationModel.DeviceId = _oneSignalId;
                     registrationModel.DeviceType = 2;
                     break;
             }
