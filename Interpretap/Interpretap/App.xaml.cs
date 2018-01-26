@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Interpretap.Services;
 using Interpretap.Models;
 using Interpretap.Models.RespondModels;
+using Com.OneSignal;
 
 namespace Interpretap
 {
@@ -16,7 +17,8 @@ namespace Interpretap
         public App()
         {
             InitializeComponent();
-
+            OneSignal.Current.StartInit("92c5fd51-a45d-4f27-a22a-c2216f12c95b")
+                     .EndInit();
             MainPage = new NavigationPage(new Interpretap.Views.LoginPage());
         }
 
