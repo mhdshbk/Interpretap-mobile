@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Interpretap.Interfaces;
 using Interpretap.Models;
 using Interpretap.Models.RespondModels;
@@ -46,6 +47,14 @@ namespace Interpretap
                     OpenClientTimerPage();
                 }
             }
+            if (msg.EventType == "CALL")
+            {
+                if (msg.Event == "OPEN_CALL")
+                {
+                    ToUpdateQueueFlag = true;
+                    ActivateQueueTab();
+                }
+            }
         }
 
         private static void InitNotificationService()
@@ -74,18 +83,27 @@ namespace Interpretap
 
         public static void ActivateLogsTab()
         {
+            ActivateMainPageTab(1);
+        }
+
+        private static void OpenClientTimerPage()
+        {
+            Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage());
+        }
+
+        private static void ActivateQueueTab()
+        {
+            ActivateMainPageTab(0);
+        }
+
+        private static void ActivateMainPageTab(int tabIndex)
+        {
             var mainNavPage = Current.MainPage as NavigationPage;
             if (mainNavPage == null) return;
             var mainTabbedPage = mainNavPage.CurrentPage as TabbedPage;
             if (mainTabbedPage == null) return;
-            var logsTabIndex = 1;
-            if (mainTabbedPage.Children.Count < logsTabIndex + 1) return;
-            mainTabbedPage.CurrentPage = mainTabbedPage.Children[logsTabIndex];
-        }
-
-        public static void OpenClientTimerPage()
-        {
-            Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage());
+            if (mainTabbedPage.Children.Count < tabIndex + 1) return;
+            Device.BeginInvokeOnMainThread(() => { mainTabbedPage.CurrentPage = mainTabbedPage.Children[tabIndex]; });
         }
     }
 }
