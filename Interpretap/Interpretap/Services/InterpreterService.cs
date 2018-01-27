@@ -78,7 +78,7 @@ namespace Interpretap.Services
 
             try
             {
-                responce = await Post<BaseRespond, BaseInterpreterApiRequest>(EndPauseCallInterpreterAPI, requestModel);
+                responce = await Post<BaseRespond, BaseInterpreterApiRequest>(PauseCallInterpreterAPI, requestModel);
             }
             catch (Exception e)
             {
