@@ -1,10 +1,10 @@
-﻿using Interpretap.ViewModels;
-using Xamarin.Forms;
-using System.Threading.Tasks;
-using Interpretap.Services;
+﻿using System.Threading.Tasks;
+using Interpretap.Interfaces;
 using Interpretap.Models;
 using Interpretap.Models.RespondModels;
-using Com.OneSignal;
+using Interpretap.Services;
+using Interpretap.ViewModels;
+using Xamarin.Forms;
 
 namespace Interpretap
 {
@@ -13,12 +13,12 @@ namespace Interpretap
         public static FetchOpenCallResponce ActiveCallRequest { get; set; }
         public static bool ToUpdateLogsFlag { get; set; }
         public static bool ToUpdateQueueFlag { get; set; }
+        public static INotificationPayloadService NotificationPayloadService { get; set; }
 
         public App()
         {
             InitializeComponent();
-            OneSignal.Current.StartInit("92c5fd51-a45d-4f27-a22a-c2216f12c95b")
-                     .EndInit();
+            InitNotificationService();
             MainPage = new NavigationPage(new Interpretap.Views.LoginPage());
         }
 
@@ -34,6 +34,24 @@ namespace Interpretap
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        static void OnNotificationPayloadReceived(object sender, Services.Misc.PayloadReceivedEventArgs e)
+        {
+            var msg = e.Payload;
+
+            if(msg.EventType == "TIMER"){
+                if (msg.Event == "CALL_ASSIGN")
+                {
+                    OpenClientTimerPage();
+                }
+            }
+        }
+
+        private static void InitNotificationService()
+        {
+            NotificationPayloadService = new PushNotificationPayloadService();
+            NotificationPayloadService.PayloadReceived += OnNotificationPayloadReceived;
         }
 
         public static async Task FetchActiveCallRequestAsync()
@@ -63,6 +81,11 @@ namespace Interpretap
             var logsTabIndex = 1;
             if (mainTabbedPage.Children.Count < logsTabIndex + 1) return;
             mainTabbedPage.CurrentPage = mainTabbedPage.Children[logsTabIndex];
+        }
+
+        public static void OpenClientTimerPage()
+        {
+            Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage());
         }
     }
 }

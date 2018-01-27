@@ -157,6 +157,13 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Services\InterpreterService.cs" />
     <Compile Include="ViewModels\CallQueueViewModel.cs" />
+    <Compile Include="Interfaces\INotificationPayloadService.cs" />
+    <Compile Include="Services\PushNotificationPayloadService.cs" />
+    <Compile Include="Services\Misc\NotificationPayload.cs" />
+    <Compile Include="Services\Misc\PayloadReceivedEventArgs.cs" />
+    <Compile Include="ViewModels\UserTimerViewModel.cs" />
+    <Compile Include="Interfaces\IAcceptedCallStatusService.cs" />
+    <Compile Include="Services\AcceptedCallStatusService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -293,6 +300,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Services\Misc\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
