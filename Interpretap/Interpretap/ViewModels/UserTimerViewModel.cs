@@ -45,8 +45,9 @@ namespace Interpretap.ViewModels
 
         void OnStarted(object sender, EventArgs e)
         {
-            _timer.Start();
+            _ellipsisAnimationAlive = false;
             CallStatus = "Call active";
+            _timer.Start();
         }
 
         void OnPaused(object sender, EventArgs e)
@@ -73,7 +74,7 @@ namespace Interpretap.ViewModels
             var ellipsisAnimationDelayMillis = 500;
             while (_ellipsisAnimationAlive)
             {
-                if (_ellipsisCount == _maxEllipsisCount)
+                if (_ellipsisCount == _maxEllipsisCount + 1)
                 {
                     _ellipsisCount = 0;
                 }
@@ -82,6 +83,7 @@ namespace Interpretap.ViewModels
                 {
                     ssb.Append(".");
                 }
+                _ellipsisCount++;
                 CallStatus = ssb.ToString();
                 await Task.Delay(ellipsisAnimationDelayMillis);
             }

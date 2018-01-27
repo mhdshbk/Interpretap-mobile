@@ -4,13 +4,13 @@
              x:Class="Interpretap.Views.UserViews.TimerPage">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" BackgroundColor="AliceBlue">
-            <Label Text="00:00:00"
+            <Label Text="{Binding ElapsedTime}"
                    FontSize="52" 
                 HorizontalOptions="CenterAndExpand" />
             <BoxView Color="Black" WidthRequest="100" HeightRequest="2" />
 
-            <Label Text="Agency: UpWork" FontSize="24" />
-            <Label Text="Gender: Male" FontSize="24" />
+            <Label Text="Agency: To be wired" FontSize="24" />
+            <Label Text="Gender: To be wired" FontSize="24" />
             <StackLayout Orientation="Horizontal">
                 <Label Text="ID:" FontSize="24" />
                 <Label Text="{Binding CallId}" FontSize="24" />
