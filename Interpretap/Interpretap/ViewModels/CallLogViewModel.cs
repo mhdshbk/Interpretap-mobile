@@ -14,6 +14,8 @@ namespace Interpretap.ViewModels
 {
     class CallLogViewModel : BaseViewModel
     {
+        UserTypes _userType;
+
         private ObservableCollection<MonthlyCallReportModel> _callLogs;
         public ObservableCollection<MonthlyCallReportModel> CallLogs
         {
@@ -43,6 +45,9 @@ namespace Interpretap.ViewModels
         public async Task LoadData(String fromDate, UserTypes userType)
         {
             IsBusy = true;
+
+            _userType = userType;
+
             var callLogRequestModel = new CallLogRequestModel();
             callLogRequestModel.FromDate = fromDate;
             FetchCallLogResponse response = null;
@@ -82,6 +87,23 @@ namespace Interpretap.ViewModels
                     CallLogs.Add(call);
             }
             IsBusy = false;
+        }
+
+        public async Task OnItemAppearingAsync(MonthlyCallReportModel callModel)
+        {
+            var itemIsLastVisible = callModel == CallLogs.Last();
+            if (itemIsLastVisible)
+            {
+                // oldest calls are in the bottom - load more oldest calls
+                var paginationInitialDateTimeString = callModel.StartOfMonth;
+                DateTime paginationInitialDateTime;
+                if (DateTime.TryParse(paginationInitialDateTimeString, out paginationInitialDateTime))
+                {
+                    paginationInitialDateTime = paginationInitialDateTime.AddSeconds(-1);
+                    var paginationInitialDateString = paginationInitialDateTime.ToString("yyyy-MM-dd");
+                    await LoadData(paginationInitialDateString, _userType);
+                }
+            }
         }
     }
 }

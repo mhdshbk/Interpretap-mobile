@@ -26,9 +26,7 @@
                     x:Name="ActiveCallView" 
                     IsVisible="{Binding IsVisible}"/>
 
-                <ScrollView>
-
-                    <ListView  x:Name="listView">
+                    <ListView  x:Name="listView" VerticalOptions="FillAndExpand">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -48,7 +46,6 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </ScrollView>
 
             </StackLayout>
 

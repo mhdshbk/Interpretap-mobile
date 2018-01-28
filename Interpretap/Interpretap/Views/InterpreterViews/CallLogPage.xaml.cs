@@ -32,6 +32,13 @@ namespace Interpretap.Views.InterpreterViews
                 Navigation.PushAsync(new CallLogDetails(selectedCallReport, UserTypes.Interpreter));
                 ((ListView)sender).SelectedItem = null;
             };
+            listView.ItemAppearing += ListView_ItemAppearing;
+        }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var itemModel = e.Item as MonthlyCallReportModel;
+            _viewModel.OnItemAppearingAsync(itemModel).GetAwaiter();
         }
 
         protected override void OnAppearing()
