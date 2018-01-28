@@ -51,7 +51,6 @@ namespace Interpretap
             {
                 if (msg.Event == "OPEN_CALL")
                 {
-                    ToUpdateQueueFlag = true;
                     ActivateQueueTab();
                 }
             }

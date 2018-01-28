@@ -7,11 +7,14 @@ using Xamarin.Forms;
 using Interpretap.Common;
 using System.Linq;
 using Interpretap.Models.RespondModels;
+using Interpretap.Interfaces;
 
 namespace Interpretap.ViewModels
 {
     public class CallQueueViewModel : BaseViewModel
     {
+        ICallQueueService _callQueueService;
+
         private ObservableCollection<OpenCallModel> _queueCalls;
         public ObservableCollection<OpenCallModel> QueueCalls
         {
@@ -33,6 +36,13 @@ namespace Interpretap.ViewModels
         public CallQueueViewModel()
         {
             _queueCalls = new ObservableCollection<OpenCallModel>();
+            _callQueueService = new CallQueueService();
+            _callQueueService.CallRequested += async (s, e) => await OnCallRequestedAsync(s, e);
+        }
+
+        private async Task OnCallRequestedAsync(object sender, EventArgs e)
+        {
+            await ReloadData();
         }
 
         public async Task LoadData()
@@ -44,6 +54,12 @@ namespace Interpretap.ViewModels
                 call.AcceptCallRequested += async (s, e) => await AcceptCallRequestedAsync(s, e);
                 QueueCalls.Add(call);
             }
+        }
+
+        public async Task ReloadData()
+        {
+            QueueCalls.Clear();
+            await LoadData();
         }
 
         private async Task AcceptCallRequestedAsync(object sender, EventArgs e)

@@ -42,13 +42,10 @@ namespace Interpretap.Views.InterpreterViews
             {
                 if (App.ToUpdateQueueFlag)
                 {
-                    _viewModel.QueueCalls.Clear();
-                    _viewModel.LoadData().GetAwaiter();
+                    _viewModel.ReloadData().GetAwaiter();
                     App.ToUpdateQueueFlag = false;
                 }
             }
-
-            
 
             firstTime = false;
         }
