@@ -91,7 +91,7 @@ namespace Interpretap.Views.InterpreterViews
             request.CallId = _callId;
             await service.EndCall(request);
             timer.Stop();
-            await CloseTimerPage();
+            CloseTimerPage();
         }
 
         private void UpdateTimerLabel()
@@ -115,16 +115,24 @@ namespace Interpretap.Views.InterpreterViews
                 var request = new BaseInterpreterApiRequest();
                 request.CallId = _callId;
                 await service.CancelCall(request);
-                await CloseTimerPage();
+                CloseTimerPage();
             }
         }
 
-        private async Task CloseTimerPage()
+        private void CloseTimerPage()
         {
             App.ToUpdateLogsFlag = true;
             App.ToUpdateQueueFlag = true;
-            await Navigation.PopAsync();
-            App.ActivateLogsTab();
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await App.Current.MainPage.Navigation.PopAsync();
+                App.ActivateLogsTab();
+            });
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

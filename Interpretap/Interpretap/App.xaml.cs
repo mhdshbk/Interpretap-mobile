@@ -88,7 +88,10 @@ namespace Interpretap
 
         private static void OpenClientTimerPage()
         {
-            Device.BeginInvokeOnMainThread(() => { Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage()); });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage());
+            });
         }
 
         private static void ActivateQueueTab()

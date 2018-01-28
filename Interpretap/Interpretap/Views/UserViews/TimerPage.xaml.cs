@@ -25,8 +25,16 @@ namespace Interpretap.Views.UserViews
 
         private void CloseTimerPage()
         {
-            Device.BeginInvokeOnMainThread(() => { Navigation.PopAsync(); });
-            App.ActivateLogsTab();
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await App.Current.MainPage.Navigation.PopAsync();
+                App.ActivateLogsTab();
+            });
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }
