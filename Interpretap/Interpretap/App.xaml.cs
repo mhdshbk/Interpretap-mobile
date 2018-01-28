@@ -41,7 +41,8 @@ namespace Interpretap
         {
             var msg = e.Payload;
 
-            if(msg.EventType == "TIMER"){
+            if (msg.EventType == "TIMER")
+            {
                 if (msg.Event == "CALL_ASSIGN")
                 {
                     OpenClientTimerPage();
@@ -87,7 +88,7 @@ namespace Interpretap
 
         private static void OpenClientTimerPage()
         {
-            Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage());
+            Device.BeginInvokeOnMainThread(() => { Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage()); });
         }
 
         private static void ActivateQueueTab()

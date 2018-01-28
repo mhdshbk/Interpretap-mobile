@@ -12,6 +12,8 @@ namespace Interpretap.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class UserTimerViewModel
     {
+        public event EventHandler TimerDone;
+
         IAcceptedCallStatusService _callStatusService;
         MyTimer _timer;
         bool _ellipsisAnimationAlive;
@@ -67,12 +69,14 @@ namespace Interpretap.ViewModels
         {
             _timer.Stop();
             CallStatus = "Call finished";
+            OnimerDone();
         }
 
         void OnCanceled(object sender, EventArgs e)
         {
             _ellipsisAnimationAlive = false;
             CallStatus = "Call canceled";
+            OnimerDone();
         }
 
         async void AnimateEllipsis()
@@ -96,12 +100,10 @@ namespace Interpretap.ViewModels
             }
         }
 
-        //private async Task CloseTimerPage()
-        //{
-        //    App.ToUpdateLogsFlag = true;
-        //    App.ToUpdateQueueFlag = true;
-        //    await Navigation.PopAsync();
-        //    App.ActivateLogsTab();
-        //}
+        private void OnimerDone()
+        {
+            App.ToUpdateLogsFlag = true;
+            TimerDone?.Invoke(this, new EventArgs());
+        }
     }
 }

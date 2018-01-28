@@ -53,7 +53,17 @@ namespace Interpretap.Views.UserViews
         {
             base.OnAppearing();
             if (_viewModel.CallLogs.Count == 0)
+            {
                 _viewModel.LoadData(string.Empty, UserTypes.Client).GetAwaiter();
+            }
+            else
+            {
+                if (App.ToUpdateLogsFlag)
+                {
+                    _viewModel.CallLogs.Clear();
+                    _viewModel.LoadData(string.Empty, UserTypes.Client).GetAwaiter();
+                }
+            }
             _activeCallViewModel.OnAppearing();
         }
     }
