@@ -11,6 +11,7 @@ namespace Interpretap.Services
         public event EventHandler Paused;
         public event EventHandler Unpaused;
         public event EventHandler Stopped;
+        public event EventHandler Canceled;
 
         public AcceptedCallStatusService()
         {
@@ -39,6 +40,10 @@ namespace Interpretap.Services
                 if (msg.Event == "CALL_END")
                 {
                     Stopped?.Invoke(this, new EventArgs());
+                }
+                if (msg.Event == "CALL_CANCEL")
+                {
+                    Canceled?.Invoke(this, new EventArgs());
                 }
             }
         }

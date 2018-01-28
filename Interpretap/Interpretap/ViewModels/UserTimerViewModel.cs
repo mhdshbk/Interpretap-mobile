@@ -37,6 +37,7 @@ namespace Interpretap.ViewModels
             _callStatusService.Paused += OnPaused;
             _callStatusService.Unpaused += OnUnpaused;
             _callStatusService.Stopped += OnStopped;
+            _callStatusService.Canceled += OnCanceled;
 
             _timer = new MyTimer(TimeSpan.FromSeconds(1), () => ElapsedTime = _timer.GetTimePassed());
 
@@ -66,6 +67,12 @@ namespace Interpretap.ViewModels
         {
             _timer.Stop();
             CallStatus = "Call finished";
+        }
+
+        void OnCanceled(object sender, EventArgs e)
+        {
+            _ellipsisAnimationAlive = false;
+            CallStatus = "Call canceled";
         }
 
         async void AnimateEllipsis()

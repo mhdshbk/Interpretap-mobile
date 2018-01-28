@@ -7,5 +7,6 @@ namespace Interpretap.Interfaces
         event EventHandler Paused;
         event EventHandler Unpaused;
         event EventHandler Stopped;
+        event EventHandler Canceled;
     }
 }
