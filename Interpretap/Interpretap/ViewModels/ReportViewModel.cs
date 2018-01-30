@@ -2,6 +2,7 @@
 using Interpretap.Models;
 using Interpretap.Models.RespondModels;
 using Interpretap.Services;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,7 @@ using static Interpretap.Common.Constants;
 
 namespace Interpretap.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     class ReportViewModel : BaseViewModel
     {
         private string _totalCallSeconds;
@@ -45,8 +47,12 @@ namespace Interpretap.ViewModels
         public AgencyModel Agency { get; set; }
         public BusinessModel Business { get; set; }
 
+        public bool IsLoading { get; set; }
+
         public async Task LoadData(String minDay, String maxDay, UserTypes userType)
         {
+            IsLoading = true;
+
             var callLogRequestModel = new CallReportRequestModel();
             callLogRequestModel.MinDay = minDay;
             callLogRequestModel.MaxDay = maxDay;
@@ -80,6 +86,8 @@ namespace Interpretap.ViewModels
             TotalPausedSeconds = reportInfo.Report.TotalPause.ToString();
             BusinessFee = fee.ToString();
             TotalBill = billOrFeeAmount.ToString();
+
+            IsLoading = false;
         }
     }
 }

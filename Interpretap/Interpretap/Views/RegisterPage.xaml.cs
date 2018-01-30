@@ -18,6 +18,7 @@ namespace Interpretap.Views
         public RegisterPage()
         {
             InitializeComponent();
+            SetActivityIndicatorState(false);
             Entry_Registration_Key.Completed += (s, e) => Entry_Username.Focus();
             Entry_Username.Completed += (s, e) => Entry_Password.Focus();
             Entry_Password.Completed += (s, e) => Entry_Password_Confirm.Focus();
@@ -62,6 +63,8 @@ namespace Interpretap.Views
 
         private async Task RegisterProcedure(object sender, EventArgs e)
         {
+            SetActivityIndicatorState(true);
+
             var registrationModel = new RegisterModel();
             registrationModel.InterpreterTerpcode = Entry_Registration_Key.Text;
             registrationModel.Username = Entry_Username.Text;
@@ -95,6 +98,22 @@ namespace Interpretap.Views
             var insertUserResponse = await _userService.InsertUser(registrationModel);
 
             await DisplayAlert("Message", insertUserResponse.Message, "Ok");
+
+            SetActivityIndicatorState(false);
+        }
+
+        private void SetActivityIndicatorState(bool enable)
+        {
+            if (enable)
+            {
+                ActivityIndicator.IsVisible = true;
+                ControlsView.IsVisible = false;
+            }
+            else
+            {
+                ActivityIndicator.IsVisible = false;
+                ControlsView.IsVisible = true;
+            }
         }
     }
 }

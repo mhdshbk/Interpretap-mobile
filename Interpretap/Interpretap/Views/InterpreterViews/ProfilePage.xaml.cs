@@ -17,7 +17,7 @@ namespace Interpretap.Views.InterpreterViews
         public ProfilePage()
         {
             InitializeComponent();
-
+            SetActivityIndicatorState(false);
             UpdatePage();
         }
 
@@ -40,6 +40,8 @@ namespace Interpretap.Views.InterpreterViews
 
         private async Task UpdateUserProfile(object sender, EventArgs e)
         {
+            SetActivityIndicatorState(true);
+
             var updateModel = new UpdateModel();
 
             _user.FirstName = _userOld.FirstName != Entry_First_Name.Text ? Entry_First_Name.Text : null;
@@ -89,6 +91,7 @@ namespace Interpretap.Views.InterpreterViews
             {
                 await DisplayAlert("Message", "Nothing is changed", "Ok");
                 UpdatePage();
+                SetActivityIndicatorState(false);
                 return;
             };
 
@@ -147,11 +150,27 @@ namespace Interpretap.Views.InterpreterViews
             }
 
             await DisplayAlert("Message", updateUserRespond.Message, "Ok");
+            SetActivityIndicatorState(false);
         }
 
         private async Task LogoutButtonClickedAsync(object sender, EventArgs e)
         {
+            SetActivityIndicatorState(true);
             await App.LogoutAsync();
+        }
+
+        private void SetActivityIndicatorState(bool enable)
+        {
+            if (enable)
+            {
+                ActivityIndicator.IsVisible = true;
+                ControlsView.IsVisible = false;
+            }
+            else
+            {
+                ActivityIndicator.IsVisible = false;
+                ControlsView.IsVisible = true;
+            }
         }
     }
 }

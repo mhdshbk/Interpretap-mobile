@@ -5,47 +5,59 @@
             x:Class="Interpretap.Views.InterpreterViews.ProfilePage"
             Title="Profile">
     <ContentPage.Content>
-        <ScrollView>
+        <AbsoluteLayout>
 
-            <StackLayout x:Name="MasterLayout">
+            <ScrollView
+                x:Name="ControlsView"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1">
 
-                <StackLayout x:Name="ProfileEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
+                <StackLayout x:Name="MasterLayout">
 
-                    <Label x:Name="Lbl_Password" Text="Password"/>
-                    <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
-                    
-                    <Label x:Name="Lbl_Password_Confirm" Text="Confirm Password"/>
-                    <Entry x:Name="Entry_Password_Confirm" Placeholder="Confirm Password" IsPassword="True"/>
+                    <StackLayout x:Name="ProfileEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
 
-                    <Label x:Name="Lbl_First_Name" Text="First Name" IsVisible="false"/>
-                    <Entry x:Name="Entry_First_Name" Placeholder="First Name" IsVisible="false"/>
+                        <Label x:Name="Lbl_Password" Text="Password"/>
+                        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
 
-                    <Label x:Name="Lbl_Last_Name" Text="Last Name" IsVisible="false"/>
-                    <Entry x:Name="Entry_Last_Name" Placeholder="Last Name" IsVisible="false"/>
+                        <Label x:Name="Lbl_Password_Confirm" Text="Confirm Password"/>
+                        <Entry x:Name="Entry_Password_Confirm" Placeholder="Confirm Password" IsPassword="True"/>
 
-                    <Label x:Name="Lbl_Email" Text="Email"/>
-                    <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
+                        <Label x:Name="Lbl_First_Name" Text="First Name" IsVisible="false"/>
+                        <Entry x:Name="Entry_First_Name" Placeholder="First Name" IsVisible="false"/>
 
-                    <Label x:Name="Lbl_Phone_Number" Text="Phone Number"/>
-                    <Entry x:Name="Entry_Phone_Number" Placeholder="Phone Number" Keyboard="Telephone" />
+                        <Label x:Name="Lbl_Last_Name" Text="Last Name" IsVisible="false"/>
+                        <Entry x:Name="Entry_Last_Name" Placeholder="Last Name" IsVisible="false"/>
 
-                    <Label x:Name="Lbl_Address" Text="Address"/>
-                    <Entry x:Name="Entry_Address" Placeholder="Address"/>
+                        <Label x:Name="Lbl_Email" Text="Email"/>
+                        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
 
-                    <Label x:Name="Lbl_City" Text="City"/>
-                    <Entry x:Name="Entry_City" Placeholder="City" />
+                        <Label x:Name="Lbl_Phone_Number" Text="Phone Number"/>
+                        <Entry x:Name="Entry_Phone_Number" Placeholder="Phone Number" Keyboard="Telephone" />
 
-                    <Label x:Name="Lbl_Province" Text="Province"/>
-                    <Entry x:Name="Entry_Province" Placeholder="Province" />
+                        <Label x:Name="Lbl_Address" Text="Address"/>
+                        <Entry x:Name="Entry_Address" Placeholder="Address"/>
 
-                    <Label x:Name="Lbl_Zip_Code" Text="Zip Code"/>
-                    <Entry x:Name="Entry_Zip_Code" Placeholder="Zip Code" />
+                        <Label x:Name="Lbl_City" Text="City"/>
+                        <Entry x:Name="Entry_City" Placeholder="City" />
 
-                    <Button x:Name="Btn_Update" Text="Update" Clicked="UpdateUserProfile"/>
-                    <Button Text="Logout" Clicked="LogoutButtonClickedAsync"/>
+                        <Label x:Name="Lbl_Province" Text="Province"/>
+                        <Entry x:Name="Entry_Province" Placeholder="Province" />
+
+                        <Label x:Name="Lbl_Zip_Code" Text="Zip Code"/>
+                        <Entry x:Name="Entry_Zip_Code" Placeholder="Zip Code" />
+
+                        <Button x:Name="Btn_Update" Text="Update" Clicked="UpdateUserProfile"/>
+                        <Button Text="Logout" Clicked="LogoutButtonClickedAsync"/>
+                    </StackLayout>
+
                 </StackLayout>
-
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+            
+            <ActivityIndicator 
+                IsRunning="True" 
+                x:Name="ActivityIndicator"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

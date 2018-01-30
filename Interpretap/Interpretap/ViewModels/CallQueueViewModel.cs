@@ -47,6 +47,7 @@ namespace Interpretap.ViewModels
 
         public async Task LoadData()
         {
+            IsBusy = true;
             InterpreterService _interpreterService = new InterpreterService();
             var callResponse = await _interpreterService.FetchOpenCalls(new BaseModel());
             foreach (var call in callResponse.Calls)
@@ -54,6 +55,7 @@ namespace Interpretap.ViewModels
                 call.AcceptCallRequested += async (s, e) => await AcceptCallRequestedAsync(s, e);
                 QueueCalls.Add(call);
             }
+            IsBusy = false;
         }
 
         public async Task ReloadData()
@@ -84,7 +86,6 @@ namespace Interpretap.ViewModels
 
         private async Task<AssignInterpreterResponce> AssignInterpreterToCallAsync(OpenCallModel call, string businessId)
         {
-            IsBusy = true;
             var service = new InterpreterService();
             var request = new AssignInterpreterRequestModel();
             request.AssociatedInterpreterBusiness = businessId;
