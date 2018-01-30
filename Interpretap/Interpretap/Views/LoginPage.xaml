@@ -10,7 +10,8 @@
                 <Image x:Name="Img_Logo" Source="logo.png" Margin="0,80,0,0" Scale="1.1"/>
             </StackLayout>
 
-            <AbsoluteLayout>
+            <AbsoluteLayout
+                VerticalOptions="StartAndExpand" >
                 
                 <StackLayout
                     AbsoluteLayout.LayoutFlags="All" 
@@ -19,7 +20,6 @@
 
                     <StackLayout 
                         x:Name="LoginEntriesStack" 
-                        VerticalOptions="StartAndExpand" 
                         Padding="10,0,10,0" >
 
                         <Label x:Name="Lbl_Username" Text="Username"/>
