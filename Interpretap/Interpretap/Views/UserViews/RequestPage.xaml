@@ -26,7 +26,6 @@
                     <Entry 
                         x:Name="Entry_Call_Ref" 
                         Placeholder="Call Reference Number" 
-                        Keyboard="Numeric"
                         Text="{Binding CallRef}"/>
 
                     <Label Text="Language to translate from"/>
