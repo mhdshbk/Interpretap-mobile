@@ -45,6 +45,7 @@
     <Compile Include="Common\LocalStorage.cs" />
     <Compile Include="Common\MyTimer.cs" />
     <Compile Include="Common\RequestCallRecents.cs" />
+    <Compile Include="Logout.cs" />
     <Compile Include="CustomElements\ActiveCallView.xaml.cs">
       <DependentUpon>ActiveCallView.xaml</DependentUpon>
     </Compile>
@@ -309,7 +310,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

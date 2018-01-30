@@ -8,6 +8,7 @@
         public const string FetchUserAPI = RestApiBaseUrl + "user/fetch_user_info";
         public const string InsertUserAPI = RestApiBaseUrl + "user/insert_user";
         public const string UpdateUserAPI = RestApiBaseUrl + "user/update_user";
+        public const string LogoutUserAPI = RestApiBaseUrl + "user/logout";
 
         public const string FetchFifteenCallsClientAPI = RestApiBaseUrl + "client/fetch_fifteen_calls";
         public const string CreateCallRequestClientAPI = RestApiBaseUrl + "client/create_call_request";

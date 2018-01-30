@@ -71,5 +71,21 @@ namespace Interpretap.Services
 
             return updateUserRespond;
         }
+
+        public async Task<BaseRespond> Logout(BaseModel model)
+        {
+            var respond = new BaseRespond();
+
+            try
+            {
+                respond = await Post<BaseRespond, BaseModel>(LogoutUserAPI, model);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return respond;
+        }
     }
 }

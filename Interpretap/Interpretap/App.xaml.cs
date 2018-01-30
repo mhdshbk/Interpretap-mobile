@@ -108,5 +108,11 @@ namespace Interpretap
             if (mainTabbedPage.Children.Count < tabIndex + 1) return;
             Device.BeginInvokeOnMainThread(() => { mainTabbedPage.CurrentPage = mainTabbedPage.Children[tabIndex]; });
         }
+
+        public static async Task LogoutAsync()
+        {
+            var logout = new Logout();
+            await logout.LogoutAsync();
+        }
     }
 }

@@ -148,5 +148,10 @@ namespace Interpretap.Views.UserViews
 
             await DisplayAlert("Message", updateUserRespond.Message, "Ok");
         }
+
+        private async Task LogoutButtonClickedAsync(object sender, EventArgs e)
+        {
+            await App.LogoutAsync();
+        }
     }
 }

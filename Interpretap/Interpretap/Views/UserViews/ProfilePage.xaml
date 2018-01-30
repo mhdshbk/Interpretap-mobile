@@ -42,6 +42,7 @@
                     <Entry x:Name="Entry_Zip_Code" Placeholder="Zip Code" />
 
                     <Button x:Name="Btn_Update" Text="Update" Clicked="UpdateUserProfile"/>
+                    <Button Text="Logout" Clicked="LogoutButtonClickedAsync"/>
                 </StackLayout>
 
             </StackLayout>
