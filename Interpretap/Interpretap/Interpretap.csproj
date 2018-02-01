@@ -46,6 +46,10 @@
     <Compile Include="Common\MyTimer.cs" />
     <Compile Include="Common\RequestCallRecents.cs" />
     <Compile Include="Core\ActiveCallModel.cs" />
+    <Compile Include="Core\InterpreterCallReportModel.cs" />
+    <Compile Include="Core\ClientCallReportModel.cs" />
+    <Compile Include="Interfaces\ICallReportModel.cs" />
+    <Compile Include="Interfaces\ICallReportResponce.cs" />
     <Compile Include="Logout.cs" />
     <Compile Include="CustomElements\ActiveCallView.xaml.cs">
       <DependentUpon>ActiveCallView.xaml</DependentUpon>
@@ -67,7 +71,11 @@
     <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
+    <Compile Include="Models\RespondModels\ClientCallReportResponce.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\CallDetails.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\ClientReport.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\ReportInfo.cs" />
+    <Compile Include="Models\RespondModels\InterpreterCallReportResponce.cs" />
     <Compile Include="Models\UpdateModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
@@ -99,7 +107,8 @@
     <Compile Include="ViewModels\CallInfoViewModel.cs" />
     <Compile Include="ViewModels\CallLogDetailsViewModel.cs" />
     <Compile Include="ViewModels\CallLogViewModel.cs" />
-    <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="ViewModels\ABCallReportViewModel.cs" />
+    <Compile Include="ViewModels\CallReportViewModel.cs" />
     <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="Views\CallInfo.xaml.cs">
       <DependentUpon>CallInfo.xaml</DependentUpon>
@@ -109,6 +118,9 @@
     </Compile>
     <Compile Include="Views\CallLogDetailsAB.xaml.cs">
       <DependentUpon>CallLogDetailsAB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CallReportPage.xaml.cs">
+      <DependentUpon>CallReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\AgenciesPage.xaml.cs">
       <DependentUpon>AgenciesPage.xaml</DependentUpon>
@@ -126,8 +138,8 @@
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReportPage.xaml.cs">
-      <DependentUpon>ReportPage.xaml</DependentUpon>
+    <Compile Include="Views\ABCallReportPage.xaml.cs">
+      <DependentUpon>ABCallReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\BusinessesPage.xaml.cs">
       <DependentUpon>BusinessesPage.xaml</DependentUpon>
@@ -280,7 +292,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ReportPage.xaml">
+    <EmbeddedResource Include="Views\ABCallReportPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -312,7 +324,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CallReportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

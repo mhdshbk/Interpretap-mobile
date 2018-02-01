@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.CallReportPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" >
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout
+                VerticalOptions="FillAndExpand">
+
+            <StackLayout 
+                Orientation="Vertical"
+                Margin="16" 
+                Spacing="0"
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <Label Text="Monthly Call Report"  />
+                <Label Text="{Binding DateInterval}" />
+
+                <BoxView HeightRequest="12" BackgroundColor="Transparent"/>
+
+                <Label Text="Total call seconds:"  />
+                <Label Text="{Binding TotalCallSeconds}" />
+
+                <BoxView HeightRequest="12" BackgroundColor="Transparent"/>
+
+                <Label Text="Total paused seconds:"  />
+                <Label Text="{Binding TotalPausedSeconds}" />
+
+                <BoxView HeightRequest="12" BackgroundColor="Transparent"/>
+
+                <Label Text="Total billed seconds:"  />
+                <Label Text="{Binding TotalBilledSeconds}" />
+            </StackLayout>
+
+            <ActivityIndicator
+                    IsRunning="True"
+                    IsVisible="{Binding IsLoading}"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"  
+                    AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

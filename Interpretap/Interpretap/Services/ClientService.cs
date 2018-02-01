@@ -71,5 +71,22 @@ namespace Interpretap.Services
 
             return responce;
         }
+
+        public async Task<ClientCallReportResponce> FetchMonthReport(CallReportRequestModel requestModel)
+        {
+            var responce = new ClientCallReportResponce();
+
+            try
+            {
+                responce = await Post<ClientCallReportResponce, CallReportRequestModel>(FetchMonthReportClientAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
     }
 }

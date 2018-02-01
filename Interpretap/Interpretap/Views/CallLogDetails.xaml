@@ -6,34 +6,33 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="Lbl_Title" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
+            <Button Text="View Full month report" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Clicked="ButtonShowReportClicked" />
 
             <AbsoluteLayout
                 VerticalOptions="FillAndExpand">
 
-                <ScrollView
+                <ListView  
+                    x:Name="listView"
                     AbsoluteLayout.LayoutFlags="All" 
                     AbsoluteLayout.LayoutBounds="0,0,1,1">
-
-                    <ListView  x:Name="listView">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout BackgroundColor="#eee"
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout BackgroundColor="#eee"
                             Orientation="Horizontal">
-                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                                            <Label Text="{Binding FullName}" FontAttributes="Bold" FontSize="15" />
-                                            <Label Text="{Binding CreatedDate}" FontSize="12" />
-                                        </StackLayout>
-                                        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                                            <Label Text="Bill Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
-                                            <Label Text="Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
-                                        </StackLayout>
+                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                        <Label Text="{Binding FullName}" FontAttributes="Bold" FontSize="15" />
+                                        <Label Text="{Binding CreatedDate}" FontSize="12" />
                                     </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollView>
+                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                                        <Label Text="Bill Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                        <Label Text="Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
                 <ActivityIndicator
                     IsRunning="True"

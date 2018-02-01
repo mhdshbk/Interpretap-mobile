@@ -14,7 +14,7 @@ using static Interpretap.Common.Constants;
 namespace Interpretap.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class ReportViewModel : BaseViewModel
+    class ABCallReportViewModel : BaseViewModel
     {
         private string _totalCallSeconds;
         public string TotalCallSeconds

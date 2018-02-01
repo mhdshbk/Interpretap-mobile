@@ -14,6 +14,7 @@
         public const string CreateCallRequestClientAPI = RestApiBaseUrl + "client/create_call_request";
         public const string FetchCurrentCallClientAPI = RestApiBaseUrl + "client/fetch_current_call";
         public const string CancelCallClientAPI = RestApiBaseUrl + "client/cancel_call";
+        public const string FetchMonthReportClientAPI = RestApiBaseUrl + "client/fetch_client_report";
 
         public const string FetchOpenCallsAPI = RestApiBaseUrl + "interpreter/fetch_open_calls";
         public const string FetchFifteenCallsInterpreterAPI = RestApiBaseUrl + "interpreter/fetch_fifteen_calls";
@@ -23,6 +24,7 @@
         public const string EndPauseCallInterpreterAPI = RestApiBaseUrl + "interpreter/end_call_pause";
         public const string EndCallInterpreterAPI = RestApiBaseUrl + "interpreter/end_call";
         public const string CancelCallInterpreterAPI = RestApiBaseUrl + "interpreter/cancel_call";
+        public const string FetchMonthReportInterpreterAPI = RestApiBaseUrl + "interpreter/fetch_interpreter_report";
 
         public const string FetchFifteenCallsAgencyAPI = RestApiBaseUrl + "agency/fetch_fifteen_calls";
         public const string FetchMonthlyCallAmountAgencyAPI = RestApiBaseUrl + "agency/fetch_monthly_call_amount";

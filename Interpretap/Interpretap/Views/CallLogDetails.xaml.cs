@@ -1,4 +1,5 @@
 ﻿using Interpretap.Models;
+using Interpretap.Services;
 using Interpretap.ViewModels;
 using System;
 using Xamarin.Forms;
@@ -54,6 +55,12 @@ namespace Interpretap.Views
                     _monthlyCallReportModel.EndOfMonth,
                     _userType).GetAwaiter();
             }
+        }
+
+        private void ButtonShowReportClicked(object sender, EventArgs e)
+        {
+            var reportPage = new CallReportPage(_monthlyCallReportModel.StartOfMonth, _monthlyCallReportModel.EndOfMonth, _userType);
+            Navigation.PushAsync(reportPage);
         }
     }
 }

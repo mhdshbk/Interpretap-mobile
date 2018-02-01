@@ -9,7 +9,7 @@ namespace Interpretap.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ReportPage : ContentPage
 	{
-        private ReportViewModel _viewModel { get; set; }
+        private ABCallReportViewModel _viewModel { get; set; }
         private MonthlyCallReportModel _monthlyCallReportModel;
         private UserTypes _userType;
 
@@ -44,7 +44,7 @@ namespace Interpretap.Views
             _userType = userType;
             Lbl_FromTo.Text = _monthlyCallReportModel.DateFromTo;
 
-            _viewModel = new ReportViewModel();
+            _viewModel = new ABCallReportViewModel();
             BindingContext = _viewModel;
         }
 
