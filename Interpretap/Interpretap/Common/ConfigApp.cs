@@ -12,7 +12,7 @@
 
         public const string FetchFifteenCallsClientAPI = RestApiBaseUrl + "client/fetch_fifteen_calls";
         public const string CreateCallRequestClientAPI = RestApiBaseUrl + "client/create_call_request";
-        public const string FetchOpenCallClientAPI = RestApiBaseUrl + "client/fetch_open_call";
+        public const string FetchCurrentCallClientAPI = RestApiBaseUrl + "client/fetch_current_call";
         public const string CancelCallClientAPI = RestApiBaseUrl + "client/cancel_call";
 
         public const string FetchOpenCallsAPI = RestApiBaseUrl + "interpreter/fetch_open_calls";

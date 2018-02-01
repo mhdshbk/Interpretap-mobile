@@ -40,13 +40,13 @@ namespace Interpretap.Services
             return responce;
         }
 
-        public async Task<FetchOpenCallResponce> FetchOpenCallRequest(BaseModel requestModel)
+        public async Task<FetchCurrentCallResponce> FetchCurrentCall(BaseModel requestModel)
         {
-            var responce = new FetchOpenCallResponce();
+            var responce = new FetchCurrentCallResponce();
 
             try
             {
-                responce = await Post<FetchOpenCallResponce, BaseModel>(FetchOpenCallClientAPI, requestModel);
+                responce = await Post<FetchCurrentCallResponce, BaseModel>(FetchCurrentCallClientAPI, requestModel);
             }
             catch (Exception e)
             {

@@ -2,9 +2,6 @@
 using Interpretap.Services;
 using PropertyChanged;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -52,13 +49,13 @@ namespace Interpretap.ViewModels
 
                 var service = new ClientService();
                 var request = new BaseModel();
-                var responce = await service.FetchOpenCallRequest(request);
+                var responce = await service.FetchCurrentCall(request);
 
-                var callExists = responce.CallId != "0";
+                var callExists = responce.CallId != "false";
                 IsVisible = callExists;
                 CancelCallCommandCanExecute = callExists;
 
-                CallId = responce.CallId;
+                CallId = responce.CallId == "false" ? "0" : responce.CallId;
             }
             catch (Exception ex)
             {

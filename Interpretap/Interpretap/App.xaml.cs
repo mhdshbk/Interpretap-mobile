@@ -11,7 +11,7 @@ namespace Interpretap
 {
     public partial class App : Application
     {
-        public static FetchOpenCallResponce ActiveCallRequest { get; set; }
+        public static FetchCurrentCallResponce ActiveCallRequest { get; set; }
         public static bool ToUpdateLogsFlag { get; set; }
         public static bool ToUpdateQueueFlag { get; set; }
         public static INotificationPayloadService NotificationPayloadService { get; set; }
@@ -67,7 +67,7 @@ namespace Interpretap
         {
             var service = new ClientService();
             var request = new BaseModel();
-            var responce = await service.FetchOpenCallRequest(request);
+            var responce = await service.FetchCurrentCall(request);
             ActiveCallRequest = responce;
         }
 

@@ -66,6 +66,7 @@
     <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\CallDetails.cs" />
     <Compile Include="Models\UpdateModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
@@ -77,7 +78,7 @@
     <Compile Include="Models\RespondModels\FetchCallInfoResponce.cs" />
     <Compile Include="Models\RespondModels\FetchCallLogResponse.cs" />
     <Compile Include="Models\RespondModels\FetchFifteenCallsRespnse.cs" />
-    <Compile Include="Models\RespondModels\FetchOpenCallResponce.cs" />
+    <Compile Include="Models\RespondModels\FetchCurrentCallResponce.cs" />
     <Compile Include="Models\RespondModels\FetchUserRespond.cs" />
     <Compile Include="Models\RespondModels\LanguagesResponce.cs" />
     <Compile Include="Models\RespondModels\LoginRespond.cs" />
@@ -310,6 +311,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

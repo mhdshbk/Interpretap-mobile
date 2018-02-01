@@ -20,7 +20,7 @@ namespace Interpretap.ViewModels
         int _ellipsisCount;
         int _maxEllipsisCount = 3;
 
-        FetchOpenCallResponce ActiveCallRequest => App.ActiveCallRequest;
+        FetchCurrentCallResponce ActiveCallRequest => App.ActiveCallRequest;
 
         public string CallId => ActiveCallRequest.CallId;
         public string CallStatus { get; set; }
