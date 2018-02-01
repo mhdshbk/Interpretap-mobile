@@ -1,25 +1,23 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Interpretap.Core;
 using Interpretap.Interfaces;
-using Interpretap.Models;
-using Interpretap.Models.RespondModels;
 using Interpretap.Services;
-using Interpretap.ViewModels;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Interpretap
 {
     public partial class App : Application
     {
-        public static FetchCurrentCallResponce ActiveCallRequest { get; set; }
         public static bool ToUpdateLogsFlag { get; set; }
         public static bool ToUpdateQueueFlag { get; set; }
         public static INotificationPayloadService NotificationPayloadService { get; set; }
+        public static ActiveCallModel ActiveCall { get; set; }
 
         public App()
         {
             InitializeComponent();
             InitNotificationService();
+            InitActiveCall();
             MainPage = new NavigationPage(new Interpretap.Views.LoginPage());
         }
 
@@ -63,22 +61,10 @@ namespace Interpretap
             NotificationPayloadService.PayloadReceived += OnNotificationPayloadReceived;
         }
 
-        public static async Task FetchActiveCallRequestAsync()
+        private static void InitActiveCall()
         {
-            var service = new ClientService();
-            var request = new BaseModel();
-            var responce = await service.FetchCurrentCall(request);
-            ActiveCallRequest = responce;
-        }
-
-        private void CancelActiveCallRequest()
-        {
-            var activeCallExists = ActiveCallRequest?.CallId != "0";
-            if (activeCallExists)
-            {
-                var vm = new ActiveCallViewModel() { CallId = ActiveCallRequest.CallId };
-                vm.CancelCallCommand.Execute(null);
-            }
+            ActiveCall = new ActiveCallModel();
+            //ActiveCall.FetchActiveCallRequestAsync();
         }
 
         public static void ActivateLogsTab()

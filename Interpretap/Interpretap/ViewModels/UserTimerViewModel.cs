@@ -1,11 +1,11 @@
-﻿using System;
-using System.Text;
-using System.Threading.Tasks;
-using Interpretap.Common;
+﻿using Interpretap.Common;
 using Interpretap.Interfaces;
 using Interpretap.Models.RespondModels;
 using Interpretap.Services;
 using PropertyChanged;
+using System;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Interpretap.ViewModels
 {
@@ -20,7 +20,7 @@ namespace Interpretap.ViewModels
         int _ellipsisCount;
         int _maxEllipsisCount = 3;
 
-        FetchCurrentCallResponce ActiveCallRequest => App.ActiveCallRequest;
+        FetchCurrentCallResponce ActiveCallRequest => App.ActiveCall.ActiveCallRequest;
 
         public string CallId => ActiveCallRequest.CallId;
         public string CallStatus { get; set; }

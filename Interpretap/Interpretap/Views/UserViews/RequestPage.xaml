@@ -2,6 +2,7 @@
 <ContentPage
             xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:cv="clr-namespace:Interpretap.CustomElements"
             x:Class="Interpretap.Views.UserViews.RequestPage"
             Title="Request">
 
@@ -10,15 +11,27 @@
             x:TypeArguments="Thickness"
             iOS="0,20,0,0" />
     </ContentPage.Padding>
-    
+
     <ContentPage.Content>
 
         <AbsoluteLayout>
 
+            <StackLayout
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                VerticalOptions="CenterAndExpand"
+                IsVisible="{Binding ActiveCallExists}">
+
+                <Label Text="New call request cannot be made while another call request is active" HorizontalTextAlignment="Center" />
+                <BoxView HeightRequest="20"/>
+                <cv:ActiveCallView x:Name="ActiveCallView" />
+            </StackLayout>
+
             <StackLayout 
                 x:Name="MasterLayout" 
                 AbsoluteLayout.LayoutFlags="All"
-                AbsoluteLayout.LayoutBounds="0,0,1,1">
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                IsVisible="{Binding RequestAreaVisible}">
 
                 <StackLayout x:Name="EntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0" Margin="0,30,0,0">
 

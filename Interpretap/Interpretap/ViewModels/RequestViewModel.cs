@@ -1,15 +1,14 @@
-﻿using Interpretap.Models;
+﻿using Interpretap.Common;
+using Interpretap.Models;
 using Interpretap.Services;
-using PropertyChanged;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using System;
-using System.Threading.Tasks;
-using Interpretap.Common;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace Interpretap.ViewModels
 {
@@ -27,6 +26,10 @@ namespace Interpretap.ViewModels
         public List<AssosiateBusiness> Businesses { get; set; }
         public AssosiateBusiness SelectedBusiness { get; set; }
         public string CallRef { get; set; }
+
+        public  ActiveCallViewModel ActiveCallViewModel { get; set; }
+        public bool ActiveCallExists => App.ActiveCall.ActiveCallExist;
+        public bool RequestAreaVisible => !App.ActiveCall.ActiveCallExist;
 
         public bool IsBusy { get; set; }
         public bool RequestCallEnabled
@@ -54,6 +57,24 @@ namespace Interpretap.ViewModels
                 SelectedBusiness = Businesses.Last();
             }
             CreateCallRequestCommand = new Command(async () => await ExecuteCreateCallRequestAsync());
+            ActiveCallViewModel = new ActiveCallViewModel();
+
+            ActiveCallViewModel.CallCanceled += ActiveCallViewModel_CallCanceled;
+            App.ActiveCall.PropertyChanged += ActiveCall_PropertyChanged;
+        }
+
+        private void ActiveCallViewModel_CallCanceled(object sender, EventArgs e)
+        {
+            IsBusy = true;
+        }
+
+        private void ActiveCall_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == nameof(App.ActiveCall.ActiveCallExist))
+            {
+                NotifyPropertiesChanged();
+                IsBusy = false;
+            }
         }
 
         private async Task ExecuteCreateCallRequestAsync()
@@ -62,18 +83,19 @@ namespace Interpretap.ViewModels
             {
                 IsBusy = true;
 
-                var service = new ClientService();
-                var request = new CreateCallRequestModel();
-                request.CallRefId = CallRef;
-                request.ClientLanguageId = SelectedClientLanguage.Id;
-                request.RequestedLanguageId = SelectedRequestLanguage.Id;
-                request.ClientBusinessId = SelectedBusiness.ClientBusinessId.ToString();
-                var responce = await service.CreateCallRequest(request);
+                var request = new CreateCallRequestModel
+                {
+                    CallRefId = CallRef,
+                    ClientLanguageId = SelectedClientLanguage.Id,
+                    RequestedLanguageId = SelectedRequestLanguage.Id,
+                    ClientBusinessId = SelectedBusiness.ClientBusinessId.ToString()
+                };
+
+                var responce = await App.ActiveCall.RequestNewCall(request);
 
                 var isSuccessfull = responce.Status == true;
                 if (isSuccessfull)
                 {
-                    //App.FetchActiveCallRequestAsync();
                     await App.Current.MainPage.DisplayAlert("Success", responce.Message, "Ok");
                 }
                 else
@@ -126,6 +148,13 @@ namespace Interpretap.ViewModels
             }
         }
 
+        private void NotifyPropertiesChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RequestCallEnabled)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RequestAreaVisible)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ActiveCallExists)));
+        }
+
         void StoreRecentValues()
         {
             LocalStorage.RequestCallRecents = new RequestCallRecents()
@@ -160,7 +189,8 @@ namespace Interpretap.ViewModels
             {
                 await LoadLanguagesAsync();
             }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RequestCallEnabled)));
+            NotifyPropertiesChanged();
+            ActiveCallViewModel.OnAppearing();
         }
     }
 }

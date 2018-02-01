@@ -1,5 +1,4 @@
 ﻿using Interpretap.Models;
-using Interpretap.Services;
 using PropertyChanged;
 using System;
 using System.Threading.Tasks;
@@ -24,20 +23,33 @@ namespace Interpretap.ViewModels
         public ActiveCallViewModel()
         {
             CancelCallCommand = new Command(async () => await ExecuteCancelCallAsync());
+            App.ActiveCall.PropertyChanged += ActiveCall_PropertyChanged;
+        }
+
+        private void ActiveCall_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(App.ActiveCall.ActiveCallRequest))
+            {
+                GetRequestedCallAsync();
+            }
         }
 
         private async Task ExecuteCancelCallAsync()
         {
+            IsActivityIndicatorVisible = true;
             CancelCallCommandCanExecute = false;
-            var service = new ClientService();
-            var request = new CancelCallRequestModel();
-            request.CallId = CallId;
-            var responce = await service.CancelCallRequest(request);
+
+            var request = new CancelCallRequestModel
+            {
+                CallId = CallId
+            };
+            var responce = await App.ActiveCall.CancelActiveCall(request);
             if (responce.Status == true)
             {
                 IsVisible = false;
                 CallCanceled?.Invoke(this, new EventArgs());
             }
+            IsActivityIndicatorVisible = false;
         }
 
         async Task GetRequestedCallAsync()
@@ -46,16 +58,14 @@ namespace Interpretap.ViewModels
             {
                 IsVisible = true;
                 IsActivityIndicatorVisible = true;
+                
+                var callRequest = await App.ActiveCall.GetActiveCallRequestAsync();
 
-                var service = new ClientService();
-                var request = new BaseModel();
-                var responce = await service.FetchCurrentCall(request);
-
-                var callExists = responce.CallId != "false";
+                var callExists = callRequest.Status == true;
                 IsVisible = callExists;
                 CancelCallCommandCanExecute = callExists;
 
-                CallId = responce.CallId == "false" ? "0" : responce.CallId;
+                CallId = callExists ? callRequest.CallId : "0";
             }
             catch (Exception ex)
             {
