@@ -5,18 +5,18 @@
              Title="Call Log Details">
     <ContentPage.Content>
         <StackLayout>
-            
+
             <Label x:Name="Lbl_Title" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
-            
+
             <Button Text="View Full month report" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Clicked="ShowReportProcedure" />
-            
+
             <AbsoluteLayout
                 VerticalOptions="FillAndExpand">
 
                 <ScrollView
                     AbsoluteLayout.LayoutFlags="All" 
                     AbsoluteLayout.LayoutBounds="0,0,1,1">
-                    
+
                     <ListView  x:Name="listView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -28,8 +28,16 @@
                                             <Label Text="{Binding CreatedDate}" FontSize="11" />
                                         </StackLayout>
                                         <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
-                                            <Label Text="Bill Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15"/>
-                                            <Label Text="Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15"/>
+                                            <StackLayout
+                                            Orientation="Horizontal">
+                                                <Label Text="Call ID:" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                                <Label Text="{Binding CallInfoId}" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                            </StackLayout>
+                                            <StackLayout
+                                            Orientation="Horizontal">
+                                                <Label Text="Duration:" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                                <Label Text="{Binding CallDuration}" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>
@@ -37,7 +45,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </ScrollView>
-                
+
                 <ActivityIndicator
                     IsRunning="True"
                     IsVisible="{Binding IsLoading}"

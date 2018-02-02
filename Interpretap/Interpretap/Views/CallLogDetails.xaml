@@ -18,15 +18,26 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout BackgroundColor="#eee"
-                            Orientation="Horizontal">
+                                <StackLayout 
+                                    BackgroundColor="#eee"
+                                    Orientation="Horizontal">
+
                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                                         <Label Text="{Binding FullName}" FontAttributes="Bold" FontSize="15" />
                                         <Label Text="{Binding CreatedDate}" FontSize="12" />
                                     </StackLayout>
+
                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                                        <Label Text="Bill Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
-                                        <Label Text="Duration: 00:00:00" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Label Text="Call ID:" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                            <Label Text="{Binding CallInfoId}" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                        </StackLayout>
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Label Text="Duration:" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                            <Label Text="{Binding CallDuration}" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+                                        </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
