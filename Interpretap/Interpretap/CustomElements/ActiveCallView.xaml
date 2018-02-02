@@ -16,13 +16,13 @@
                 <StackLayout HorizontalOptions="FillAndExpand">
 
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                        <Label Text="Hospital 1" FontAttributes="Bold"/>
+                        <Label Text="{Binding CallBusinessName}" FontAttributes="Bold"/>
                         <Label Text="- (Active Request)" TextColor="Red"/>
                     </StackLayout>
 
 
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                        <Label Text="0000-00-00 00:00:00"/>
+                        <Label Text="{Binding CallCreatedDate}"/>
                         <Label Text="  Call ID:" TextColor="Red"/>
                         <Label Text="{Binding CallId}" TextColor="Red"/>
                     </StackLayout>

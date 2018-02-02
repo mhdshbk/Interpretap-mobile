@@ -16,6 +16,8 @@ namespace Interpretap.ViewModels
         public bool IsActivityIndicatorVisible { get; set; }
 
         public string CallId { get; set; }
+        public string CallBusinessName { get; set; }
+        public string CallCreatedDate { get; set; }
 
         public ICommand CancelCallCommand { get; set; }
         public bool CancelCallCommandCanExecute { get; set; }
@@ -64,8 +66,19 @@ namespace Interpretap.ViewModels
                 var callExists = callRequest.Status == true;
                 IsVisible = callExists;
                 CancelCallCommandCanExecute = callExists;
-
-                CallId = callExists ? callRequest.CallId : "0";
+                
+                if (callExists)
+                {
+                    CallId = callRequest.CallId;
+                    CallBusinessName = callRequest.CallInfo.ClientBusinessInfo.BusinessName;
+                    CallCreatedDate = callRequest.CallInfo.CallDetails.CreatedDate.ToString("yyyy-MM-dd hh:mm:ss");
+                }
+                else
+                {
+                    CallId = "0";
+                    CallBusinessName = string.Empty;
+                    CallCreatedDate = "0000-00-00 00:00:00";
+                }
             }
             catch (Exception ex)
             {
