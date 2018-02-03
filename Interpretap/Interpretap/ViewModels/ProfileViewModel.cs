@@ -11,6 +11,7 @@ namespace Interpretap.ViewModels
     {
         public string ProfileName { get; set; }
         public string ProfileTypeCaption { get; set; }
+        public UserTypes ProfileType { get; set; }
         public int ClientBusinessId { get; set; }
         public int InterpreterBusinessId { get; set; }
     }
@@ -53,6 +54,7 @@ namespace Interpretap.ViewModels
             {
                 ProfileName = $"{_userInfo.FirstName} {_userInfo.LastName}",
                 ProfileTypeCaption = "Client",
+                ProfileType = UserTypes.Client,
             };
             Profiles.Add(clientProfileItem);
         }
@@ -63,6 +65,7 @@ namespace Interpretap.ViewModels
             {
                 ProfileName = $"{_userInfo.FirstName} {_userInfo.LastName}",
                 ProfileTypeCaption = "Interpreter",
+                ProfileType = UserTypes.Interpreter,
             };
             Profiles.Add(interpreterProfileItem);
         }
@@ -73,8 +76,10 @@ namespace Interpretap.ViewModels
             {
                 var businessProfileItem = new ProfileSelectorItemViewModel()
                 {
+                    ClientBusinessId = business.ClientBusinessId,
                     ProfileName = business.BusinessInfo.BusinessName,
                     ProfileTypeCaption = "Business",
+                    ProfileType = UserTypes.Business,
                 };
                 Profiles.Add(businessProfileItem);
             }
@@ -86,8 +91,10 @@ namespace Interpretap.ViewModels
             {
                 var agencyProfileItem = new ProfileSelectorItemViewModel()
                 {
+                    InterpreterBusinessId = agency.InterpreterBusinessId,
                     ProfileName = agency.BusinessInfo.BusinessName,
                     ProfileTypeCaption = "Agency",
+                    ProfileType = UserTypes.Agency,
                 };
                 Profiles.Add(agencyProfileItem);
             }

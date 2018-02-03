@@ -49,6 +49,12 @@
     <Compile Include="Core\InterpreterCallReportModel.cs" />
     <Compile Include="Core\ClientCallReportModel.cs" />
     <Compile Include="Core\UserModel.cs" />
+    <Compile Include="CustomElements\AgencyProfileContentView.xaml.cs">
+      <DependentUpon>AgencyProfileContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElements\BusinessProfileContentView.xaml.cs">
+      <DependentUpon>BusinessProfileContentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomElements\ClientProfileContentView.xaml.cs">
       <DependentUpon>ClientProfileContentView.xaml</DependentUpon>
     </Compile>
@@ -108,9 +114,11 @@
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\ActiveCallViewModel.cs" />
+    <Compile Include="ViewModels\AgencyProfileViewModel.cs" />
     <Compile Include="ViewModels\BusinessesViewModel.cs" />
     <Compile Include="ViewModels\AgenciesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BusinessProfileViewModel.cs" />
     <Compile Include="ViewModels\CallInfoViewModel.cs" />
     <Compile Include="ViewModels\CallLogDetailsViewModel.cs" />
     <Compile Include="ViewModels\CallLogViewModel.cs" />
@@ -341,6 +349,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CustomElements\InterpreterProfileContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\AgencyProfileContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\BusinessProfileContentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

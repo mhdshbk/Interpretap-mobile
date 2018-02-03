@@ -12,6 +12,88 @@ namespace Interpretap.Views
     {
         bool _selectorExpanded;
 
+        #region Singleton properties
+        ClientProfileContentView _clientProfileView;
+        public ClientProfileContentView ClientProfileView
+        {
+            get
+            {
+                if (_clientProfileView == null)
+                {
+                    _clientProfileView = new ClientProfileContentView();
+                }
+                return _clientProfileView;
+            }
+            set
+            {
+                if (_clientProfileView != value)
+                {
+                    _clientProfileView = value;
+                }
+            }
+        }
+
+        InterpreterProfileContentView _interpreterProfileView;
+        public InterpreterProfileContentView InterpreterProfileView
+        {
+            get
+            {
+                if (_interpreterProfileView == null)
+                {
+                    _interpreterProfileView = new InterpreterProfileContentView();
+                }
+                return _interpreterProfileView;
+            }
+            set
+            {
+                if (_interpreterProfileView != value)
+                {
+                    _interpreterProfileView = value;
+                }
+            }
+        }
+
+        AgencyProfileContentView _agencyProfileView;
+        public AgencyProfileContentView AgencyProfileView
+        {
+            get
+            {
+                if (_agencyProfileView == null)
+                {
+                    _agencyProfileView = new AgencyProfileContentView();
+                }
+                return _agencyProfileView;
+            }
+            set
+            {
+                if (_agencyProfileView != value)
+                {
+                    _agencyProfileView = value;
+                }
+            }
+        }
+
+        BusinessProfileContentView _businessProfileView;
+        public BusinessProfileContentView BusinessProfileView
+        {
+            get
+            {
+                if (_businessProfileView == null)
+                {
+                    _businessProfileView = new BusinessProfileContentView();
+                }
+                return _businessProfileView;
+            }
+            set
+            {
+                if (_businessProfileView != value)
+                {
+                    _businessProfileView = value;
+                }
+            }
+        }
+        #endregion Singleton properties
+
         public ProfileViewModel ProfileViewModel { get; set; }
 
         public ProfilePage()
@@ -21,27 +103,17 @@ namespace Interpretap.Views
             this.BindingContext = ProfileViewModel;
 
             CalculateProfilesListHeight();
-            SetProfileViewToContent();
+            OnSelectedProfileChanged(ProfileViewModel.SelectedProfile);
             InitProfileSelectorOverlay();
+
+            ProfilesListView.ItemSelected += ProfilesListView_ItemSelected;
         }
 
         private void InitProfileSelectorOverlay()
         {
             var tgr = new TapGestureRecognizer();
-            tgr.Tapped += (s,e) => ToggleSelectorExpanded();
+            tgr.Tapped += (s, e) => ToggleSelectorExpanded();
             ProfileSelectorOverlay.GestureRecognizers.Add(tgr);
-        }
-
-        private void SetProfileViewToContent()
-        {
-            if (ProfileViewModel.UserType == UserTypes.Client)
-            {
-                SetViewToContent(new ClientProfileContentView());
-            }
-            if (ProfileViewModel.UserType == UserTypes.Interpreter)
-            {
-                SetViewToContent(new InterpreterProfileContentView());
-            }
         }
 
         private void SetViewToContent(ContentView view)
@@ -54,6 +126,21 @@ namespace Interpretap.Views
         {
             ToggleSelectorExpanded();
         }
+
+        private void ProfilesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+            {
+                return;
+            }
+
+            var selectedProfile = e.SelectedItem as ProfileSelectorItemViewModel;
+            OnSelectedProfileChanged(selectedProfile);
+            ToggleSelectorExpanded();
+
+            (sender as ListView).SelectedItem = null;
+        }
+
 
         private void ToggleSelectorExpanded()
         {
@@ -71,14 +158,32 @@ namespace Interpretap.Views
             _selectorExpanded = !_selectorExpanded;
         }
 
+        private void OnSelectedProfileChanged(ProfileSelectorItemViewModel newSelectedProfile)
+        {
+            if (newSelectedProfile.ProfileType == UserTypes.Client)
+            {
+                SetViewToContent(ClientProfileView);
+            }
+            if (newSelectedProfile.ProfileType == UserTypes.Interpreter)
+            {
+                SetViewToContent(InterpreterProfileView);
+            }
+            if (newSelectedProfile.ProfileType == UserTypes.Agency)
+            {
+                SetViewToContent(AgencyProfileView);
+                AgencyProfileView.SelectAgency(newSelectedProfile.InterpreterBusinessId);
+            }
+            if (newSelectedProfile.ProfileType == UserTypes.Business)
+            {
+                SetViewToContent(BusinessProfileView);
+                BusinessProfileView.SelectBusiness(newSelectedProfile.ClientBusinessId);
+            }
+            ProfileViewModel.SelectedProfile = newSelectedProfile;
+        }
+
         private void CalculateProfilesListHeight()
         {
             ProfilesListViewContainer.HeightRequest = Math.Min(SelectorLayout.Height, ProfilesListView.RowHeight * ProfileViewModel.Profiles.Count);
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
         }
     }
 }
