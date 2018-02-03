@@ -3,18 +3,22 @@ using Interpretap.Models;
 using Interpretap.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Interpretap.Views.InterpreterViews
+namespace Interpretap.CustomElements
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilePage : ContentPage
+    public partial class InterpreterProfileContentView : ContentView
     {
         UserModel _user;
         UserModel _userOld;
-        public ProfilePage()
+
+        public InterpreterProfileContentView()
         {
             InitializeComponent();
             SetActivityIndicatorState(false);
@@ -89,7 +93,7 @@ namespace Interpretap.Views.InterpreterViews
 
             if (nothingToUpdate)
             {
-                await DisplayAlert("Message", "Nothing is changed", "Ok");
+                await App.Current.MainPage.DisplayAlert("Message", "Nothing is changed", "Ok");
                 UpdatePage();
                 SetActivityIndicatorState(false);
                 return;
@@ -149,7 +153,7 @@ namespace Interpretap.Views.InterpreterViews
                 UpdatePage();
             }
 
-            await DisplayAlert("Message", updateUserRespond.Message, "Ok");
+            await App.Current.MainPage.DisplayAlert("Message", updateUserRespond.Message, "Ok");
             SetActivityIndicatorState(false);
         }
 

@@ -3,6 +3,7 @@ using Interpretap.Interfaces;
 using Interpretap.Services;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System;
 
 namespace Interpretap
 {
@@ -12,12 +13,14 @@ namespace Interpretap
         public static bool ToUpdateQueueFlag { get; set; }
         public static INotificationPayloadService NotificationPayloadService { get; set; }
         public static ActiveCallModel ActiveCall { get; set; }
+        public static UserModel User { get; set; }
 
         public App()
         {
             InitializeComponent();
             InitNotificationService();
             InitActiveCall();
+            InitUser();
             MainPage = new NavigationPage(new Interpretap.Views.LoginPage());
         }
 
@@ -65,6 +68,11 @@ namespace Interpretap
         {
             ActiveCall = new ActiveCallModel();
             //ActiveCall.FetchActiveCallRequestAsync();
+        }
+
+        private void InitUser()
+        {
+            User = new UserModel();
         }
 
         public static void ActivateLogsTab()

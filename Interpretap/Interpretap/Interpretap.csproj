@@ -48,6 +48,13 @@
     <Compile Include="Core\ActiveCallModel.cs" />
     <Compile Include="Core\InterpreterCallReportModel.cs" />
     <Compile Include="Core\ClientCallReportModel.cs" />
+    <Compile Include="Core\UserModel.cs" />
+    <Compile Include="CustomElements\ClientProfileContentView.xaml.cs">
+      <DependentUpon>ClientProfileContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElements\InterpreterProfileContentView.xaml.cs">
+      <DependentUpon>InterpreterProfileContentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\ICallReportModel.cs" />
     <Compile Include="Interfaces\ICallReportResponce.cs" />
     <Compile Include="Logout.cs" />
@@ -109,6 +116,7 @@
     <Compile Include="ViewModels\CallLogViewModel.cs" />
     <Compile Include="ViewModels\ABCallReportViewModel.cs" />
     <Compile Include="ViewModels\CallReportViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="Views\CallInfo.xaml.cs">
       <DependentUpon>CallInfo.xaml</DependentUpon>
@@ -135,6 +143,9 @@
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
@@ -153,17 +164,11 @@
     <Compile Include="Views\UserViews\CallLogPage.xaml.cs">
       <DependentUpon>CallLogPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserViews\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\InterpreterViews\CallQueuePage.xaml.cs">
       <DependentUpon>CallQueuePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\CallLogPage.xaml.cs">
       <DependentUpon>CallLogPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\InterpreterViews\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\TimerPage.xaml.cs">
       <DependentUpon>TimerPage.xaml</DependentUpon>
@@ -203,19 +208,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserViews\ProfilePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\InterpreterViews\CallQueuePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\InterpreterViews\CallLogPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\InterpreterViews\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -326,6 +323,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CallReportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\ClientProfileContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\InterpreterProfileContentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

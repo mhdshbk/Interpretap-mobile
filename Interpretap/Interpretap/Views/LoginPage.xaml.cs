@@ -32,6 +32,7 @@ namespace Interpretap.Views
             }
 
             LocalStorage.LoginResponseLS = loginResponse;
+            App.User.UserType = Constants.UserTypes.Client;
 
             App.ActiveCall.FetchActiveCallRequestAsync();
 
@@ -47,8 +48,7 @@ namespace Interpretap.Views
             if (loginResponse.UserInfo.IsManager)
                 page.Children.Add(new UserViews.BusinessesPage());
 
-
-            page.Children.Add(new UserViews.ProfilePage());
+            page.Children.Add(new ProfilePage());
             await NavigateAfterSuccessfulLogin(page);
             SetActivityIndicatorState(false);
         }
@@ -67,7 +67,8 @@ namespace Interpretap.Views
             }
 
             LocalStorage.LoginResponseLS = loginResponse;
-            //var loginResponse = LocalStorage.LoginResponseLS;
+            App.User.UserType = Constants.UserTypes.Interpreter;
+
 
             var page = new TabbedPage
             {
@@ -80,8 +81,8 @@ namespace Interpretap.Views
 
             if (loginResponse.UserInfo.IsManager)
                 page.Children.Add(new InterpreterViews.AgenciesPage());
-            if(true)
-            page.Children.Add(new InterpreterViews.ProfilePage());
+
+            page.Children.Add(new ProfilePage());
             await NavigateAfterSuccessfulLogin(page);
             SetActivityIndicatorState(false);
         }
