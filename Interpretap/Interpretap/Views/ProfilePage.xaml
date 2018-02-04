@@ -14,12 +14,13 @@
             Spacing="0">
 
             <StackLayout 
+                x:Name="ProfileSelectorView"
                 Orientation="Horizontal" 
                 HeightRequest="128"
                 Padding="6,0,6,0">
 
                 <StackLayout VerticalOptions="CenterAndExpand">
-                    <BoxView WidthRequest="96" HeightRequest="96" BackgroundColor="LightGray"/>
+                    <Image WidthRequest="96" HeightRequest="96" Source="{Binding SelectedProfile.ProfileTypeImage}" />
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
@@ -28,7 +29,11 @@
                 </StackLayout>
 
                 <StackLayout VerticalOptions="CenterAndExpand">
-                    <Button x:Name="SelectorButton" Text=">" Clicked="ProfileSelectorButtonClicked"/>
+                    <Image 
+                        x:Name="ArrowImage"
+                        WidthRequest="32" 
+                        HeightRequest="32" 
+                        Source="arrow_right_green.png" />
                 </StackLayout>
             </StackLayout>
 
@@ -67,7 +72,7 @@
                                                 Padding="6,0,6,0">
 
                                                 <StackLayout VerticalOptions="CenterAndExpand">
-                                                    <BoxView WidthRequest="48" HeightRequest="48" BackgroundColor="LightGray"/>
+                                                    <Image WidthRequest="32" HeightRequest="32" Source="{Binding ProfileTypeImage}" />
                                                 </StackLayout>
 
                                                 <StackLayout 
@@ -80,8 +85,8 @@
                                                     <Label Text="{Binding ProfileTypeCaption}" FontSize="Small"/>
                                                 </StackLayout>
 
-                                                <StackLayout VerticalOptions="CenterAndExpand">
-                                                    <BoxView WidthRequest="32" HeightRequest="32" BackgroundColor="LightGreen"/>
+                                                <StackLayout VerticalOptions="CenterAndExpand" IsVisible="{Binding IsSelected}">
+                                                    <Image WidthRequest="32" HeightRequest="32" Source="check_green.png" />
                                                 </StackLayout>
                                             </StackLayout>
                                         </ViewCell.View>

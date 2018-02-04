@@ -102,11 +102,19 @@ namespace Interpretap.Views
             ProfileViewModel = new ProfileViewModel();
             this.BindingContext = ProfileViewModel;
 
+            AddProfileSelectorViewTapRecognizer();
             CalculateProfilesListHeight();
             OnSelectedProfileChanged(ProfileViewModel.SelectedProfile);
             InitProfileSelectorOverlay();
 
             ProfilesListView.ItemSelected += ProfilesListView_ItemSelected;
+        }
+
+        private void AddProfileSelectorViewTapRecognizer()
+        {
+            var tgr = new TapGestureRecognizer();
+            tgr.Tapped += (s, e) => ToggleSelectorExpanded();
+            ProfileSelectorView.GestureRecognizers.Add(tgr);
         }
 
         private void InitProfileSelectorOverlay()
@@ -120,11 +128,6 @@ namespace Interpretap.Views
         {
             ContentLayout.Children.Clear();
             ContentLayout.Children.Add(view);
-        }
-
-        private void ProfileSelectorButtonClicked(object sender, EventArgs e)
-        {
-            ToggleSelectorExpanded();
         }
 
         private void ProfilesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -146,13 +149,13 @@ namespace Interpretap.Views
         {
             if (_selectorExpanded)
             {
+                ArrowImage.RotateTo(0, 100);
                 SelectorLayout.IsVisible = false;
-                SelectorButton.Text = ">";
             }
             else
             {
                 SelectorLayout.IsVisible = true;
-                SelectorButton.Text = "v";
+                ArrowImage.RotateTo(90, 100);
             }
 
             _selectorExpanded = !_selectorExpanded;
@@ -178,7 +181,7 @@ namespace Interpretap.Views
                 SetViewToContent(BusinessProfileView);
                 BusinessProfileView.SelectBusiness(newSelectedProfile.ClientBusinessId);
             }
-            ProfileViewModel.SelectedProfile = newSelectedProfile;
+            ProfileViewModel.SelectProfile(newSelectedProfile);
         }
 
         private void CalculateProfilesListHeight()

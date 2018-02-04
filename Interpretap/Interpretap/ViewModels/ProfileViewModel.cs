@@ -1,12 +1,13 @@
 ﻿using Interpretap.Common;
+using Interpretap.Models;
 using PropertyChanged;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 using static Interpretap.Common.Constants;
-using System;
-using Interpretap.Models;
 
 namespace Interpretap.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class ProfileSelectorItemViewModel
     {
         public string ProfileName { get; set; }
@@ -14,6 +15,8 @@ namespace Interpretap.ViewModels
         public UserTypes ProfileType { get; set; }
         public int ClientBusinessId { get; set; }
         public int InterpreterBusinessId { get; set; }
+        public bool IsSelected { get; set; }
+        public ImageSource ProfileTypeImage { get; set; }
     }
 
     [AddINotifyPropertyChangedInterface]
@@ -22,13 +25,31 @@ namespace Interpretap.ViewModels
         UserModel _userInfo => LocalStorage.LoginResponseLS.UserInfo;
 
         public ObservableCollection<ProfileSelectorItemViewModel> Profiles { get; set; }
-        public ProfileSelectorItemViewModel SelectedProfile { get; set; }
+        public ProfileSelectorItemViewModel SelectedProfile { get; private set; }
 
         public UserTypes UserType => App.User.UserType;
+
+        public object ProfileTypeImage { get; private set; }
 
         public ProfileViewModel()
         {
             LoadProfileSelectorItems();
+        }
+
+        public void SelectProfile(ProfileSelectorItemViewModel profile)
+        {
+            foreach (var p in Profiles)
+            {
+                if (p == profile)
+                {
+                    p.IsSelected = true;
+                }
+                else
+                {
+                    p.IsSelected = false;
+                }
+            }
+            SelectedProfile = profile;
         }
 
         private void LoadProfileSelectorItems()
@@ -45,7 +66,7 @@ namespace Interpretap.ViewModels
                 AddInterpreterProfileItem();
                 AddAgencies();
             }
-            SelectedProfile = Profiles[0];
+            SelectProfile(Profiles[0]);
         }
 
         private void AddClientProfileItem()
@@ -55,6 +76,7 @@ namespace Interpretap.ViewModels
                 ProfileName = $"{_userInfo.FirstName} {_userInfo.LastName}",
                 ProfileTypeCaption = "Client",
                 ProfileType = UserTypes.Client,
+                ProfileTypeImage = ImageSource.FromFile("account_circle_gray.png"),
             };
             Profiles.Add(clientProfileItem);
         }
@@ -66,6 +88,7 @@ namespace Interpretap.ViewModels
                 ProfileName = $"{_userInfo.FirstName} {_userInfo.LastName}",
                 ProfileTypeCaption = "Interpreter",
                 ProfileType = UserTypes.Interpreter,
+                ProfileTypeImage = ImageSource.FromFile("account_circle_gray.png"),
             };
             Profiles.Add(interpreterProfileItem);
         }
@@ -80,6 +103,7 @@ namespace Interpretap.ViewModels
                     ProfileName = business.BusinessInfo.BusinessName,
                     ProfileTypeCaption = "Business",
                     ProfileType = UserTypes.Business,
+                    ProfileTypeImage = ImageSource.FromFile("briefbag.png"),
                 };
                 Profiles.Add(businessProfileItem);
             }
@@ -95,6 +119,7 @@ namespace Interpretap.ViewModels
                     ProfileName = agency.BusinessInfo.BusinessName,
                     ProfileTypeCaption = "Agency",
                     ProfileType = UserTypes.Agency,
+                    ProfileTypeImage = ImageSource.FromFile("briefbag.png"),
                 };
                 Profiles.Add(agencyProfileItem);
             }
