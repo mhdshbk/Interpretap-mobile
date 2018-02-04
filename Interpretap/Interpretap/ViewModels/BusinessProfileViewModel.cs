@@ -165,7 +165,7 @@ namespace Interpretap.ViewModels
                 Province = this.Province != _businessOriginalInfo.BusinessProvince ? this.Province : null,
                 ZipCode = this.ZipCode != _businessOriginalInfo.BusinessZipCode ? this.ZipCode : null,
                 PhoneNumber = this.PhoneNumber != _businessOriginalInfo.BusinessPhoneNumber ? this.PhoneNumber : null,
-                Id = this._businessInfo.CoreBusinessId.ToString()
+                Id = _businessId.ToString()
             };
 
             var service = new BusinessService();
@@ -179,6 +179,7 @@ namespace Interpretap.ViewModels
             else
             {
                 UpdateLocalStorage();
+                await App.Current.MainPage.DisplayAlert("Notification", updateResponce.Message, "OK");
                 IsDirty = false;
             }
 

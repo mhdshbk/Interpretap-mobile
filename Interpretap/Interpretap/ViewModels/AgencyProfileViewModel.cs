@@ -169,7 +169,7 @@ namespace Interpretap.ViewModels
                 Province = this.Province != _agencyOriginalInfo.BusinessProvince ? this.Province : null,
                 ZipCode = this.ZipCode != _agencyOriginalInfo.BusinessZipCode ? this.ZipCode : null,
                 PhoneNumber = this.PhoneNumber != _agencyOriginalInfo.BusinessPhoneNumber ? this.PhoneNumber : null,
-                Id = this._agencyInfo.CoreBusinessId.ToString()
+                Id = _agencyId.ToString()
             };
 
             var service = new AgencyService();
@@ -183,6 +183,7 @@ namespace Interpretap.ViewModels
             else
             {
                 UpdateLocalStorage();
+                await App.Current.MainPage.DisplayAlert("Notification", updateResponce.Message, "OK");
                 IsDirty = false;
             }
 
