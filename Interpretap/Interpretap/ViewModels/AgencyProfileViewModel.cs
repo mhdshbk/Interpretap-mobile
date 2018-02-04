@@ -111,7 +111,7 @@ namespace Interpretap.ViewModels
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Warning", "Nothing is chhanged", "OK");
+                await App.Current.MainPage.DisplayAlert("Warning", "Nothing is changed", "OK");
             }
         }
 
@@ -179,7 +179,6 @@ namespace Interpretap.ViewModels
             if (!updateSuccess)
             {
                 await App.Current.MainPage.DisplayAlert("Error", updateResponce.Message, "OK");
-                LoadData(_agencyId);
             }
             else
             {
