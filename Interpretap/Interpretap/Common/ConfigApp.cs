@@ -30,6 +30,7 @@
         public const string FetchMonthlyCallAmountAgencyAPI = RestApiBaseUrl + "agency/fetch_monthly_call_amount";
         public const string FetchAgencyReportAPI = RestApiBaseUrl + "agency/fetch_agency_report";
         public const string FetchAssociatedAgenciesAPI = RestApiBaseUrl + "agency/fetch_associated_agencies";
+        public const string UpdateAgencyAPI = RestApiBaseUrl + "agency/update_agency";
 
         public const string FetchFifteenCallsBusinessAPI = RestApiBaseUrl + "business/fetch_fifteen_calls";
         public const string FetchMonthlyCallAmountBusinessAPI = RestApiBaseUrl + "business/fetch_monthly_call_amount";

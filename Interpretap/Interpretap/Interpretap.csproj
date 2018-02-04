@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Interfaces\ICallQueueService.cs" />
     <Compile Include="Models\AgencyModel.cs" />
+    <Compile Include="Models\AgencyUpdateModel.cs" />
     <Compile Include="Models\AssignInterpreterRequestModel.cs" />
     <Compile Include="Models\AssignInterpreterResponce.cs" />
     <Compile Include="Models\BaseInterpreterApiRequest.cs" />
