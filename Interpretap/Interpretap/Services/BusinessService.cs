@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interpretap.Services
 {
-    public class BusinessService : BaseService
+    public class BusinessService : BaseServiceNoNulls
     {
         public async Task<FetchCallLogResponse> FetchCallLogs(CallLogRequestModel callLogRequestModel)
         {
@@ -70,6 +70,22 @@ namespace Interpretap.Services
             }
 
             return fetchAssociatedBusinessResponse;
+        }
+
+        public async Task<BaseRespond> UpdateBusiness(BusinessUpdateModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await PostNoNulls<BaseRespond, BusinessUpdateModel>(UpdateBusinessAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
         }
     }
 }

@@ -39,7 +39,7 @@
                     <Entry Text="{Binding ZipCode}"/>
 
                     <BoxView HeightRequest="6"/>
-                    <Button Text="Update"/>
+                    <Button Text="Update" Command="{Binding UpdateCommand}" IsEnabled="{Binding CanExecuteUpdateCommand}"/>
                 </StackLayout>
             </ScrollView>
 

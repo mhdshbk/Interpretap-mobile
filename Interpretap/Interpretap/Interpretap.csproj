@@ -74,6 +74,7 @@
     <Compile Include="Models\AssignInterpreterResponce.cs" />
     <Compile Include="Models\BaseInterpreterApiRequest.cs" />
     <Compile Include="Models\BusinessModel.cs" />
+    <Compile Include="Models\BusinessUpdateModel.cs" />
     <Compile Include="Models\CallInfoModel.cs" />
     <Compile Include="Models\CallLogRequestModel.cs" />
     <Compile Include="Models\CallReportRequestModel.cs" />
