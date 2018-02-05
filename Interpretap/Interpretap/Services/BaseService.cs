@@ -1,4 +1,5 @@
 ﻿using Interpretap.Common;
+using Interpretap.Models.RespondModels;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -36,15 +37,30 @@ namespace Interpretap.Services
 
         protected async Task<TResult> Post<TResult, TData>(string endPoint, TData data) where TData : class where TResult : class
         {
+            if (!Connectivity.CheckConnection())
+            {
+                throw new System.Exception("Device offline");
+            }
+
             HttpClient httpClient = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, endPoint);
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var z = JsonConvert.SerializeObject(data);
             request.Content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.SendAsync(request);
+            HttpResponseMessage response;
+            try
+            {
+                response = await httpClient.SendAsync(request);
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
             string result = await response.Content.ReadAsStringAsync();
+
             var e = JsonConvert.DeserializeObject<TResult>(result);
             var responceChecker = new ResponceContentStatusChecker();
+
             responceChecker.Check(e);
             return e;
         }
