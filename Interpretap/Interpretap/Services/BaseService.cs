@@ -1,12 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Interpretap.Common;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
 using System.Text;
-using Interpretap.Common;
-using Interpretap.Models.RespondModels;
+using System.Threading.Tasks;
 
 namespace Interpretap.Services
 {
@@ -46,6 +44,8 @@ namespace Interpretap.Services
             HttpResponseMessage response = await httpClient.SendAsync(request);
             string result = await response.Content.ReadAsStringAsync();
             var e = JsonConvert.DeserializeObject<TResult>(result);
+            var responceChecker = new ResponceContentStatusChecker();
+            responceChecker.Check(e);
             return e;
         }
 

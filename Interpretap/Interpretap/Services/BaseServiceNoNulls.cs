@@ -22,6 +22,8 @@ namespace Interpretap.Services
             HttpResponseMessage response = await httpClient.SendAsync(request);
             string result = await response.Content.ReadAsStringAsync();
             var e = JsonConvert.DeserializeObject<TResult>(result);
+            var responceChecker = new ResponceContentStatusChecker();
+            responceChecker.Check(e);
             return e;
         }
     }

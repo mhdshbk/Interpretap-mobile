@@ -15,9 +15,14 @@ namespace Interpretap
             var logoutApiResult = await CallLogoutAPIAsync();
             if (logoutApiResult)
             {
-                ClearLoginData();
-                DisplayLoginPage();
+                ClearUserData();
             }
+        }
+
+        public void ClearUserData()
+        {
+            ClearLoginData();
+            DisplayLoginPage();
         }
 
         private async Task<bool> CallLogoutAPIAsync()

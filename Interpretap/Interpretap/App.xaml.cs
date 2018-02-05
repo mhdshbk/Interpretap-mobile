@@ -3,7 +3,6 @@ using Interpretap.Interfaces;
 using Interpretap.Services;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using System;
 
 namespace Interpretap
 {
@@ -14,6 +13,7 @@ namespace Interpretap
         public static INotificationPayloadService NotificationPayloadService { get; set; }
         public static ActiveCallModel ActiveCall { get; set; }
         public static UserModel User { get; set; }
+        public static MessagingCenterListenter MessagingCenterListenter { get; set; }
 
         public App()
         {
@@ -21,6 +21,7 @@ namespace Interpretap
             InitNotificationService();
             InitActiveCall();
             InitUser();
+            InitMessagingCenterListener();
             MainPage = new NavigationPage(new Interpretap.Views.LoginPage());
         }
 
@@ -74,6 +75,12 @@ namespace Interpretap
         {
             User = new UserModel();
         }
+
+        private void InitMessagingCenterListener()
+        {
+            MessagingCenterListenter = new MessagingCenterListenter();
+        }
+
 
         public static void ActivateLogsTab()
         {

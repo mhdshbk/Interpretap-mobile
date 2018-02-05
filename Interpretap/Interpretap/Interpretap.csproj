@@ -68,6 +68,7 @@
       <DependentUpon>ActiveCallView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICallQueueService.cs" />
+    <Compile Include="MessagingCenterListenter.cs" />
     <Compile Include="Models\AgencyModel.cs" />
     <Compile Include="Models\AgencyUpdateModel.cs" />
     <Compile Include="Models\AssignInterpreterRequestModel.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Services\CallQueueService.cs" />
     <Compile Include="Services\CallService.cs" />
     <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\ResponceContentStatusChecker.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\ActiveCallViewModel.cs" />
     <Compile Include="ViewModels\AgencyProfileViewModel.cs" />

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Interpretap.Common
 {
@@ -23,6 +20,12 @@ namespace Interpretap.Common
         public enum UserTypes
         {
             Client, Interpreter, Business, Agency
+        }
+
+        public static class Strings
+        {
+            public static string SessionKeyInvalidMessage = "Session key is invalid";
+            public static string SessionFailed = "Session failed";
         }
     }
 }
