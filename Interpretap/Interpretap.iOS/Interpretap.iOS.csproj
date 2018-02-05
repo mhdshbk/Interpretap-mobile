@@ -151,6 +151,9 @@
     <Reference Include="OneSignal.iOS.Binding">
       <HintPath>..\..\packages\Com.OneSignal.3.0.1\lib\Xamarin.iOS10\OneSignal.iOS.Binding.dll</HintPath>
     </Reference>
+    <Reference Include="KeyboardOverlap.Forms.Plugin.iOSUnified">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.KeyboardOverlap.1.0.0.4\lib\Xamarin.iOS10\KeyboardOverlap.Forms.Plugin.iOSUnified.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interpretap\Interpretap.csproj">
