@@ -68,8 +68,8 @@ namespace Interpretap.Services
             {
                 var e = JsonConvert.DeserializeObject<TResult>(result);
                 var responceChecker = new ResponceContentStatusChecker();
-
                 responceChecker.Check(e);
+
                 return e;
             }
             catch (Exception ex)
