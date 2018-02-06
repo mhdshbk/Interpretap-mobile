@@ -18,5 +18,10 @@ namespace Interpretap.Common
         {
             App.Current.MainPage.DisplayAlert("Error", "Connection timeout", "OK");
         }
+
+        internal static void OnError()
+        {
+            App.Current.MainPage.DisplayAlert("Error", "Network error", "OK");
+        }
     }
 }

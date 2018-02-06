@@ -59,6 +59,7 @@ namespace Interpretap.Services
             }
             catch (Exception ex)
             {
+                Connectivity.OnError();
                 throw;
             }
             string result = await response.Content.ReadAsStringAsync();
