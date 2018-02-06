@@ -1,5 +1,6 @@
 ﻿using Interpretap.Common;
 using Interpretap.Models;
+using Interpretap.Models.RespondModels;
 using Interpretap.Services;
 using Interpretap.Views;
 using System.Linq;
@@ -13,9 +14,14 @@ namespace Interpretap
         public async Task LogoutAsync()
         {
             var logoutApiResult = await CallLogoutAPIAsync();
-            if (logoutApiResult)
+            var logoutSuccess = logoutApiResult.Status == true;
+            if (logoutSuccess)
             {
                 ClearUserData();
+            }
+            else
+            {
+                App.Current.MainPage.DisplayAlert("Error", logoutApiResult.Message, "OK");
             }
         }
 
@@ -25,13 +31,12 @@ namespace Interpretap
             DisplayLoginPage();
         }
 
-        private async Task<bool> CallLogoutAPIAsync()
+        private async Task<BaseRespond> CallLogoutAPIAsync()
         {
             var userServise = new UserService();
             var logoutRequest = new BaseModel();
             var logoutResponce = await userServise.Logout(logoutRequest);
-            var logoutResult = logoutResponce.Status == true;
-            return logoutResult;
+            return logoutResponce;
         }
 
         void ClearLoginData()
