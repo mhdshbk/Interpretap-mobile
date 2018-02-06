@@ -1,6 +1,6 @@
 ﻿using Interpretap.Common;
-using Interpretap.Models.RespondModels;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -39,7 +39,7 @@ namespace Interpretap.Services
         {
             if (!Connectivity.CheckConnection())
             {
-                throw new System.Exception("Device offline");
+                throw new Exception("Device offline");
             }
 
             HttpClient httpClient = new HttpClient();
@@ -52,7 +52,12 @@ namespace Interpretap.Services
             {
                 response = await httpClient.SendAsync(request);
             }
-            catch (System.Exception ex)
+            catch (TaskCanceledException tcEx)
+            {
+                Connectivity.OnTimeout();
+                throw;
+            }
+            catch (Exception ex)
             {
                 throw;
             }

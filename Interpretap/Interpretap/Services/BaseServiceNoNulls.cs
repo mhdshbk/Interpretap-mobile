@@ -30,6 +30,11 @@ namespace Interpretap.Services
             {
                 response = await httpClient.SendAsync(request);
             }
+            catch (TaskCanceledException tcEx)
+            {
+                Connectivity.OnTimeout();
+                throw;
+            }
             catch (System.Exception ex)
             {
                 throw;

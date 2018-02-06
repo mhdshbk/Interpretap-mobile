@@ -1,9 +1,4 @@
 ﻿using Plugin.Connectivity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Interpretap.Common
 {
@@ -17,6 +12,11 @@ namespace Interpretap.Common
                 App.Current.MainPage.DisplayAlert("Warning", "Device is offline", "OK");
             }
             return isConnected;
+        }
+
+        public static void OnTimeout()
+        {
+            App.Current.MainPage.DisplayAlert("Error", "Connection timeout", "OK");
         }
     }
 }
