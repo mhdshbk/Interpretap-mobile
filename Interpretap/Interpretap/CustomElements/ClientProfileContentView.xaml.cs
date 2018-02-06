@@ -161,6 +161,7 @@ namespace Interpretap.CustomElements
         {
             SetActivityIndicatorState(true);
             await App.LogoutAsync();
+            SetActivityIndicatorState(false);
         }
 
         private void SetActivityIndicatorState(bool enable)
