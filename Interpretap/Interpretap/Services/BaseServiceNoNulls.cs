@@ -37,13 +37,24 @@ namespace Interpretap.Services
             }
             catch (System.Exception ex)
             {
+                Connectivity.OnError();
                 throw;
             }
             string result = await response.Content.ReadAsStringAsync();
-            var e = JsonConvert.DeserializeObject<TResult>(result);
-            var responceChecker = new ResponceContentStatusChecker();
-            responceChecker.Check(e);
-            return e;
+
+            try
+            {
+                var e = JsonConvert.DeserializeObject<TResult>(result);
+                var responceChecker = new ResponceContentStatusChecker();
+                responceChecker.Check(e);
+
+                return e;
+            }
+            catch (System.Exception ex)
+            {
+                Connectivity.OnError();
+                throw;
+            }
         }
     }
 }

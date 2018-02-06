@@ -64,11 +64,19 @@ namespace Interpretap.Services
             }
             string result = await response.Content.ReadAsStringAsync();
 
-            var e = JsonConvert.DeserializeObject<TResult>(result);
-            var responceChecker = new ResponceContentStatusChecker();
+            try
+            {
+                var e = JsonConvert.DeserializeObject<TResult>(result);
+                var responceChecker = new ResponceContentStatusChecker();
 
-            responceChecker.Check(e);
-            return e;
+                responceChecker.Check(e);
+                return e;
+            }
+            catch (Exception ex)
+            {
+                Connectivity.OnError();
+                throw;
+            }
         }
 
         protected async Task<TResult> Put<TResult>(string endPoint, string id, TResult data) where TResult : class
