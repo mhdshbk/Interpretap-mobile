@@ -51,6 +51,10 @@ namespace Interpretap.ViewModels
                 IsVisible = false;
                 CallCanceled?.Invoke(this, new EventArgs());
             }
+            else
+            {
+                App.Current.MainPage.DisplayAlert("Error", responce.Message, "OK");
+            }
             IsActivityIndicatorVisible = false;
         }
 
