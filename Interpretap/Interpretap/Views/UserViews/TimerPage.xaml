@@ -9,6 +9,15 @@
             x:TypeArguments="Thickness"
             iOS="0,20,0,0" />
     </ContentPage.Padding>   
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" >
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" BackgroundColor="AliceBlue">
@@ -18,18 +27,18 @@
             <BoxView Color="Black" WidthRequest="100" HeightRequest="2" />
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Agency:" FontSize="24" />
-                <Label Text="{Binding Agency}" FontSize="24" />
+                <Label Text="Agency:" />
+                <Label Text="{Binding Agency}" />
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-                <Label Text="User:" FontSize="24" />
-                <Label Text="{Binding InterpreterFullName}" FontSize="24" />
+                <Label Text="User:" />
+                <Label Text="{Binding InterpreterFullName}" />
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-                <Label Text="Call ID:" FontSize="24" />
-                <Label Text="{Binding CallId}" FontSize="24" />
+                <Label Text="Call ID:" />
+                <Label Text="{Binding CallId}"  />
             </StackLayout>
 
             <Label x:Name="Lbl_Call_Status" Text="{Binding CallStatus}" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,50"/>
