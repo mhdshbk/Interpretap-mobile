@@ -5,26 +5,42 @@
             x:Class="Interpretap.Views.InterpreterViews.CallQueuePage"
             x:Name="CallQueuePage2"
             Title="Call Queue">
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,20,0,0"/>
+    </ContentPage.Padding>
     <ContentPage.Content>
         <AbsoluteLayout>
 
-            <ScrollView
+            <StackLayout
                 AbsoluteLayout.LayoutFlags="All"
                 AbsoluteLayout.LayoutBounds="0,0,1,1">
 
-                <ListView  x:Name="listView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout x:Name="blabla" Orientation="Horizontal">
-                                    <Label Text="{Binding FullName}" HorizontalOptions="StartAndExpand"/>
-                                    <Button x:Name="btn" Text="Accept" HorizontalOptions="EndAndExpand" Command="{Binding StartTimerCommand}"  CommandParameter=""/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollView>
+                <ScrollView>
+
+                    <ListView  x:Name="listView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout x:Name="blabla" Orientation="Horizontal">
+                                        <Label Text="{Binding FullName}" HorizontalOptions="StartAndExpand"/>
+                                        <Button x:Name="btn" Text="Accept" HorizontalOptions="EndAndExpand" Command="{Binding StartTimerCommand}"  CommandParameter=""/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Call ID:" VerticalTextAlignment="Center"/>
+                    <Entry x:Name="EntryCallId" HorizontalOptions="FillAndExpand"/>
+                    <Button Text="Cancel" Clicked="Handle_Clicked"/>
+                </StackLayout>
+
+                <BoxView HeightRequest="6"/>
+            </StackLayout>
 
             <ActivityIndicator 
                 IsRunning="True" 

@@ -50,5 +50,14 @@ namespace Interpretap.Views.InterpreterViews
             firstTime = false;
         }
 
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            var request = new BaseInterpreterApiRequest()
+            {
+                CallId = EntryCallId.Text
+            };
+            var service = new InterpreterService();
+            service.CancelCall(request);
+        }
     }
 }
