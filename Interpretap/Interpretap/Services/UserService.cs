@@ -87,5 +87,21 @@ namespace Interpretap.Services
 
             return respond;
         }
+
+        public async Task<FetchCurrentCallResponce> FetchCurrentCall(BaseModel requestModel)
+        {
+            var responce = new FetchCurrentCallResponce();
+
+            try
+            {
+                responce = await Post<FetchCurrentCallResponce, BaseModel>(FetchCurrentCallUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }

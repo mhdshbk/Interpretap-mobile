@@ -40,22 +40,6 @@ namespace Interpretap.Services
             return responce;
         }
 
-        public async Task<FetchCurrentCallResponce> FetchCurrentCall(BaseModel requestModel)
-        {
-            var responce = new FetchCurrentCallResponce();
-
-            try
-            {
-                responce = await Post<FetchCurrentCallResponce, BaseModel>(FetchCurrentCallClientAPI, requestModel);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e.Message);
-            }
-
-            return responce;
-        }
-
         public async Task<BaseRespond> CancelCallRequest(CancelCallRequestModel requestModel)
         {
             var responce = new BaseRespond();

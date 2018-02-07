@@ -9,10 +9,10 @@
         public const string InsertUserAPI = RestApiBaseUrl + "user/insert_user";
         public const string UpdateUserAPI = RestApiBaseUrl + "user/update_user";
         public const string LogoutUserAPI = RestApiBaseUrl + "user/logout";
+        public const string FetchCurrentCallUserAPI = RestApiBaseUrl + "user/fetch_current_call_info";
 
         public const string FetchFifteenCallsClientAPI = RestApiBaseUrl + "client/fetch_fifteen_calls";
         public const string CreateCallRequestClientAPI = RestApiBaseUrl + "client/create_call_request";
-        public const string FetchCurrentCallClientAPI = RestApiBaseUrl + "client/fetch_current_call";
         public const string CancelCallClientAPI = RestApiBaseUrl + "client/cancel_call";
         public const string FetchMonthReportClientAPI = RestApiBaseUrl + "client/fetch_client_report";
 

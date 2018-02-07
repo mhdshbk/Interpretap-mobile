@@ -15,7 +15,7 @@ namespace Interpretap.Core
 
         public async Task FetchActiveCallRequestAsync()
         {
-            var service = new ClientService();
+            var service = new UserService();
             var request = new BaseModel();
             var responce = await service.FetchCurrentCall(request);
             ActiveCallRequest = responce;

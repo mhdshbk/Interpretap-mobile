@@ -22,14 +22,19 @@ namespace Interpretap.ViewModels
 
         FetchCurrentCallResponce ActiveCallRequest => App.ActiveCall.ActiveCallRequest;
 
-        public string CallId => ActiveCallRequest.CallId;
+        public string CallId { get; set; }
         public string CallStatus { get; set; }
 
         public string ElapsedTime { get; set; }
+        public string Agency { get; private set; } 
+        public string InterpreterFullName { get; private set; }
 
         public UserTimerViewModel()
         {
             ElapsedTime = "00:00:00";
+
+            App.ActiveCall.FetchActiveCallRequestAsync();
+            App.ActiveCall.PropertyChanged += ActiveCall_PropertyChanged;
 
             _ellipsisCount = 0;
             _ellipsisAnimationAlive = true;
@@ -44,6 +49,17 @@ namespace Interpretap.ViewModels
             _timer = new MyTimer(TimeSpan.FromSeconds(1), () => ElapsedTime = _timer.GetTimePassed());
 
             AnimateEllipsis();
+        }
+
+        private void ActiveCall_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(App.ActiveCall.ActiveCallRequest))
+            {
+                Agency = ActiveCallRequest.CallInfo.AgencyInfo.InterpreterBusinessName;
+                var interpreter = ActiveCallRequest.CallInfo.InterpreterInfo;
+                InterpreterFullName = $"{interpreter.InterpreterFirstName} {interpreter.InterpreterLastName}";
+                CallId = ActiveCallRequest.CallInfo.CallDetails.CallReferenceId;
+            }
         }
 
         void OnStarted(object sender, EventArgs e)
@@ -69,14 +85,19 @@ namespace Interpretap.ViewModels
         {
             _timer.Stop();
             CallStatus = "Call finished";
-            OnimerDone();
+            OnTimerDone();
         }
 
         void OnCanceled(object sender, EventArgs e)
         {
             _ellipsisAnimationAlive = false;
             CallStatus = "Call canceled";
-            OnimerDone();
+            OnTimerDone();
+        }
+
+        void FetchCallInfo()
+        {
+
         }
 
         async void AnimateEllipsis()
@@ -100,7 +121,7 @@ namespace Interpretap.ViewModels
             }
         }
 
-        private void OnimerDone()
+        private void OnTimerDone()
         {
             App.ToUpdateLogsFlag = true;
             TimerDone?.Invoke(this, new EventArgs());

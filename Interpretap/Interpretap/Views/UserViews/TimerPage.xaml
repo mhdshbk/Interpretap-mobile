@@ -17,13 +17,20 @@
                 HorizontalOptions="CenterAndExpand" />
             <BoxView Color="Black" WidthRequest="100" HeightRequest="2" />
 
-            <Label Text="Agency: To be wired" FontSize="24" />
-            <Label Text="Gender: To be wired" FontSize="24" />
             <StackLayout Orientation="Horizontal">
-                <Label Text="ID:" FontSize="24" />
+                <Label Text="Agency:" FontSize="24" />
+                <Label Text="{Binding Agency}" FontSize="24" />
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="User:" FontSize="24" />
+                <Label Text="{Binding InterpreterFullName}" FontSize="24" />
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Call ID:" FontSize="24" />
                 <Label Text="{Binding CallId}" FontSize="24" />
-            </StackLayout> 
-
+            </StackLayout>
 
             <Label x:Name="Lbl_Call_Status" Text="{Binding CallStatus}" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,50"/>
         </StackLayout>

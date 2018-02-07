@@ -65,6 +65,9 @@ namespace Interpretap.Models
         [JsonProperty("interpreter_id")]
         public int InterpreterId { get; set; }
 
+        [JsonProperty("interpreter_user_id")]
+        public string InterpreterUserId { get; set; }
+
         [JsonProperty("call_interpreter_first_name")]
         public string InterpreterFirstName { get; set; }
 
