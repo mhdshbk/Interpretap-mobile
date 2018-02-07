@@ -5,9 +5,12 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Interpretap.Models.RespondModels;
+using PropertyChanged;
 
 namespace Interpretap.Views.InterpreterViews
 {
+    [AddINotifyPropertyChangedInterface]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TimerPage : ContentPage
     {
@@ -16,6 +19,14 @@ namespace Interpretap.Views.InterpreterViews
 
         string _callId { get; set; }
         bool _isPaused { get; set; }
+
+        public string ClientCompany { get; set; }
+        public string ClientId { get; set; }
+        public string ClientFullName { get; set; }
+        public string CallRefId { get; set; }
+        public string ClientPhone { get; set; }
+
+        FetchCurrentCallResponce ActiveCallRequest => App.ActiveCall.ActiveCallRequest;
 
         private void SetTimerActive(bool activeStatus)
         {
@@ -35,8 +46,32 @@ namespace Interpretap.Views.InterpreterViews
 
         public TimerPage(string callId = null)
         {
+            App.ActiveCall.FetchActiveCallRequestAsync();
+            App.ActiveCall.PropertyChanged += ActiveCall_PropertyChanged;
+
             _callId = callId;
             InitializeComponent();
+
+            this.BindingContext = this;
+        }
+
+        private void ActiveCall_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(App.ActiveCall.ActiveCallRequest))
+            {
+                try
+                {
+                    ClientCompany = ActiveCallRequest.CallInfo.ClientBusinessInfo.BusinessName;
+                    ClientId = ActiveCallRequest.CallInfo.ClientInfo.UserId;
+                    ClientFullName = $"{ActiveCallRequest.CallInfo.ClientInfo.FirstName} {ActiveCallRequest.CallInfo.ClientInfo.LastName}";
+                    CallRefId = ActiveCallRequest.CallInfo.CallDetails.CallReferenceId;
+                    ClientPhone = ActiveCallRequest.CallInfo.ClientInfo.PhoneNumber;
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
 
         private async Task StartCallProcedureAsync(object sender, EventArgs e)

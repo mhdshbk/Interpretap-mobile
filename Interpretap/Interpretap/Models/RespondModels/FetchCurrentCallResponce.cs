@@ -32,6 +32,12 @@ namespace Interpretap.Models.RespondModels
         [JsonProperty("agency_info")]
         public AgencyInfo AgencyInfo { get; set; }
 
+        [JsonProperty("client_info")]
+        public ClientDetails ClientInfo { get; set; }
+
+        [JsonProperty("associated_client_business")]
+        public AssociatedClientBusiness AssociatedClientBusiness { get; set; }
+
         [JsonProperty("pause_info")]
         public bool PauseInfo { get; set; }
     }
@@ -55,5 +61,36 @@ namespace Interpretap.Models.RespondModels
 
         [JsonProperty("interpreter_business_name")]
         public string InterpreterBusinessName { get; set; }
+    }
+
+    public partial class ClientDetails
+    {
+        [JsonProperty("client_id")]
+        public string Id { get; set; }
+
+        [JsonProperty("client_user_id")]
+        public string UserId { get; set; }
+
+        [JsonProperty("call_client_first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("call_client_last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+    }
+
+
+    public partial class AssociatedClientBusiness
+    {
+        [JsonProperty("client_business_id")]
+        public string ClientBusinessId { get; set; }
+
+        [JsonProperty("business_id")]
+        public string BusinessId { get; set; }
+
+        [JsonProperty("business_name")]
+        public string BusinessName { get; set; }
     }
 }

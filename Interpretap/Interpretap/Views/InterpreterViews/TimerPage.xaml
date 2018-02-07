@@ -10,6 +10,15 @@
             iOS="0,20,0,0" />
     </ContentPage.Padding>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" >
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" BackgroundColor="AliceBlue">
             <Label Text="00:00:00"
@@ -19,28 +28,28 @@
             <BoxView Color="Black" WidthRequest="100" HeightRequest="2" />
 
             <StackLayout Orientation="Horizontal">
-                <Label Text="Company:" FontSize="24" />
-                <Label Text="To be wired" FontSize="24" />
+                <Label Text="Company:" />
+                <Label Text="{Binding ClientCompany}"  />
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-                <Label Text="ID:" FontSize="24" />
-                <Label Text="To be wired" FontSize="24" />
+                <Label Text="ID:" />
+                <Label Text="{Binding ClientId}" />
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-                <Label Text="User:" FontSize="24" />
-                <Label Text="To be wired" FontSize="24" />
+                <Label Text="User:" />
+                <Label Text="{Binding ClientFullName}"  />
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-                <Label Text="Call Ref ID:" FontSize="24" />
-                <Label Text="To be wired" FontSize="24" />
+                <Label Text="Call Ref ID:" />
+                <Label Text="{Binding CallRefId}" />
             </StackLayout>
             
             <StackLayout Orientation="Horizontal">
-                <Label Text="Phone:" FontSize="24" />
-                <Label Text="To be wired" FontSize="24" />
+                <Label Text="Phone:" />
+                <Label Text="{Binding ClientPhone}" />
             </StackLayout>
 
             <StackLayout x:Name="StartCallsStack" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,51" IsVisible="True">
