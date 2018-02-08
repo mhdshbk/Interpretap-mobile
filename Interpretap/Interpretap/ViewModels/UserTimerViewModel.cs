@@ -26,7 +26,7 @@ namespace Interpretap.ViewModels
         public string CallStatus { get; set; }
 
         public string ElapsedTime { get; set; }
-        public string Agency { get; private set; } 
+        public string Agency { get; private set; }
         public string InterpreterFullName { get; private set; }
 
         public UserTimerViewModel()
@@ -55,10 +55,21 @@ namespace Interpretap.ViewModels
         {
             if (e.PropertyName == nameof(App.ActiveCall.ActiveCallRequest))
             {
-                Agency = ActiveCallRequest.CallInfo.AgencyInfo.InterpreterBusinessName;
-                var interpreter = ActiveCallRequest.CallInfo.InterpreterInfo;
-                InterpreterFullName = $"{interpreter.InterpreterFirstName} {interpreter.InterpreterLastName}";
-                CallId = ActiveCallRequest.CallInfo.CallDetails.CallReferenceId;
+                try
+                {
+                    Agency = ActiveCallRequest.CallInfo.AgencyInfo.InterpreterBusinessName;
+                    var interpreter = ActiveCallRequest.CallInfo.InterpreterInfo;
+                    InterpreterFullName = $"{interpreter.InterpreterFirstName} {interpreter.InterpreterLastName}";
+                    CallId = ActiveCallRequest.CallInfo.CallDetails.CallReferenceId;
+                }
+                catch(NullReferenceException)
+                {
+
+                }
+                catch(Exception)
+                {
+                    throw;
+                }
             }
         }
 
@@ -124,6 +135,7 @@ namespace Interpretap.ViewModels
         private void OnTimerDone()
         {
             App.ToUpdateLogsFlag = true;
+            App.ActiveCall.ActiveCallRequest = null;
             TimerDone?.Invoke(this, new EventArgs());
         }
     }
