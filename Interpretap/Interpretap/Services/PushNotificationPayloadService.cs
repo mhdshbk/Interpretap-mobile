@@ -4,6 +4,7 @@ using Com.OneSignal.Abstractions;
 using Interpretap.Interfaces;
 using Interpretap.Services.Misc;
 using Plugin.LocalNotifications;
+using Interpretap.Models;
 
 namespace Interpretap.Services
 {
@@ -24,6 +25,17 @@ namespace Interpretap.Services
                      .HandleNotificationReceived(OnNotificationReceived)
                      .InFocusDisplaying(OSInFocusDisplayOption.None)
                      .EndInit();
+            OneSignal.Current.IdsAvailable(async (id, token) => await OnIdsAvailableAsync(id, token));
+        }
+
+        private async System.Threading.Tasks.Task OnIdsAvailableAsync(string playerID, string pushToken)
+        {
+            var updateDeviceIdRequest = new UpdateDeviceIdRequestModel()
+            {
+                DeviceId = playerID
+            };
+            var service = new UserService();
+            var result = await service.UpdateDeviceId(updateDeviceIdRequest);
         }
 
         private void OnNotificationReceived(OSNotification notification)

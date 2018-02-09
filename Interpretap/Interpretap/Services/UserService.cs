@@ -103,5 +103,21 @@ namespace Interpretap.Services
 
             return responce;
         }
+
+        public async Task<BaseRespond> UpdateDeviceId(UpdateDeviceIdRequestModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, UpdateDeviceIdRequestModel>(UpdateDeviceIdUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }

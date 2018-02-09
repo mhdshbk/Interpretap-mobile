@@ -93,6 +93,7 @@
     <Compile Include="Models\RespondModels\InnerTypes\ClientReport.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\ReportInfo.cs" />
     <Compile Include="Models\RespondModels\InterpreterCallReportResponce.cs" />
+    <Compile Include="Models\UpdateDeviceIdRequestModel.cs" />
     <Compile Include="Models\UpdateModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
