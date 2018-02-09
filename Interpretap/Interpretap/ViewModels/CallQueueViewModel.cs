@@ -8,6 +8,7 @@ using Interpretap.Common;
 using System.Linq;
 using Interpretap.Models.RespondModels;
 using Interpretap.Interfaces;
+using System.Windows.Input;
 
 namespace Interpretap.ViewModels
 {
@@ -33,11 +34,20 @@ namespace Interpretap.ViewModels
             }
         }
 
+        public ICommand RefreshCommand { get; set; }
+        public bool IsRefreshing => false;
+
         public CallQueueViewModel()
         {
             _queueCalls = new ObservableCollection<OpenCallModel>();
             _callQueueService = new CallQueueService();
             _callQueueService.CallRequested += async (s, e) => await OnCallRequestedAsync(s, e);
+            RefreshCommand = new Command(async () => await RefreshCommandExecute());
+        }
+
+        private async Task RefreshCommandExecute()
+        {
+            await ReloadData();
         }
 
         private async Task OnCallRequestedAsync(object sender, EventArgs e)

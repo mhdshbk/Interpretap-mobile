@@ -15,23 +15,26 @@
 
             <StackLayout
                 AbsoluteLayout.LayoutFlags="All"
-                AbsoluteLayout.LayoutBounds="0,0,1,1">
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                VerticalOptions="FillAndExpand">
 
-                <ScrollView>
-
-                    <ListView  x:Name="listView">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout x:Name="blabla" Orientation="Horizontal">
-                                        <Label Text="{Binding FullName}" HorizontalOptions="StartAndExpand"/>
-                                        <Button x:Name="btn" Text="Accept" HorizontalOptions="EndAndExpand" Command="{Binding StartTimerCommand}"  CommandParameter=""/>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollView>
+                <ListView  
+                    x:Name="listView"
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    IsRefreshing="{Binding IsBusy}">
+                    
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout x:Name="blabla" Orientation="Horizontal">
+                                    <Label Text="{Binding FullName}" HorizontalOptions="StartAndExpand"/>
+                                    <Button x:Name="btn" Text="Accept" HorizontalOptions="EndAndExpand" Command="{Binding StartTimerCommand}"  CommandParameter=""/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Call ID:" VerticalTextAlignment="Center"/>
