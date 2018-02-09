@@ -118,6 +118,7 @@
     <Compile Include="Services\CallService.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\ResponceContentStatusChecker.cs" />
+    <Compile Include="Services\SyncService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\ActiveCallViewModel.cs" />
     <Compile Include="ViewModels\AgencyProfileViewModel.cs" />

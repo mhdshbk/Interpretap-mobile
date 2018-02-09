@@ -23,5 +23,10 @@ namespace Interpretap.Views.UserViews
             base.OnAppearing();
             _ViewModel.OnAppearingAsync();
         }
+
+        private void CrashButton_Clicked(object sender, System.EventArgs e)
+        {
+            App.Crash();
+        }
     }
 }

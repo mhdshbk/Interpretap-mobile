@@ -3,6 +3,7 @@ using Interpretap.Models.RespondModels;
 using Interpretap.Services;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using static Interpretap.Common.ConfigApp;
 
 namespace Interpretap.Core
 {
@@ -44,6 +45,17 @@ namespace Interpretap.Core
             var responce = await service.CancelCallRequest(request);
             FetchActiveCallRequestAsync();
             return responce;
+        }
+
+        public void OnAppCrash()
+        {
+            if (ActiveCallRequest == null) return;
+            var request = new CancelCallRequestModel()
+            {
+                CallId = ActiveCallRequest.CallId
+            };
+            var syncService = new SyncService();
+            syncService.Post(CancelCallClientAPI, request);
         }
     }
 }

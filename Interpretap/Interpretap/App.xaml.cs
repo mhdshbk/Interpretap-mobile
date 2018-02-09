@@ -3,6 +3,7 @@ using Interpretap.Interfaces;
 using Interpretap.Services;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using static Interpretap.Common.Constants;
 
 namespace Interpretap
 {
@@ -14,6 +15,12 @@ namespace Interpretap
         public static ActiveCallModel ActiveCall { get; set; }
         public static UserModel User { get; set; }
         public static MessagingCenterListenter MessagingCenterListenter { get; set; }
+
+        public static void Crash()
+        {
+            var a = 0;
+            var b = 1 / a;
+        }
 
         public App()
         {
@@ -36,6 +43,11 @@ namespace Interpretap
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public static void OnUnhandledException()
+        {
+            ActiveCall.OnAppCrash();
         }
 
         static void OnNotificationPayloadReceived(object sender, Services.Misc.PayloadReceivedEventArgs e)
@@ -67,7 +79,6 @@ namespace Interpretap
         private static void InitActiveCall()
         {
             ActiveCall = new ActiveCallModel();
-            //ActiveCall.FetchActiveCallRequestAsync();
         }
 
         private void InitUser()
@@ -88,6 +99,7 @@ namespace Interpretap
 
         private static void OpenClientTimerPage()
         {
+            if (User.UserType != UserTypes.Client) return;
             Device.BeginInvokeOnMainThread(() =>
             {
                 Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage());
@@ -96,6 +108,7 @@ namespace Interpretap
 
         private static void ActivateQueueTab()
         {
+            if (User.UserType != UserTypes.Interpreter) return;
             ActivateMainPageTab(0);
         }
 

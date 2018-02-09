@@ -25,6 +25,7 @@
                 <Label Text="New call request cannot be made while another call request is active" HorizontalTextAlignment="Center" />
                 <BoxView HeightRequest="20"/>
                 <cv:ActiveCallView x:Name="ActiveCallView" />
+                <Button Text="Crash application" Clicked="CrashButton_Clicked" BackgroundColor="Red"/>
             </StackLayout>
 
             <StackLayout 
