@@ -64,7 +64,7 @@
     </Compile>
     <Compile Include="Interfaces\ICallReportModel.cs" />
     <Compile Include="Interfaces\ICallReportResponce.cs" />
-    <Compile Include="Logout.cs" />
+    <Compile Include="LoginManager.cs" />
     <Compile Include="CustomElements\ActiveCallView.xaml.cs">
       <DependentUpon>ActiveCallView.xaml</DependentUpon>
     </Compile>

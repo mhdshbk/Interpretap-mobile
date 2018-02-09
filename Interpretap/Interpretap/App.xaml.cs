@@ -18,7 +18,6 @@ namespace Interpretap
         public App()
         {
             InitializeComponent();
-            InitNotificationService();
             InitActiveCall();
             InitUser();
             InitMessagingCenterListener();
@@ -59,7 +58,7 @@ namespace Interpretap
             }
         }
 
-        private static void InitNotificationService()
+        public static void InitNotificationService()
         {
             NotificationPayloadService = new PushNotificationPayloadService();
             NotificationPayloadService.PayloadReceived += OnNotificationPayloadReceived;
@@ -112,8 +111,8 @@ namespace Interpretap
 
         public static async Task LogoutAsync()
         {
-            var logout = new Logout();
-            await logout.LogoutAsync();
+            var lm = new LoginManager();
+            await lm.LogoutAsync();
         }
     }
 }

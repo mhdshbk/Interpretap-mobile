@@ -9,8 +9,13 @@ using Xamarin.Forms;
 
 namespace Interpretap
 {
-    public class Logout
+    public class LoginManager 
     {
+        public void OnLoginSuccessfull()
+        {
+            App.InitNotificationService();
+        }
+
         public async Task LogoutAsync()
         {
             var logoutApiResult = await CallLogoutAPIAsync();

@@ -34,6 +34,9 @@ namespace Interpretap.Views
             LocalStorage.LoginResponseLS = loginResponse;
             App.User.UserType = Constants.UserTypes.Client;
 
+            var lm = new LoginManager();
+            lm.OnLoginSuccessfull();
+
             App.ActiveCall.FetchActiveCallRequestAsync();
 
             var page = new TabbedPage
@@ -69,6 +72,8 @@ namespace Interpretap.Views
             LocalStorage.LoginResponseLS = loginResponse;
             App.User.UserType = Constants.UserTypes.Interpreter;
 
+            var lm = new LoginManager();
+            lm.OnLoginSuccessfull();
 
             var page = new TabbedPage
             {

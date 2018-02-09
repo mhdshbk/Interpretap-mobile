@@ -13,7 +13,7 @@ namespace Interpretap
 
         private void OnSessionKeyInvalidMessageAsync(ResponceContentStatusChecker obj)
         {
-            var logout = new Logout();
+            var logout = new LoginManager();
             logout.ClearUserData();
             App.Current.MainPage.DisplayAlert("Warning", "User's session has ended", "OK");
         }
