@@ -1,10 +1,12 @@
-﻿using System;
-using Com.OneSignal;
+﻿using Com.OneSignal;
 using Com.OneSignal.Abstractions;
+using Interpretap.Common;
 using Interpretap.Interfaces;
+using Interpretap.Models;
 using Interpretap.Services.Misc;
 using Plugin.LocalNotifications;
-using Interpretap.Models;
+using System.Threading.Tasks;
+using static Interpretap.Common.Constants;
 
 namespace Interpretap.Services
 {
@@ -28,14 +30,22 @@ namespace Interpretap.Services
             OneSignal.Current.IdsAvailable(async (id, token) => await OnIdsAvailableAsync(id, token));
         }
 
-        private async System.Threading.Tasks.Task OnIdsAvailableAsync(string playerID, string pushToken)
+        private async Task OnIdsAvailableAsync(string playerID, string pushToken)
         {
+            if (App.User.UserType == UserTypes.Client && LocalStorage.ClientOneSignalId == playerID) return;
+            if (App.User.UserType == UserTypes.Interpreter && LocalStorage.InterpreterOneSignalId == playerID) return;
+
             var updateDeviceIdRequest = new UpdateDeviceIdRequestModel()
             {
                 DeviceId = playerID
             };
             var service = new UserService();
             var result = await service.UpdateDeviceId(updateDeviceIdRequest);
+            if (result.Status == true)
+            {
+                if (App.User.UserType == UserTypes.Client) LocalStorage.ClientOneSignalId = playerID;
+                if (App.User.UserType == UserTypes.Interpreter) LocalStorage.InterpreterOneSignalId = playerID;
+            }
         }
 
         private void OnNotificationReceived(OSNotification notification)
