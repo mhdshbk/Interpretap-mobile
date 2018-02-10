@@ -14,6 +14,8 @@ namespace Interpretap.Views.InterpreterViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TimerPage : ContentPage
     {
+        private string CallPausedStatusId = "4";
+
         private bool _timerActive = false;
         private MyTimer timer;
 
@@ -47,12 +49,18 @@ namespace Interpretap.Views.InterpreterViews
         public TimerPage(string callId = null)
         {
             App.ActiveCall.FetchActiveCallRequestAsync();
-            App.ActiveCall.PropertyChanged += ActiveCall_PropertyChanged;
 
             _callId = callId;
             InitializeComponent();
-
             this.BindingContext = this;
+
+            App.ActiveCall.PropertyChanged += ActiveCall_PropertyChanged;
+
+            var isRecentlyCrashedCall = App.ActiveCall.ActiveCallRequest.CallId == callId;
+            if (isRecentlyCrashedCall)
+            {
+                RestoreCrashedCall();
+            }
         }
 
         private void ActiveCall_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -83,10 +91,12 @@ namespace Interpretap.Views.InterpreterViews
 
             SetTimerActive(true);
 
-            if (timer == null) {
+            if (timer == null)
+            {
                 timer = new MyTimer(TimeSpan.FromSeconds(1), UpdateTimerLabel);
                 timer.Start();
-            } else
+            }
+            else
             {
                 timer.Stop();
                 timer.Start();
@@ -131,12 +141,7 @@ namespace Interpretap.Views.InterpreterViews
 
         private void UpdateTimerLabel()
         {
-            if (timer == null)
-                return;
-
-            if (timer == null)
-                return;
-
+            if (timer == null) return;
 
             Lbl_Time.Text = timer.GetTimePassed();
         }
@@ -165,9 +170,37 @@ namespace Interpretap.Views.InterpreterViews
             });
         }
 
+        private void RestoreCrashedCall()
+        {
+            var call = App.ActiveCall.ActiveCallRequest.CallInfo;
+            if (call.CallStatusInfo.CallStatusId == CallPausedStatusId)
+            {
+                SetTimerActive(true);
+                if (timer == null)
+                {
+                    timer = new MyTimer(TimeSpan.FromSeconds(1), UpdateTimerLabel);
+                }
+
+                TimeSpan timeElapsed = new TimeSpan();
+                if (TimeSpan.TryParse(call.DurationInfo, out timeElapsed))
+                {
+                    timer.SetTimePassed(timeElapsed);
+                    UpdateTimerLabel();
+                }
+
+                _isPaused = true;
+                BtnTogglePause.Text = "Unpause"; // I don't proud of this
+            }
+        }
+
         protected override bool OnBackButtonPressed()
         {
             return true;
+        }
+
+        private void CrashButton_Clicked(object sender, EventArgs e)
+        {
+            App.Crash();
         }
     }
 }

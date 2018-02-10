@@ -89,6 +89,11 @@ namespace Interpretap.Views
 
             page.Children.Add(new ProfilePage());
             await NavigateAfterSuccessfulLogin(page);
+            await App.ActiveCall.FetchActiveCallRequestAsync();
+            if (App.ActiveCall.ActiveCallExist)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new Views.InterpreterViews.TimerPage(App.ActiveCall.ActiveCallRequest.CallId));
+            }
             SetActivityIndicatorState(false);
         }
 

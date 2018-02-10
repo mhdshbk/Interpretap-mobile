@@ -1,5 +1,6 @@
 ﻿using Interpretap.Models.RespondModels.InnerTypes;
 using Newtonsoft.Json;
+using System;
 
 namespace Interpretap.Models.RespondModels
 {
@@ -39,7 +40,22 @@ namespace Interpretap.Models.RespondModels
         public AssociatedClientBusiness AssociatedClientBusiness { get; set; }
 
         [JsonProperty("pause_info")]
-        public bool PauseInfo { get; set; }
+        public PauseInfo[] PauseInfo { get; set; }
+
+        [JsonProperty("duration_info")]
+        public string DurationInfo { get; set; }
+    }
+
+    public partial class PauseInfo
+    {
+        [JsonProperty("call_pause_start_date")]
+        public string CallPauseStartDate { get; set; }
+
+        [JsonProperty("call_pause_end_date")]
+        public string CallPauseEndDate { get; set; }
+
+        [JsonProperty("pause_seconds")]
+        public string PauseSeconds { get; set; }
     }
 
     public partial class CallStatusInfo
