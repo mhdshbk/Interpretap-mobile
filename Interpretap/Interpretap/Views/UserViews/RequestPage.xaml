@@ -79,7 +79,8 @@
                 HorizontalOptions="FillAndExpand"
                 Text="Crash application" 
                 Clicked="CrashButton_Clicked" 
-                BackgroundColor="Red"/>
+                BackgroundColor="Red"
+                TextColor="Black"/>
 
             <ActivityIndicator 
                 IsRunning="True" 
