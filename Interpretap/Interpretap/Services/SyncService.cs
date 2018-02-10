@@ -19,10 +19,6 @@ namespace Interpretap.Services
             request.Content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
             var sendAsyncTask = httpClient.SendAsync(request);
             sendAsyncTask.Wait();
-            var result = sendAsyncTask.Result;
-            var cTask = result.Content.ReadAsStringAsync();
-            cTask.Wait();
-            var s = JsonConvert.DeserializeObject<Models.RespondModels.BaseRespond>(cTask.Result);
         }
     }
 }
