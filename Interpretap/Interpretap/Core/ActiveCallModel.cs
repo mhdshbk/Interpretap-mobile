@@ -4,6 +4,7 @@ using Interpretap.Services;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using static Interpretap.Common.ConfigApp;
+using static Interpretap.Common.Constants;
 
 namespace Interpretap.Core
 {
@@ -24,7 +25,7 @@ namespace Interpretap.Core
 
         public async Task<FetchCurrentCallResponce> GetActiveCallRequestAsync()
         {
-            if (ActiveCallRequest==null)
+            if (ActiveCallRequest == null)
             {
                 await FetchActiveCallRequestAsync();
             }
@@ -49,13 +50,35 @@ namespace Interpretap.Core
 
         public void OnAppCrash()
         {
-            if (ActiveCallRequest == null) return;
+            if (ActiveCallRequest.CallId == null) return;
+            if (App.User.UserType == UserTypes.Client)
+            {
+                OnAppCrashClient();
+            }
+            if (App.User.UserType == UserTypes.Interpreter)
+            {
+                OnAppCrashInterpreter();
+            }
+        }
+
+        private void OnAppCrashClient()
+        {
             var request = new CancelCallRequestModel()
             {
                 CallId = ActiveCallRequest.CallId
             };
             var syncService = new SyncService();
             syncService.Post(CancelCallClientAPI, request);
+        }
+
+        private void OnAppCrashInterpreter()
+        {
+            var request = new BaseInterpreterApiRequest()
+            {
+                CallId = ActiveCallRequest.CallId
+            };
+            var syncService = new SyncService();
+            syncService.Post(PauseCallInterpreterAPI, request);
         }
     }
 }
