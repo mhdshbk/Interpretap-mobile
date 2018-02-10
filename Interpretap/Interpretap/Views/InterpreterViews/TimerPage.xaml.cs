@@ -181,10 +181,15 @@ namespace Interpretap.Views.InterpreterViews
                     timer = new MyTimer(TimeSpan.FromSeconds(1), UpdateTimerLabel);
                 }
 
-                TimeSpan timeElapsed = new TimeSpan();
-                if (TimeSpan.TryParse(call.DurationInfo, out timeElapsed))
+                try
                 {
-                    timer.SetTimePassed(timeElapsed);
+                    timer.SetTimePassed(call.DurationInfo);
+                    UpdateTimerLabel();
+                }
+                // call.DurationInfo is invalid 
+                catch(ArgumentOutOfRangeException)
+                {
+                    timer.SetTimePassed("00:00:00");
                     UpdateTimerLabel();
                 }
 
