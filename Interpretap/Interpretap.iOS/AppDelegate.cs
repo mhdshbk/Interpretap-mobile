@@ -33,6 +33,7 @@ namespace Interpretap.iOS
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
+            App.OnUnhandledException();
         }
     }
 }
