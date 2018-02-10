@@ -28,6 +28,11 @@ namespace Interpretap.Droid
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             App.OnUnhandledException();
+            var ex = e.ExceptionObject as Exception;
+            if (ex != null)
+            {
+                App.ReportException(ex);
+            }
         }
     }
 }

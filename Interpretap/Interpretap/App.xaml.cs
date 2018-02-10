@@ -1,6 +1,7 @@
 ﻿using Interpretap.Core;
 using Interpretap.Interfaces;
 using Interpretap.Services;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using static Interpretap.Common.Constants;
@@ -48,6 +49,32 @@ namespace Interpretap
         public static void OnUnhandledException()
         {
             ActiveCall.OnAppCrash();
+        }
+
+        public static void ReportException(Exception ex)
+        {
+            var message = ex.Message ?? string.Empty;
+            var stackTrace = ex.StackTrace ?? string.Empty;
+
+            string innerMessage = string.Empty;
+            string innerStackTrace = string.Empty;
+
+            if (ex.InnerException != null)
+            {
+                innerMessage = ex.InnerException.Message ?? string.Empty;
+                innerStackTrace = ex.InnerException.StackTrace ?? string.Empty;
+            }
+
+            var request = new Models.ExceptionDataModel()
+            {
+                Message = message,
+                StackTrace = stackTrace,
+                InnerMessage = innerMessage,
+                InnerStackTrace = innerStackTrace,
+            };
+
+            var syncService = new SyncService();
+            syncService.Post(Interpretap.Common.ConfigApp.NotifyCrashAPI, request);
         }
 
         static void OnNotificationPayloadReceived(object sender, Services.Misc.PayloadReceivedEventArgs e)

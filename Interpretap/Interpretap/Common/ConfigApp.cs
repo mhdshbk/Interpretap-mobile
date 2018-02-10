@@ -43,6 +43,7 @@
         public const string FetchCallAPI = RestApiBaseUrl + "call/fetch_call_info";
 
         public const string FetchAllLanguagesAPI = RestApiBaseUrl + "misc/fetch_all_languages";
+        public const string NotifyCrashAPI = RestApiBaseUrl + "misc/notify_crash";
 
     }
 }

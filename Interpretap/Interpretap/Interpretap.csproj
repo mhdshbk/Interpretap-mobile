@@ -83,6 +83,7 @@
     <Compile Include="Models\CallRequestModel.cs" />
     <Compile Include="Models\CancelCallRequestModel.cs" />
     <Compile Include="Models\CreateCallRequestModel.cs" />
+    <Compile Include="Models\ExceptionDataModel.cs" />
     <Compile Include="Models\FifteenCallModel.cs" />
     <Compile Include="Models\FifteenCallsRequestModel.cs" />
     <Compile Include="Models\LanguageModel.cs" />
