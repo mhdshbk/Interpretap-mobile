@@ -48,6 +48,12 @@ namespace Interpretap.ViewModels
 
             _timer = new MyTimer(TimeSpan.FromSeconds(1), () => ElapsedTime = _timer.GetTimePassed());
 
+            var isRecentlyCrashedCall = App.ActiveCall.ActiveCallRequest.CallInfo.DurationInfo != null;
+            if (isRecentlyCrashedCall)
+            {
+                RestorePage();
+            }
+
             AnimateEllipsis();
         }
 
@@ -62,11 +68,11 @@ namespace Interpretap.ViewModels
                     InterpreterFullName = $"{interpreter.InterpreterFirstName} {interpreter.InterpreterLastName}";
                     CallId = ActiveCallRequest.CallInfo.CallDetails.CallReferenceId;
                 }
-                catch(NullReferenceException)
+                catch (NullReferenceException)
                 {
 
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -83,6 +89,10 @@ namespace Interpretap.ViewModels
         void OnPaused(object sender, EventArgs e)
         {
             _timer.Stop();
+            if (_ellipsisAnimationAlive)
+            {
+                _ellipsisAnimationAlive = false;
+            }
             CallStatus = "Call paused";
         }
 
@@ -129,6 +139,35 @@ namespace Interpretap.ViewModels
                 _ellipsisCount++;
                 CallStatus = ssb.ToString();
                 await Task.Delay(ellipsisAnimationDelayMillis);
+            }
+        }
+
+        private void RestorePage()
+        {
+            var call = App.ActiveCall.ActiveCallRequest.CallInfo;
+
+            var CallLiveStatusId = "3";
+            var CallPausedStatusId = "4";
+
+            try
+            {
+                _timer.SetTimePassed(call.DurationInfo);
+                ElapsedTime = _timer.GetTimePassed();
+            }
+            // call.DurationInfo is invalid 
+            catch (ArgumentOutOfRangeException)
+            {
+                _timer.SetTimePassed("00:00:00");
+                ElapsedTime = _timer.GetTimePassed();
+            }
+
+            if (call.CallStatusInfo.CallStatusId == CallPausedStatusId)
+            {
+                OnPaused(this, new EventArgs());
+            }
+            if (call.CallStatusInfo.CallStatusId == CallLiveStatusId)
+            {
+                OnStarted(this, new EventArgs());
             }
         }
 
