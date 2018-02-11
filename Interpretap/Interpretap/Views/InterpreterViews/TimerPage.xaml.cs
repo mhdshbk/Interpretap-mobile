@@ -14,6 +14,7 @@ namespace Interpretap.Views.InterpreterViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TimerPage : ContentPage
     {
+        private string CallLiveStatusId = "3";
         private string CallPausedStatusId = "4";
 
         private bool _timerActive = false;
@@ -173,28 +174,42 @@ namespace Interpretap.Views.InterpreterViews
         private void RestoreCrashedCall()
         {
             var call = App.ActiveCall.ActiveCallRequest.CallInfo;
+
             if (call.CallStatusInfo.CallStatusId == CallPausedStatusId)
             {
                 SetTimerActive(true);
-                if (timer == null)
-                {
-                    timer = new MyTimer(TimeSpan.FromSeconds(1), UpdateTimerLabel);
-                }
-
-                try
-                {
-                    timer.SetTimePassed(call.DurationInfo);
-                    UpdateTimerLabel();
-                }
-                // call.DurationInfo is invalid 
-                catch(ArgumentOutOfRangeException)
-                {
-                    timer.SetTimePassed("00:00:00");
-                    UpdateTimerLabel();
-                }
+                RestoreTimerForCall(call);
 
                 _isPaused = true;
                 BtnTogglePause.Text = "Unpause"; // I don't proud of this
+            }
+            if (call.CallStatusInfo.CallStatusId == CallLiveStatusId)
+            {
+                SetTimerActive(true);
+                RestoreTimerForCall(call);
+
+                timer.Start();
+                BtnTogglePause.Text = "Pause"; // I don't proud of this
+            }
+
+        }
+
+        private void RestoreTimerForCall(Models.RespondModels.CallInfo call)
+        {
+            if (timer == null)
+            {
+                timer = new MyTimer(TimeSpan.FromSeconds(1), UpdateTimerLabel);
+            }
+            try
+            {
+                timer.SetTimePassed(call.DurationInfo);
+                UpdateTimerLabel();
+            }
+            // call.DurationInfo is invalid 
+            catch (ArgumentOutOfRangeException)
+            {
+                timer.SetTimePassed("00:00:00");
+                UpdateTimerLabel();
             }
         }
 
