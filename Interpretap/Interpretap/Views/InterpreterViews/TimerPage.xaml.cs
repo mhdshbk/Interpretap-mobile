@@ -18,6 +18,7 @@ namespace Interpretap.Views.InterpreterViews
         private string CallPausedStatusId = "4";
 
         private bool _timerActive = false;
+        private bool _timerStarted = false;
         private MyTimer timer;
 
         string _callId { get; set; }
@@ -62,6 +63,8 @@ namespace Interpretap.Views.InterpreterViews
             {
                 RestoreCrashedCall();
             }
+
+            MessagingCenter.Subscribe<App>(this, Constants.Strings.AppResumed, async (o) => await OnAppResumedAsync(o));
         }
 
         private void ActiveCall_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -96,11 +99,13 @@ namespace Interpretap.Views.InterpreterViews
             {
                 timer = new MyTimer(TimeSpan.FromSeconds(1), UpdateTimerLabel);
                 timer.Start();
+                _timerStarted = true;
             }
             else
             {
                 timer.Stop();
                 timer.Start();
+                _timerStarted = true;
             }
         }
 
@@ -115,6 +120,7 @@ namespace Interpretap.Views.InterpreterViews
                 // unpausing
                 await service.UnpauseCall(request);
                 timer.Start();
+                _timerStarted = true;
                 ((Button)sender).Text = "Pause";
                 BtnEndCall.IsEnabled = true;
             }
@@ -123,6 +129,7 @@ namespace Interpretap.Views.InterpreterViews
                 // pausing
                 await service.PauseCall(request);
                 timer.Stop();
+                _timerStarted = false;
                 ((Button)sender).Text = "Unpause";
                 BtnEndCall.IsEnabled = false;
             }
@@ -137,6 +144,7 @@ namespace Interpretap.Views.InterpreterViews
             request.CallId = _callId;
             await service.EndCall(request);
             timer.Stop();
+            _timerStarted = false;
             CloseTimerPage();
         }
 
@@ -188,7 +196,11 @@ namespace Interpretap.Views.InterpreterViews
                 SetTimerActive(true);
                 RestoreTimerForCall(call);
 
-                timer.Start();
+                if (!_timerStarted)
+                {
+                    timer.Start();
+                    _timerStarted = true;
+                }
                 BtnTogglePause.Text = "Pause"; // I don't proud of this
             }
 
@@ -211,6 +223,12 @@ namespace Interpretap.Views.InterpreterViews
                 timer.SetTimePassed("00:00:00");
                 UpdateTimerLabel();
             }
+        }
+
+        private async Task OnAppResumedAsync(App obj)
+        {
+            await App.ActiveCall.FetchActiveCallRequestAsync();
+            RestoreCrashedCall();
         }
 
         protected override bool OnBackButtonPressed()

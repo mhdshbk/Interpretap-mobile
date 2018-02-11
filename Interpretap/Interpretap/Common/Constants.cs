@@ -26,6 +26,7 @@ namespace Interpretap.Common
         {
             public static string SessionKeyInvalidMessage = "Session key is invalid";
             public static string SessionFailed = "Session failed";
+            public static string AppResumed = "app_resumed";
         }
     }
 }

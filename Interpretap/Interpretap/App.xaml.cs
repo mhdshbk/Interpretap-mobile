@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using static Interpretap.Common.Constants;
+using Interpretap.Common;
 
 namespace Interpretap
 {
@@ -43,7 +44,7 @@ namespace Interpretap
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            MessagingCenter.Send(this, Constants.Strings.AppResumed);
         }
 
         public static void OnUnhandledException()
