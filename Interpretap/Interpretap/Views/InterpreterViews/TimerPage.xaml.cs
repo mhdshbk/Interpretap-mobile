@@ -172,6 +172,7 @@ namespace Interpretap.Views.InterpreterViews
         {
             App.ToUpdateLogsFlag = true;
             App.ToUpdateQueueFlag = true;
+            MessagingCenter.Unsubscribe<App>(this, Constants.Strings.AppResumed);
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await App.Current.MainPage.Navigation.PopAsync();
