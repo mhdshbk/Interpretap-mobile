@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Interpretap.Models.RespondModels;
+using Newtonsoft.Json;
 using System;
 
 namespace Interpretap.Models
@@ -42,7 +43,7 @@ namespace Interpretap.Models
         public string StatusInfo { get; set; }
 
         [JsonProperty("pause_info")]
-        public bool PauseInfo { get; set; }
+        public PauseInfo[] PauseInfo { get; set; }
 
         [JsonProperty("interpreter_business_billing_info")]
         public InterpreterBusinessBillingInfo InterpreterBusinessBillingInfo { get; set; }
