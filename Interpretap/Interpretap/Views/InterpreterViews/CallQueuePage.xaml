@@ -27,7 +27,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout x:Name="blabla" Orientation="Horizontal">
-                                    <Label Text="{Binding FullName}" HorizontalOptions="StartAndExpand"/>
+                                    <Label Text="{Binding FullName}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
                                     <Button x:Name="btn" Text="Accept" HorizontalOptions="EndAndExpand" Command="{Binding StartTimerCommand}"  CommandParameter=""/>
                                 </StackLayout>
                             </ViewCell>
