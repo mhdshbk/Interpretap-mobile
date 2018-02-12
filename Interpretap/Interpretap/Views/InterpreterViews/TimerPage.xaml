@@ -54,13 +54,6 @@
                 <Label Text="{Binding ClientPhone}" />
             </StackLayout>
 
-            <Button 
-                Text="Crash application" 
-                HorizontalOptions="Center"
-                Clicked="CrashButton_Clicked"
-                BackgroundColor="Red"
-                TextColor="Black"/>
-
             <StackLayout x:Name="StartCallsStack" Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,51" IsVisible="True">
                 <Button Text="Start Call"  Clicked="StartCallProcedureAsync" />
                 <Button Text="Cancel Call"  Clicked="CancelCallButtonClickedAsync" />

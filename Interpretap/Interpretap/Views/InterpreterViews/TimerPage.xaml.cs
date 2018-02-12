@@ -235,10 +235,5 @@ namespace Interpretap.Views.InterpreterViews
         {
             return true;
         }
-
-        private void CrashButton_Clicked(object sender, EventArgs e)
-        {
-            App.Crash();
-        }
     }
 }

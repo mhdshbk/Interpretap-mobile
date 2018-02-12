@@ -73,15 +73,6 @@
                 </StackLayout>
             </StackLayout>
 
-            <Button 
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="0.5,0.8"
-                HorizontalOptions="FillAndExpand"
-                Text="Crash application" 
-                Clicked="CrashButton_Clicked" 
-                BackgroundColor="Red"
-                TextColor="Black"/>
-
             <ActivityIndicator 
                 IsRunning="True" 
                 IsVisible="{Binding IsBusy}"

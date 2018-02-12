@@ -18,12 +18,6 @@ namespace Interpretap
         public static UserModel User { get; set; }
         public static MessagingCenterListenter MessagingCenterListenter { get; set; }
 
-        public static void Crash()
-        {
-            var a = 0;
-            var b = 1 / a;
-        }
-
         public App()
         {
             InitializeComponent();
