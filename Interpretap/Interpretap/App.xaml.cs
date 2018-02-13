@@ -48,6 +48,9 @@ namespace Interpretap
 
         public static void ReportException(Exception ex)
         {
+            if (LocalStorage.LoginResponseLS == null) return;
+            if (string.IsNullOrEmpty(LocalStorage.LoginResponseLS.SessionKey)) return;
+
             var message = ex.Message ?? string.Empty;
             var stackTrace = ex.StackTrace ?? string.Empty;
 
