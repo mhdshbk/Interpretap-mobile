@@ -3,6 +3,7 @@ using Interpretap.Core;
 using Interpretap.Interfaces;
 using Interpretap.Services;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using static Interpretap.Common.Constants;
@@ -133,13 +134,13 @@ namespace Interpretap
                 if (User.UserType == UserTypes.Client)
                 {
                     var mainPage = mpf.CreateMainPageForClient();
-                    MainPage = mainPage;
+                    MainPage = new NavigationPage(mainPage);
                     lm.OnClientLoginAsync();
                 }
                 if (User.UserType == UserTypes.Interpreter)
                 {
                     var mainPage = mpf.CreateMainPageForInterpreter();
-                    MainPage = mainPage;
+                    MainPage = new NavigationPage(mainPage);
                     lm.OnInterpreterLoginAsync();
                 }
             }
@@ -148,6 +149,7 @@ namespace Interpretap
                 MainPage = new NavigationPage(new Interpretap.Views.LoginPage());
             }
         }
+
 
         public static void ActivateLogsTab()
         {

@@ -27,7 +27,7 @@ namespace Interpretap
 
             page.Children.Add(new ProfilePage());
             page.CurrentPage = null;
-
+            NavigationPage.SetHasNavigationBar(page, false);
             return page;
         }
 
@@ -47,7 +47,7 @@ namespace Interpretap
 
             page.Children.Add(new ProfilePage());
             page.CurrentPage = null;
-
+            NavigationPage.SetHasNavigationBar(page, false);
             return page;
         }
     }
