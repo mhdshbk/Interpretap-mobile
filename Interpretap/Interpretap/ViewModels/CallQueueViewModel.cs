@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+﻿using Interpretap.Common;
+using Interpretap.Interfaces;
 using Interpretap.Models;
 using Interpretap.Services;
-using Xamarin.Forms;
-using Interpretap.Common;
-using System.Linq;
-using Interpretap.Models.RespondModels;
-using Interpretap.Interfaces;
+using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Interpretap.ViewModels
 {
@@ -60,10 +58,14 @@ namespace Interpretap.ViewModels
             IsBusy = true;
             InterpreterService _interpreterService = new InterpreterService();
             var callResponse = await _interpreterService.FetchOpenCalls(new BaseModel());
-            foreach (var call in callResponse.Calls)
+            var fetchDataSucceed = callResponse.Status == true;
+            if (fetchDataSucceed)
             {
-                call.AcceptCallRequested += async (s, e) => await AcceptCallRequestedAsync(s, e);
-                QueueCalls.Add(call);
+                foreach (var call in callResponse.Calls)
+                {
+                    call.AcceptCallRequested += async (s, e) => await AcceptCallRequestedAsync(s, e);
+                    QueueCalls.Add(call);
+                }
             }
             IsBusy = false;
         }

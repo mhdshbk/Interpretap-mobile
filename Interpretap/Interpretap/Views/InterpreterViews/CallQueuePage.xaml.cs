@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Interpretap.Models;
+﻿using Interpretap.Models;
 using Interpretap.Services;
 using Interpretap.ViewModels;
 using Xamarin.Forms;
@@ -37,7 +32,7 @@ namespace Interpretap.Views.InterpreterViews
             {
                 if (_viewModel.QueueCalls.Count == 0)
                     _viewModel.LoadData().GetAwaiter();
-            }
+           }
             else
             {
                 if (App.ToUpdateQueueFlag)
