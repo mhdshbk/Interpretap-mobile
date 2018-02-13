@@ -1,4 +1,5 @@
-﻿using Interpretap.Models.RespondModels;
+﻿using Interpretap.Core;
+using Interpretap.Models.RespondModels;
 using Newtonsoft.Json;
 using System;
 using Xamarin.Forms;
@@ -11,6 +12,7 @@ namespace Interpretap.Common
         private const string request_call_recents_key = "request_call_recents_key";
         private const string client_onesignal_id_key = "client_onesignal_id_key";
         private const string interpreter_onesignal_id_key = "interpreter_onesignal_id_key";
+        private const string user_key = "user_key";
 
         public static LoginRespond LoginResponseLS
         {
@@ -81,6 +83,27 @@ namespace Interpretap.Common
             set
             {
                 Application.Current.Properties[interpreter_onesignal_id_key] = value;
+                Application.Current.SavePropertiesAsync().GetAwaiter();
+            }
+        }
+
+        public static UserModel User
+        {
+            get
+            {
+                object userString = "";
+                if (Application.Current.Properties.TryGetValue(user_key, out userString))
+                {
+                    return JsonConvert.DeserializeObject<UserModel>(userString.ToString());
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                Application.Current.Properties[user_key] = JsonConvert.SerializeObject(value);
                 Application.Current.SavePropertiesAsync().GetAwaiter();
             }
         }

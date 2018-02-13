@@ -33,32 +33,18 @@ namespace Interpretap.Views
 
             LocalStorage.LoginResponseLS = loginResponse;
             App.User.UserType = Constants.UserTypes.Client;
+            App.User.SessionKey = loginResponse.SessionKey;
+            LocalStorage.User = App.User;
 
             var lm = new LoginManager();
             lm.OnLoginSuccessfull();
 
             App.ActiveCall.FetchActiveCallRequestAsync();
 
-            var page = new TabbedPage
-            {
-                Children =
-                {
-                    new UserViews.RequestPage(),
-                    new UserViews.CallLogPage()
-                }
-            };
-
-            if (loginResponse.UserInfo.IsManager)
-                page.Children.Add(new UserViews.BusinessesPage());
-
-            page.Children.Add(new ProfilePage());
+            var page = (new MainPageFactory()).CreateMainPageForClient();
             await NavigateAfterSuccessfulLogin(page);
 
-            await App.ActiveCall.FetchActiveCallRequestAsync();
-            if (App.ActiveCall.ActiveCallExist)
-            {
-                await Application.Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage());
-            }
+            await lm.OnInterpreterLoginAsync();
 
             SetActivityIndicatorState(false);
         }
@@ -78,29 +64,16 @@ namespace Interpretap.Views
 
             LocalStorage.LoginResponseLS = loginResponse;
             App.User.UserType = Constants.UserTypes.Interpreter;
+            App.User.SessionKey = loginResponse.SessionKey;
+            LocalStorage.User = App.User;
 
             var lm = new LoginManager();
             lm.OnLoginSuccessfull();
 
-            var page = new TabbedPage
-            {
-                Children =
-                {
-                    new InterpreterViews.CallQueuePage(),
-                    new InterpreterViews.CallLogPage()
-                }
-            };
-
-            if (loginResponse.UserInfo.IsManager)
-                page.Children.Add(new InterpreterViews.AgenciesPage());
-
-            page.Children.Add(new ProfilePage());
+            var page = (new MainPageFactory()).CreateMainPageForInterpreter();
             await NavigateAfterSuccessfulLogin(page);
-            await App.ActiveCall.FetchActiveCallRequestAsync();
-            if (App.ActiveCall.ActiveCallExist)
-            {
-                await Application.Current.MainPage.Navigation.PushAsync(new Views.InterpreterViews.TimerPage(App.ActiveCall.ActiveCallRequest.CallId));
-            }
+
+            await lm.OnInterpreterLoginAsync();
             SetActivityIndicatorState(false);
         }
 

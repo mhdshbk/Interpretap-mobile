@@ -36,6 +36,24 @@ namespace Interpretap
             DisplayLoginPage();
         }
 
+        public async Task OnClientLoginAsync()
+        {
+            await App.ActiveCall.FetchActiveCallRequestAsync();
+            if (App.ActiveCall.ActiveCallExist)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new Views.UserViews.TimerPage());
+            }
+        }
+
+        public async Task OnInterpreterLoginAsync()
+        {
+            await App.ActiveCall.FetchActiveCallRequestAsync();
+            if (App.ActiveCall.ActiveCallExist)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new Views.InterpreterViews.TimerPage(App.ActiveCall.ActiveCallRequest.CallId));
+            }
+        }
+
         private async Task<BaseRespond> CallLogoutAPIAsync()
         {
             var userServise = new UserService();
@@ -47,6 +65,7 @@ namespace Interpretap
         void ClearLoginData()
         {
             LocalStorage.LoginResponseLS = null;
+            LocalStorage.User = null;
         }
 
         private void ClearNavigationStack()

@@ -1,11 +1,11 @@
-﻿using Interpretap.Core;
+﻿using Interpretap.Common;
+using Interpretap.Core;
 using Interpretap.Interfaces;
 using Interpretap.Services;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using static Interpretap.Common.Constants;
-using Interpretap.Common;
 
 namespace Interpretap
 {
@@ -24,7 +24,7 @@ namespace Interpretap
             InitActiveCall();
             InitUser();
             InitMessagingCenterListener();
-            MainPage = new NavigationPage(new Interpretap.Views.LoginPage());
+            InitMainPage();
         }
 
         protected override void OnStart()
@@ -106,6 +106,12 @@ namespace Interpretap
         private void InitUser()
         {
             User = new UserModel();
+            if (LocalStorage.User != null)
+            {
+                User.UserType = LocalStorage.User.UserType;
+                User.SessionKey = LocalStorage.User.SessionKey;
+            }
+
         }
 
         private void InitMessagingCenterListener()
@@ -113,6 +119,32 @@ namespace Interpretap
             MessagingCenterListenter = new MessagingCenterListenter();
         }
 
+        private void InitMainPage()
+        {
+            var hasLoggedIn = !string.IsNullOrEmpty(User.SessionKey);
+            if (hasLoggedIn)
+            {
+                var mpf = new MainPageFactory();
+                var lm = new LoginManager();
+                lm.OnLoginSuccessfull();
+                if (User.UserType == UserTypes.Client)
+                {
+                    var mainPage = mpf.CreateMainPageForClient();
+                    MainPage = mainPage;
+                    lm.OnClientLoginAsync();
+                }
+                if (User.UserType == UserTypes.Interpreter)
+                {
+                    var mainPage = mpf.CreateMainPageForInterpreter();
+                    MainPage = mainPage;
+                    lm.OnInterpreterLoginAsync();
+                }
+            }
+            else
+            {
+                MainPage = new NavigationPage(new Interpretap.Views.LoginPage());
+            }
+        }
 
         public static void ActivateLogsTab()
         {
