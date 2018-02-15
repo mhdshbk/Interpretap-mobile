@@ -21,5 +21,16 @@ namespace Interpretap.Views
             base.OnAppearing();
             VM.OnAppearing();
         }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var lv = sender as ListView;
+            if (lv.SelectedItem == null) return;
+
+            var selectedItem = lv.SelectedItem as AgencyEmployeesListItemViewModel;
+            VM.OnItemSelected(selectedItem);
+
+            lv.SelectedItem = null;
+        }
     }
 }

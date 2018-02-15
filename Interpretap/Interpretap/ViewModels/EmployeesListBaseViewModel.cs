@@ -1,6 +1,7 @@
 ﻿using Interpretap.Models;
 using Interpretap.Models.RespondModels.InnerTypes;
 using Interpretap.Services;
+using Interpretap.Views;
 using PropertyChanged;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -18,12 +19,19 @@ namespace Interpretap.ViewModels
 
         public bool IsRefreshing { get; set; }
         public ICommand RefreshCommand { get; set; }
+        public ICommand AddCommand { get; set; }
 
         public BaseEmployeesListViewModel(int agencyId)
         {
             _agencyId = agencyId;
             Employees = new ObservableCollection<AgencyEmployeesListItemViewModel>();
             RefreshCommand = new Command(async () => await ExecuteRefreshCommandAsync());
+            AddCommand = new Command(async () => await ExecuteAddCommandAsync());
+        }
+
+        private async Task ExecuteAddCommandAsync()
+        {
+            await App.Current.MainPage.DisplayAlert("Noification", "Under construction", "OK");
         }
 
         private async Task ExecuteRefreshCommandAsync()
@@ -61,7 +69,15 @@ namespace Interpretap.ViewModels
 
         public void OnAppearing()
         {
-            LoadDataAsync();
+            if (Employees.Count == 0)
+            {
+                LoadDataAsync(); 
+            }
+        }
+
+        public void OnItemSelected(AgencyEmployeesListItemViewModel selectedItem)
+        {
+            App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(selectedItem.Employee));
         }
     }
 }

@@ -143,6 +143,7 @@
     <Compile Include="ViewModels\EmployeesListBaseViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestViewModel.cs" />
+    <Compile Include="ViewModels\AgencyEmployeeProfileViewModel.cs" />
     <Compile Include="Views\CallInfo.xaml.cs">
       <DependentUpon>CallInfo.xaml</DependentUpon>
     </Compile>
@@ -157,6 +158,9 @@
     </Compile>
     <Compile Include="Views\EmployeesListPage.xaml.cs">
       <DependentUpon>EmployeesListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeProfilePage.xaml.cs">
+      <DependentUpon>EmployeeProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\AgenciesPage.xaml.cs">
       <DependentUpon>AgenciesPage.xaml</DependentUpon>
@@ -399,6 +403,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CustomElements\GotoDetailsButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EmployeeProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

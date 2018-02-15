@@ -4,14 +4,14 @@ namespace Interpretap.ViewModels
 {
     public class AgencyEmployeesListItemViewModel
     {
-        AgencyInterpreter m;
+        public AgencyInterpreter Employee { get; set; }
 
-        public string UserName => m.UserName;
-        public string FullName => $"{m.InterpreterFirstName} {m.InterpreterLastName}";
+        public string UserName => Employee.UserName;
+        public string FullName => $"{Employee.InterpreterFirstName} {Employee.InterpreterLastName}";
 
         public AgencyEmployeesListItemViewModel(AgencyInterpreter interpreterModel)
         {
-            m = interpreterModel;
+            Employee = interpreterModel;
         }
     }
 }
