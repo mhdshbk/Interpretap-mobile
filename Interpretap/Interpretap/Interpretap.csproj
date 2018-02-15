@@ -129,7 +129,7 @@
     <Compile Include="Services\SyncService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\ActiveCallViewModel.cs" />
-    <Compile Include="ViewModels\AgencyEmployeesListViewModel.cs" />
+    <Compile Include="ViewModels\AgencyEmployeesListItemViewModel.cs" />
     <Compile Include="ViewModels\AgencyProfileViewModel.cs" />
     <Compile Include="ViewModels\BusinessesViewModel.cs" />
     <Compile Include="ViewModels\AgenciesViewModel.cs" />
