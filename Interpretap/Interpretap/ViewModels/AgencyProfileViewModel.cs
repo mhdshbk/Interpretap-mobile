@@ -10,6 +10,7 @@ using Interpretap.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System.ComponentModel;
+using Interpretap.Views;
 
 namespace Interpretap.ViewModels
 {
@@ -94,6 +95,8 @@ namespace Interpretap.ViewModels
         public ICommand UpdateCommand { get; set; }
         public bool CanExecuteUpdateCommand => IsDirty;
 
+        public ICommand EmployeeListCommand { get; set; }
+
         public bool IsBusy { get; set; }
         public bool IsDirty { get; set; }
 
@@ -101,6 +104,12 @@ namespace Interpretap.ViewModels
         {
             _agencyInfo = new BusinessInfo();
             UpdateCommand = new Command(async () => await ExecuteUpdateCommandAsync());
+            EmployeeListCommand = new Command(ExecuteEmployeeListCommand);
+        }
+
+        private void ExecuteEmployeeListCommand(object obj)
+        {
+            App.Current.MainPage.Navigation.PushAsync(new EmployeesListPage(_agencyId)); 
         }
 
         private async Task ExecuteUpdateCommandAsync()

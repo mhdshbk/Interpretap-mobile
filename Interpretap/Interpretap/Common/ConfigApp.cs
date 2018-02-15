@@ -32,12 +32,14 @@
         public const string FetchAgencyReportAPI = RestApiBaseUrl + "agency/fetch_agency_report";
         public const string FetchAssociatedAgenciesAPI = RestApiBaseUrl + "agency/fetch_associated_agencies";
         public const string UpdateAgencyAPI = RestApiBaseUrl + "agency/update_agency";
+        public const string FetchInterpretersAPI = RestApiBaseUrl + "agency/fetch_agency_interpreters";
 
         public const string FetchFifteenCallsBusinessAPI = RestApiBaseUrl + "business/fetch_fifteen_calls";
         public const string FetchMonthlyCallAmountBusinessAPI = RestApiBaseUrl + "business/fetch_monthly_call_amount";
         public const string FetchBusinessReportAPI = RestApiBaseUrl + "business/fetch_client_business_report";
         public const string FetchAssociatedBusinessAPI = RestApiBaseUrl + "business/fetch_associated_businesses";
         public const string UpdateBusinessAPI = RestApiBaseUrl + "business/update_business";
+        public const string FetchEmployeesAPI = RestApiBaseUrl + "business/fetch_business_clients";
 
         public const string FetchCallLogAPI = RestApiBaseUrl + "call/fetch_monthly_call_amounts";
         public const string FetchCallAPI = RestApiBaseUrl + "call/fetch_call_info";

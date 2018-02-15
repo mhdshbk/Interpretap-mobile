@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ce="clr-namespace:Interpretap.CustomElements"
              x:Class="Interpretap.CustomElements.AgencyProfileContentView">
     <ContentView.Content>
         <AbsoluteLayout>
@@ -11,6 +12,8 @@
                 AbsoluteLayout.LayoutBounds="0,0,1,1">
 
                 <StackLayout>
+                    <ce:GotoDetailsButton Text="Employees" Command="{Binding EmployeeListCommand}"/>
+
                     <Label Text="Name"/>
                     <Entry Text="{Binding Name}"/>
 

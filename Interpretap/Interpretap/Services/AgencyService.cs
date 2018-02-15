@@ -1,8 +1,8 @@
 ﻿using Interpretap.Models;
 using Interpretap.Models.RespondModels;
 using System;
-using static Interpretap.Common.ConfigApp;
 using System.Threading.Tasks;
+using static Interpretap.Common.ConfigApp;
 
 namespace Interpretap.Services
 {
@@ -79,6 +79,22 @@ namespace Interpretap.Services
             try
             {
                 responce = await PostNoNulls<BaseRespond, AgencyUpdateModel>(UpdateAgencyAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<AgencyInterpreterRespondModel> FetchInterpretersForAgency(AgencyInterpretersRequestModel request)
+        {
+            var responce = new AgencyInterpreterRespondModel();
+
+            try
+            {
+                responce = await Post<AgencyInterpreterRespondModel, AgencyInterpretersRequestModel>(FetchInterpretersAPI, request);
             }
             catch (Exception e)
             {

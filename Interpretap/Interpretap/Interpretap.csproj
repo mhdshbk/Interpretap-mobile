@@ -59,6 +59,9 @@
     <Compile Include="CustomElements\ClientProfileContentView.xaml.cs">
       <DependentUpon>ClientProfileContentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomElements\GotoDetailsButton.xaml.cs">
+      <DependentUpon>GotoDetailsButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomElements\InterpreterProfileContentView.xaml.cs">
       <DependentUpon>InterpreterProfileContentView.xaml</DependentUpon>
     </Compile>
@@ -71,6 +74,7 @@
     <Compile Include="Interfaces\ICallQueueService.cs" />
     <Compile Include="MainPageFactory.cs" />
     <Compile Include="MessagingCenterListenter.cs" />
+    <Compile Include="Models\AgencyInterpretersRequestModel.cs" />
     <Compile Include="Models\AgencyModel.cs" />
     <Compile Include="Models\AgencyUpdateModel.cs" />
     <Compile Include="Models\AssignInterpreterRequestModel.cs" />
@@ -90,7 +94,9 @@
     <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
+    <Compile Include="Models\RespondModels\AgencyInterpreterRespondModel.cs" />
     <Compile Include="Models\RespondModels\ClientCallReportResponce.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\AgencyInterpreter.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\CallDetails.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\ClientReport.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\ReportInfo.cs" />
@@ -123,6 +129,7 @@
     <Compile Include="Services\SyncService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\ActiveCallViewModel.cs" />
+    <Compile Include="ViewModels\AgencyEmployeesListViewModel.cs" />
     <Compile Include="ViewModels\AgencyProfileViewModel.cs" />
     <Compile Include="ViewModels\BusinessesViewModel.cs" />
     <Compile Include="ViewModels\AgenciesViewModel.cs" />
@@ -133,6 +140,7 @@
     <Compile Include="ViewModels\CallLogViewModel.cs" />
     <Compile Include="ViewModels\ABCallReportViewModel.cs" />
     <Compile Include="ViewModels\CallReportViewModel.cs" />
+    <Compile Include="ViewModels\EmployeesListBaseViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="Views\CallInfo.xaml.cs">
@@ -146,6 +154,9 @@
     </Compile>
     <Compile Include="Views\CallReportPage.xaml.cs">
       <DependentUpon>CallReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeesListPage.xaml.cs">
+      <DependentUpon>EmployeesListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\AgenciesPage.xaml.cs">
       <DependentUpon>AgenciesPage.xaml</DependentUpon>
@@ -376,6 +387,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CustomElements\BusinessProfileContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EmployeesListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\GotoDetailsButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

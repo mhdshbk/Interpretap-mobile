@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.CustomElements.GotoDetailsButton">
+  <ContentView.Content>
+        <AbsoluteLayout 
+            HeightRequest="60">
+
+            <Button
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Text=""
+                BackgroundColor="White"
+                x:Name="btn"/>
+
+            <StackLayout 
+                Padding="6,0,0,0"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                VerticalOptions="CenterAndExpand"
+                Orientation="Horizontal"
+                InputTransparent="True">
+
+                <Label 
+                    Text="Employees" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalTextAlignment="Center"
+                    TextColor="Black"
+                    FontSize="Medium"
+                    x:Name="lbl"/>
+                
+                <Image 
+                    Source="arrow_right_green.png" 
+                    HorizontalOptions="End"
+                    WidthRequest="32" 
+                    HeightRequest="32" />
+            </StackLayout>
+
+        </AbsoluteLayout>
+  </ContentView.Content>
+</ContentView>
