@@ -1,24 +1,27 @@
 ﻿using Interpretap.Models;
 using Interpretap.Services;
-using PropertyChanged;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using PropertyChanged;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Interpretap.Views.InterpreterViews
+namespace Interpretap.Views.UserViews
 {
     [AddINotifyPropertyChangedInterface]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddInterpreterToAgencyPage : ContentPage
+    public partial class AddClientToBusinessPage : ContentPage
     {
-        int _agencyId;
+        int _businessId;
         public bool IsProcessing { get; private set; }
-        public bool CanAddInterpreter { get; private set; }
+        public bool CanAddClient { get; private set; }
 
-        public AddInterpreterToAgencyPage(int agencyId)
+        public AddClientToBusinessPage(int businessId)
         {
-            _agencyId = agencyId;
+            _businessId = businessId;
             InitializeComponent();
 
             this.BindingContext = this;
@@ -26,22 +29,22 @@ namespace Interpretap.Views.InterpreterViews
 
         private void AddButton_Clicked(object sender, EventArgs e)
         {
-            AddInterpreterToAgencyAsync();
+            AddClientToBusinessAsync();
         }
 
-        private async Task AddInterpreterToAgencyAsync()
+        private async Task AddClientToBusinessAsync()
         {
             IsProcessing = true;
 
-            var request = new AddInterpreterToAgencyRequestModel()
+            var request = new AddClientToBusinessRequestModel()
             {
-                AgencyId = _agencyId.ToString(),
-                InterpreterId = lblId.Text,
+                BusinessId = _businessId.ToString(),
+                ClientId = lblId.Text,
                 IsManager = SwitchIsManager.IsToggled ? "1" : "0",
             };
 
-            var service = new AgencyService();
-            var responce = await service.AddInterpreterToAgency(request);
+            var service = new BusinessService();
+            var responce = await service.AddClientToBusiness(request);
 
             IsProcessing = false;
 
@@ -58,7 +61,7 @@ namespace Interpretap.Views.InterpreterViews
 
         private void lblId_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CanAddInterpreter = !string.IsNullOrEmpty(lblId.Text);
+            CanAddClient = !string.IsNullOrEmpty(lblId.Text);
         }
     }
 }

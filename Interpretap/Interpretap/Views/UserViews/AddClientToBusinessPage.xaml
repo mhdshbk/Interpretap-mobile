@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.UserViews.AddClientToBusinessPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" >
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+
+            <StackLayout
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Padding="10">
+
+                <StackLayout
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="20">
+
+                    <Label Text="Client ID:"/>
+                    <Entry 
+                        x:Name="lblId"
+                        Placeholder="Id..." 
+                        TextChanged="lblId_TextChanged"/>
+
+                    <BoxView HeightRequest="20"/>
+
+                    <Label Text="Is manager:"/>
+                    <Switch x:Name="SwitchIsManager" HorizontalOptions="Center"/>
+                </StackLayout>
+
+                <Button 
+                    VerticalOptions="End"
+                    Text="Add" 
+                    Clicked="AddButton_Clicked"
+                    IsEnabled="{Binding CanAddClient}"/>
+            </StackLayout>
+
+            <ActivityIndicator 
+                IsRunning="True" 
+                IsVisible="{Binding IsProcessing}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

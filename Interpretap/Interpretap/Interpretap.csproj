@@ -75,6 +75,7 @@
     <Compile Include="Interfaces\ICallQueueService.cs" />
     <Compile Include="MainPageFactory.cs" />
     <Compile Include="MessagingCenterListenter.cs" />
+    <Compile Include="Models\AddClientToBusinessRequestModel.cs" />
     <Compile Include="Models\AddInterpreterToAgencyRequestModel.cs" />
     <Compile Include="Models\AgencyInterpretersRequestModel.cs" />
     <Compile Include="Models\AgencyModel.cs" />
@@ -200,14 +201,17 @@
     <Compile Include="Views\ABCallReportPage.xaml.cs">
       <DependentUpon>ABCallReportPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserViews\AddClientToBusinessPage.xaml.cs">
+      <DependentUpon>AddClientToBusinessPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserViews\BusinessesPage.xaml.cs">
       <DependentUpon>BusinessesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\BusinessCallsPage.xaml.cs">
       <DependentUpon>BusinessCallsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserViews\ClientsProfilePage.xaml.cs">
-      <DependentUpon>ClientsProfilePage.xaml</DependentUpon>
+    <Compile Include="Views\UserViews\ClientProfilePage.xaml.cs">
+      <DependentUpon>ClientProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\RequestPage.xaml.cs">
       <DependentUpon>RequestPage.xaml</DependentUpon>
@@ -439,7 +443,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\UserViews\ClientsProfilePage.xaml">
+    <EmbeddedResource Include="Views\UserViews\ClientProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\UserViews\AddClientToBusinessPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -120,5 +120,20 @@ namespace Interpretap.Services
             return responce;
         }
 
+        public async Task<BaseRespond> AddClientToBusiness(AddClientToBusinessRequestModel request)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, AddClientToBusinessRequestModel>(AddClientToBusinessAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }

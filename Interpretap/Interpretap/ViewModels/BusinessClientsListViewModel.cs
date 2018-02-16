@@ -23,7 +23,7 @@ namespace Interpretap.ViewModels
 
         protected override async Task ExecuteAddCommandAsync()
         {
-            //await App.Current.MainPage.Navigation.PushAsync(new AddInterpreterToAgencyPage(_agencyId));
+            await App.Current.MainPage.Navigation.PushAsync(new AddClientToBusinessPage(_businessId));
         }
 
         protected override async Task LoadDataAsync()
