@@ -2,7 +2,6 @@
 using Interpretap.Models;
 using Interpretap.Models.RespondModels.InnerTypes;
 using Interpretap.Services;
-using Interpretap.Views;
 using Interpretap.Views.InterpreterViews;
 using PropertyChanged;
 using System.Threading.Tasks;

@@ -103,5 +103,22 @@ namespace Interpretap.Services
 
             return responce;
         }
+
+        public async Task<BaseRespond> RemoveClientFromBusiness(RemoveClientFromBusinessRequestModel request)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, RemoveClientFromBusinessRequestModel>(RemoveClientFromBusinessAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
     }
 }

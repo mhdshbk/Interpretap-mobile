@@ -99,6 +99,7 @@
     <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
+    <Compile Include="Models\RemoveClientFromBusinessRequestModel.cs" />
     <Compile Include="Models\RemoveInterpreterFromAgencyRequestModel.cs" />
     <Compile Include="Models\RespondModels\AgencyInterpreterRespondModel.cs" />
     <Compile Include="Models\RespondModels\BusinessClientsRespondModel.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="ViewModels\AgencyProfileViewModel.cs" />
     <Compile Include="ViewModels\BusinessClientsListItemViewModel.cs" />
     <Compile Include="ViewModels\BusinessClientsListViewModel.cs" />
+    <Compile Include="ViewModels\BusinessClientViewModel.cs" />
     <Compile Include="ViewModels\BusinessesViewModel.cs" />
     <Compile Include="ViewModels\AgenciesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -170,7 +172,7 @@
     <Compile Include="Views\EmployeesListPage.xaml.cs">
       <DependentUpon>EmployeesListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EmployeeProfilePage.xaml.cs">
+    <Compile Include="Views\InterpreterViews\EmployeeProfilePage.xaml.cs">
       <DependentUpon>EmployeeProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\AddInterpreterToAgencyPage.xaml.cs">
@@ -203,6 +205,9 @@
     </Compile>
     <Compile Include="Views\UserViews\BusinessCallsPage.xaml.cs">
       <DependentUpon>BusinessCallsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\ClientsProfilePage.xaml.cs">
+      <DependentUpon>ClientsProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\RequestPage.xaml.cs">
       <DependentUpon>RequestPage.xaml</DependentUpon>
@@ -422,7 +427,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\EmployeeProfilePage.xaml">
+    <EmbeddedResource Include="Views\InterpreterViews\EmployeeProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -433,7 +438,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\UserViews\ClientsProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

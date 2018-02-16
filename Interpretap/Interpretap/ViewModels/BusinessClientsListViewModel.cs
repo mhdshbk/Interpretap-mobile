@@ -3,6 +3,7 @@ using Interpretap.Models;
 using Interpretap.Models.RespondModels;
 using Interpretap.Models.RespondModels.InnerTypes;
 using Interpretap.Services;
+using Interpretap.Views.UserViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +64,7 @@ namespace Interpretap.ViewModels
         public override void OnItemSelected(IEmployeeListItemViewModel selectedItem)
         {
             var item = selectedItem as BusinessClientsListItemViewModel;
-            //App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(item.Employee, _agencyId));
+            App.Current.MainPage.Navigation.PushAsync(new ClientProfilePage(item.Client, _businessId));
         }
     }
 }

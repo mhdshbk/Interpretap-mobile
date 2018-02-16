@@ -43,6 +43,7 @@
         public const string FetchAssociatedBusinessAPI = RestApiBaseUrl + "business/fetch_associated_businesses";
         public const string UpdateBusinessAPI = RestApiBaseUrl + "business/update_business";
         public const string FetchClientsAPI = RestApiBaseUrl + "business/fetch_business_clients";
+        public const string RemoveClientFromBusinessAPI = RestApiBaseUrl + "business/remove_client_from_business";
 
         public const string FetchCallLogAPI = RestApiBaseUrl + "call/fetch_monthly_call_amounts";
         public const string FetchCallAPI = RestApiBaseUrl + "call/fetch_call_info";

@@ -1,20 +1,21 @@
 ﻿using Interpretap.Models.RespondModels.InnerTypes;
 using Interpretap.ViewModels;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Interpretap.Views
+namespace Interpretap.Views.UserViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EmployeeProfilePage : ContentPage
+    public partial class ClientProfilePage : ContentPage
     {
-        public AgencyEmployeeProfileViewModel VM { get; private set; }
+        BusinessClientViewModel VM;
 
-        public EmployeeProfilePage(AgencyInterpreter employee, int agencyId)
+        public ClientProfilePage(BusinessClient client, int businessId)
         {
             InitializeComponent();
 
-            VM = new AgencyEmployeeProfileViewModel(employee, agencyId);
+            VM = new BusinessClientViewModel(client, businessId);
             this.BindingContext = VM;
 
             this.Title = VM.UserName;
