@@ -41,7 +41,7 @@ namespace Interpretap.Views.InterpreterViews
             };
 
             var service = new AgencyService();
-            var responce = await service.AdInterpreterToAgency(request);
+            var responce = await service.AddInterpreterToAgency(request);
 
             IsProcessing = false;
 

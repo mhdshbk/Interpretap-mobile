@@ -120,13 +120,13 @@ namespace Interpretap.Services
             return responce;
         }
 
-        public async Task<BaseRespond> AdInterpreterToAgency(AddInterpreterToAgencyRequestModel request)
+        public async Task<BaseRespond> AddInterpreterToAgency(AddInterpreterToAgencyRequestModel request)
         {
             var responce = new BaseRespond();
 
             try
             {
-                responce = await Post<BaseRespond, AddInterpreterToAgencyRequestModel>(FetchInterpreterInfoAPI, request);
+                responce = await Post<BaseRespond, AddInterpreterToAgencyRequestModel>(AddInterpreterToAgencyAPI, request);
             }
             catch (Exception e)
             {

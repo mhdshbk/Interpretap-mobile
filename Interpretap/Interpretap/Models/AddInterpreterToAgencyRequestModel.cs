@@ -7,7 +7,7 @@ namespace Interpretap.Models
         [JsonProperty("agency_id")]
         public string AgencyId { get; set; }
 
-        [JsonProperty("requested_interpreter_id")]
+        [JsonProperty("new_interpreter_id")]
         public string InterpreterId { get; set; }
 
         [JsonProperty("is_manager")]
