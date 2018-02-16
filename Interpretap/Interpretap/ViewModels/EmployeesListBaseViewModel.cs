@@ -2,6 +2,7 @@
 using Interpretap.Models.RespondModels.InnerTypes;
 using Interpretap.Services;
 using Interpretap.Views;
+using Interpretap.Views.InterpreterViews;
 using PropertyChanged;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace Interpretap.ViewModels
 
         private async Task ExecuteAddCommandAsync()
         {
-            await App.Current.MainPage.DisplayAlert("Noification", "Under construction", "OK");
+            await App.Current.MainPage.Navigation.PushAsync(new AddInterpreterToAgencyPage(_agencyId));
         }
 
         private async Task ExecuteRefreshCommandAsync()

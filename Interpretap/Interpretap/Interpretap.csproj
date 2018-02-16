@@ -74,6 +74,7 @@
     <Compile Include="Interfaces\ICallQueueService.cs" />
     <Compile Include="MainPageFactory.cs" />
     <Compile Include="MessagingCenterListenter.cs" />
+    <Compile Include="Models\AddInterpreterToAgencyRequestModel.cs" />
     <Compile Include="Models\AgencyInterpretersRequestModel.cs" />
     <Compile Include="Models\AgencyModel.cs" />
     <Compile Include="Models\AgencyUpdateModel.cs" />
@@ -163,6 +164,9 @@
     </Compile>
     <Compile Include="Views\EmployeeProfilePage.xaml.cs">
       <DependentUpon>EmployeeProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InterpreterViews\AddInterpreterToAgencyPage.xaml.cs">
+      <DependentUpon>AddInterpreterToAgencyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\AgenciesPage.xaml.cs">
       <DependentUpon>AgenciesPage.xaml</DependentUpon>
@@ -411,6 +415,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\EmployeeProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\InterpreterViews\AddInterpreterToAgencyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
