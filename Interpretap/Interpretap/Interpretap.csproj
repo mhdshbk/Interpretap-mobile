@@ -91,6 +91,8 @@
     <Compile Include="Models\ExceptionDataModel.cs" />
     <Compile Include="Models\FifteenCallModel.cs" />
     <Compile Include="Models\FifteenCallsRequestModel.cs" />
+    <Compile Include="Models\InterpreterInfoRequestModel.cs" />
+    <Compile Include="Models\InterpreterInfoRespondModel.cs" />
     <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />

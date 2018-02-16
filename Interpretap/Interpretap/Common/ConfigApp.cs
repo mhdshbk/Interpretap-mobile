@@ -33,6 +33,7 @@
         public const string FetchAssociatedAgenciesAPI = RestApiBaseUrl + "agency/fetch_associated_agencies";
         public const string UpdateAgencyAPI = RestApiBaseUrl + "agency/update_agency";
         public const string FetchInterpretersAPI = RestApiBaseUrl + "agency/fetch_agency_interpreters";
+        public const string FetchInterpreterInfoAPI = RestApiBaseUrl + "agency/fetch_interpreter_employee_info";
 
         public const string FetchFifteenCallsBusinessAPI = RestApiBaseUrl + "business/fetch_fifteen_calls";
         public const string FetchMonthlyCallAmountBusinessAPI = RestApiBaseUrl + "business/fetch_monthly_call_amount";

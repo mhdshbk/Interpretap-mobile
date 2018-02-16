@@ -103,5 +103,21 @@ namespace Interpretap.Services
 
             return responce;
         }
+
+        public async Task<InterpreterInfoRespondModel> FetchInterpreterInfo(InterpreterInfoRequestModel request)
+        {
+            var responce = new InterpreterInfoRespondModel();
+
+            try
+            {
+                responce = await Post<InterpreterInfoRespondModel, InterpreterInfoRequestModel>(FetchInterpreterInfoAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }

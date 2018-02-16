@@ -1,8 +1,9 @@
-﻿using Interpretap.Models.RespondModels.InnerTypes;
+﻿using Interpretap.Models;
+using Interpretap.Models.RespondModels.InnerTypes;
+using Interpretap.Services;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using System;
-using System.Threading.Tasks;
 
 namespace Interpretap.ViewModels
 {
@@ -57,5 +58,16 @@ namespace Interpretap.ViewModels
         {
             await App.Current.MainPage.DisplayAlert("Noification", "Under construction", "OK");
         }
+
+        private async Task GetEmployeeInfoAsync()
+        {
+            var request = new InterpreterInfoRequestModel()
+            {
+                InterpreterId = _employee.InterpreterId
+            };
+            var service = new AgencyService();
+            var result = await service.FetchInterpreterInfo(request);
+        }
+
     }
 }
