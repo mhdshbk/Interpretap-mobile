@@ -144,7 +144,7 @@
     <Compile Include="ViewModels\CallLogViewModel.cs" />
     <Compile Include="ViewModels\ABCallReportViewModel.cs" />
     <Compile Include="ViewModels\CallReportViewModel.cs" />
-    <Compile Include="ViewModels\EmployeesListBaseViewModel.cs" />
+    <Compile Include="ViewModels\AgencyInterpretersListViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="ViewModels\AgencyEmployeeProfileViewModel.cs" />

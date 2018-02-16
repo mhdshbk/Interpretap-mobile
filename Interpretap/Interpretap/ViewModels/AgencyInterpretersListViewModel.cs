@@ -12,7 +12,7 @@ using Xamarin.Forms;
 namespace Interpretap.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class BaseEmployeesListViewModel
+    public class AgencyInterpretersListViewModel
     {
         int _agencyId;
 
@@ -22,7 +22,7 @@ namespace Interpretap.ViewModels
         public ICommand RefreshCommand { get; set; }
         public ICommand AddCommand { get; set; }
 
-        public BaseEmployeesListViewModel(int agencyId)
+        public AgencyInterpretersListViewModel(int agencyId)
         {
             _agencyId = agencyId;
             Employees = new ObservableCollection<AgencyEmployeesListItemViewModel>();
@@ -73,7 +73,10 @@ namespace Interpretap.ViewModels
 
         public void OnAppearing()
         {
-            RefreshCommand.Execute(null);
+            if (Employees.Count == 0)
+            {
+                RefreshCommand.Execute(null);
+            }
         }
 
         public void OnItemSelected(AgencyEmployeesListItemViewModel selectedItem)

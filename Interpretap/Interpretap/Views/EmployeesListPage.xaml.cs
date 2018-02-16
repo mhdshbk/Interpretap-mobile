@@ -7,12 +7,12 @@ namespace Interpretap.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EmployeesListPage : ContentPage
     {
-        BaseEmployeesListViewModel VM;
+        AgencyInterpretersListViewModel VM;
 
         public EmployeesListPage(int agencyId)
         {
             InitializeComponent();
-            VM = new BaseEmployeesListViewModel(agencyId);
+            VM = new AgencyInterpretersListViewModel(agencyId);
             this.BindingContext = VM;
         }
 
