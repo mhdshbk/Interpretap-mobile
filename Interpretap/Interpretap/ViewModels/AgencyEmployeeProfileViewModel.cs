@@ -10,6 +10,7 @@ namespace Interpretap.ViewModels
     public class AgencyEmployeeProfileViewModel
     {
         private AgencyInterpreter _employee;
+        private int _agencyId;
 
         public string FirstName => _employee.InterpreterFirstName;
         public string LastName => _employee.InterpreterLastName;
@@ -37,10 +38,13 @@ namespace Interpretap.ViewModels
         }
 
         public ICommand DeleteCommand { get; set; }
+
+        public bool IsProcessing { get; private set; }
         
-        public AgencyEmployeeProfileViewModel(AgencyInterpreter employee)
+        public AgencyEmployeeProfileViewModel(AgencyInterpreter employee, int agencyId)
         {
             _employee = employee;
+            _agencyId = agencyId;
 
             DeleteCommand = new Command(async () => await ExecuteDeleteEmployeeCommandAsync());
         }
@@ -54,20 +58,43 @@ namespace Interpretap.ViewModels
             }
         }
 
-        private static async Task DeleteEmployeeAsync()
+        private async Task DeleteEmployeeAsync()
         {
-            await App.Current.MainPage.DisplayAlert("Noification", "Under construction", "OK");
+            IsProcessing = true;
+            
+            var request = new RemoveInterpreterFromAgencyRequestModel()
+            {
+                AgencyId = _agencyId.ToString(),
+                InterpreterId = _employee.InterpreterId,
+            };
+            var service = new AgencyService();
+            var responce = await service.RemoveInterpreterFromAgency(request);
+
+            IsProcessing = false;
+
+            var success = responce.Status == true;
+            if (success)
+            {
+                await App.Current.MainPage.DisplayAlert("Success", responce.Message, "OK");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Error", responce.Message, "OK");
+            }
         }
 
         private async Task GetEmployeeInfoAsync()
         {
+            IsProcessing = true;
+
             var request = new InterpreterInfoRequestModel()
             {
                 InterpreterId = _employee.InterpreterId
             };
             var service = new AgencyService();
             var result = await service.FetchInterpreterInfo(request);
-        }
 
+            IsProcessing = false;
+        }
     }
 }

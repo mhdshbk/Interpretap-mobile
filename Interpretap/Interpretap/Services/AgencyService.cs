@@ -135,5 +135,21 @@ namespace Interpretap.Services
 
             return responce;
         }
+
+        public async Task<BaseRespond> RemoveInterpreterFromAgency(RemoveInterpreterFromAgencyRequestModel request)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, RemoveInterpreterFromAgencyRequestModel>(RemoveInterpreterFromAgencyAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }

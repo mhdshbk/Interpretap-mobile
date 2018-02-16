@@ -46,12 +46,15 @@ namespace Interpretap.ViewModels
             IsRefreshing = true;
 
             var interpreters = await FetchDataAsync();
-            foreach (var i in interpreters)
+            if (interpreters != null)
             {
-                var itemVM = new AgencyEmployeesListItemViewModel(i);
-                Employees.Add(itemVM);
-            }
+                foreach (var i in interpreters)
+                {
+                    var itemVM = new AgencyEmployeesListItemViewModel(i);
+                    Employees.Add(itemVM);
+                }
 
+            }
             IsRefreshing = false;
         }
 
@@ -70,15 +73,12 @@ namespace Interpretap.ViewModels
 
         public void OnAppearing()
         {
-            if (Employees.Count == 0)
-            {
-                LoadDataAsync(); 
-            }
+            RefreshCommand.Execute(null);
         }
 
         public void OnItemSelected(AgencyEmployeesListItemViewModel selectedItem)
         {
-            App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(selectedItem.Employee));
+            App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(selectedItem.Employee, _agencyId));
         }
     }
 }

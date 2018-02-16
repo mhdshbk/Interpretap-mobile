@@ -10,11 +10,11 @@ namespace Interpretap.Views
     {
         public AgencyEmployeeProfileViewModel VM { get; private set; }
 
-        public EmployeeProfilePage(AgencyInterpreter employee)
+        public EmployeeProfilePage(AgencyInterpreter employee, int agencyId)
         {
             InitializeComponent();
 
-            VM = new AgencyEmployeeProfileViewModel(employee);
+            VM = new AgencyEmployeeProfileViewModel(employee, agencyId);
             this.BindingContext = VM;
 
             this.Title = VM.UserName;

@@ -97,6 +97,7 @@
     <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
+    <Compile Include="Models\RemoveInterpreterFromAgencyRequestModel.cs" />
     <Compile Include="Models\RespondModels\AgencyInterpreterRespondModel.cs" />
     <Compile Include="Models\RespondModels\ClientCallReportResponce.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\AgencyInterpreter.cs" />
