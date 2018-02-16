@@ -11,16 +11,16 @@ namespace Interpretap.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class AgencyInterpretersListViewModel : EmployeesListBaseViewModel
     {
-        int _agencyId;
+        public int AgencyId { get; private set; }
 
         public AgencyInterpretersListViewModel(int agencyId) : base()
         {
-            _agencyId = agencyId;
+            AgencyId = agencyId;
         }
 
         protected override async Task ExecuteAddCommandAsync()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new AddInterpreterToAgencyPage(_agencyId));
+            await App.Current.MainPage.Navigation.PushAsync(new AddInterpreterToAgencyPage(this));
         }
 
         protected override async Task LoadDataAsync()
@@ -48,7 +48,7 @@ namespace Interpretap.ViewModels
         {
             var request = new AgencyInterpretersRequestModel()
             {
-                AgencyId = _agencyId.ToString(),
+                AgencyId = AgencyId.ToString(),
                 FromInterpreterId = string.Empty,
             };
 
@@ -60,7 +60,7 @@ namespace Interpretap.ViewModels
         public override void OnItemSelected(IEmployeeListItemViewModel selectedItem)
         {
             var item = selectedItem as AgencyInterpretersListItemViewModel;
-            App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(item.Employee, _agencyId));
+            App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(item.Employee, this));
         }
     }
 }

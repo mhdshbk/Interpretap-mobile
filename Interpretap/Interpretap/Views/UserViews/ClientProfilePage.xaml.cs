@@ -11,11 +11,11 @@ namespace Interpretap.Views.UserViews
     {
         BusinessClientViewModel VM;
 
-        public ClientProfilePage(BusinessClient client, int businessId)
+        public ClientProfilePage(BusinessClient client, BusinessClientsListViewModel parentViewModel)
         {
             InitializeComponent();
 
-            VM = new BusinessClientViewModel(client, businessId);
+            VM = new BusinessClientViewModel(client, parentViewModel);
             this.BindingContext = VM;
 
             this.Title = VM.UserName;

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Interpretap.ViewModels;
 
 namespace Interpretap.Views.UserViews
 {
@@ -16,12 +17,15 @@ namespace Interpretap.Views.UserViews
     public partial class AddClientToBusinessPage : ContentPage
     {
         int _businessId;
+        BusinessClientsListViewModel _parentViewModel;
+
         public bool IsProcessing { get; private set; }
         public bool CanAddClient { get; private set; }
 
-        public AddClientToBusinessPage(int businessId)
+        public AddClientToBusinessPage(BusinessClientsListViewModel parentViewModel)
         {
-            _businessId = businessId;
+            _businessId = parentViewModel.BusinessId;
+            _parentViewModel = parentViewModel;
             InitializeComponent();
 
             this.BindingContext = this;
@@ -51,6 +55,7 @@ namespace Interpretap.Views.UserViews
             var success = responce.Status == true;
             if (success)
             {
+                _parentViewModel.RefreshCommand.Execute(null);
                 await App.Current.MainPage.DisplayAlert("Success", responce.Message, "OK");
             }
             else

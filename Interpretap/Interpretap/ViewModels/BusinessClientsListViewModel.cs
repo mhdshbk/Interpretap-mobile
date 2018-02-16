@@ -14,16 +14,16 @@ namespace Interpretap.ViewModels
 {
     public class BusinessClientsListViewModel : EmployeesListBaseViewModel
     {
-        int _businessId;
+        public int BusinessId { get; private set; }
 
         public BusinessClientsListViewModel(int businessId) : base()
         {
-            _businessId = businessId;
+            BusinessId = businessId;
         }
 
         protected override async Task ExecuteAddCommandAsync()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new AddClientToBusinessPage(_businessId));
+            await App.Current.MainPage.Navigation.PushAsync(new AddClientToBusinessPage(this));
         }
 
         protected override async Task LoadDataAsync()
@@ -40,7 +40,7 @@ namespace Interpretap.ViewModels
         {
             var request = new BusinessClientsRequestModel()
             {
-                BusinessId = _businessId.ToString(),
+                BusinessId = BusinessId.ToString(),
                 FromClientId = string.Empty,
             };
 
@@ -64,7 +64,7 @@ namespace Interpretap.ViewModels
         public override void OnItemSelected(IEmployeeListItemViewModel selectedItem)
         {
             var item = selectedItem as BusinessClientsListItemViewModel;
-            App.Current.MainPage.Navigation.PushAsync(new ClientProfilePage(item.Client, _businessId));
+            App.Current.MainPage.Navigation.PushAsync(new ClientProfilePage(item.Client, this));
         }
     }
 }

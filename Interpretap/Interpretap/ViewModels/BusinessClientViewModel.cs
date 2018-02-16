@@ -1,16 +1,19 @@
-﻿using Interpretap.Models;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
+using Interpretap.Models;
 using Interpretap.Models.RespondModels.InnerTypes;
 using Interpretap.Services;
-using System.Threading.Tasks;
-using System.Windows.Input;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace Interpretap.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class BusinessClientViewModel
     {
         BusinessClient _client;
         private int _businessId;
+        BusinessClientsListViewModel _parentViewModel;
 
         public string FirstName => _client.ClientFirstName;
         public string LastName => _client.ClientLastName;
@@ -41,10 +44,11 @@ namespace Interpretap.ViewModels
 
         public bool IsProcessing { get; private set; }
 
-        public BusinessClientViewModel(BusinessClient client, int businessId)
+        public BusinessClientViewModel(BusinessClient client, BusinessClientsListViewModel parentViewModel)
         {
             _client = client;
-            _businessId = businessId;
+            _businessId = parentViewModel.BusinessId;
+            _parentViewModel = parentViewModel;
 
             DeleteCommand = new Command(async () => await ExecuteDeleteCommandAsync());
         }
@@ -75,7 +79,9 @@ namespace Interpretap.ViewModels
             var success = responce.Status == true;
             if (success)
             {
+                _parentViewModel.RefreshCommand.Execute(null);
                 await App.Current.MainPage.DisplayAlert("Success", responce.Message, "OK");
+                await App.Current.MainPage.Navigation.PopAsync();
             }
             else
             {

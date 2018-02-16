@@ -1,16 +1,19 @@
-﻿using Interpretap.Models;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
+using Interpretap.Models;
 using Interpretap.Models.RespondModels.InnerTypes;
 using Interpretap.Services;
-using System.Threading.Tasks;
-using System.Windows.Input;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace Interpretap.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class AgencyEmployeeProfileViewModel
     {
         private AgencyInterpreter _employee;
         private int _agencyId;
+        AgencyInterpretersListViewModel _parentViewModel;
 
         public string FirstName => _employee.InterpreterFirstName;
         public string LastName => _employee.InterpreterLastName;
@@ -41,10 +44,11 @@ namespace Interpretap.ViewModels
 
         public bool IsProcessing { get; private set; }
         
-        public AgencyEmployeeProfileViewModel(AgencyInterpreter employee, int agencyId)
+        public AgencyEmployeeProfileViewModel(AgencyInterpreter employee, AgencyInterpretersListViewModel parentViewModel)
         {
             _employee = employee;
-            _agencyId = agencyId;
+            _agencyId = parentViewModel.AgencyId;
+            _parentViewModel = parentViewModel;
 
             DeleteCommand = new Command(async () => await ExecuteDeleteEmployeeCommandAsync());
         }
@@ -75,7 +79,9 @@ namespace Interpretap.ViewModels
             var success = responce.Status == true;
             if (success)
             {
+                _parentViewModel.RefreshCommand.Execute(null);
                 await App.Current.MainPage.DisplayAlert("Success", responce.Message, "OK");
+                await App.Current.MainPage.Navigation.PopAsync();
             }
             else
             {

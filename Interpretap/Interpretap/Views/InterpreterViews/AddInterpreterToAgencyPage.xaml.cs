@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Interpretap.ViewModels;
 
 namespace Interpretap.Views.InterpreterViews
 {
@@ -13,12 +14,15 @@ namespace Interpretap.Views.InterpreterViews
     public partial class AddInterpreterToAgencyPage : ContentPage
     {
         int _agencyId;
+        AgencyInterpretersListViewModel _parentViewModel;
+
         public bool IsProcessing { get; private set; }
         public bool CanAddInterpreter { get; private set; }
 
-        public AddInterpreterToAgencyPage(int agencyId)
+        public AddInterpreterToAgencyPage(AgencyInterpretersListViewModel parentViewModel)
         {
-            _agencyId = agencyId;
+            _agencyId = parentViewModel.AgencyId;
+            _parentViewModel = parentViewModel;
             InitializeComponent();
 
             this.BindingContext = this;
@@ -48,6 +52,7 @@ namespace Interpretap.Views.InterpreterViews
             var success = responce.Status == true;
             if (success)
             {
+                _parentViewModel.RefreshCommand.Execute(null);
                 await App.Current.MainPage.DisplayAlert("Success", responce.Message, "OK");
             }
             else
