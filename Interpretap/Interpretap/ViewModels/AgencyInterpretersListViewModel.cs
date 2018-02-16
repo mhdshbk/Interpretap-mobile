@@ -5,10 +5,7 @@ using Interpretap.Services;
 using Interpretap.Views;
 using Interpretap.Views.InterpreterViews;
 using PropertyChanged;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace Interpretap.ViewModels
 {
@@ -61,9 +58,10 @@ namespace Interpretap.ViewModels
             return responce.AgencyInterpreters;
         }
 
-        public void OnItemSelected(AgencyInterpretersListItemViewModel selectedItem)
+        public override void OnItemSelected(IEmployeeListItemViewModel selectedItem)
         {
-            App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(selectedItem.Employee, _agencyId));
+            var item = selectedItem as AgencyInterpretersListItemViewModel;
+            App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(item.Employee, _agencyId));
         }
     }
 }

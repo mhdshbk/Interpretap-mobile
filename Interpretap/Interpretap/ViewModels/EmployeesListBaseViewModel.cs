@@ -1,13 +1,9 @@
 ﻿using Interpretap.Interfaces.ViewModels;
-using System;
-using System.Collections.Generic;
+using PropertyChanged;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using PropertyChanged;
 
 namespace Interpretap.ViewModels
 {
@@ -52,6 +48,10 @@ namespace Interpretap.ViewModels
             {
                 RefreshCommand.Execute(null);
             }
+        }
+
+        public virtual void OnItemSelected(IEmployeeListItemViewModel selectedItem)
+        {
         }
     }
 }

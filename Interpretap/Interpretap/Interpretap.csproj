@@ -82,6 +82,7 @@
     <Compile Include="Models\AssignInterpreterRequestModel.cs" />
     <Compile Include="Models\AssignInterpreterResponce.cs" />
     <Compile Include="Models\BaseInterpreterApiRequest.cs" />
+    <Compile Include="Models\BusinessClientsRequestModel.cs" />
     <Compile Include="Models\BusinessModel.cs" />
     <Compile Include="Models\BusinessUpdateModel.cs" />
     <Compile Include="Models\CallInfoModel.cs" />
@@ -100,8 +101,10 @@
     <Compile Include="Models\MonthlyCallReportModel.cs" />
     <Compile Include="Models\RemoveInterpreterFromAgencyRequestModel.cs" />
     <Compile Include="Models\RespondModels\AgencyInterpreterRespondModel.cs" />
+    <Compile Include="Models\RespondModels\BusinessClientsRespondModel.cs" />
     <Compile Include="Models\RespondModels\ClientCallReportResponce.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\AgencyInterpreter.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\BusinessClient.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\CallDetails.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\ClientReport.cs" />
     <Compile Include="Models\RespondModels\InnerTypes\ReportInfo.cs" />
@@ -136,7 +139,8 @@
     <Compile Include="ViewModels\ActiveCallViewModel.cs" />
     <Compile Include="ViewModels\AgencyInterpretersListItemViewModel.cs" />
     <Compile Include="ViewModels\AgencyProfileViewModel.cs" />
-    <Compile Include="ViewModels\BusinessEmployeesListViewModel.cs" />
+    <Compile Include="ViewModels\BusinessClientsListItemViewModel.cs" />
+    <Compile Include="ViewModels\BusinessClientsListViewModel.cs" />
     <Compile Include="ViewModels\BusinessesViewModel.cs" />
     <Compile Include="ViewModels\AgenciesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

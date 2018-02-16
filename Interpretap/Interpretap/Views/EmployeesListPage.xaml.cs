@@ -1,4 +1,5 @@
-﻿using Interpretap.ViewModels;
+﻿using Interpretap.Interfaces.ViewModels;
+using Interpretap.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,9 +8,9 @@ namespace Interpretap.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EmployeesListPage : ContentPage
     {
-        AgencyInterpretersListViewModel VM;
+        EmployeesListBaseViewModel VM;
 
-        public EmployeesListPage(AgencyInterpretersListViewModel viewModel)
+        public EmployeesListPage(EmployeesListBaseViewModel viewModel)
         {
             InitializeComponent();
             VM = viewModel;
@@ -27,7 +28,7 @@ namespace Interpretap.Views
             var lv = sender as ListView;
             if (lv.SelectedItem == null) return;
 
-            var selectedItem = lv.SelectedItem as AgencyInterpretersListItemViewModel;
+            var selectedItem = lv.SelectedItem as IEmployeeListItemViewModel; //AgencyInterpretersListItemViewModel;
             VM.OnItemSelected(selectedItem);
 
             lv.SelectedItem = null;

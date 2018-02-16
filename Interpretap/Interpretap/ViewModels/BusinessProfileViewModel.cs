@@ -1,6 +1,7 @@
 ﻿using Interpretap.Common;
 using Interpretap.Models;
 using Interpretap.Services;
+using Interpretap.Views;
 using PropertyChanged;
 using System.Linq;
 using System.Threading.Tasks;
@@ -90,6 +91,8 @@ namespace Interpretap.ViewModels
         public ICommand UpdateCommand { get; set; }
         public bool CanExecuteUpdateCommand => IsDirty;
 
+        public ICommand ClientsListCommand { get; set; }
+
         public bool IsBusy { get; set; }
         public bool IsDirty { get; set; }
 
@@ -97,6 +100,12 @@ namespace Interpretap.ViewModels
         {
             _businessInfo = new BusinessInfo();
             UpdateCommand = new Command(async () => await ExecuteUpdateCommandAsync());
+            ClientsListCommand = new Command(ExecuteClientsListCommand);
+        }
+
+        private void ExecuteClientsListCommand(object obj)
+        {
+            App.Current.MainPage.Navigation.PushAsync(new EmployeesListPage(new BusinessClientsListViewModel(_businessId)));
         }
 
         private async Task ExecuteUpdateCommandAsync()

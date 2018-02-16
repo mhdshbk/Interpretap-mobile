@@ -87,5 +87,21 @@ namespace Interpretap.Services
 
             return responce;
         }
+
+        public async Task<BusinessClientsRespondModel> FetchClientsForBusiness(BusinessClientsRequestModel requestModel)
+        {
+            var responce = new BusinessClientsRespondModel();
+
+            try
+            {
+                responce = await Post<BusinessClientsRespondModel, BusinessClientsRequestModel>(FetchClientsAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }
