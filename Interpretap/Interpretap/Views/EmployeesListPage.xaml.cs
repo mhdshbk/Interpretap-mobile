@@ -9,10 +9,10 @@ namespace Interpretap.Views
     {
         AgencyInterpretersListViewModel VM;
 
-        public EmployeesListPage(int agencyId)
+        public EmployeesListPage(AgencyInterpretersListViewModel viewModel)
         {
             InitializeComponent();
-            VM = new AgencyInterpretersListViewModel(agencyId);
+            VM = viewModel;
             this.BindingContext = VM;
         }
 
@@ -27,7 +27,7 @@ namespace Interpretap.Views
             var lv = sender as ListView;
             if (lv.SelectedItem == null) return;
 
-            var selectedItem = lv.SelectedItem as AgencyEmployeesListItemViewModel;
+            var selectedItem = lv.SelectedItem as AgencyInterpretersListItemViewModel;
             VM.OnItemSelected(selectedItem);
 
             lv.SelectedItem = null;

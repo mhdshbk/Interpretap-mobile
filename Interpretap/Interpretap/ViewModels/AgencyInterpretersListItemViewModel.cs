@@ -1,15 +1,16 @@
-﻿using Interpretap.Models.RespondModels.InnerTypes;
+﻿using Interpretap.Interfaces.ViewModels;
+using Interpretap.Models.RespondModels.InnerTypes;
 
 namespace Interpretap.ViewModels
 {
-    public class AgencyEmployeesListItemViewModel
+    public class AgencyInterpretersListItemViewModel : IEmployeeListItemViewModel
     {
         public AgencyInterpreter Employee { get; set; }
 
         public string UserName => Employee.UserName;
         public string FullName => $"{Employee.InterpreterFirstName} {Employee.InterpreterLastName}";
 
-        public AgencyEmployeesListItemViewModel(AgencyInterpreter interpreterModel)
+        public AgencyInterpretersListItemViewModel(AgencyInterpreter interpreterModel)
         {
             Employee = interpreterModel;
         }

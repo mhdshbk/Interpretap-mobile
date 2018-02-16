@@ -1,4 +1,5 @@
-﻿using Interpretap.Models;
+﻿using Interpretap.Interfaces.ViewModels;
+using Interpretap.Models;
 using Interpretap.Models.RespondModels.InnerTypes;
 using Interpretap.Services;
 using Interpretap.Views;
@@ -12,50 +13,39 @@ using Xamarin.Forms;
 namespace Interpretap.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class AgencyInterpretersListViewModel
+    public class AgencyInterpretersListViewModel : EmployeesListBaseViewModel
     {
         int _agencyId;
 
-        public ObservableCollection<AgencyEmployeesListItemViewModel> Employees { get; set; }
-
-        public bool IsRefreshing { get; set; }
-        public ICommand RefreshCommand { get; set; }
-        public ICommand AddCommand { get; set; }
-
-        public AgencyInterpretersListViewModel(int agencyId)
+        public AgencyInterpretersListViewModel(int agencyId) : base()
         {
             _agencyId = agencyId;
-            Employees = new ObservableCollection<AgencyEmployeesListItemViewModel>();
-            RefreshCommand = new Command(async () => await ExecuteRefreshCommandAsync());
-            AddCommand = new Command(async () => await ExecuteAddCommandAsync());
         }
 
-        private async Task ExecuteAddCommandAsync()
+        protected override async Task ExecuteAddCommandAsync()
         {
             await App.Current.MainPage.Navigation.PushAsync(new AddInterpreterToAgencyPage(_agencyId));
         }
 
-        private async Task ExecuteRefreshCommandAsync()
-        {
-            Employees.Clear();
-            await LoadDataAsync();
-        }
-
-        async Task LoadDataAsync()
+        protected override async Task LoadDataAsync()
         {
             IsRefreshing = true;
 
             var interpreters = await FetchDataAsync();
+            FillEmployeesList(interpreters);
+            IsRefreshing = false;
+        }
+
+        private void FillEmployeesList(AgencyInterpreter[] interpreters)
+        {
             if (interpreters != null)
             {
                 foreach (var i in interpreters)
                 {
-                    var itemVM = new AgencyEmployeesListItemViewModel(i);
+                    var itemVM = new AgencyInterpretersListItemViewModel(i);
                     Employees.Add(itemVM);
                 }
-
             }
-            IsRefreshing = false;
         }
 
         private async Task<AgencyInterpreter[]> FetchDataAsync()
@@ -71,15 +61,7 @@ namespace Interpretap.ViewModels
             return responce.AgencyInterpreters;
         }
 
-        public void OnAppearing()
-        {
-            if (Employees.Count == 0)
-            {
-                RefreshCommand.Execute(null);
-            }
-        }
-
-        public void OnItemSelected(AgencyEmployeesListItemViewModel selectedItem)
+        public void OnItemSelected(AgencyInterpretersListItemViewModel selectedItem)
         {
             App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(selectedItem.Employee, _agencyId));
         }

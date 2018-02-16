@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="Interfaces\ICallReportModel.cs" />
     <Compile Include="Interfaces\ICallReportResponce.cs" />
+    <Compile Include="Interfaces\ViewModels\IEmployeeListItemViewModel.cs" />
     <Compile Include="LoginManager.cs" />
     <Compile Include="CustomElements\ActiveCallView.xaml.cs">
       <DependentUpon>ActiveCallView.xaml</DependentUpon>
@@ -133,8 +134,9 @@
     <Compile Include="Services\SyncService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\ActiveCallViewModel.cs" />
-    <Compile Include="ViewModels\AgencyEmployeesListItemViewModel.cs" />
+    <Compile Include="ViewModels\AgencyInterpretersListItemViewModel.cs" />
     <Compile Include="ViewModels\AgencyProfileViewModel.cs" />
+    <Compile Include="ViewModels\BusinessEmployeesListViewModel.cs" />
     <Compile Include="ViewModels\BusinessesViewModel.cs" />
     <Compile Include="ViewModels\AgenciesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="ViewModels\ABCallReportViewModel.cs" />
     <Compile Include="ViewModels\CallReportViewModel.cs" />
     <Compile Include="ViewModels\AgencyInterpretersListViewModel.cs" />
+    <Compile Include="ViewModels\EmployeesListBaseViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="ViewModels\AgencyEmployeeProfileViewModel.cs" />
@@ -426,6 +429,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

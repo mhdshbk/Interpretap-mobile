@@ -109,7 +109,7 @@ namespace Interpretap.ViewModels
 
         private void ExecuteEmployeeListCommand(object obj)
         {
-            App.Current.MainPage.Navigation.PushAsync(new EmployeesListPage(_agencyId)); 
+            App.Current.MainPage.Navigation.PushAsync(new EmployeesListPage(new AgencyInterpretersListViewModel(_agencyId))); 
         }
 
         private async Task ExecuteUpdateCommandAsync()
