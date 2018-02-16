@@ -36,9 +36,7 @@ namespace Interpretap.ViewModels
         }
 
         public ICommand DeleteCommand { get; set; }
-
-        public bool IsEditable => false;
-
+        
         public AgencyEmployeeProfileViewModel(AgencyInterpreter employee)
         {
             _employee = employee;

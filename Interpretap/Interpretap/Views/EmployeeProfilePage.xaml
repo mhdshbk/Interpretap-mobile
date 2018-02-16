@@ -9,52 +9,52 @@
             <StackLayout Padding="10" Spacing="0">
 
                 <Label Text="First Name" />
-                <Entry Text="{Binding FirstName}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding FirstName}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
                 <Label Text="Last Name" />
-                <Entry Text="{Binding LastName}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding LastName}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
                 <Label Text="User" />
-                <Entry Text="{Binding UserName}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding UserName}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
                 <Label Text="Email"/>
-                <Entry Text="{Binding Email}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding Email}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
                 <Label Text="Phone Number"/>
-                <Entry Text="{Binding PhoneNumber}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding PhoneNumber}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
                 <Label Text="Address"/>
-                <Entry Text="{Binding Address}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding Address}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
                 <Label Text="City"/>
-                <Entry Text="{Binding City}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding City}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
                 <Label Text="Province"/>
-                <Entry Text="{Binding Province}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding Province}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
                 <Label Text="ID"/>
-                <Entry Text="{Binding Id}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding Id}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
                 <Label Text="Is Manager"/>
-                <Entry Text="{Binding IsManager}" IsEnabled="{Binding IsEditable}"/>
+                <Label Text="{Binding IsManager}" FontSize="Medium" TextColor="Black"/>
 
                 <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
 
