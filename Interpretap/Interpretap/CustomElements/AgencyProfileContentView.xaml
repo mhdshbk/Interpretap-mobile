@@ -11,42 +11,45 @@
                 AbsoluteLayout.LayoutFlags="All"
                 AbsoluteLayout.LayoutBounds="0,0,1,1">
 
-                <StackLayout>
-                    <ce:GotoDetailsButton Text="Employees" Command="{Binding EmployeeListCommand}"/>
-                    <BoxView 
-                        HeightRequest="1" 
-                        BackgroundColor="Silver"/>
+                <StackLayout Spacing="0">
 
+                    <StackLayout Spacing="0">
+                        <ce:GotoDetailsButton Text="Employees" Command="{Binding EmployeeListCommand}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="Silver"/>
+                    </StackLayout>
 
-                    <Label Text="Name"/>
-                    <Entry Text="{Binding Name}"/>
+                    <StackLayout>
 
-                    <BoxView HeightRequest="6"/>
-                    <Label Text="Email"/>
-                    <Entry Text="{Binding Email}"/>
+                        <Label Text="Name"/>
+                        <Entry Text="{Binding Name}"/>
 
-                    <BoxView HeightRequest="6"/>
-                    <Label Text="Phone Number"/>
-                    <Entry Text="{Binding PhoneNumber}"/>
+                        <BoxView HeightRequest="6"/>
+                        <Label Text="Email"/>
+                        <Entry Text="{Binding Email}"/>
 
-                    <BoxView HeightRequest="6"/>
-                    <Label Text="Address"/>
-                    <Entry Text="{Binding Address}"/>
+                        <BoxView HeightRequest="6"/>
+                        <Label Text="Phone Number"/>
+                        <Entry Text="{Binding PhoneNumber}"/>
 
-                    <BoxView HeightRequest="6"/>
-                    <Label Text="City"/>
-                    <Entry Text="{Binding City}"/>
+                        <BoxView HeightRequest="6"/>
+                        <Label Text="Address"/>
+                        <Entry Text="{Binding Address}"/>
 
-                    <BoxView HeightRequest="6"/>
-                    <Label Text="Province"/>
-                    <Entry Text="{Binding Province}"/>
+                        <BoxView HeightRequest="6"/>
+                        <Label Text="City"/>
+                        <Entry Text="{Binding City}"/>
 
-                    <BoxView HeightRequest="6"/>
-                    <Label Text="ZipCode"/>
-                    <Entry Text="{Binding ZipCode}"/>
+                        <BoxView HeightRequest="6"/>
+                        <Label Text="Province"/>
+                        <Entry Text="{Binding Province}"/>
 
-                    <BoxView HeightRequest="6"/>
-                    <Button Text="Update" Command="{Binding UpdateCommand}" IsEnabled="{Binding CanExecuteUpdateCommand}"/>
+                        <BoxView HeightRequest="6"/>
+                        <Label Text="ZipCode"/>
+                        <Entry Text="{Binding ZipCode}"/>
+
+                        <BoxView HeightRequest="6"/>
+                        <Button Text="Update" Command="{Binding UpdateCommand}" IsEnabled="{Binding CanExecuteUpdateCommand}"/>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
 
