@@ -28,10 +28,21 @@ namespace Interpretap.Views
             var lv = sender as ListView;
             if (lv.SelectedItem == null) return;
 
-            var selectedItem = lv.SelectedItem as IEmployeeListItemViewModel; //AgencyInterpretersListItemViewModel;
+            var selectedItem = lv.SelectedItem as IEmployeeListItemViewModel;
             VM.OnItemSelected(selectedItem);
 
             lv.SelectedItem = null;
+        }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var item = e.Item as IEmployeeListItemViewModel;
+            VM.OnItemAppearingAsync(item).GetAwaiter();
+        }
+
+        private void ListView_ItemDisappearing(object sender, ItemVisibilityEventArgs e)
+        {
+            VM.OnScrolled();
         }
     }
 }

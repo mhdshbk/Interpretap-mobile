@@ -16,6 +16,8 @@ namespace Interpretap.ViewModels
         public ICommand AddCommand { get; set; }
 
         public bool IsRefreshing { get; set; }
+        protected bool ToPaginate { get; set; }
+        protected bool HasScrolled { get; set; }
 
         public EmployeesListBaseViewModel()
         {
@@ -35,11 +37,15 @@ namespace Interpretap.ViewModels
             Employees.Clear();
             await LoadDataAsync();
 
+            ToPaginate = false;
+            HasScrolled = false;
+
             IsRefreshing = false;
         }
 
-        protected virtual async Task LoadDataAsync()
+        protected virtual async Task<int> LoadDataAsync(string Id = "")
         {
+            return 0;
         }
 
         public void OnAppearing()
@@ -52,6 +58,19 @@ namespace Interpretap.ViewModels
 
         public virtual void OnItemSelected(IEmployeeListItemViewModel selectedItem)
         {
+        }
+
+        public virtual async Task OnItemAppearingAsync(IEmployeeListItemViewModel item)
+        {
+        }
+
+        public virtual void OnScrolled()
+        {
+            if (!HasScrolled)
+            {
+                HasScrolled = true;
+                ToPaginate = true;
+            }
         }
     }
 }

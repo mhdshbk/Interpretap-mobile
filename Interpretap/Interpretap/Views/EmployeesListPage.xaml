@@ -17,6 +17,8 @@
             RefreshCommand="{Binding RefreshCommand}"
             IsRefreshing="{Binding IsRefreshing}"
             ItemSelected="ListView_ItemSelected"
+            ItemAppearing="ListView_ItemAppearing"
+            ItemDisappearing="ListView_ItemDisappearing"
             RowHeight="60"
             HasUnevenRows="True">
 

@@ -4,6 +4,7 @@ using Interpretap.Models.RespondModels.InnerTypes;
 using Interpretap.Services;
 using Interpretap.Views.InterpreterViews;
 using PropertyChanged;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Interpretap.ViewModels
@@ -23,13 +24,15 @@ namespace Interpretap.ViewModels
             await App.Current.MainPage.Navigation.PushAsync(new AddInterpreterToAgencyPage(this));
         }
 
-        protected override async Task LoadDataAsync()
+        protected override async Task<int> LoadDataAsync(string fromId = "")
         {
             IsRefreshing = true;
 
-            var interpreters = await FetchDataAsync();
+            var interpreters = await FetchDataAsync(fromId);
             FillEmployeesList(interpreters);
             IsRefreshing = false;
+
+            return interpreters.Count();
         }
 
         private void FillEmployeesList(AgencyInterpreter[] interpreters)
@@ -44,12 +47,12 @@ namespace Interpretap.ViewModels
             }
         }
 
-        private async Task<AgencyInterpreter[]> FetchDataAsync()
+        private async Task<AgencyInterpreter[]> FetchDataAsync(string fromId)
         {
             var request = new AgencyInterpretersRequestModel()
             {
                 AgencyId = AgencyId.ToString(),
-                FromInterpreterId = string.Empty,
+                FromInterpreterId = fromId,
             };
 
             var service = new AgencyService();
@@ -61,6 +64,24 @@ namespace Interpretap.ViewModels
         {
             var item = selectedItem as AgencyInterpretersListItemViewModel;
             App.Current.MainPage.Navigation.PushAsync(new EmployeeProfilePage(item.Employee, this));
+        }
+
+        public override async Task OnItemAppearingAsync(IEmployeeListItemViewModel item)
+        {
+            if (!ToPaginate) return;
+
+            var client = item as AgencyInterpretersListItemViewModel;
+            var clientIsLastVisible = client == Employees.Last();
+            if (clientIsLastVisible)
+            {
+                var fromId = client.Employee.InterpreterId;
+                var countNew = await LoadDataAsync(fromId);
+                if (countNew == 0)
+                {
+                    ToPaginate = false;
+                }
+            }
+
         }
     }
 }

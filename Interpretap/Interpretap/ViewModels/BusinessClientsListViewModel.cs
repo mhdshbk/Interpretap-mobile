@@ -26,22 +26,23 @@ namespace Interpretap.ViewModels
             await App.Current.MainPage.Navigation.PushAsync(new AddClientToBusinessPage(this));
         }
 
-        protected override async Task LoadDataAsync()
+        protected override async Task<int> LoadDataAsync(string fromId = "")
         {
             IsRefreshing = true;
 
-            var clients = await FetchDataAsync();
+            var clients = await FetchDataAsync(fromId);
             FillEmployeesList(clients);
 
             IsRefreshing = false;
+            return clients.Count();
         }
 
-        private async Task<BusinessClient[]> FetchDataAsync()
+        private async Task<BusinessClient[]> FetchDataAsync(string fromId)
         {
             var request = new BusinessClientsRequestModel()
             {
                 BusinessId = BusinessId.ToString(),
-                FromClientId = string.Empty,
+                FromClientId = fromId,
             };
 
             var service = new BusinessService();
@@ -65,6 +66,24 @@ namespace Interpretap.ViewModels
         {
             var item = selectedItem as BusinessClientsListItemViewModel;
             App.Current.MainPage.Navigation.PushAsync(new ClientProfilePage(item.Client, this));
+        }
+
+
+        public override async Task OnItemAppearingAsync(IEmployeeListItemViewModel item)
+        {
+            if (!ToPaginate) return;
+
+            var client = item as BusinessClientsListItemViewModel;
+            var clientIsLastVisible = client == Employees.Last();
+            if (clientIsLastVisible)
+            {
+                var fromId = client.Client.ClientId;
+                var countNew = await LoadDataAsync(fromId);
+                if (countNew == 0)
+                {
+                    ToPaginate = false;
+                }
+            }
         }
     }
 }
