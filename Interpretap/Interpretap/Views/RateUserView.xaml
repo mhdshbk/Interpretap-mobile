@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.RateUserView"
+             Title="Rate user">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" >
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0,20,0,0"/>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+
+            <StackLayout
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Padding="10">
+
+                <StackLayout
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="20">
+
+                    <Label Text="Rating:"/>
+                    <Picker 
+                        Title="Choose"
+                        SelectedItem="{Binding Rating}">
+                        <Picker.Items>
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+
+                <Button 
+                    VerticalOptions="End"
+                    Text="Send" 
+                    Command="{Binding RateCommand}"
+                    IsEnabled="{Binding CanExecuteRateCommand}"/>
+            </StackLayout>
+
+            <ActivityIndicator 
+                IsRunning="True" 
+                IsVisible="{Binding IsProcessing}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

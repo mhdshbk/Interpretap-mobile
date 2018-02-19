@@ -119,5 +119,21 @@ namespace Interpretap.Services
 
             return responce;
         }
+
+        public async Task<BaseRespond> RateUser(RateUserRequestModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, RateUserRequestModel>(RateUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }

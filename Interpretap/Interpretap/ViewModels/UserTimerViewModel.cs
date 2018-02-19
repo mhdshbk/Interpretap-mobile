@@ -1,7 +1,9 @@
 ﻿using Interpretap.Common;
+using Interpretap.Core;
 using Interpretap.Interfaces;
 using Interpretap.Models.RespondModels;
 using Interpretap.Services;
+using Interpretap.Views;
 using PropertyChanged;
 using System;
 using System.Text;
@@ -43,7 +45,7 @@ namespace Interpretap.ViewModels
             _callStatusService.Started += OnStarted;
             _callStatusService.Paused += OnPaused;
             _callStatusService.Unpaused += OnUnpaused;
-            _callStatusService.Stopped += OnStopped;
+            _callStatusService.Stopped += OnFinished;
             _callStatusService.Canceled += OnCanceled;
 
             _timer = new MyTimer(TimeSpan.FromSeconds(1), () => ElapsedTime = _timer.GetTimePassed());
@@ -102,11 +104,12 @@ namespace Interpretap.ViewModels
             CallStatus = "Call active";
         }
 
-        void OnStopped(object sender, EventArgs e)
+        void OnFinished(object sender, EventArgs e)
         {
             _timer.Stop();
             CallStatus = "Call finished";
             OnTimerDone();
+            RateInterpreterAsync();
         }
 
         void OnCanceled(object sender, EventArgs e)
@@ -176,6 +179,14 @@ namespace Interpretap.ViewModels
             App.ToUpdateLogsFlag = true;
             App.ActiveCall.ActiveCallRequest = null;
             TimerDone?.Invoke(this, new EventArgs());
+        }
+
+        private async Task RateInterpreterAsync()
+        {
+            var rateModel = new RateUserModel(ActiveCallRequest.CallInfo.InterpreterInfo.InterpreterUserId, ActiveCallRequest.CallId);
+            var rateViewModel = new RateUserViewModel(rateModel);
+            var ratePage = new RateUserView(rateViewModel);
+            await App.Current.MainPage.Navigation.PushAsync(ratePage);
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using Interpretap.Common;
+using Interpretap.Core;
 using Interpretap.Models;
+using Interpretap.Models.RespondModels;
 using Interpretap.Services;
+using Interpretap.ViewModels;
+using PropertyChanged;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Interpretap.Models.RespondModels;
-using PropertyChanged;
 
 namespace Interpretap.Views.InterpreterViews
 {
@@ -146,6 +148,7 @@ namespace Interpretap.Views.InterpreterViews
             timer.Stop();
             _timerStarted = false;
             CloseTimerPage();
+            RateInterpreterAsync();
         }
 
         private void UpdateTimerLabel()
@@ -224,6 +227,17 @@ namespace Interpretap.Views.InterpreterViews
                 timer.SetTimePassed("00:00:00");
                 UpdateTimerLabel();
             }
+        }
+
+        private async Task RateInterpreterAsync()
+        {
+            var rateModel = new RateUserModel(ClientId, ActiveCallRequest.CallId);
+            var rateViewModel = new RateUserViewModel(rateModel);
+            var ratePage = new RateUserView(rateViewModel);
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await App.Current.MainPage.Navigation.PushAsync(ratePage);
+            });
         }
 
         private async Task OnAppResumedAsync(App obj)

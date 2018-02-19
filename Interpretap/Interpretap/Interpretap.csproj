@@ -100,6 +100,8 @@
     <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
+    <Compile Include="Core\RateUserModel.cs" />
+    <Compile Include="Models\RateUserRequestModel.cs" />
     <Compile Include="Models\RemoveClientFromBusinessRequestModel.cs" />
     <Compile Include="Models\RemoveInterpreterFromAgencyRequestModel.cs" />
     <Compile Include="Models\RespondModels\AgencyInterpreterRespondModel.cs" />
@@ -156,6 +158,7 @@
     <Compile Include="ViewModels\AgencyInterpretersListViewModel.cs" />
     <Compile Include="ViewModels\EmployeesListBaseViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\RateUserViewModel.cs" />
     <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="ViewModels\AgencyEmployeeProfileViewModel.cs" />
     <Compile Include="Views\CallInfo.xaml.cs">
@@ -194,6 +197,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RateUserView.xaml.cs">
+      <DependentUpon>RateUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
@@ -450,6 +456,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\UserViews\AddClientToBusinessPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\RateUserView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
