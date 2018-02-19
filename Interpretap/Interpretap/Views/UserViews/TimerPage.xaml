@@ -38,7 +38,7 @@
             
             <StackLayout Orientation="Horizontal">
                 <Label Text="Call ID:" />
-                <Label Text="{Binding CallId}"  />
+                <Label Text="{Binding CallRefId}"  />
             </StackLayout>
 
             <Label 

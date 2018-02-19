@@ -1,13 +1,14 @@
-﻿using Interpretap.Common;
+﻿using System;
+using System.Text;
+using System.Threading.Tasks;
+using Interpretap.Common;
 using Interpretap.Core;
 using Interpretap.Interfaces;
 using Interpretap.Models.RespondModels;
 using Interpretap.Services;
 using Interpretap.Views;
 using PropertyChanged;
-using System;
-using System.Text;
-using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Interpretap.ViewModels
 {
@@ -21,10 +22,12 @@ namespace Interpretap.ViewModels
         bool _ellipsisAnimationAlive;
         int _ellipsisCount;
         int _maxEllipsisCount = 3;
+        string _userId;
+        string _callId;
 
         FetchCurrentCallResponce ActiveCallRequest => App.ActiveCall.ActiveCallRequest;
 
-        public string CallId { get; set; }
+        public string CallRefId { get; set; }
         public string CallStatus { get; set; }
 
         public string ElapsedTime { get; set; }
@@ -68,7 +71,10 @@ namespace Interpretap.ViewModels
                     Agency = ActiveCallRequest.CallInfo.AgencyInfo.InterpreterBusinessName;
                     var interpreter = ActiveCallRequest.CallInfo.InterpreterInfo;
                     InterpreterFullName = $"{interpreter.InterpreterFirstName} {interpreter.InterpreterLastName}";
-                    CallId = ActiveCallRequest.CallInfo.CallDetails.CallReferenceId;
+                    CallRefId = ActiveCallRequest.CallInfo.CallDetails.CallReferenceId;
+
+                    _userId = ActiveCallRequest.CallInfo.InterpreterInfo.InterpreterUserId;
+                    _callId = ActiveCallRequest.CallId;
                 }
                 catch (NullReferenceException)
                 {
@@ -109,7 +115,6 @@ namespace Interpretap.ViewModels
             _timer.Stop();
             CallStatus = "Call finished";
             OnTimerDone();
-            RateInterpreterAsync();
         }
 
         void OnCanceled(object sender, EventArgs e)
@@ -178,15 +183,31 @@ namespace Interpretap.ViewModels
         {
             App.ToUpdateLogsFlag = true;
             App.ActiveCall.ActiveCallRequest = null;
-            TimerDone?.Invoke(this, new EventArgs());
+            UnsubscribeEvents();
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await App.Current.MainPage.Navigation.PopAsync();
+                App.ActivateLogsTab();
+                await RateInterpreterAsync(_userId, _callId);
+            });
+
         }
 
-        private async Task RateInterpreterAsync()
+        private async Task RateInterpreterAsync(string userId, string callId)
         {
-            var rateModel = new RateUserModel(ActiveCallRequest.CallInfo.InterpreterInfo.InterpreterUserId, ActiveCallRequest.CallId);
+            var rateModel = new RateUserModel(userId, callId);
             var rateViewModel = new RateUserViewModel(rateModel);
             var ratePage = new RateUserView(rateViewModel);
             await App.Current.MainPage.Navigation.PushAsync(ratePage);
+        }
+
+        private void UnsubscribeEvents()
+        {
+            _callStatusService.Started -= OnStarted;
+            _callStatusService.Paused -= OnPaused;
+            _callStatusService.Unpaused -= OnUnpaused;
+            _callStatusService.Stopped -= OnFinished;
+            _callStatusService.Canceled -= OnCanceled;
         }
     }
 }
