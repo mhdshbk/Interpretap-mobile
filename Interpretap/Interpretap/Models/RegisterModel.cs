@@ -56,5 +56,8 @@ namespace Interpretap.Models
 
         [JsonProperty("interpreter_terpcode")]
         public string InterpreterTerpcode { get; set; }
+        
+        [JsonProperty("client_native_language")]
+        public string ClientNativeLanguage { get; set; }
     }
 }

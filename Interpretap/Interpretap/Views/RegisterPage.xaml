@@ -40,6 +40,14 @@
                         <Label x:Name="Lbl_Gender" Text="Select Gender"/>
                         <Picker x:Name="GenderPicker" Title="Select gender" />
 
+                        <Label x:Name="Lbl_NativeLanguage" Text="Select Native Language"/>
+                        <Picker 
+                            x:Name="NativeLanguagePicker" 
+                            Title="Select Native Language" 
+                            ItemsSource="{Binding Languages}" 
+                            ItemDisplayBinding="{Binding Name}" 
+                            SelectedItem="{Binding SelectedLanguage}"/>
+
                         <Label x:Name="Lbl_Email" Text="Email"/>
                         <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
 
