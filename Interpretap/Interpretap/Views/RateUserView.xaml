@@ -33,17 +33,11 @@
                     Spacing="20">
 
                     <Label Text="Rating:"/>
-                    <Picker 
-                        Title="Choose"
-                        SelectedItem="{Binding Rating}">
-                        <Picker.Items>
-                            <x:String>1</x:String>
-                            <x:String>2</x:String>
-                            <x:String>3</x:String>
-                            <x:String>4</x:String>
-                            <x:String>5</x:String>
-                        </Picker.Items>
-                    </Picker>
+                    <StackLayout 
+                        x:Name="StarsView"
+                        Orientation="Horizontal"
+                        HorizontalOptions="CenterAndExpand"
+                        HeightRequest="60"/>
                 </StackLayout>
 
                 <Button 

@@ -188,6 +188,12 @@
   <ItemGroup>
     <BundleResource Include="Resources\account_circle_gray.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\star_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\star_border_black.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets')" />
 </Project>

@@ -1,15 +1,16 @@
 ﻿using Interpretap.Core;
-using PropertyChanged;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Interpretap.ViewModels
 {
-    [AddINotifyPropertyChangedInterface]
-    public class RateUserViewModel
+    public class RateUserViewModel : INotifyPropertyChanged
     {
         private RateUserModel _model;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public string Rating { get; set; }
 
