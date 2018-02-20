@@ -11,7 +11,14 @@ namespace Interpretap.Models
 
         public BaseModel()
         {
-            this.SessionKey = LocalStorage.LoginResponseLS.SessionKey;
+            try
+            {
+                this.SessionKey = LocalStorage.LoginResponseLS.SessionKey;
+            }
+            catch(NullReferenceException)
+            {
+                this.SessionKey = "";
+            }
         }
     }
 }
