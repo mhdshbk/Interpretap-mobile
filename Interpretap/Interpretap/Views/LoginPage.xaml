@@ -47,6 +47,12 @@
                         <Button x:Name="Btn_Registration" Text="Registration" Clicked="RegistrationProcedure"/>
                     </StackLayout>
 
+                    <Label 
+                        x:Name="ForgotPasswordLabel"
+                        Text="Forgot password" 
+                        TextColor="Blue"
+                        HorizontalTextAlignment="Center"/>
+
                 </StackLayout>
 
                 <ActivityIndicator

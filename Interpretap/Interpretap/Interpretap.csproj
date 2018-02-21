@@ -49,6 +49,8 @@
     <Compile Include="Core\ActiveCallModel.cs" />
     <Compile Include="Core\InterpreterCallReportModel.cs" />
     <Compile Include="Core\ClientCallReportModel.cs" />
+    <Compile Include="Core\ResetPasswordModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="Core\UserModel.cs" />
     <Compile Include="CustomElements\AgencyProfileContentView.xaml.cs">
       <DependentUpon>AgencyProfileContentView.xaml</DependentUpon>
@@ -104,6 +106,7 @@
     <Compile Include="Models\RateUserRequestModel.cs" />
     <Compile Include="Models\RemoveClientFromBusinessRequestModel.cs" />
     <Compile Include="Models\RemoveInterpreterFromAgencyRequestModel.cs" />
+    <Compile Include="Models\ResetPasswordRequestModel.cs" />
     <Compile Include="Models\RespondModels\AgencyInterpreterRespondModel.cs" />
     <Compile Include="Models\RespondModels\BusinessClientsRespondModel.cs" />
     <Compile Include="Models\RespondModels\ClientCallReportResponce.cs" />
@@ -206,6 +209,9 @@
     </Compile>
     <Compile Include="Views\ABCallReportPage.xaml.cs">
       <DependentUpon>ABCallReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResetPasswordPage.xaml.cs">
+      <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\AddClientToBusinessPage.xaml.cs">
       <DependentUpon>AddClientToBusinessPage.xaml</DependentUpon>
@@ -462,6 +468,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\RateUserView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ResetPasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

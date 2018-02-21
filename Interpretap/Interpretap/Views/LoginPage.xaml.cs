@@ -16,6 +16,17 @@ namespace Interpretap.Views
             InitializeComponent();
             SetActivityIndicatorState(false);
             Entry_Username.Completed += (s, e) => Entry_Password.Focus();
+            InitForgotPasswordLabel();
+        }
+
+        private void InitForgotPasswordLabel()
+        {
+            var tgr = new TapGestureRecognizer();
+            tgr.Tapped += (s, e) =>
+            {
+                Navigation.PushAsync(new ResetPasswordPage());
+            };
+            ForgotPasswordLabel.GestureRecognizers.Add(tgr);
         }
 
         private async Task UserLoginProcedure(object sender, EventArgs e)

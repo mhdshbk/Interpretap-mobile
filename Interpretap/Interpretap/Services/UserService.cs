@@ -1,8 +1,8 @@
-﻿using static Interpretap.Common.ConfigApp;
-using Interpretap.Models;
+﻿using Interpretap.Models;
+using Interpretap.Models.RespondModels;
 using System;
 using System.Threading.Tasks;
-using Interpretap.Models.RespondModels;
+using static Interpretap.Common.ConfigApp;
 
 namespace Interpretap.Services
 {
@@ -127,6 +127,22 @@ namespace Interpretap.Services
             try
             {
                 responce = await Post<BaseRespond, RateUserRequestModel>(RateUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> ResetPassword(ResetPasswordRequestModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, ResetPasswordRequestModel>(ResetPasswordUserAPI, requestModel);
             }
             catch (Exception e)
             {
