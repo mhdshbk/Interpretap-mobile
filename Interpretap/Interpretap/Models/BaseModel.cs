@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Interpretap.Common;
 using Newtonsoft.Json;
 
@@ -15,7 +16,7 @@ namespace Interpretap.Models
             {
                 this.SessionKey = LocalStorage.LoginResponseLS.SessionKey;
             }
-            catch(NullReferenceException)
+            catch(KeyNotFoundException)
             {
                 this.SessionKey = "";
             }

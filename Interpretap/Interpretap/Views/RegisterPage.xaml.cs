@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using static Interpretap.Common.Constants;
-using Xamarin.Forms;
-using Interpretap.Models;
-using System.Threading.Tasks;
-using Interpretap.Services;
-using Xamarin.Forms.Xaml;
-using Com.OneSignal;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Interpretap.Models;
+using Interpretap.Services;
 using PropertyChanged;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using static Interpretap.Common.Constants;
 
 namespace Interpretap.Views
 {
@@ -31,7 +29,26 @@ namespace Interpretap.Views
             Entry_Password_Confirm.Completed += (s, e) => Entry_First_Name.Focus();
             Entry_First_Name.Completed += (s, e) => Entry_Last_Name.Focus();
             Entry_Last_Name.Completed += (s, e) => GenderPicker.Focus();
-            GenderPicker.SelectedIndexChanged += (s, e) => NativeLanguagePicker.Focus();
+            GenderPicker.SelectedIndexChanged += (s, e) => 
+            {
+                if (ProfileTypePicker.SelectedIndex == -1)
+                {
+                    return;
+                }
+                else
+                {
+                    string profileTypeName = ProfileTypePicker.Items[ProfileTypePicker.SelectedIndex];
+                    string profileTypeId = ProfileTypes[profileTypeName];
+                    if (profileTypeId.Equals("interpreter"))
+                    {
+                        Entry_Email.Focus();
+                    }
+                    else
+                    {
+                        NativeLanguagePicker.Focus();
+                    }
+                }
+            };
             NativeLanguagePicker.SelectedIndexChanged += (s, e) => Entry_Email.Focus();
             Entry_Email.Completed += (s, e) => Entry_Phone_Number.Focus();
             Entry_Phone_Number.Completed += (s, e) => Entry_Address.Focus();
@@ -58,9 +75,11 @@ namespace Interpretap.Views
                     NativeLanguagePicker.IsVisible = profileTypeId.Equals("client") ? true : false;
                 }
 
-                foreach (String genderName in Genders.Keys)
-                    GenderPicker.Items.Add(genderName);
             };
+
+            foreach (String genderName in Genders.Keys)
+                GenderPicker.Items.Add(genderName);
+
             Languages = new ObservableCollection<LanguageModel>();
             LoadLanguagesAsync();
 
