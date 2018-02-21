@@ -20,6 +20,10 @@ namespace Interpretap.Models
             {
                 this.SessionKey = "";
             }
+            catch(NullReferenceException)
+            {
+                this.SessionKey = "";
+            }
         }
     }
 }
