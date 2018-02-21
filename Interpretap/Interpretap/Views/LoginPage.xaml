@@ -51,6 +51,7 @@
                         x:Name="ForgotPasswordLabel"
                         Text="Forgot password" 
                         TextColor="Blue"
+                        FontSize="Micro"
                         HorizontalTextAlignment="Center"/>
 
                 </StackLayout>
