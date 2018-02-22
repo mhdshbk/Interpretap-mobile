@@ -24,7 +24,7 @@ namespace Interpretap.Views
             var tgr = new TapGestureRecognizer();
             tgr.Tapped += (s, e) =>
             {
-                Navigation.PushAsync(new ResetPasswordPage());
+                Navigation.PushAsync(new ForgotPasswordPage());
             };
             ForgotPasswordLabel.GestureRecognizers.Add(tgr);
         }

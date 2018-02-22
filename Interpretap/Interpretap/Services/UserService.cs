@@ -151,5 +151,21 @@ namespace Interpretap.Services
 
             return responce;
         }
+
+        public async Task<BaseRespond> RequestPasswordResetCodePassword(ForgotPasswordRequestModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, ForgotPasswordRequestModel>(ForgotPasswordUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
     }
 }

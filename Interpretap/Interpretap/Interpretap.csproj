@@ -47,9 +47,12 @@
     <Compile Include="Common\MyTimer.cs" />
     <Compile Include="Common\RequestCallRecents.cs" />
     <Compile Include="Core\ActiveCallModel.cs" />
+    <Compile Include="Core\RequestPasswordResetCodeModel.cs" />
     <Compile Include="Core\InterpreterCallReportModel.cs" />
     <Compile Include="Core\ClientCallReportModel.cs" />
     <Compile Include="Core\ResetPasswordModel.cs" />
+    <Compile Include="Models\ForgotPasswordRequestModel.cs" />
+    <Compile Include="ViewModels\RequestPasswordResetCodeViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="Core\UserModel.cs" />
     <Compile Include="CustomElements\AgencyProfileContentView.xaml.cs">
@@ -179,6 +182,9 @@
     <Compile Include="Views\EmployeesListPage.xaml.cs">
       <DependentUpon>EmployeesListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ForgotPasswordPage.xaml.cs">
+      <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InterpreterViews\EmployeeProfilePage.xaml.cs">
       <DependentUpon>EmployeeProfilePage.xaml</DependentUpon>
     </Compile>
@@ -209,6 +215,9 @@
     </Compile>
     <Compile Include="Views\ABCallReportPage.xaml.cs">
       <DependentUpon>ABCallReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestPasswordResetCodePage.xaml.cs">
+      <DependentUpon>RequestPasswordResetCodePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ResetPasswordPage.xaml.cs">
       <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
@@ -474,6 +483,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ResetPasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ForgotPasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\RequestPasswordResetCodePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
