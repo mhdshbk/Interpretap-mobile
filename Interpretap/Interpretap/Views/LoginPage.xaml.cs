@@ -37,7 +37,7 @@ namespace Interpretap.Views
 
             if (!loginResponse.Status)
             {
-                await DisplayAlert("Error", loginResponse.Message, "Ok");
+                await DisplayAlert("Error", loginResponse.GetMessage(), "Ok");
                 SetActivityIndicatorState(false);
                 return;
             }
@@ -68,7 +68,7 @@ namespace Interpretap.Views
 
             if (!loginResponse.Status)
             {
-                await DisplayAlert("Error", loginResponse.Message, "Ok");
+                await DisplayAlert("Error", loginResponse.GetMessage(), "Ok");
                 SetActivityIndicatorState(false);
                 return;
             }

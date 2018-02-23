@@ -19,7 +19,7 @@ namespace Interpretap.Core
             };
             var responce = await service.RequestPasswordResetCodePassword(request);
             Success = responce.Status == true;
-            ResponceMessage = responce.Message;
+            ResponceMessage = responce.GetMessage();
         }
     }
 }

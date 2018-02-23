@@ -80,12 +80,12 @@ namespace Interpretap.ViewModels
             if (success)
             {
                 _parentViewModel.RefreshCommand.Execute(null);
-                await App.Current.MainPage.DisplayAlert("Success", responce.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Success", responce.GetMessage(), "OK");
                 await App.Current.MainPage.Navigation.PopAsync();
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Error", responce.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Error", responce.GetMessage(), "OK");
             }
         }
 

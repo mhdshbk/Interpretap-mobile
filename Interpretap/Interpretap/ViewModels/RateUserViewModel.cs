@@ -37,7 +37,7 @@ namespace Interpretap.ViewModels
 
             if (!isSuccess)
             {
-                await App.Current.MainPage.DisplayAlert("Error", result.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Error", result.GetMessage(), "OK");
             }
             await App.Current.MainPage.Navigation.PopAsync();
         }

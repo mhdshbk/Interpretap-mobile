@@ -142,7 +142,7 @@ namespace Interpretap.Views
             UserService _userService = new UserService();
             var insertUserResponse = await _userService.InsertUser(registrationModel);
 
-            await DisplayAlert("Message", insertUserResponse.Message, "Ok");
+            await DisplayAlert("Message", insertUserResponse.GetMessage(), "Ok");
 
             SetActivityIndicatorState(false);
         }

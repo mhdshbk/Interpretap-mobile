@@ -8,5 +8,10 @@ namespace Interpretap.Models.RespondModels
     {
         [JsonProperty("client_report")]
         public CallReport Report { get; set; }
+
+        string ICallReportResponce.GetMessage()
+        {
+            return base.GetMessage();
+        }
     }
 }

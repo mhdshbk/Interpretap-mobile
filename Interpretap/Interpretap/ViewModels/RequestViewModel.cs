@@ -96,11 +96,11 @@ namespace Interpretap.ViewModels
                 var isSuccessfull = responce.Status == true;
                 if (isSuccessfull)
                 {
-                    await App.Current.MainPage.DisplayAlert("Success", responce.Message, "Ok");
+                    await App.Current.MainPage.DisplayAlert("Success", responce.GetMessage(), "Ok");
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", responce.Message, "Ok");
+                    await App.Current.MainPage.DisplayAlert("Error", responce.GetMessage(), "Ok");
                 }
 
                 StoreRecentValues();

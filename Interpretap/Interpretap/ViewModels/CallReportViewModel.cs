@@ -48,7 +48,7 @@ namespace Interpretap.ViewModels
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Error", responce.Message, "Ok");
+                await App.Current.MainPage.DisplayAlert("Error", responce.GetMessage(), "Ok");
             }
             IsLoading = false;
         }

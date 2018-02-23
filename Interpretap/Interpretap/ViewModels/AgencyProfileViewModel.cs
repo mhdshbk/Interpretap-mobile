@@ -187,12 +187,12 @@ namespace Interpretap.ViewModels
             var updateSuccess = updateResponce.Status == true;
             if (!updateSuccess)
             {
-                await App.Current.MainPage.DisplayAlert("Error", updateResponce.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Error", updateResponce.GetMessage(), "OK");
             }
             else
             {
                 UpdateLocalStorage();
-                await App.Current.MainPage.DisplayAlert("Notification", updateResponce.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Notification", updateResponce.GetMessage(), "OK");
                 IsDirty = false;
             }
 

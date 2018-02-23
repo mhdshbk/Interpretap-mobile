@@ -53,11 +53,11 @@ namespace Interpretap.Views.InterpreterViews
             if (success)
             {
                 _parentViewModel.RefreshCommand.Execute(null);
-                await App.Current.MainPage.DisplayAlert("Success", responce.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Success", responce.GetMessage(), "OK");
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Error", responce.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Error", responce.GetMessage(), "OK");
             }
         }
 

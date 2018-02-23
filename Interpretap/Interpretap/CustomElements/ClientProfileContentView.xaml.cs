@@ -153,7 +153,7 @@ namespace Interpretap.CustomElements
                 UpdatePage();
             }
 
-            await App.Current.MainPage.DisplayAlert("Message", updateUserRespond.Message, "Ok");
+            await App.Current.MainPage.DisplayAlert("Message", updateUserRespond.GetMessage(), "Ok");
             SetActivityIndicatorState(false);
         }
 

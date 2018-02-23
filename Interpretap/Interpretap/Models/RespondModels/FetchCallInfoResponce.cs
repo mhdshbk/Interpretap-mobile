@@ -2,7 +2,7 @@
 
 namespace Interpretap.Models.RespondModels
 {
-    public class FetchCallInfoResponce
+    public class FetchCallInfoResponce : BaseRespond
     {
         [JsonProperty("call_info")]
         public CallInfoModel CallInfo { get; set; }

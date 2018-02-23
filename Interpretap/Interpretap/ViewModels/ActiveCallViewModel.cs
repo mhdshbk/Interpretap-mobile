@@ -53,7 +53,7 @@ namespace Interpretap.ViewModels
             }
             else
             {
-                App.Current.MainPage.DisplayAlert("Error", responce.Message, "OK");
+                App.Current.MainPage.DisplayAlert("Error", responce.GetMessage(), "OK");
             }
             IsActivityIndicatorVisible = false;
         }

@@ -26,7 +26,7 @@ namespace Interpretap
             }
             else
             {
-                App.Current.MainPage.DisplayAlert("Error", logoutApiResult.Message, "OK");
+                App.Current.MainPage.DisplayAlert("Error", logoutApiResult.GetMessage(), "OK");
             }
         }
 

@@ -22,7 +22,7 @@ namespace Interpretap.Core
             };
             var responce = await _service.ResetPassword(request);
             ResponceSuccess = responce.Status == true;
-            ResponceMessage = responce.Message;
+            ResponceMessage = responce.GetMessage();
         }
     }
 }
