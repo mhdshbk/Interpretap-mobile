@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Interpretap.Models;
+﻿using Interpretap.Models;
 using Interpretap.Services;
 using Interpretap.ViewModels;
 using Xamarin.Forms;
@@ -33,12 +28,31 @@ namespace Interpretap.Views.InterpreterViews
         {
             base.OnAppearing();
 
-            if(firstTime)
-            if (_viewModel.QueueCalls.Count == 0)
-                _viewModel.LoadData().GetAwaiter();
+            if (firstTime)
+            {
+                if (_viewModel.QueueCalls.Count == 0)
+                    _viewModel.LoadData().GetAwaiter();
+           }
+            else
+            {
+                if (App.ToUpdateQueueFlag)
+                {
+                    _viewModel.ReloadData().GetAwaiter();
+                    App.ToUpdateQueueFlag = false;
+                }
+            }
 
             firstTime = false;
         }
 
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            var request = new BaseInterpreterApiRequest()
+            {
+                CallId = EntryCallId.Text
+            };
+            var service = new InterpreterService();
+            service.CancelCall(request);
+        }
     }
 }

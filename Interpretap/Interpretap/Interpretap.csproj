@@ -39,40 +39,160 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\ConfigApp.cs" />
+    <Compile Include="Common\Connectivity.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Dialogs.cs" />
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Common\LocalStorage.cs" />
     <Compile Include="Common\MyTimer.cs" />
+    <Compile Include="Common\RequestCallRecents.cs" />
+    <Compile Include="Core\ActiveCallModel.cs" />
+    <Compile Include="Core\RequestPasswordResetCodeModel.cs" />
+    <Compile Include="Core\InterpreterCallReportModel.cs" />
+    <Compile Include="Core\ClientCallReportModel.cs" />
+    <Compile Include="Core\ResetPasswordModel.cs" />
+    <Compile Include="Models\ForgotPasswordRequestModel.cs" />
+    <Compile Include="ViewModels\RequestPasswordResetCodeViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="Core\UserModel.cs" />
+    <Compile Include="CustomElements\AgencyProfileContentView.xaml.cs">
+      <DependentUpon>AgencyProfileContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElements\BusinessProfileContentView.xaml.cs">
+      <DependentUpon>BusinessProfileContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElements\ClientProfileContentView.xaml.cs">
+      <DependentUpon>ClientProfileContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElements\GotoDetailsButton.xaml.cs">
+      <DependentUpon>GotoDetailsButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomElements\InterpreterProfileContentView.xaml.cs">
+      <DependentUpon>InterpreterProfileContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\ICallReportModel.cs" />
+    <Compile Include="Interfaces\ICallReportResponce.cs" />
+    <Compile Include="Interfaces\ViewModels\IEmployeeListItemViewModel.cs" />
+    <Compile Include="LoginManager.cs" />
+    <Compile Include="CustomElements\ActiveCallView.xaml.cs">
+      <DependentUpon>ActiveCallView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\ICallQueueService.cs" />
+    <Compile Include="MainPageFactory.cs" />
+    <Compile Include="MessagingCenterListenter.cs" />
+    <Compile Include="Models\AddClientToBusinessRequestModel.cs" />
+    <Compile Include="Models\AddInterpreterToAgencyRequestModel.cs" />
+    <Compile Include="Models\AgencyInterpretersRequestModel.cs" />
+    <Compile Include="Models\AgencyModel.cs" />
+    <Compile Include="Models\AgencyUpdateModel.cs" />
+    <Compile Include="Models\AssignInterpreterRequestModel.cs" />
+    <Compile Include="Models\AssignInterpreterResponce.cs" />
+    <Compile Include="Models\BaseInterpreterApiRequest.cs" />
+    <Compile Include="Models\BusinessClientsRequestModel.cs" />
+    <Compile Include="Models\BusinessModel.cs" />
+    <Compile Include="Models\BusinessUpdateModel.cs" />
+    <Compile Include="Models\CallInfoModel.cs" />
     <Compile Include="Models\CallLogRequestModel.cs" />
     <Compile Include="Models\CallReportRequestModel.cs" />
+    <Compile Include="Models\CallRequestModel.cs" />
+    <Compile Include="Models\CancelCallRequestModel.cs" />
+    <Compile Include="Models\CreateCallRequestModel.cs" />
+    <Compile Include="Models\ExceptionDataModel.cs" />
     <Compile Include="Models\FifteenCallModel.cs" />
     <Compile Include="Models\FifteenCallsRequestModel.cs" />
+    <Compile Include="Models\InterpreterInfoRequestModel.cs" />
+    <Compile Include="Models\InterpreterInfoRespondModel.cs" />
+    <Compile Include="Models\LanguageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MonthlyCallReportModel.cs" />
+    <Compile Include="Core\RateUserModel.cs" />
+    <Compile Include="Models\RateUserRequestModel.cs" />
+    <Compile Include="Models\RemoveClientFromBusinessRequestModel.cs" />
+    <Compile Include="Models\RemoveInterpreterFromAgencyRequestModel.cs" />
+    <Compile Include="Models\ResetPasswordRequestModel.cs" />
+    <Compile Include="Models\RespondModels\AgencyInterpreterRespondModel.cs" />
+    <Compile Include="Models\RespondModels\BusinessClientsRespondModel.cs" />
+    <Compile Include="Models\RespondModels\ClientCallReportResponce.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\AgencyInterpreter.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\BusinessClient.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\CallDetails.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\ClientReport.cs" />
+    <Compile Include="Models\RespondModels\InnerTypes\ReportInfo.cs" />
+    <Compile Include="Models\RespondModels\InterpreterCallReportResponce.cs" />
+    <Compile Include="Models\UpdateDeviceIdRequestModel.cs" />
+    <Compile Include="Models\UpdateModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\RespondModels\CreateCallRequestResponce.cs" />
+    <Compile Include="Models\RespondModels\FetchAgenciesResponce.cs" />
     <Compile Include="Models\RespondModels\BaseRespond.cs" />
     <Compile Include="Models\RespondModels\FetchABReportResponse.cs" />
+    <Compile Include="Models\RespondModels\FetchBusinessesResponce.cs" />
+    <Compile Include="Models\RespondModels\FetchCallInfoResponce.cs" />
     <Compile Include="Models\RespondModels\FetchCallLogResponse.cs" />
     <Compile Include="Models\RespondModels\FetchFifteenCallsRespnse.cs" />
+    <Compile Include="Models\RespondModels\FetchCurrentCallResponce.cs" />
     <Compile Include="Models\RespondModels\FetchUserRespond.cs" />
+    <Compile Include="Models\RespondModels\LanguagesResponce.cs" />
     <Compile Include="Models\RespondModels\LoginRespond.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Services\AgencyService.cs" />
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\BaseServiceNoNulls.cs" />
     <Compile Include="Services\BusinessService.cs" />
+    <Compile Include="Services\CallQueueService.cs" />
     <Compile Include="Services\CallService.cs" />
     <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\ResponceContentStatusChecker.cs" />
+    <Compile Include="Services\SyncService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModels\ActiveCallViewModel.cs" />
+    <Compile Include="ViewModels\AgencyInterpretersListItemViewModel.cs" />
+    <Compile Include="ViewModels\AgencyProfileViewModel.cs" />
+    <Compile Include="ViewModels\BusinessClientsListItemViewModel.cs" />
+    <Compile Include="ViewModels\BusinessClientsListViewModel.cs" />
+    <Compile Include="ViewModels\BusinessClientViewModel.cs" />
+    <Compile Include="ViewModels\BusinessesViewModel.cs" />
+    <Compile Include="ViewModels\AgenciesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BusinessProfileViewModel.cs" />
+    <Compile Include="ViewModels\CallInfoViewModel.cs" />
     <Compile Include="ViewModels\CallLogDetailsViewModel.cs" />
     <Compile Include="ViewModels\CallLogViewModel.cs" />
-    <Compile Include="ViewModels\ReportViewModel.cs" />
+    <Compile Include="ViewModels\ABCallReportViewModel.cs" />
+    <Compile Include="ViewModels\CallReportViewModel.cs" />
+    <Compile Include="ViewModels\AgencyInterpretersListViewModel.cs" />
+    <Compile Include="ViewModels\EmployeesListBaseViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\RateUserViewModel.cs" />
+    <Compile Include="ViewModels\RequestViewModel.cs" />
+    <Compile Include="ViewModels\AgencyEmployeeProfileViewModel.cs" />
+    <Compile Include="Views\CallInfo.xaml.cs">
+      <DependentUpon>CallInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CallLogDetails.xaml.cs">
       <DependentUpon>CallLogDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CallLogDetailsAB.xaml.cs">
       <DependentUpon>CallLogDetailsAB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CallReportPage.xaml.cs">
+      <DependentUpon>CallReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeesListPage.xaml.cs">
+      <DependentUpon>EmployeesListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ForgotPasswordPage.xaml.cs">
+      <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InterpreterViews\EmployeeProfilePage.xaml.cs">
+      <DependentUpon>EmployeeProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InterpreterViews\AddInterpreterToAgencyPage.xaml.cs">
+      <DependentUpon>AddInterpreterToAgencyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InterpreterViews\AgenciesPage.xaml.cs">
+      <DependentUpon>AgenciesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\AgencyCallsPage.xaml.cs">
       <DependentUpon>AgencyCallsPage.xaml</DependentUpon>
@@ -84,14 +204,35 @@
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RateUserView.xaml.cs">
+      <DependentUpon>RateUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReportPage.xaml.cs">
-      <DependentUpon>ReportPage.xaml</DependentUpon>
+    <Compile Include="Views\ABCallReportPage.xaml.cs">
+      <DependentUpon>ABCallReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestPasswordResetCodePage.xaml.cs">
+      <DependentUpon>RequestPasswordResetCodePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResetPasswordPage.xaml.cs">
+      <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\AddClientToBusinessPage.xaml.cs">
+      <DependentUpon>AddClientToBusinessPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\BusinessesPage.xaml.cs">
+      <DependentUpon>BusinessesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\BusinessCallsPage.xaml.cs">
       <DependentUpon>BusinessCallsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserViews\ClientProfilePage.xaml.cs">
+      <DependentUpon>ClientProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\RequestPage.xaml.cs">
       <DependentUpon>RequestPage.xaml</DependentUpon>
@@ -99,17 +240,11 @@
     <Compile Include="Views\UserViews\CallLogPage.xaml.cs">
       <DependentUpon>CallLogPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserViews\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\InterpreterViews\CallQueuePage.xaml.cs">
       <DependentUpon>CallQueuePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InterpreterViews\CallLogPage.xaml.cs">
       <DependentUpon>CallLogPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\InterpreterViews\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserViews\TimerPage.xaml.cs">
       <DependentUpon>TimerPage.xaml</DependentUpon>
@@ -120,6 +255,13 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Services\InterpreterService.cs" />
     <Compile Include="ViewModels\CallQueueViewModel.cs" />
+    <Compile Include="Interfaces\INotificationPayloadService.cs" />
+    <Compile Include="Services\PushNotificationPayloadService.cs" />
+    <Compile Include="Services\Misc\NotificationPayload.cs" />
+    <Compile Include="Services\Misc\PayloadReceivedEventArgs.cs" />
+    <Compile Include="ViewModels\UserTimerViewModel.cs" />
+    <Compile Include="Interfaces\IAcceptedCallStatusService.cs" />
+    <Compile Include="Services\AcceptedCallStatusService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -142,10 +284,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserViews\ProfilePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\InterpreterViews\CallQueuePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -154,23 +292,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\InterpreterViews\ProfilePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Connectivity.3.1.1\lib\netstandard1.0\Plugin.Connectivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Connectivity.3.1.1\lib\netstandard1.0\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.LocalNotifications, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Notifier.2.1.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.LocalNotifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.LocalNotifications.Abstractions, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Notifier.2.1.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.LocalNotifications.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PropertyChanged.Fody.2.2.5\lib\netstandard1.0\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\netstandard1.1\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="Com.OneSignal.Abstractions">
+      <HintPath>..\..\packages\Com.OneSignal.3.0.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Com.OneSignal.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Com.OneSignal">
+      <HintPath>..\..\packages\Com.OneSignal.3.0.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Com.OneSignal.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.5.0.91635\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.5.0.122203\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.5.0.91635\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.5.0.122203\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.5.0.91635\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.5.0.122203\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -213,17 +371,142 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ReportPage.xaml">
+    <EmbeddedResource Include="Views\ABCallReportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CallInfo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\InterpreterViews\AgenciesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\UserViews\BusinessesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\ActiveCallView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CallReportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\ClientProfileContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\InterpreterProfileContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\AgencyProfileContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\BusinessProfileContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\EmployeesListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomElements\GotoDetailsButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\InterpreterViews\EmployeeProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\InterpreterViews\AddInterpreterToAgencyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\UserViews\ClientProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\UserViews\AddClientToBusinessPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\RateUserView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ResetPasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ForgotPasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\RequestPasswordResetCodePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.5.0.91635\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Fody.2.3.20\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fody.2.3.20\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets'))" />
   </Target>
+  <Import Project="..\..\packages\Fody.2.3.20\build\Fody.targets" Condition="Exists('..\..\packages\Fody.2.3.20\build\Fody.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.122203\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
 </Project>

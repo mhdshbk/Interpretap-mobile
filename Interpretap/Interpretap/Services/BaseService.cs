@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Interpretap.Common;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
 using System.Text;
-using Interpretap.Common;
-using Interpretap.Models.RespondModels;
+using System.Threading.Tasks;
 
 namespace Interpretap.Services
 {
@@ -38,15 +37,46 @@ namespace Interpretap.Services
 
         protected async Task<TResult> Post<TResult, TData>(string endPoint, TData data) where TData : class where TResult : class
         {
+            if (!Connectivity.CheckConnection())
+            {
+                throw new Exception("Device offline");
+            }
+
             HttpClient httpClient = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, endPoint);
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var z = JsonConvert.SerializeObject(data);
             request.Content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await httpClient.SendAsync(request);
+            HttpResponseMessage response;
+            try
+            {
+                response = await httpClient.SendAsync(request);
+            }
+            catch (TaskCanceledException tcEx)
+            {
+                Connectivity.OnTimeout();
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Connectivity.OnError();
+                throw;
+            }
             string result = await response.Content.ReadAsStringAsync();
-            var e = JsonConvert.DeserializeObject<TResult>(result);
-            return e;
+
+            try
+            {
+                var e = JsonConvert.DeserializeObject<TResult>(result);
+                var responceChecker = new ResponceContentStatusChecker();
+                responceChecker.Check(e);
+
+                return e;
+            }
+            catch (Exception ex)
+            {
+                Connectivity.OnError();
+                throw;
+            }
         }
 
         protected async Task<TResult> Put<TResult>(string endPoint, string id, TResult data) where TResult : class

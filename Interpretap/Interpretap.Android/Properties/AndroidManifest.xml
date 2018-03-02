@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.Interpretap" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="Interpretap.Android"></application>
+	<application android:label="Interpretap.Android">
+    <receiver android:name="com.onesignal.GcmBroadcastReceiver"
+          android:permission="com.google.android.c2dm.permission.SEND" >
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="com.companyname.Interpretap" />
+      </intent-filter>
+    </receiver>
+  </application>
+  <permission android:name="com.companyname.Interpretap.permission.C2D_MESSAGE"
+            android:protectionLevel="signature" />
+  <uses-permission android:name="com.companyname.Interpretap.permission.C2D_MESSAGE" />
 </manifest>

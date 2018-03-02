@@ -23,5 +23,20 @@ namespace Interpretap.Services
 
             return fetchCallLogResponse;
         }
+
+        public async Task<FetchCallInfoResponce> FetchCall(CallRequestModel callRequestModel)
+        {
+            FetchCallInfoResponce fetchCallResponse = new FetchCallInfoResponce();
+            try
+            {
+                fetchCallResponse = await Post<FetchCallInfoResponce, CallRequestModel>(FetchCallAPI, callRequestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return fetchCallResponse;
+        }
     }
 }

@@ -22,10 +22,21 @@ namespace Interpretap.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            App.OnUnhandledException();
+            var ex = e.ExceptionObject as Exception;
+            if (ex != null)
+            {
+                App.ReportException(ex);
+            }
         }
     }
 }

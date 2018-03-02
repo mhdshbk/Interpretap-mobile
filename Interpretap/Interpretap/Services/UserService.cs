@@ -1,12 +1,12 @@
-﻿using static Interpretap.Common.ConfigApp;
-using Interpretap.Models;
+﻿using Interpretap.Models;
+using Interpretap.Models.RespondModels;
 using System;
 using System.Threading.Tasks;
-using Interpretap.Models.RespondModels;
+using static Interpretap.Common.ConfigApp;
 
 namespace Interpretap.Services
 {
-    class UserService : BaseService
+    class UserService : BaseServiceNoNulls
     {
         public async Task<LoginRespond> Login(LoginModel loginModel)
         {
@@ -56,13 +56,13 @@ namespace Interpretap.Services
             return insertUserRespond;
         }
 
-        public async Task<BaseRespond> UpdateUser(RegisterModel registeModel)
+        public async Task<BaseRespond> UpdateUser(UpdateModel registeModel)
         {
             BaseRespond updateUserRespond = new BaseRespond();
 
             try
             {
-                updateUserRespond = await Post<BaseRespond, RegisterModel>(UpdateUserAPI, registeModel);
+                updateUserRespond = await PostNoNulls<BaseRespond, UpdateModel>(UpdateUserAPI, registeModel);
             }
             catch (Exception e)
             {
@@ -70,6 +70,102 @@ namespace Interpretap.Services
             }
 
             return updateUserRespond;
+        }
+
+        public async Task<BaseRespond> Logout(BaseModel model)
+        {
+            var respond = new BaseRespond();
+
+            try
+            {
+                respond = await Post<BaseRespond, BaseModel>(LogoutUserAPI, model);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return respond;
+        }
+
+        public async Task<FetchCurrentCallResponce> FetchCurrentCall(BaseModel requestModel)
+        {
+            var responce = new FetchCurrentCallResponce();
+
+            try
+            {
+                responce = await Post<FetchCurrentCallResponce, BaseModel>(FetchCurrentCallUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> UpdateDeviceId(UpdateDeviceIdRequestModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, UpdateDeviceIdRequestModel>(UpdateDeviceIdUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> RateUser(RateUserRequestModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, RateUserRequestModel>(RateUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> ResetPassword(ResetPasswordRequestModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, ResetPasswordRequestModel>(ResetPasswordUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> RequestPasswordResetCodePassword(ForgotPasswordRequestModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, ForgotPasswordRequestModel>(ForgotPasswordUserAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
         }
     }
 }

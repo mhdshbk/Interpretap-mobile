@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.ProfilePage"
+             Title="Profile">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="0,20,0,0"
+            />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+
+        <StackLayout
+            Spacing="0">
+
+            <StackLayout 
+                x:Name="ProfileSelectorView"
+                Orientation="Horizontal" 
+                HeightRequest="128"
+                Padding="6,0,6,0">
+
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Image WidthRequest="96" HeightRequest="96" Source="{Binding SelectedProfile.ProfileTypeImage}" />
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="{Binding SelectedProfile.ProfileName}" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Label Text="{Binding SelectedProfile.ProfileTypeCaption}" FontSize="Small"/>
+                </StackLayout>
+
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Image 
+                        x:Name="ArrowImage"
+                        WidthRequest="32" 
+                        HeightRequest="32" 
+                        Source="arrow_right_green.png" />
+                </StackLayout>
+            </StackLayout>
+
+            <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray"/>
+
+            <AbsoluteLayout VerticalOptions="FillAndExpand">
+
+                <StackLayout 
+                    x:Name="ContentLayout"
+                    VerticalOptions="CenterAndExpand"
+                    AbsoluteLayout.LayoutFlags="All"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1" />
+
+                <StackLayout 
+                    x:Name="SelectorLayout"
+                    IsVisible="False"
+                    Spacing="0"
+                    AbsoluteLayout.LayoutFlags="All"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                    <StackLayout
+                        x:Name="ProfilesListViewContainer"
+                        BackgroundColor="White">
+                        
+                        <ListView
+                            x:Name="ProfilesListView"
+                            ItemsSource="{Binding Profiles}"
+                            RowHeight="64">
+                            
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout 
+                                                Orientation="Horizontal"
+                                                Padding="6,0,6,0">
+
+                                                <StackLayout VerticalOptions="CenterAndExpand">
+                                                    <Image WidthRequest="32" HeightRequest="32" Source="{Binding ProfileTypeImage}" />
+                                                </StackLayout>
+
+                                                <StackLayout 
+                                                    HorizontalOptions="FillAndExpand" 
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Spacing="3">
+                                                    
+                                                    <Label Text="{Binding ProfileName}" FontSize="Medium" TextColor="Black"/>
+                                                    
+                                                    <Label Text="{Binding ProfileTypeCaption}" FontSize="Small"/>
+                                                </StackLayout>
+
+                                                <StackLayout VerticalOptions="CenterAndExpand" IsVisible="{Binding IsSelected}">
+                                                    <Image WidthRequest="32" HeightRequest="32" Source="check_green.png" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <BoxView 
+                        VerticalOptions="FillAndExpand"
+                        BackgroundColor="#88888888"
+                        x:Name="ProfileSelectorOverlay"/>
+                </StackLayout>
+
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

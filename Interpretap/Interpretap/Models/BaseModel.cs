@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Interpretap.Common;
 using Newtonsoft.Json;
 
@@ -11,7 +12,18 @@ namespace Interpretap.Models
 
         public BaseModel()
         {
-            this.SessionKey = LocalStorage.LoginResponseLS.SessionKey;
+            try
+            {
+                this.SessionKey = LocalStorage.LoginResponseLS.SessionKey;
+            }
+            catch(KeyNotFoundException)
+            {
+                this.SessionKey = "";
+            }
+            catch(NullReferenceException)
+            {
+                this.SessionKey = "";
+            }
         }
     }
 }

@@ -2,33 +2,82 @@
 <ContentPage
             xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:cv="clr-namespace:Interpretap.CustomElements"
             x:Class="Interpretap.Views.UserViews.RequestPage"
             Title="Request">
-	<ContentPage.Content>
-        <StackLayout x:Name="MasterLayout">
-            
-            <StackLayout x:Name="EntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0" Margin="0,30,0,0">
 
-                <Label x:Name="Lbl_Call_Ref" Text="Call Reference Number"/>
-                <Entry x:Name="Entry_Call_Ref" Placeholder="Call Reference Number" Keyboard="Numeric"/>
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness"
+            iOS="0,20,0,0" />
+    </ContentPage.Padding>
 
-                <Label x:Name="Lbl_Language" Text="Your Language"/>
-                <Picker x:Name="picker" Title="Select a language">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>English</x:String>
-                            <x:String>German</x:String>
-                            <x:String>Bosnian</x:String>
-                            <x:String>C Sharp</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+    <ContentPage.Content>
+
+        <AbsoluteLayout>
+
+            <StackLayout
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                VerticalOptions="CenterAndExpand"
+                IsVisible="{Binding ActiveCallExists}">
+
+                <Label Text="New call request cannot be made while another call request is active" HorizontalTextAlignment="Center" />
+                <BoxView HeightRequest="20"/>
+                <cv:ActiveCallView x:Name="ActiveCallView" />
             </StackLayout>
 
-            <StackLayout x:Name="SubmitStack" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
-                <Button x:Name="Btn_CallReq" Text="Request Interpreter" Clicked="CreateCallRequest"/>
-            </StackLayout>
-        </StackLayout>
+            <StackLayout 
+                x:Name="MasterLayout" 
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                IsVisible="{Binding RequestAreaVisible}">
 
+                <StackLayout x:Name="EntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0" Margin="0,30,0,0">
+
+                    <Label x:Name="Lbl_Call_Ref" Text="Call Reference Number"/>
+                    <Entry 
+                        x:Name="Entry_Call_Ref" 
+                        Placeholder="Call Reference Number" 
+                        Text="{Binding CallRef}"/>
+
+                    <Label Text="Language to translate from"/>
+                    <Picker 
+                        Title="Select a language" 
+                        ItemsSource="{Binding ClientLanguages}" 
+                        ItemDisplayBinding="{Binding Name}" 
+                        SelectedItem="{Binding SelectedClientLanguage}"/>
+
+                    <Label Text="Language to translate to"/>
+                    <Picker 
+                        Title="Select a language" 
+                        ItemsSource="{Binding RequestLanguages}" 
+                        ItemDisplayBinding="{Binding Name}" 
+                        SelectedItem="{Binding SelectedRequestLanguage}"/>
+
+                    <Label Text="Business" IsVisible="{Binding CanSelectBusiness}"/>
+                    <Picker 
+                        Title="Select a business" 
+                        ItemsSource="{Binding Businesses}" 
+                        ItemDisplayBinding="{Binding BusinessInfo.BusinessName}" 
+                        SelectedItem="{Binding SelectedBusiness}"
+                        IsVisible="{Binding CanSelectBusiness}"/>
+                </StackLayout>
+
+                <StackLayout x:Name="SubmitStack" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+                    <Button 
+                        x:Name="Btn_CallReq" 
+                        Text="Request Interpreter" 
+                        IsEnabled="{Binding RequestCallEnabled}"
+                        Command="{Binding CreateCallRequestCommand}"/>
+                </StackLayout>
+            </StackLayout>
+
+            <ActivityIndicator 
+                IsRunning="True" 
+                IsVisible="{Binding IsBusy}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

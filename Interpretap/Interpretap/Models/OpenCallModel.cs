@@ -7,6 +7,8 @@ namespace Interpretap.Models
 {
     public class OpenCallModel
     {
+        public event EventHandler AcceptCallRequested;
+
         [JsonProperty("call_info_id")]
         public int CallInfoId { get; set; }
 
@@ -66,7 +68,7 @@ namespace Interpretap.Models
             {
                 return new Command((e) =>
                 {
-                    Application.Current.MainPage.Navigation.PushAsync(new Views.InterpreterViews.TimerPage());
+                    AcceptCallRequested?.Invoke(this, new EventArgs());
                 });
             }
         }

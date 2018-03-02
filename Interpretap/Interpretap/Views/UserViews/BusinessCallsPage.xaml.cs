@@ -12,11 +12,11 @@ namespace Interpretap.Views.UserViews
     {
         private CallLogViewModel _viewModel { get; set; }
 
-        public BusinessCallsPage()
+        public BusinessCallsPage(BusinessModel business = null)
         {
             InitializeComponent();
 
-            _viewModel = new CallLogViewModel();
+            _viewModel = new CallLogViewModel() { Business = business };
             BindingContext = _viewModel;
 
             listView.ItemsSource = _viewModel.CallLogs;
@@ -27,16 +27,25 @@ namespace Interpretap.Views.UserViews
                     return;
 
                 MonthlyCallReportModel selectedCallReport = ((ListView)sender).SelectedItem as MonthlyCallReportModel;
-                Navigation.PushAsync(new CallLogDetailsAB(selectedCallReport, UserTypes.Business));
+                var callLogDetailsPage = new CallLogDetailsAB(selectedCallReport, UserTypes.Business);
+                callLogDetailsPage.Business = _viewModel?.Business;
+                Navigation.PushAsync(callLogDetailsPage);
                 ((ListView)sender).SelectedItem = null;
             };
+            listView.ItemAppearing += ListView_ItemAppearing;
+        }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var itemModel = e.Item as MonthlyCallReportModel;
+            _viewModel.OnItemAppearingAsync(itemModel).GetAwaiter();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             if (_viewModel.CallLogs.Count == 0)
-                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd"), UserTypes.Business).GetAwaiter();
+                _viewModel.LoadData(string.Empty, UserTypes.Business).GetAwaiter();
         }
     }
 }

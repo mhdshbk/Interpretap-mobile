@@ -3,56 +3,81 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.RegisterPage"
              Title="Registration">
-	<ContentPage.Content>
-        <ScrollView>
+    <ContentPage.Content>
+        <AbsoluteLayout
+                VerticalOptions="FillAndExpand">
 
-            <StackLayout x:Name="MasterLayout">
-                
-                <StackLayout x:Name="RegisterEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
-                    
-                    <Label x:Name="Lbl_Profile_Type" Text="Select Profile Type"/>
-                    <Picker x:Name="ProfileTypePicker" Title="Select profile type" />
+            <ScrollView
+                    x:Name="ControlsView"
+                    AbsoluteLayout.LayoutFlags="All" 
+                    AbsoluteLayout.LayoutBounds="0,0,1,1">
 
-                    <Label x:Name="Lbl_Registration_Key" Text="Registration Key" IsVisible="False" />
-                    <Entry x:Name="Entry_Registration_Key" Placeholder="Registration Key" IsVisible="False" />
+                <StackLayout x:Name="MasterLayout">
 
-                    <Label x:Name="Lbl_Username" Text="Username"/>
-                    <Entry x:Name="Entry_Username" Placeholder="Username" />
+                    <StackLayout x:Name="RegisterEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
 
-                    <Label x:Name="Lbl_Password" Text="Password"/>
-                    <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
-                    
-                    <Label x:Name="Lbl_Password_Confirm" Text="Confirm Password"/>
-                    <Entry x:Name="Entry_Password_Confirm" Placeholder="Confirm Password" IsPassword="True"/>
+                        <Label x:Name="Lbl_Profile_Type" Text="Select Profile Type"/>
+                        <Picker x:Name="ProfileTypePicker" Title="Select profile type" />
 
-                    <Label x:Name="Lbl_First_Name" Text="First Name"/>
-                    <Entry x:Name="Entry_First_Name" Placeholder="First Name" />
+                        <Label x:Name="Lbl_Registration_Key" Text="Registration Key" IsVisible="False" />
+                        <Entry x:Name="Entry_Registration_Key" Placeholder="Registration Key" IsVisible="False" />
 
-                    <Label x:Name="Lbl_Last_Name" Text="Last Name"/>
-                    <Entry x:Name="Entry_Last_Name" Placeholder="Last Name" />
+                        <Label x:Name="Lbl_Username" Text="Username"/>
+                        <Entry x:Name="Entry_Username" Placeholder="Username" />
 
-                    <Label x:Name="Lbl_Email" Text="Email"/>
-                    <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
+                        <Label x:Name="Lbl_Password" Text="Password"/>
+                        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
 
-                    <Label x:Name="Lbl_Phone_Number" Text="Phone Number"/>
-                    <Entry x:Name="Entry_Phone_Number" Placeholder="Phone Number" Keyboard="Telephone" />
+                        <Label x:Name="Lbl_Password_Confirm" Text="Confirm Password"/>
+                        <Entry x:Name="Entry_Password_Confirm" Placeholder="Confirm Password" IsPassword="True"/>
 
-                    <Label x:Name="Lbl_Address" Text="Address"/>
-                    <Entry x:Name="Entry_Address" Placeholder="Address"/>
+                        <Label x:Name="Lbl_First_Name" Text="First Name"/>
+                        <Entry x:Name="Entry_First_Name" Placeholder="First Name" />
 
-                    <Label x:Name="Lbl_City" Text="City"/>
-                    <Entry x:Name="Entry_City" Placeholder="City" />
+                        <Label x:Name="Lbl_Last_Name" Text="Last Name"/>
+                        <Entry x:Name="Entry_Last_Name" Placeholder="Last Name" />
 
-                    <Label x:Name="Lbl_Province" Text="Province"/>
-                    <Entry x:Name="Entry_Province" Placeholder="Province" />
+                        <Label x:Name="Lbl_Gender" Text="Select Gender"/>
+                        <Picker x:Name="GenderPicker" Title="Select gender" />
 
-                    <Label x:Name="Lbl_Zip_Code" Text="Zip Code"/>
-                    <Entry x:Name="Entry_Zip_Code" Placeholder="Zip Code" Keyboard="Numeric" />
-                    
-                    <Button x:Name="Btn_Register" Text="Register" Clicked="RegisterProcedure"/>
+                        <Label x:Name="Lbl_NativeLanguage" Text="Select Native Language"/>
+                        <Picker 
+                            x:Name="NativeLanguagePicker" 
+                            Title="Select Native Language" 
+                            ItemsSource="{Binding Languages}" 
+                            ItemDisplayBinding="{Binding Name}" 
+                            SelectedItem="{Binding SelectedLanguage}"/>
+
+                        <Label x:Name="Lbl_Email" Text="Email"/>
+                        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
+
+                        <Label x:Name="Lbl_Phone_Number" Text="Phone Number"/>
+                        <Entry x:Name="Entry_Phone_Number" Placeholder="Phone Number" Keyboard="Telephone" />
+
+                        <Label x:Name="Lbl_Address" Text="Address"/>
+                        <Entry x:Name="Entry_Address" Placeholder="Address"/>
+
+                        <Label x:Name="Lbl_City" Text="City"/>
+                        <Entry x:Name="Entry_City" Placeholder="City" />
+
+                        <Label x:Name="Lbl_Province" Text="Province"/>
+                        <Entry x:Name="Entry_Province" Placeholder="Province" />
+
+                        <Label x:Name="Lbl_Zip_Code" Text="Zip Code"/>
+                        <Entry x:Name="Entry_Zip_Code" Placeholder="Zip Code" Keyboard="Numeric" />
+
+                        <Button x:Name="Btn_Register" Text="Register" Clicked="RegisterProcedure"/>
+                    </StackLayout>
+
                 </StackLayout>
-                
-            </StackLayout>
-        </ScrollView>
-	</ContentPage.Content>
+            </ScrollView>
+
+            <ActivityIndicator
+                    IsRunning="True"
+                    x:Name="ActivityIndicator"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"  
+                    AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
 </ContentPage>

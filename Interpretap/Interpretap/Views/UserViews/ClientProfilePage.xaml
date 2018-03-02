@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.UserViews.ClientProfilePage">
+    <ContentPage.Content>
+
+        <AbsoluteLayout>
+
+            <ScrollView
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <StackLayout Padding="10" Spacing="0">
+
+                    <Label Text="First Name" />
+                    <Label Text="{Binding FirstName}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Label Text="Last Name" />
+                    <Label Text="{Binding LastName}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Label Text="User" />
+                    <Label Text="{Binding UserName}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Label Text="Email"/>
+                    <Label Text="{Binding Email}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Label Text="Phone Number"/>
+                    <Label Text="{Binding PhoneNumber}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Label Text="Address"/>
+                    <Label Text="{Binding Address}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Label Text="City"/>
+                    <Label Text="{Binding City}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Label Text="Province"/>
+                    <Label Text="{Binding Province}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Label Text="ID"/>
+                    <Label Text="{Binding Id}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Label Text="Is Manager"/>
+                    <Label Text="{Binding IsManager}" FontSize="Medium" TextColor="Black"/>
+
+                    <BoxView HeightRequest="6" BackgroundColor="Transparent"/>
+
+                    <Button 
+                    Text="Delete" 
+                    BackgroundColor="Red" 
+                    TextColor="White" 
+                    Command="{Binding DeleteCommand}"/>
+                </StackLayout>
+            </ScrollView>
+
+            <ActivityIndicator
+                IsRunning="True"
+                IsVisible="{Binding IsProcessing}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"  
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

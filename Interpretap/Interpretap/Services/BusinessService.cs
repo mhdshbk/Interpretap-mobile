@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interpretap.Services
 {
-    public class BusinessService : BaseService
+    public class BusinessService : BaseServiceNoNulls
     {
         public async Task<FetchCallLogResponse> FetchCallLogs(CallLogRequestModel callLogRequestModel)
         {
@@ -54,6 +54,86 @@ namespace Interpretap.Services
             }
 
             return fetchABReportResponse;
+        }
+
+        public async Task<FetchBusinessesResponce> FetchAssociatedBusiness(BaseModel requestModel)
+        {
+            FetchBusinessesResponce fetchAssociatedBusinessResponse = new FetchBusinessesResponce();
+
+            try
+            {
+                fetchAssociatedBusinessResponse = await Post<FetchBusinessesResponce, BaseModel>(FetchAssociatedBusinessAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return fetchAssociatedBusinessResponse;
+        }
+
+        public async Task<BaseRespond> UpdateBusiness(BusinessUpdateModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await PostNoNulls<BaseRespond, BusinessUpdateModel>(UpdateBusinessAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BusinessClientsRespondModel> FetchClientsForBusiness(BusinessClientsRequestModel requestModel)
+        {
+            var responce = new BusinessClientsRespondModel();
+
+            try
+            {
+                responce = await Post<BusinessClientsRespondModel, BusinessClientsRequestModel>(FetchClientsAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> RemoveClientFromBusiness(RemoveClientFromBusinessRequestModel request)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, RemoveClientFromBusinessRequestModel>(RemoveClientFromBusinessAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> AddClientToBusiness(AddClientToBusinessRequestModel request)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, AddClientToBusinessRequestModel>(AddClientToBusinessAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
         }
     }
 }

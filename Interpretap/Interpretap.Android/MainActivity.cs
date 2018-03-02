@@ -19,8 +19,20 @@ namespace Interpretap.Droid
 
             base.OnCreate(bundle);
 
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            App.OnUnhandledException();
+            var ex = e.ExceptionObject as Exception;
+            if (ex != null)
+            {
+                App.ReportException(ex);
+            }
         }
     }
 }

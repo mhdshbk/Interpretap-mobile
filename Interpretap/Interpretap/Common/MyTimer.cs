@@ -46,5 +46,14 @@ namespace Interpretap.Common
         {
             return new DateTime(this.timePassed.Ticks).ToString("HH:mm:ss");
         }
+
+        public void SetTimePassed(string timePassed)
+        {
+            TimeSpan timeToSet = new TimeSpan();
+            if (TimeSpan.TryParse(timePassed, out timeToSet))
+            {
+                this.timePassed = timeToSet;
+            }
+        }
     }
 }

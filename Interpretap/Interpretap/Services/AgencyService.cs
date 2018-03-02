@@ -1,12 +1,12 @@
 ﻿using Interpretap.Models;
 using Interpretap.Models.RespondModels;
 using System;
-using static Interpretap.Common.ConfigApp;
 using System.Threading.Tasks;
+using static Interpretap.Common.ConfigApp;
 
 namespace Interpretap.Services
 {
-    public class AgencyService : BaseService
+    public class AgencyService : BaseServiceNoNulls
     {
         public async Task<FetchCallLogResponse> FetchCallLogs(CallLogRequestModel callLogRequestModel)
         {
@@ -54,6 +54,102 @@ namespace Interpretap.Services
             }
 
             return fetchABReportResponse;
+        }
+
+        public async Task<FetchAgenciesResponce> FetchAssociatedAgencies(BaseModel requestModel)
+        {
+            FetchAgenciesResponce fetchAssociatedAgenciesResponse = new FetchAgenciesResponce();
+
+            try
+            {
+                fetchAssociatedAgenciesResponse = await Post<FetchAgenciesResponce, BaseModel>(FetchAssociatedAgenciesAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return fetchAssociatedAgenciesResponse;
+        }
+
+        public async Task<BaseRespond> UpdateAgency(AgencyUpdateModel requestModel)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await PostNoNulls<BaseRespond, AgencyUpdateModel>(UpdateAgencyAPI, requestModel);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<AgencyInterpreterRespondModel> FetchInterpretersForAgency(AgencyInterpretersRequestModel request)
+        {
+            var responce = new AgencyInterpreterRespondModel();
+
+            try
+            {
+                responce = await Post<AgencyInterpreterRespondModel, AgencyInterpretersRequestModel>(FetchInterpretersAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<InterpreterInfoRespondModel> FetchInterpreterInfo(InterpreterInfoRequestModel request)
+        {
+            var responce = new InterpreterInfoRespondModel();
+
+            try
+            {
+                responce = await Post<InterpreterInfoRespondModel, InterpreterInfoRequestModel>(FetchInterpreterInfoAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> AddInterpreterToAgency(AddInterpreterToAgencyRequestModel request)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, AddInterpreterToAgencyRequestModel>(AddInterpreterToAgencyAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
+        }
+
+        public async Task<BaseRespond> RemoveInterpreterFromAgency(RemoveInterpreterFromAgencyRequestModel request)
+        {
+            var responce = new BaseRespond();
+
+            try
+            {
+                responce = await Post<BaseRespond, RemoveInterpreterFromAgencyRequestModel>(RemoveInterpreterFromAgencyAPI, request);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+
+            return responce;
         }
     }
 }

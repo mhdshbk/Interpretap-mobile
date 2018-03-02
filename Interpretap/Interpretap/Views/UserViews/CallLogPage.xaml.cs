@@ -1,7 +1,6 @@
 ﻿using Interpretap.Models;
 using Interpretap.ViewModels;
 using System;
-using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static Interpretap.Common.Constants;
@@ -12,6 +11,7 @@ namespace Interpretap.Views.UserViews
     public partial class CallLogPage : ContentPage
     {
         private CallLogViewModel _viewModel { get; set; }
+        private ActiveCallViewModel _activeCallViewModel;
 
         public CallLogPage()
         {
@@ -19,6 +19,11 @@ namespace Interpretap.Views.UserViews
 
             _viewModel = new CallLogViewModel();
             BindingContext = _viewModel;
+
+            _activeCallViewModel = new ActiveCallViewModel();
+            ActiveCallView.BindingContext = _activeCallViewModel;
+            _activeCallViewModel.CallCanceled += _activeCallViewModel_CallCanceled;
+
 
             listView.ItemsSource = _viewModel.CallLogs;
 
@@ -31,13 +36,42 @@ namespace Interpretap.Views.UserViews
                 Navigation.PushAsync(new CallLogDetails(selectedCallReport, UserTypes.Client));
                 ((ListView)sender).SelectedItem = null;
             };
+            listView.ItemAppearing += ListView_ItemAppearing;
+        }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var itemModel = e.Item as MonthlyCallReportModel;
+            _viewModel.OnItemAppearingAsync(itemModel).GetAwaiter();
+        }
+
+        private void _activeCallViewModel_CallCanceled(object sender, EventArgs e)
+        {
+            ReloadCallLog();
+        }
+
+        private void ReloadCallLog()
+        {
+            _viewModel.CallLogs.Clear();
+            _viewModel.LoadData(string.Empty, UserTypes.Client).GetAwaiter();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             if (_viewModel.CallLogs.Count == 0)
-                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd"), UserTypes.Client).GetAwaiter();
+            {
+                _viewModel.LoadData(string.Empty, UserTypes.Client).GetAwaiter();
+            }
+            else
+            {
+                if (App.ToUpdateLogsFlag)
+                {
+                    _viewModel.CallLogs.Clear();
+                    _viewModel.LoadData(string.Empty, UserTypes.Client).GetAwaiter();
+                }
+            }
+            _activeCallViewModel.OnAppearing();
         }
     }
 }

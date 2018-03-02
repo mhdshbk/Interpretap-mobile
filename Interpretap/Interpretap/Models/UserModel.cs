@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Interpretap.Models
 {
@@ -36,6 +32,9 @@ namespace Interpretap.Models
         [JsonProperty("zip_code")]
         public string ZipCode { get; set; }
 
+        [JsonProperty("language_info")]
+        public LanguageModel[] LanguageInfo { get; set; }
+
         [JsonProperty("is_manager")]
         public bool IsManager { get; set; }
 
@@ -65,6 +64,9 @@ namespace Interpretap.Models
     {
         [JsonProperty("interpreter_id")]
         public int InterpreterId { get; set; }
+
+        [JsonProperty("interpreter_user_id")]
+        public string InterpreterUserId { get; set; }
 
         [JsonProperty("call_interpreter_first_name")]
         public string InterpreterFirstName { get; set; }
@@ -99,7 +101,7 @@ namespace Interpretap.Models
         [JsonProperty("business_info")]
         public BusinessInfo BusinessInfo { get; set; }
     }
-
+    
     public class BusinessInfo
     {
         [JsonProperty("core_business_id")]

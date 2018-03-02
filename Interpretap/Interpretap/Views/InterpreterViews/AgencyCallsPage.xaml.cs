@@ -17,11 +17,11 @@ namespace Interpretap.Views.InterpreterViews
     {
         private CallLogViewModel _viewModel { get; set; }
 
-        public AgencyCallsPage()
+        public AgencyCallsPage(AgencyModel agency = null)
         {
             InitializeComponent();
-
-            _viewModel = new CallLogViewModel();
+            
+            _viewModel = new CallLogViewModel() { Agency = agency };
             BindingContext = _viewModel;
 
             listView.ItemsSource = _viewModel.CallLogs;
@@ -32,16 +32,25 @@ namespace Interpretap.Views.InterpreterViews
                     return;
 
                 MonthlyCallReportModel selectedCallReport = ((ListView)sender).SelectedItem as MonthlyCallReportModel;
-                Navigation.PushAsync(new CallLogDetailsAB(selectedCallReport, UserTypes.Agency));
+                var callLogDetailsPage = new CallLogDetailsAB(selectedCallReport, UserTypes.Agency);
+                callLogDetailsPage.Agency = _viewModel.Agency;
+                Navigation.PushAsync(callLogDetailsPage);
                 ((ListView)sender).SelectedItem = null;
             };
+            listView.ItemAppearing += ListView_ItemAppearing;
+        }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var itemModel = e.Item as MonthlyCallReportModel;
+            _viewModel.OnItemAppearingAsync(itemModel).GetAwaiter();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             if (_viewModel.CallLogs.Count == 0)
-                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd"), UserTypes.Agency).GetAwaiter();
+                _viewModel.LoadData(string.Empty, UserTypes.Agency).GetAwaiter();
         }
     }
 }

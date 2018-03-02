@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.CustomElements.ActiveCallView">
+    <ContentView.Content>
+
+        <AbsoluteLayout
+            MinimumHeightRequest="48">
+
+            <StackLayout 
+                Orientation="Horizontal" 
+                VerticalOptions="FillAndExpand"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1">
+                
+                <StackLayout HorizontalOptions="FillAndExpand">
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <Label Text="{Binding CallBusinessName}" FontAttributes="Bold"/>
+                        <Label Text="- (Active Request)" TextColor="Red"/>
+                    </StackLayout>
+
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <Label Text="{Binding CallCreatedDate}"/>
+                        <Label Text="  Call ID:" TextColor="Red"/>
+                        <Label Text="{Binding CallId}" TextColor="Red"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="End">
+                    <Button 
+                    Text="Delete" 
+                    BackgroundColor="Red" 
+                    TextColor="White" 
+                    VerticalOptions="Center" 
+                    Command="{Binding CancelCallCommand}"
+                    IsEnabled="{Binding CancelCallCommandCanExecute}"/>
+                </StackLayout>
+            </StackLayout>
+
+
+            <StackLayout 
+                BackgroundColor="White"
+                IsVisible="{Binding IsActivityIndicatorVisible}"
+                VerticalOptions="FillAndExpand"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1">
+                
+                <ActivityIndicator 
+                    IsRunning="True" 
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

@@ -32,14 +32,32 @@ namespace Interpretap.Views.InterpreterViews
                 Navigation.PushAsync(new CallLogDetails(selectedCallReport, UserTypes.Interpreter));
                 ((ListView)sender).SelectedItem = null;
             };
+            listView.ItemAppearing += ListView_ItemAppearing;
+        }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var itemModel = e.Item as MonthlyCallReportModel;
+            _viewModel.OnItemAppearingAsync(itemModel).GetAwaiter();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if(_viewModel.CallLogs.Count == 0)
-                _viewModel.LoadData(DateTime.Now.ToString("yyyy-MM-dd"), UserTypes.Interpreter).GetAwaiter();
+            if (_viewModel.CallLogs.Count == 0)
+            {
+                _viewModel.LoadData(string.Empty, UserTypes.Interpreter).GetAwaiter();
+            }
+            else
+            {
+                if (App.ToUpdateLogsFlag)
+                {
+                    _viewModel.CallLogs.Clear();
+                    _viewModel.LoadData(string.Empty, UserTypes.Interpreter).GetAwaiter();
+                    App.ToUpdateLogsFlag = false;
+                }
+            }
         }
     }
 }
