@@ -262,6 +262,9 @@
     <Compile Include="ViewModels\UserTimerViewModel.cs" />
     <Compile Include="Interfaces\IAcceptedCallStatusService.cs" />
     <Compile Include="Services\AcceptedCallStatusService.cs" />
+    <Compile Include="CustomRenderers\RoundedEntry.cs" />
+    <Compile Include="CustomRenderers\CustomPicker.cs" />
+    <Compile Include="CustomRenderers\ImageEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -498,6 +501,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomRenderers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

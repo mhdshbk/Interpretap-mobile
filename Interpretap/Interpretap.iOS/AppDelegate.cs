@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 namespace Interpretap.iOS
 {
@@ -24,6 +26,12 @@ namespace Interpretap.iOS
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             global::Xamarin.Forms.Forms.Init();
+            UINavigationBar.Appearance.BarTintColor = Color.FromHex("#f37a3f").ToUIColor();
+            UINavigationBar.Appearance.TintColor = UIColor.White;
+            UINavigationBar.Appearance.TitleTextAttributes = new UIStringAttributes()
+            {
+                ForegroundColor = UIColor.White
+            };
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

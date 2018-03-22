@@ -103,9 +103,9 @@ namespace Interpretap.Views
                 {
                     string profileTypeName = ProfileTypePicker.Items[ProfileTypePicker.SelectedIndex];
                     string profileTypeId = ProfileTypes[profileTypeName];
-                    Lbl_Registration_Key.IsVisible = profileTypeId.Equals("interpreter") ? true : false;
+                    RegistrationLabel.IsVisible = profileTypeId.Equals("interpreter") ? true : false;
                     Entry_Registration_Key.IsVisible = profileTypeId.Equals("interpreter") ? true : false;
-                    Lbl_NativeLanguage.IsVisible = profileTypeId.Equals("client") ? true : false;
+                    LanguagePickerLabel.IsVisible = profileTypeId.Equals("client") ? true : false;
                     NativeLanguagePicker.IsVisible = profileTypeId.Equals("client") ? true : false;
                 }
 

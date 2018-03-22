@@ -15,18 +15,6 @@ namespace Interpretap.Views
         public ForgotPasswordPage()
         {
             InitializeComponent();
-            InitTapableLabels();
-        }
-
-        private void InitTapableLabels()
-        {
-            var tgrGetCode = new TapGestureRecognizer();
-            tgrGetCode.Tapped += TgrGetCode_Tapped;
-            GetResetCodeLabel.GestureRecognizers.Add(tgrGetCode);
-
-            var tgrReset = new TapGestureRecognizer();
-            tgrReset.Tapped += TgrReset_Tapped;
-            ResetWithCodeLabel.GestureRecognizers.Add(tgrReset);
         }
 
         private void TgrGetCode_Tapped(object sender, EventArgs e)

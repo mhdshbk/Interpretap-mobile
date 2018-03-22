@@ -2,82 +2,132 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.RegisterPage"
-             Title="Registration">
+             Title="Registration"
+             xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
+             BackgroundColor="#eeeeee">
     <ContentPage.Content>
-        <AbsoluteLayout
-                VerticalOptions="FillAndExpand">
+        <Grid>
+            <StackLayout>
+                <BoxView BackgroundColor="#f37a3f" HeightRequest="200"/>
+            </StackLayout>
+            <Grid>
+                <ScrollView x:Name="ControlsView">
 
-            <ScrollView
-                    x:Name="ControlsView"
-                    AbsoluteLayout.LayoutFlags="All" 
-                    AbsoluteLayout.LayoutBounds="0,0,1,1">
+                    <Frame Padding="10" Margin="15" IsClippedToBounds="true"
+                           HasShadow="false" CornerRadius="10">
+                        <StackLayout x:Name="RegisterEntriesStack" Margin="10"
+                                     VerticalOptions="CenterAndExpand" Spacing="2">
 
-                <StackLayout x:Name="MasterLayout">
+                            <Label Text="Profile Type" FontSize="13"/>
+                            <custom:CustomPicker x:Name="ProfileTypePicker"
+                                                 Title="Select profile type" Image="down"
+                                                 HeightRequest="35" Margin="0,0,0,10"/>
 
-                    <StackLayout x:Name="RegisterEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
+                            <Label x:Name="RegistrationLabel" Text="Registration Key" FontSize="13" IsVisible="false"/>
+                            <custom:RoundedEntry x:Name="Entry_Registration_Key"
+                                                 Placeholder="Enter Registration Key"
+                                                 IsVisible="False" FontSize="14"
+                                                 HeightRequest="35" BorderColor="#c7c7c7"
+                                                 CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Profile_Type" Text="Select Profile Type"/>
-                        <Picker x:Name="ProfileTypePicker" Title="Select profile type" />
+                            <Label Text="Username" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_Username"
+                                                 Placeholder="Enter Username" FontSize="14"
+                                                 HeightRequest="35" BorderColor="#c7c7c7"
+                                                 CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Registration_Key" Text="Registration Key" IsVisible="False" />
-                        <Entry x:Name="Entry_Registration_Key" Placeholder="Registration Key" IsVisible="False" />
+                            <Label Text="Password" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_Password" Placeholder="Enter Password"
+                                                 FontSize="14" IsPassword="True"
+                                                 HeightRequest="35" BorderColor="#c7c7c7"
+                                                 CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Username" Text="Username"/>
-                        <Entry x:Name="Entry_Username" Placeholder="Username" />
+                            <Label Text="Confirm Password" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_Password_Confirm"
+                                                 Placeholder="Enter Password" FontSize="14"
+                                                 IsPassword="True" HeightRequest="35"
+                                                 BorderColor="#c7c7c7" CornerRadius="0"
+                                                 Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Password" Text="Password"/>
-                        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
+                            <Label Text="First Name" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_First_Name" Placeholder="Enter your First Name"
+                                                 FontSize="14" HeightRequest="35"
+                                                 BorderColor="#c7c7c7" CornerRadius="0"
+                                                 Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Password_Confirm" Text="Confirm Password"/>
-                        <Entry x:Name="Entry_Password_Confirm" Placeholder="Confirm Password" IsPassword="True"/>
+                            <Label Text="Last Name" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_Last_Name" Placeholder="Enter your Last Name"
+                                                 FontSize="14" HeightRequest="35"
+                                                 BorderColor="#c7c7c7" CornerRadius="0"
+                                                 Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_First_Name" Text="First Name"/>
-                        <Entry x:Name="Entry_First_Name" Placeholder="First Name" />
+                            <Label Text="Gender" FontSize="13"/>
+                            <custom:CustomPicker x:Name="GenderPicker" Title="Select gender"
+                                                 Image="down" HeightRequest="35"
+                                                 Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Last_Name" Text="Last Name"/>
-                        <Entry x:Name="Entry_Last_Name" Placeholder="Last Name" />
+                            <Label x:Name="LanguagePickerLabel" Text="Native Language" FontSize="13" IsVisible="true"/>
+                            <custom:CustomPicker 
+                                x:Name="NativeLanguagePicker" 
+                                Title="Select Native Language" 
+                                ItemsSource="{Binding Languages}" 
+                                ItemDisplayBinding="{Binding Name}" 
+                                SelectedItem="{Binding SelectedLanguage}"
+                                Image="down" HeightRequest="35"
+                                Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Gender" Text="Select Gender"/>
-                        <Picker x:Name="GenderPicker" Title="Select gender" />
+                            <Label Text="Email" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_Email" Placeholder="Enter your Email ID"
+                                                 FontSize="14" Keyboard="Email"
+                                                 HeightRequest="35" BorderColor="#c7c7c7"
+                                                 CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_NativeLanguage" Text="Select Native Language"/>
-                        <Picker 
-                            x:Name="NativeLanguagePicker" 
-                            Title="Select Native Language" 
-                            ItemsSource="{Binding Languages}" 
-                            ItemDisplayBinding="{Binding Name}" 
-                            SelectedItem="{Binding SelectedLanguage}"/>
+                            <Label Text="Phone" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_Phone_Number"
+                                                 Placeholder="Enter your Phone Number" FontSize="14"
+                                                 Keyboard="Telephone" HeightRequest="35"
+                                                 BorderColor="#c7c7c7" CornerRadius="0"
+                                                 Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Email" Text="Email"/>
-                        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
+                            <Label Text="Address" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_Address" Placeholder="Enter your Address"
+                                                 FontSize="14" HeightRequest="35"
+                                                 BorderColor="#c7c7c7" CornerRadius="0"
+                                                 Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Phone_Number" Text="Phone Number"/>
-                        <Entry x:Name="Entry_Phone_Number" Placeholder="Phone Number" Keyboard="Telephone" />
+                            <Label Text="City" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_City" Placeholder="Enter your City"
+                                                 FontSize="14" HeightRequest="35"
+                                                 BorderColor="#c7c7c7" CornerRadius="0"
+                                                 Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Address" Text="Address"/>
-                        <Entry x:Name="Entry_Address" Placeholder="Address"/>
+                            <Label Text="Province" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_Province" Placeholder="Enter your Province"
+                                                 FontSize="14"  HeightRequest="35"
+                                                 BorderColor="#c7c7c7" CornerRadius="0"
+                                                 Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_City" Text="City"/>
-                        <Entry x:Name="Entry_City" Placeholder="City" />
+                            <Label Text="ZIP Code" FontSize="13"/>
+                            <custom:RoundedEntry x:Name="Entry_Zip_Code" Placeholder="Enter your Zip Code"
+                                                 FontSize="14" Keyboard="Numeric"
+                                                 HeightRequest="35" BorderColor="#c7c7c7"
+                                                 CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <Label x:Name="Lbl_Province" Text="Province"/>
-                        <Entry x:Name="Entry_Province" Placeholder="Province" />
+                            <Button x:Name="Btn_Register" Text="Register"
+                                    TextColor="White" BackgroundColor="#2377ba"
+                                    Clicked="RegisterProcedure" BorderRadius="0"
+                                    FontAttributes="Bold" FontSize="14"/>
+                        </StackLayout>
+                    </Frame>
+                </ScrollView>
 
-                        <Label x:Name="Lbl_Zip_Code" Text="Zip Code"/>
-                        <Entry x:Name="Entry_Zip_Code" Placeholder="Zip Code" Keyboard="Numeric" />
+                <ActivityIndicator 
+                    IsRunning="True" 
+                    x:Name="ActivityIndicator" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"/>
 
-                        <Button x:Name="Btn_Register" Text="Register" Clicked="RegisterProcedure"/>
-                    </StackLayout>
-
-                </StackLayout>
-            </ScrollView>
-
-            <ActivityIndicator
-                    IsRunning="True"
-                    x:Name="ActivityIndicator"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"  
-                    AbsoluteLayout.LayoutBounds="0.5,0.5"/>
-
-        </AbsoluteLayout>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

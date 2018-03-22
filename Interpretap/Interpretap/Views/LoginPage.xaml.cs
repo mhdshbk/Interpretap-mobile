@@ -16,17 +16,17 @@ namespace Interpretap.Views
             InitializeComponent();
             SetActivityIndicatorState(false);
             Entry_Username.Completed += (s, e) => Entry_Password.Focus();
-            InitForgotPasswordLabel();
+            //InitForgotPasswordLabel();
         }
 
         private void InitForgotPasswordLabel()
         {
-            var tgr = new TapGestureRecognizer();
-            tgr.Tapped += (s, e) =>
-            {
+            //var tgr = new TapGestureRecognizer();
+            //tgr.Tapped += (s, e) =>
+            //{
                 Navigation.PushAsync(new ForgotPasswordPage());
-            };
-            ForgotPasswordLabel.GestureRecognizers.Add(tgr);
+            //};
+            //ForgotPasswordLabel.GestureRecognizers.Add(tgr);
         }
 
         private async Task UserLoginProcedure(object sender, EventArgs e)
@@ -107,12 +107,10 @@ namespace Interpretap.Views
             if (passwordHidden)
             {
                 Entry_Password.IsPassword = false;
-                BtnShowPassword.Text = "Hide";
             }
             else
             {
                 Entry_Password.IsPassword = true;
-                BtnShowPassword.Text = "Show";
             }
         }
 
@@ -121,12 +119,12 @@ namespace Interpretap.Views
             if (enable)
             {
                 ActivityIndicator.IsVisible = true;
-                ControlsStack.IsVisible = false;
+                MainLayout.IsVisible = false;
             }
             else
             {
                 ActivityIndicator.IsVisible = false;
-                ControlsStack.IsVisible = true;
+                MainLayout.IsVisible = true;
             }
         }
     }

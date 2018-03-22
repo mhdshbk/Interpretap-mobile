@@ -17,15 +17,27 @@ namespace Interpretap
             {
                 Children =
                 {
-                    new Views.UserViews.RequestPage(),
+                    new Views.UserViews.RequestPage()
+                    {
+                        Icon = "callrequests"
+                    },
                     new Views.UserViews.CallLogPage()
+                    {
+                        Icon = "calls"
+                    }
                 }
             };
 
             if (LocalStorage.LoginResponseLS.UserInfo.IsManager)
-                page.Children.Add(new Views.UserViews.BusinessesPage());
+                page.Children.Add(new Views.UserViews.BusinessesPage()
+            {
+                Icon = "business"
+            });
 
-            page.Children.Add(new ProfilePage());
+            page.Children.Add(new ProfilePage()
+            {
+                Icon = "profile"
+            });
             page.CurrentPage = null;
             NavigationPage.SetHasNavigationBar(page, false);
             return page;

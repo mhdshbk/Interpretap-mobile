@@ -2,68 +2,87 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.LoginPage"
-             Title="Login">
+             xmlns:Custom="clr-namespace:Interpretap.CustomRenderers;assembly=Interpretap"
+             Title="Login" BackgroundColor="White"
+             NavigationPage.HasNavigationBar="false"
+             NavigationPage.BackButtonTitle="">
     <ContentPage.Content>
-        <StackLayout x:Name="MasterLayout">
+        <Grid>
 
-            <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
-                <Image x:Name="Img_Logo" Source="logo.png" Margin="0,80,0,0" Scale="1.1"/>
-            </StackLayout>
+            <AbsoluteLayout x:Name="MainLayout" BackgroundColor="White" VerticalOptions="FillAndExpand">
 
-            <AbsoluteLayout
-                VerticalOptions="StartAndExpand" >
-                
-                <StackLayout
-                    AbsoluteLayout.LayoutFlags="All" 
-                    AbsoluteLayout.LayoutBounds="0,0,1,1"
-                    x:Name="ControlsStack">
+                    <Image AbsoluteLayout.LayoutBounds="0.5,0.1"
+                           AbsoluteLayout.LayoutFlags="PositionProportional" Source="logo"
+                           Aspect="AspectFit"/>
+                    <Custom:ImageEntry x:Name="Entry_Username"
+                                       AbsoluteLayout.LayoutBounds="0.4,0.4,280,40"
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                                       BackgroundColor="White" Placeholder="Username"
+                                       LineColor="#c7c7c7" Image="user"
+                                       FontSize="14" TextColor="Black"
+                                       ImageWidth="20" ImageHeight="20"/>
 
-                    <StackLayout 
-                        x:Name="LoginEntriesStack" 
-                        Padding="10,0,10,0" >
+                    <Custom:ImageEntry x:Name="Entry_Password" IsPassword="true"
+                                       AbsoluteLayout.LayoutBounds="0.4,0.48,280,40"
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                                       BackgroundColor="White" Placeholder="Password"
+                                       LineColor="#c7c7c7" Image="lock"
+                                       FontSize="14" TextColor="Black"
+                                       ImageWidth="20" ImageHeight="20"/>
 
-                        <Label x:Name="Lbl_Username" Text="Username"/>
-                        <Entry x:Name="Entry_Username" Placeholder="Username" />
-                        <Label x:Name="Lbl_Password" Text="Password"/>
-                        <StackLayout Orientation="Horizontal" Spacing="0">
-                            <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True" HorizontalOptions="FillAndExpand"/>
-                            <Button 
-                                x:Name="BtnShowPassword" 
-                                Text="Show" 
-                                FontSize="Micro" 
-                                VerticalOptions="Center" 
-                                Clicked="TogglePasswordButtonClicked"
-                                HeightRequest="30"
-                                WidthRequest="45"/>
-                        </StackLayout>
 
-                        <StackLayout x:Name="LoginButtonsStack" Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
-                            <Button x:Name="Btn_User_Login" Text="User Login" Clicked="UserLoginProcedure" HorizontalOptions="FillAndExpand"/>
-                            <Button x:Name="Btn_Interpreter_Login" Text="Interpreter Login" Clicked="InterpreterLoginProcedure" />
-                        </StackLayout>
+                    <Image x:Name="ShowIcon" AbsoluteLayout.LayoutBounds="0.92,0.48"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"
+                           Source="eye" HeightRequest="15" WidthRequest="15">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TogglePasswordButtonClicked"/>
+                    </Image.GestureRecognizers>
+                    </Image>            
+
+
+                    <Button Text="Forgot Password?" AbsoluteLayout.LayoutBounds="0.8,0.53"
+                            AbsoluteLayout.LayoutFlags="PositionProportional" TextColor="Black"
+                            FontSize="12" BackgroundColor="Transparent" FontAttributes="Italic"
+                            HeightRequest="35"
+                            Clicked="InitForgotPasswordLabel"/>
+
+                    <StackLayout Orientation="Horizontal"
+                                 AbsoluteLayout.LayoutBounds="0.4,0.65"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional">
+
+                        <Button x:Name="Btn_User_Login" Text="User Login" BackgroundColor="#2377ba" 
+                                WidthRequest="135" BorderRadius="0" TextColor="White"
+                                Clicked="UserLoginProcedure" FontSize="14"/>
+
+                        <Button x:Name="Btn_Interpreter_Login" Text="Interpreter Login" 
+                                BackgroundColor="#f59331" WidthRequest="140" BorderRadius="0"
+                                TextColor="White" Clicked="InterpreterLoginProcedure"
+                                FontSize="14"/>
+                       
                     </StackLayout>
 
-                    <StackLayout x:Name="RegisterStack" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
-                        <Button x:Name="Btn_Registration" Text="Registration" Clicked="RegistrationProcedure"/>
-                    </StackLayout>
+                    <Label Text="Doesn't have an account? Register now!" FontSize="12"
+                           HorizontalTextAlignment="Center" HeightRequest="40"
+                           AbsoluteLayout.LayoutBounds="0.5,0.72" VerticalTextAlignment="Center"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"
+                           FontAttributes="Bold">
+                    <Label.Margin>
+                        <OnPlatform x:TypeArguments="Thickness" iOS="0,10,0,0" Android="0,10,0,0"/>
+                    </Label.Margin>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RegistrationProcedure"/>
+                    </Label.GestureRecognizers>
+                    </Label>
 
-                    <Label 
-                        x:Name="ForgotPasswordLabel"
-                        Text="Forgot password" 
-                        TextColor="Blue"
-                        FontSize="Micro"
-                        HorizontalTextAlignment="Center"/>
+                 
+                   
 
-                </StackLayout>
-
-                <ActivityIndicator
-                    IsRunning="True"
-                    x:Name="ActivityIndicator"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"  
-                    AbsoluteLayout.LayoutBounds="0.5,0.5"/>
-
+                 
             </AbsoluteLayout>
-
-        </StackLayout>
+            
+            <ActivityIndicator x:Name="ActivityIndicator" IsRunning="true"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
