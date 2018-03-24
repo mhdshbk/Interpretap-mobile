@@ -265,6 +265,10 @@
     <Compile Include="CustomRenderers\RoundedEntry.cs" />
     <Compile Include="CustomRenderers\CustomPicker.cs" />
     <Compile Include="CustomRenderers\ImageEntry.cs" />
+    <Compile Include="CustomElements\ActiveCallRequest.xaml.cs">
+      <DependentUpon>ActiveCallRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomRenderers\MultiLineLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -294,6 +298,10 @@
     <EmbeddedResource Include="Views\InterpreterViews\CallLogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomElements\ActiveCallRequest.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -336,6 +344,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Gorilla.json" />
+    <None Include="SampleData.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\UserViews\BusinessCallsPage.xaml">

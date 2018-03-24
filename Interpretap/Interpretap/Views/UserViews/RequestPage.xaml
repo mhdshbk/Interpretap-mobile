@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cv="clr-namespace:Interpretap.CustomElements"
              x:Class="Interpretap.Views.UserViews.RequestPage"
-             xmlns:Custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
-             Title="Request">
-
+             xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
+             Title="Request"
+             NavigationPage.HasNavigationBar="true">
     <ContentPage.Padding>
         <OnPlatform
             x:TypeArguments="Thickness"
@@ -16,56 +16,45 @@
 
         <Grid>
 
-            <AbsoluteLayout>
-                <StackLayout AbsoluteLayout.LayoutFlags="All"
-                             AbsoluteLayout.LayoutBounds="0,0,1,1"
-                             VerticalOptions="CenterAndExpand"
-                             IsVisible="{Binding ActiveCallExists}">
+            <AbsoluteLayout IsVisible="{Binding ActiveCallExists}">
+                <cv:ActiveCallRequest AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                      AbsoluteLayout.LayoutFlags="All"
+                                      x:Name="ActiveCallView"/>
 
-                    <Label Text="New call request cannot be made while another call request is active" HorizontalTextAlignment="Center" />
-                    <BoxView HeightRequest="20"/>
-                    <cv:ActiveCallView x:Name="ActiveCallView" />
-                    
-                </StackLayout>
             </AbsoluteLayout>
 
             <AbsoluteLayout x:Name="MasterLayout" IsVisible="{Binding RequestAreaVisible}">
-                <!--<StackLayout 
-                x:Name="MasterLayout" 
-                AbsoluteLayout.LayoutFlags="All"
-                AbsoluteLayout.LayoutBounds="0,0,1,1"
-                IsVisible="{Binding RequestAreaVisible}">-->
                 
-                <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.1"
-                             AbsoluteLayout.LayoutFlags="PositionProportional"
-                             Spacing="2">
-                    <Label Text="Call Reference Number" FontSize="13"/>
-                    <Custom:RoundedEntry x:Name="Entry_Call_Ref"
-                                         Placeholder="Enter the Call Reference Number"
-                                         Text="{Binding CallRef}" CornerRadius="0"
-                                         HeightRequest="35" BorderColor="#c7c7c7"/>
+                <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.2"
+                             AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Label Text="Call Reference Number" HorizontalTextAlignment="Center" 
+                           FontSize="13"/>
+                    <custom:ImageEntry x:Name="Entry_Call_Ref" FontAttributes="Bold"
+                                       Text="{Binding CallRef}" LineColor="#c7c7c7"
+                                       HeightRequest="60" TextColor="Black"
+                                       WidthRequest="280" FontSize="25"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal"
-                             AbsoluteLayout.LayoutBounds="0.5,0.25,1,35"
-                             AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
-                             Spacing="5" Padding="20,0">
-                    <Custom:CustomPicker Title="Select 'From' Language"
+                             AbsoluteLayout.LayoutBounds="0.5,0.45"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             Spacing="15">
+                    <custom:CustomPicker Title="From"
                                          ItemsSource="{Binding ClientLanguages}"
                                          ItemDisplayBinding="{Binding Name}"
                                          SelectedItem="{Binding SelectedClientLanguage}"
-                                         Image="down"/>
+                                         Image="down" WidthRequest="120"/>
 
-                    <Image Source="eye" WidthRequest="15" HeightRequest="15"/>
+                    <Image Source="transfer.png" WidthRequest="18" HeightRequest="18"/>
 
-                    <Custom:CustomPicker Title="Select 'To' Language"
+                    <custom:CustomPicker Title="To"
                                          ItemsSource="{Binding RequestLanguages}"
                                          ItemDisplayBinding="{Binding Name}"
                                          SelectedItem="{Binding SelectedRequestLanguage}"
-                                         Image="down"/>
+                                         Image="down" WidthRequest="120"/>
                 </StackLayout>
                 
-                <Custom:CustomPicker Title="Select a Business"
+                <custom:CustomPicker Title="Select a Business"
                                      ItemsSource="{Binding Businesses}"
                                      ItemDisplayBinding="{Binding BusinessInfo.BusinessName}"
                                      SelectedItem="{Binding SelectedBusiness}"
@@ -103,21 +92,25 @@
                         IsVisible="{Binding CanSelectBusiness}"/>
                 </StackLayout>-->
 
-                <StackLayout x:Name="SubmitStack"
-                             AbsoluteLayout.LayoutBounds="0.5,0.6"
-                             AbsoluteLayout.LayoutFlags="PositionProportional"
-                             HeightRequest="35">
-                    <Button x:Name="Btn_CallReq" Text="Request Interpreter"
-                            IsEnabled="{Binding RequestCallEnabled}"
-                            Command="{Binding CreateCallRequestCommand}"/>
-                    
-                </StackLayout>
+
+                    <Image x:Name="Btn_CallReq" Source="phone.png"
+                           AbsoluteLayout.LayoutBounds="0.5,0.7"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"
+                           HeightRequest="80" WidthRequest="80"
+                           IsVisible="{Binding RequestCallEnabled}"
+                           Aspect="AspectFit">
+
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CreateCallRequestCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
             </AbsoluteLayout>
 
-            <ActivityIndicator IsRunning="True"
+            <!--<ActivityIndicator IsRunning="True"
                                IsVisible="{Binding IsBusy}"
                                HorizontalOptions="CenterAndExpand"
-                               VerticalOptions="CenterAndExpand"/>
+                               VerticalOptions="CenterAndExpand"/>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

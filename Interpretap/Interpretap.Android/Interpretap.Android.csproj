@@ -159,6 +159,36 @@
     <Reference Include="Xamarin.GooglePlayServices.Gcm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.GooglePlayServices.Gcm.27.0.0.0\lib\MonoAndroid41\Xamarin.GooglePlayServices.Gcm.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\..\packages\System.Collections.Immutable.1.4.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine">
+      <HintPath>..\..\packages\SuperSocket.ClientEngine.Core.0.9.0\lib\netstandard1.3\SuperSocket.ClientEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSocket4Net">
+      <HintPath>..\..\packages\WebSocket4Net.0.15.1\lib\netstandard1.3\WebSocket4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EngineIoClientDotNet">
+      <HintPath>..\..\packages\EngineIoClientDotNet.1.0.3\lib\netstandard1.3\EngineIoClientDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SocketIoClientDotNet">
+      <HintPath>..\..\packages\SocketIoClientDotNet.1.0.3\lib\netstandard1.3\SocketIoClientDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Gorilla.SDK">
+      <HintPath>..\..\packages\UXDivers.GorillaPlayer.SDK.1.2.0.6\lib\MonoAndroid10\UXDivers.Gorilla.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Gorilla.SDK.Droid">
+      <HintPath>..\..\packages\UXDivers.GorillaPlayer.SDK.1.2.0.6\lib\MonoAndroid10\UXDivers.Gorilla.SDK.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Gorilla.Common">
+      <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\MonoAndroid10\UXDivers.Gorilla.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Gorilla.Common.Droid">
+      <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\MonoAndroid10\UXDivers.Gorilla.Common.Droid.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Renderers\LockedOrientationContentPageRenderer.cs" />
@@ -169,6 +199,7 @@
     <Compile Include="CustomRenderers\RoundedEntryRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedPickerRenderer.cs" />
     <Compile Include="CustomRenderers\ImageEntryRenderer.cs" />
+    <Compile Include="CustomRenderers\MultiLineLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -198,9 +229,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\logo.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\logo.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\logo.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\splash.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
     <AndroidResource Include="Resources\drawable-hdpi\eye.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\eye.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\eye.png" />
@@ -210,6 +238,21 @@
     <AndroidResource Include="Resources\drawable-xhdpi\user.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\lock.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\user.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\phone.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\transfer.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\phone.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\transfer.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\phone.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\transfer.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\listcall.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\listcall.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\listcall.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\call.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\back.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\back.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\back.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\call.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\call.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

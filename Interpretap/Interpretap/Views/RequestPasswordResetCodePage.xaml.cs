@@ -12,5 +12,15 @@ namespace Interpretap.Views
             InitializeComponent();
             this.BindingContext = new RequestPasswordResetCodeViewModel();
         }
-    }
+
+		protected override void OnAppearing()
+		{
+            base.OnAppearing();
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#f37a3f");
+                ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.White;
+            }
+		}
+	}
 }

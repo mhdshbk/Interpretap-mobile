@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Interpretap.CustomRenderers;
+using Interpretap.iOS.CustomRenderers;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -26,13 +28,30 @@ namespace Interpretap.iOS
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             global::Xamarin.Forms.Forms.Init();
-            UINavigationBar.Appearance.BarTintColor = Color.FromHex("#f37a3f").ToUIColor();
-            UINavigationBar.Appearance.TintColor = UIColor.White;
+
+            //NavigationBar customization
+            UINavigationBar.Appearance.BarTintColor = null;
+            UINavigationBar.Appearance.TintColor = Color.FromHex("#f37a3f").ToUIColor();
             UINavigationBar.Appearance.TitleTextAttributes = new UIStringAttributes()
             {
-                ForegroundColor = UIColor.White
+                ForegroundColor = UIColor.Black
             };
-            LoadApplication(new App());
+
+            //Tab Customization
+            UITabBar.Appearance.SelectedImageTintColor = Color.FromHex("#f37a3f").ToUIColor();
+
+            //LoadApplication(new App());
+            LoadApplication(UXDivers.Gorilla.iOS.Player.CreateApplication(
+  new UXDivers.Gorilla.Config("Good Gorilla")
+      // Register Grial Shared assembly
+      //.RegisterAssemblyFromType<UXDivers.Artina.Shared.CircleImage>()
+      // Register UXDivers Effects assembly
+      //.RegisterAssembly(typeof(UXDivers.Effects.Effects).Assembly)
+      // FFImageLoading.Transformations
+      //.RegisterAssemblyFromType<FFImageLoading.Transformations.BlurredTransformation>()
+      // FFImageLoading.Forms
+      //.RegisterAssemblyFromType<FFImageLoading.Forms.CachedImage>()
+    ));
 
             return base.FinishedLaunching(app, options);
         }

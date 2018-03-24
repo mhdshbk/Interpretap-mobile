@@ -39,7 +39,9 @@ namespace Interpretap
                 Icon = "profile"
             });
             page.CurrentPage = null;
-            NavigationPage.SetHasNavigationBar(page, false);
+            page.Title = "Interpretap";
+            NavigationPage.SetHasNavigationBar(page, true);
+            NavigationPage.SetBackButtonTitle(page, "");
             return page;
         }
 
@@ -59,7 +61,9 @@ namespace Interpretap
 
             page.Children.Add(new ProfilePage());
             page.CurrentPage = null;
+            page.Title = "Interpretap";
             NavigationPage.SetHasNavigationBar(page, false);
+            NavigationPage.SetBackButtonTitle(page, "");
             return page;
         }
     }

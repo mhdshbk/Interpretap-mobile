@@ -20,17 +20,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="247" translatesAutoresizingMaskIntoConstraints="NO" image="splash.png">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="457" translatesAutoresizingMaskIntoConstraints="NO" image="logo.png">
+                                <rect key="frame" x="32" y="268" width="350" height="200"/>
+                                <constraints>
+                                    <constraint id="460" firstItem="457" firstAttribute="width" constant="350"/>
+                                    <constraint id="461" firstItem="457" firstAttribute="height" constant="200"/>
+                                </constraints>
                             </imageView>
                         </subviews>
+                        <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         <constraints>
-                            <constraint id="248" firstItem="247" firstAttribute="top" secondItem="Y8P-hJ-Z43" secondAttribute="top"/>
-                            <constraint id="249" firstItem="yd7-JS-zBw" firstAttribute="trailing" secondItem="247" secondAttribute="trailing"/>
-                            <constraint id="250" firstItem="247" firstAttribute="leading" secondItem="yd7-JS-zBw" secondAttribute="leading"/>
-                            <constraint id="251" firstItem="247" firstAttribute="bottom" secondItem="9ZL-r4-8FZ" secondAttribute="bottom"/>
+                            <constraint id="458" firstItem="457" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX"/>
+                            <constraint id="459" firstItem="457" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY"/>
                         </constraints>
-                        <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -51,7 +53,7 @@
         <image name="callrequests.png" width="25" height="25"/>
         <image name="calls.png" width="25" height="25"/>
         <image name="profile.png" width="25" height="25"/>
-        <image name="down.png" width="11" height="11"/>
+        <image name="down.png" width="24" height="24"/>
         <image name="call_icon.png" width="30" height="29"/>
         <image name="briefbag.png" width="44" height="44"/>
         <image name="arrow_right_green.png" width="96" height="96"/>
@@ -61,5 +63,10 @@
         <image name="star_border_black.png" width="96" height="96"/>
         <image name="eye.png" width="24" height="24"/>
         <image name="splash.png" width="250" height="445"/>
+        <image name="lock.png" width="22" height="22"/>
+        <image name="user.png" width="22" height="22"/>
+        <image name="password.png" width="43" height="43"/>
+        <image name="phone.png" width="171" height="171"/>
+        <image name="transfer.png" width="43" height="43"/>
     </resources>
 </document>

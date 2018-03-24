@@ -53,6 +53,8 @@ namespace Interpretap.Views
             App.ActiveCall.FetchActiveCallRequestAsync();
 
             var page = (new MainPageFactory()).CreateMainPageForClient();
+            page.Title = "Interpretap";
+            NavigationPage.SetHasNavigationBar(page, true);
             await NavigateAfterSuccessfulLogin(page);
 
             await lm.OnInterpreterLoginAsync();
@@ -82,6 +84,7 @@ namespace Interpretap.Views
             lm.OnLoginSuccessfull();
 
             var page = (new MainPageFactory()).CreateMainPageForInterpreter();
+            page.Title = "Interpretap";
             await NavigateAfterSuccessfulLogin(page);
 
             await lm.OnInterpreterLoginAsync();
@@ -90,7 +93,7 @@ namespace Interpretap.Views
 
         private async Task NavigateAfterSuccessfulLogin(Page navigateTo)
         {
-            NavigationPage.SetHasNavigationBar(navigateTo, false);
+            NavigationPage.SetHasNavigationBar(navigateTo, true);
 
             Navigation.InsertPageBefore(navigateTo, Navigation.NavigationStack.First());
             await Navigation.PopToRootAsync();

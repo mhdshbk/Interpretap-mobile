@@ -13,16 +13,16 @@ namespace Interpretap.iOS.CustomRenderers
         public ExtendedFrameRenderer()
         {
         }
-        public override void Draw(CGRect rect)
-        {
-            base.Draw(rect);
 
-            // Update shadow to match better material design standards of elevation
+		public override void Draw(CGRect rect)
+		{
+            base.Draw(rect);
             Layer.ShadowRadius = 2.0f;
             Layer.ShadowColor = UIColor.Gray.CGColor;
             Layer.ShadowOffset = new CGSize(2, 2);
             Layer.ShadowOpacity = 0.80f;
+            Layer.ShadowPath = UIBezierPath.FromRect(Layer.Bounds).CGPath;
             Layer.MasksToBounds = false;
-        }
-    }
+		}
+	}
 }

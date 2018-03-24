@@ -101,6 +101,7 @@
     <Compile Include="CustomRenderers\ExtendedPickerRenderer.cs" />
     <Compile Include="CustomRenderers\ImageEntryRenderer.cs" />
     <Compile Include="CustomRenderers\ExtendedFrameRenderer.cs" />
+    <Compile Include="CustomRenderers\MultiLineLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -152,6 +153,21 @@
     <BundleResource Include="Resources\password.png" />
     <BundleResource Include="Resources\password%402x.png" />
     <BundleResource Include="Resources\password%403x.png" />
+    <BundleResource Include="Resources\phone.png" />
+    <BundleResource Include="Resources\phone%402x.png" />
+    <BundleResource Include="Resources\phone%403x.png" />
+    <BundleResource Include="Resources\transfer.png" />
+    <BundleResource Include="Resources\transfer%402x.png" />
+    <BundleResource Include="Resources\transfer%403x.png" />
+    <BundleResource Include="Resources\listcall.png" />
+    <BundleResource Include="Resources\listcall%402x.png" />
+    <BundleResource Include="Resources\listcall%403x.png" />
+    <BundleResource Include="Resources\back.png" />
+    <BundleResource Include="Resources\back%402x.png" />
+    <BundleResource Include="Resources\back%403x.png" />
+    <BundleResource Include="Resources\call.png" />
+    <BundleResource Include="Resources\call%402x.png" />
+    <BundleResource Include="Resources\call%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -190,6 +206,36 @@
     </Reference>
     <Reference Include="OneSignal.iOS.Binding">
       <HintPath>..\..\packages\Com.OneSignal.3.0.1\lib\Xamarin.iOS10\OneSignal.iOS.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\..\packages\System.Collections.Immutable.1.4.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine">
+      <HintPath>..\..\packages\SuperSocket.ClientEngine.Core.0.9.0\lib\netstandard1.3\SuperSocket.ClientEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSocket4Net">
+      <HintPath>..\..\packages\WebSocket4Net.0.15.1\lib\netstandard1.3\WebSocket4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EngineIoClientDotNet">
+      <HintPath>..\..\packages\EngineIoClientDotNet.1.0.3\lib\netstandard1.3\EngineIoClientDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SocketIoClientDotNet">
+      <HintPath>..\..\packages\SocketIoClientDotNet.1.0.3\lib\netstandard1.3\SocketIoClientDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Gorilla.SDK">
+      <HintPath>..\..\packages\UXDivers.GorillaPlayer.SDK.1.2.0.6\lib\Xamarin.iOS10\UXDivers.Gorilla.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Gorilla.SDK.iOS">
+      <HintPath>..\..\packages\UXDivers.GorillaPlayer.SDK.1.2.0.6\lib\Xamarin.iOS10\UXDivers.Gorilla.SDK.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Gorilla.Common">
+      <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\Xamarin.iOS10\UXDivers.Gorilla.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Gorilla.Common.iOS">
+      <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\Xamarin.iOS10\UXDivers.Gorilla.Common.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

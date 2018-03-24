@@ -19,6 +19,10 @@ namespace Interpretap.Views
             InitializeComponent();
             var viewModel = new CallReportViewModel(dateFrom, dateTo, userType);
             this.BindingContext = viewModel;
+            var bill = viewModel.TotalBilledSeconds;
+            var total = viewModel.TotalCallSeconds;
+            var pau = viewModel.TotalPausedSeconds;
         }
-    }
+
+	}
 }

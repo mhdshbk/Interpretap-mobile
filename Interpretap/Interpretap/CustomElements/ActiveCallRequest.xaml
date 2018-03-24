@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.CustomElements.ActiveCallRequest"
+             BackgroundColor="#e9e9e9"
+             xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap">
+    <ContentView.Content>
+        <StackLayout Padding="15,0">
+            <custom:MultiLineLabel Text="New call request cannot be made while another call request is active"
+                                   TextColor="#6a6a6a" FontSize="14"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Lines="2" VerticalOptions="StartAndExpand"
+                                   Margin="30,10"/>
+            <Frame Padding="0" HasShadow="true" HeightRequest="300"
+                   VerticalOptions="Center" BackgroundColor="Black" CornerRadius="5">
+
+                <Grid RowSpacing="0" ColumnSpacing="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="15"/>
+                    </Grid.ColumnDefinitions>
+                    <BoxView Grid.Row="0" BackgroundColor="Transparent"/>
+                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding CallBusinessName}"
+                           FontAttributes="Bold" FontSize="45" TextColor="White"
+                           VerticalTextAlignment="Center" Margin="10,0,0,0"/>
+                    <custom:MultiLineLabel Grid.Row="0" Grid.Column="1"
+                                           Text="Active Request"
+                                           TextColor="#229954" FontSize="13"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Start"
+                                           Lines="2" Margin="0,10,0,0"/>
+                    <BoxView Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                             BackgroundColor="#229954"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding CallCreatedDate}"
+                           FontSize="13" HorizontalTextAlignment="Start"
+                           VerticalOptions="Center" Margin="10,0,0,0"
+                           TextColor="White"/>
+                    <Label Text="{Binding CallId , StringFormat='Call ID: {0}'}"
+                           TextColor="White" Grid.Row="1" Grid.Column="0"
+                           Grid.ColumnSpan="2" HorizontalOptions="End"
+                           VerticalOptions="Center" FontSize="13"/>
+
+                </Grid>
+            </Frame>
+            
+            <Button Text="Delete" TextColor="Red" FontSize="11"
+                    Command="{Binding CancelCallCommand}"
+                    BackgroundColor="Transparent"
+                    IsEnabled="{Binding CancelCallCommandCanExecute}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="EndAndExpand"/>
+
+        </StackLayout>
+        
+    </ContentView.Content>
+</ContentView>

@@ -2,56 +2,169 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.CallLogDetails"
-             Title="Call Log Details">
+             Title="Call Log Details"
+             BackgroundColor="#eeeeee">
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="Lbl_Title" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
-            <Button Text="View Full month report" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Clicked="ButtonShowReportClicked" />
+        <Grid>
+            <StackLayout Margin="5">
+                
+                <Button Text="View Full month report" Margin="50,10"
+                        Clicked="ButtonShowReportClicked" BackgroundColor="#2e86c1"
+                        TextColor="White" BorderRadius="0"/>
+                <Grid VerticalOptions="FillAndExpand">
+                    <ListView x:Name="listView" BackgroundColor="#eeeeee"
+                              HasUnevenRows="true" SeparatorVisibility="None">
+                        <ListView.Header>
+                            <Label x:Name="Lbl_Title" HorizontalTextAlignment="Center"
+                                   FontAttributes="Bold" VerticalTextAlignment="Center"
+                                   FontSize="13" TextColor="#6a6a6a"/>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame Padding="0" CornerRadius="0" Margin="5" HasShadow="true">
+                                        <!--<Grid BackgroundColor="White"
+                                              ColumnSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
 
-            <AbsoluteLayout
-                VerticalOptions="FillAndExpand">
+                                            <Grid Grid.Column="0"
+                                                  RowSpacing="2">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="1*"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="1*"/>
+                                                </Grid.RowDefinitions>
 
-                <ListView  
-                    x:Name="listView"
-                    AbsoluteLayout.LayoutFlags="All" 
-                    AbsoluteLayout.LayoutBounds="0,0,1,1">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout 
-                                    BackgroundColor="#eee"
-                                    Orientation="Horizontal">
+                                                <BoxView Grid.Row="0"
+                                                         BackgroundColor="#c7c7c7"
+                                                         WidthRequest="2"
+                                                         HorizontalOptions="Center"/>
 
-                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding FullName}" FontAttributes="Bold" FontSize="15" />
-                                        <Label Text="{Binding CreatedDate}" FontSize="12" />
-                                    </StackLayout>
+                                                <BoxView Grid.Row="2"
+                                                         BackgroundColor="#c7c7c7"
+                                                         WidthRequest="2"
+                                                         HorizontalOptions="Center"/>
 
-                                    <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                                        <StackLayout
-                                            Orientation="Horizontal">
-                                            <Label Text="Call ID:" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
-                                            <Label Text="{Binding CallInfoId}" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
-                                        </StackLayout>
-                                        <StackLayout
-                                            Orientation="Horizontal">
-                                            <Label Text="Duration:" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
-                                            <Label Text="{Binding CallDuration}" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
-                                        </StackLayout>
-                                    </StackLayout>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                                <Label Grid.Row="1" Text="{Binding CreatedDate}"
+                                                       FontSize="15" TextColor="Black"
+                                                       VerticalTextAlignment="Center"
+                                                       HorizontalTextAlignment="Center"
+                                                       BackgroundColor="White"/> 
+                                            </Grid>
 
-                <ActivityIndicator
-                    IsRunning="True"
-                    IsVisible="{Binding IsLoading}"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"  
-                    AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+                                            <Grid Grid.Column="1" BackgroundColor="White"
+                                                  VerticalOptions="CenterAndExpand">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="4*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
 
-            </AbsoluteLayout>
-        </StackLayout>
+                                                <BoxView BackgroundColor="#f5f5f5" Grid.RowSpan="3"
+                                                         WidthRequest="2" HorizontalOptions="Start"
+                                                         Grid.Column="0"/>
+
+                                                <Label Grid.Row="0" Grid.Column="0"
+                                                       Text="{Binding FullName}"
+                                                       FontSize="18"
+                                                       FontAttributes="Bold"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalTextAlignment="Center"
+                                                       TextColor="Black" LineBreakMode="WordWrap"/>
+
+                                                <Label Grid.Row="1" Grid.Column="0"
+                                                       Text="{Binding CallDuration}"
+                                                       FontSize="14" HorizontalTextAlignment="Center"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#6a6a6a" VerticalOptions="CenterAndExpand"/>
+
+                                                <Label Grid.Row="0" Grid.Column="1"
+                                                       Grid.RowSpan="2"
+                                                       VerticalTextAlignment="Start"
+                                                       Text="{Binding CallInfoId , StringFormat='Call ID {0}'}"
+                                                       HorizontalTextAlignment="Center"
+                                                       LineBreakMode="WordWrap"
+                                                       TextColor="#6a6a6a"
+                                                       FontSize="14" Margin="0,5,5,5" />
+                                            </Grid>
+                                        </Grid>-->
+                                        <Grid HeightRequest="100" Padding="8">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="8*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Column="0"
+                                                   Text="{Binding CreatedDate}"
+                                                   FontSize="15" TextColor="Black"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Center"
+                                                   BackgroundColor="White"/>
+                                            <BoxView Grid.Column="1" BackgroundColor="#f0f0f0" WidthRequest="2"
+                                                     HorizontalOptions="Start"/>
+                                            <StackLayout Grid.Column="1">
+                                                <Label Text="{Binding FullName}"
+                                                       FontSize="18" FontAttributes="Bold"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       TextColor="Black"/>
+
+                                                <Label Text="{Binding CallDuration}"
+                                                       FontSize="14"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalOptions="End"
+                                                       TextColor="#6a6a6a"/>
+                                            </StackLayout>
+                                            <Label Grid.Column="2"
+                                                   Text="{Binding CallInfoId , StringFormat='Call ID {0}'}"
+                                                   HorizontalTextAlignment="Center"
+                                                   VerticalOptions="StartAndExpand"
+                                                   FontSize="14"/>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.Footer>
+                            <StackLayout />
+                        </ListView.Footer>
+                    </ListView>
+
+                    
+                </Grid>
+
+            </StackLayout>
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsLoading}"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
+
+<!--
+<StackLayout BackgroundColor="#eee" Orientation="Horizontal">
+
+       <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+       <Label Text="{Binding FullName}" FontAttributes="Bold" FontSize="15" />
+       <Label Text="{Binding CreatedDate}" FontSize="12" />
+       </StackLayout>
+
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+        <StackLayout Orientation="Horizontal">
+        <Label Text="Call ID:" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+        <Label Text="{Binding CallInfoId}" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+        <Label Text="Duration:" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+        <Label Text="{Binding CallDuration}" HorizontalTextAlignment="Start" FontAttributes="Bold" FontSize="15" />
+        </StackLayout>
+        </StackLayout>
+</StackLayout>
+-->

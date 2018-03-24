@@ -53,9 +53,24 @@ namespace Interpretap.Views
             }
         }
 
-        public RegisterPage()
+		protected override void OnDisappearing()
+		{
+            base.OnDisappearing();
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
+                ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Black;
+            }
+		}
+
+		public RegisterPage()
         {
             InitializeComponent();
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#f37a3f");
+                ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.White;
+            }
             SetActivityIndicatorState(false);
             Entry_Registration_Key.Completed += (s, e) => Entry_Username.Focus();
             Entry_Username.Completed += (s, e) => Entry_Password.Focus();

@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Interpretap.CustomRenderers;
+using Interpretap.Droid.CustomRenderers;
 
 namespace Interpretap.Droid
 {
@@ -23,6 +25,17 @@ namespace Interpretap.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+    //        LoadApplication(UXDivers.Gorilla.Droid.Player.CreateApplication(
+    //this,
+    //new UXDivers.Gorilla.Config("Good Gorilla")
+    ////            .RegisterAssembly(typeof(Interpretap.App).Assembly)
+    ////  // Register UXDivers Effects assembly
+    ////  //.RegisterAssembly(typeof(UXDivers.Effects.Effects).Assembly)
+    ////  // FFImageLoading.Transformations
+    ////  //.RegisterAssemblyFromType<FFImageLoading.Transformations.BlurredTransformation>()
+    ////  // FFImageLoading.Forms
+    ////  //.RegisterAssemblyFromType<FFImageLoading.Forms.CachedImage>()
+    //));
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

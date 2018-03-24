@@ -16,6 +16,25 @@ namespace Interpretap.Views
         {
             InitializeComponent();
         }
+		protected override void OnAppearing()
+		{
+            base.OnAppearing();
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#f37a3f");
+                ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.White;
+            }
+		}
+
+		protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
+                ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Black;
+            }
+        }
 
         private void TgrGetCode_Tapped(object sender, EventArgs e)
         {

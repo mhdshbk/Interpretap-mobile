@@ -12,31 +12,49 @@
                 VerticalOptions="FillAndExpand"
                 AbsoluteLayout.LayoutFlags="All"
                 AbsoluteLayout.LayoutBounds="0,0,1,1">
-                
-                <StackLayout HorizontalOptions="FillAndExpand">
 
-                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                        <Label Text="{Binding CallBusinessName}" FontAttributes="Bold"/>
-                        <Label Text="- (Active Request)" TextColor="Red"/>
-                    </StackLayout>
+                <Frame Padding="0"
+                       VerticalOptions="Center" BackgroundColor="Black"
+                       CornerRadius="5">
 
+                    <Grid RowSpacing="0" ColumnSpacing="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="15"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <BoxView Grid.Row="0" BackgroundColor="Transparent"/>
+                        
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding CallBusinessName}"
+                               FontAttributes="Bold" FontSize="20" TextColor="White"
+                               VerticalTextAlignment="Center" Margin="10,0,0,0"/>
+                        
+                        <Label Grid.Row="0" Grid.Column="1" Text="Active Request"
+                               TextColor="#229954" FontSize="12"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Start" Margin="0,10,0,0"/>
+                        
+                        <BoxView Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                                 BackgroundColor="#229954"/>
 
-                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                        <Label Text="{Binding CallCreatedDate}"/>
-                        <Label Text="  Call ID:" TextColor="Red"/>
-                        <Label Text="{Binding CallId}" TextColor="Red"/>
-                    </StackLayout>
-                </StackLayout>
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding CallCreatedDate}"
+                               FontSize="12" HorizontalTextAlignment="Start"
+                               VerticalOptions="Center" Margin="10,0,0,10"
+                               TextColor="White"/>
+                        
+                        <Label Text="{Binding CallId , StringFormat='Call ID: {0}'}"
+                               TextColor="White" Grid.Row="1" Grid.Column="0"
+                               Grid.ColumnSpan="2" HorizontalOptions="End"
+                               VerticalOptions="Center" FontSize="12"
+                               Margin="0,0,0,10"/>
 
-                <StackLayout HorizontalOptions="End">
-                    <Button 
-                    Text="Delete" 
-                    BackgroundColor="Red" 
-                    TextColor="White" 
-                    VerticalOptions="Center" 
-                    Command="{Binding CancelCallCommand}"
-                    IsEnabled="{Binding CancelCallCommandCanExecute}"/>
-                </StackLayout>
+                    </Grid>
+                </Frame>
             </StackLayout>
 
 
