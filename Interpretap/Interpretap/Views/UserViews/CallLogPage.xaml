@@ -36,8 +36,7 @@
                                            Padding="0" BackgroundColor="White">
                                         <Grid>
 
-                                            <Image Source="back"
-                                                       Aspect="AspectFill"/>
+                                            <Image Source="back" Aspect="AspectFill"/>
                                    
                                             <Grid RowSpacing="5" ColumnSpacing="0" Margin="10">
                                                 <Grid.RowDefinitions>
@@ -53,7 +52,8 @@
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto"/>
                                                     </Grid.RowDefinitions>
-                                                          <Label Grid.Row="0" Grid.Column="0"
+
+                                                <Label Grid.Row="0" Grid.Column="0"
                                                        Text="{Binding StartOfMonth}"
                                                        FontSize="15" TextColor="#f5f5f5"
                                                        VerticalTextAlignment="End"

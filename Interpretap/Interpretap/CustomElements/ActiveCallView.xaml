@@ -14,8 +14,8 @@
                 AbsoluteLayout.LayoutBounds="0,0,1,1">
 
                 <Frame Padding="0"
-                       VerticalOptions="Center" BackgroundColor="Black"
-                       CornerRadius="5">
+                       VerticalOptions="Center" BackgroundColor="White"
+                       CornerRadius="5" HasShadow="false">
 
                     <Grid RowSpacing="0" ColumnSpacing="8">
                         <Grid.RowDefinitions>
@@ -31,7 +31,7 @@
                         <BoxView Grid.Row="0" BackgroundColor="Transparent"/>
                         
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding CallBusinessName}"
-                               FontAttributes="Bold" FontSize="20" TextColor="White"
+                               FontAttributes="Bold" FontSize="20" TextColor="Black"
                                VerticalTextAlignment="Center" Margin="10,0,0,0"/>
                         
                         <Label Grid.Row="0" Grid.Column="1" Text="Active Request"
@@ -45,10 +45,10 @@
                         <Label Grid.Row="1" Grid.Column="0" Text="{Binding CallCreatedDate}"
                                FontSize="12" HorizontalTextAlignment="Start"
                                VerticalOptions="Center" Margin="10,0,0,10"
-                               TextColor="White"/>
+                               TextColor="Black"/>
                         
                         <Label Text="{Binding CallId , StringFormat='Call ID: {0}'}"
-                               TextColor="White" Grid.Row="1" Grid.Column="0"
+                               TextColor="#6a6a6a" Grid.Row="1" Grid.Column="0"
                                Grid.ColumnSpan="2" HorizontalOptions="End"
                                VerticalOptions="Center" FontSize="12"
                                Margin="0,0,0,10"/>

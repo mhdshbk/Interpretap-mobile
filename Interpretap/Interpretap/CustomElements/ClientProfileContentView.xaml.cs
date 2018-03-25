@@ -157,12 +157,6 @@ namespace Interpretap.CustomElements
             SetActivityIndicatorState(false);
         }
 
-        private async Task LogoutButtonClickedAsync(object sender, EventArgs e)
-        {
-            SetActivityIndicatorState(true);
-            await App.LogoutAsync();
-            SetActivityIndicatorState(false);
-        }
 
         private void SetActivityIndicatorState(bool enable)
         {

@@ -1,38 +1,94 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Interpretap.Views.ReportPage">
+             x:Class="Interpretap.Views.ReportPage"
+             Title="Monthly Call Report"
+             BackgroundColor="White">
     <ContentPage.Content>
 
-        <AbsoluteLayout
-                VerticalOptions="FillAndExpand">
+        <Grid Margin="15,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
 
-            <StackLayout Orientation="Vertical"
-                    AbsoluteLayout.LayoutFlags="All" 
-                    AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout Grid.Row="0" Spacing="25" Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal" Spacing="5" VerticalOptions="Center">
 
-                <Label x:Name="Lbl_FromTo_Title" Text="Monthly Call Report" HorizontalOptions="Start" />
-                <Label x:Name="Lbl_FromTo" HorizontalOptions="Start" Margin="0,0,0,20" />
+                    <Image Source="calendar.png" HeightRequest="15" WidthRequest="15"
+                           Aspect="AspectFit"/>
+                    
+                    <Label x:Name="DateFrom" FontSize="15" TextColor="Black"/>
+                    
+                </StackLayout>
 
-                <Label x:Name="Lbl_CallSeconds_Title" Text="Total call seconds:" HorizontalOptions="Start" />
-                <Label x:Name="Lbl_CallSeconds" Text="{Binding TotalCallSeconds}" HorizontalOptions="Start" Margin="0,0,0,20" />
+                <Image Source="right.png" HeightRequest="15" WidthRequest="15"
+                       Aspect="AspectFit"/>
+                
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
 
-                <Label x:Name="Lbl_PausedSeconds_Title" Text="Total paused seconds:" HorizontalOptions="Start" />
-                <Label x:Name="Lbl_PausedSeconds" Text="{Binding TotalPausedSeconds}" HorizontalOptions="Start" Margin="0,0,0,20" />
-
-                <Label x:Name="Lbl_BusinessFees_Title" Text="Associated business fees:" HorizontalOptions="Start" />
-                <Label x:Name="Lbl_BusinessFees" Text="{Binding BusinessFee}" HorizontalOptions="Start" Margin="0,0,0,20" />
-
-                <Label x:Name="Lbl_TotalBill_Title" Text="Total bill:" HorizontalOptions="Start" />
-                <Label x:Name="Lbl_TotalBill" Text="{Binding TotalBill}" HorizontalOptions="Start" Margin="0,0,0,20" />
+                    <Image Source="calendar.png" HeightRequest="15" WidthRequest="15"
+                           Aspect="AspectFit"/>
+                    
+                    <Label x:Name="DateTo" FontSize="15" TextColor="Black"/>
+                    
+                </StackLayout>
             </StackLayout>
 
-            <ActivityIndicator
-                    IsRunning="True"
-                    IsVisible="{Binding IsLoading}"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"  
-                    AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+            <StackLayout Grid.Row="1" Orientation="Vertical"
+                         HorizontalOptions="FillAndExpand" Spacing="20">
 
-        </AbsoluteLayout>
+                <StackLayout Orientation="Horizontal">
+
+                    <Label Text="Total Call Seconds" HorizontalTextAlignment="Start"
+                           FontSize="15" TextColor="#686868"/>
+
+                    <Label Text="{Binding TotalCallSeconds}"
+                           HorizontalOptions="EndAndExpand"
+                           FontAttributes="Bold"
+                           VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <Label Text="Total Paused Seconds" HorizontalTextAlignment="Center"
+                           FontSize="15" TextColor="#686868"/>
+
+                    <Label Text="{Binding TotalPausedSeconds}"
+                           HorizontalOptions="EndAndExpand"
+                           FontAttributes="Bold"
+                           VerticalTextAlignment="Center" FontSize="16"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <Label Text="Associated Business Fees" HorizontalTextAlignment="Center"
+                           FontSize="15" VerticalTextAlignment="Center"
+                           TextColor="#686868"/>
+
+                    <Label Text="{Binding BusinessFee}"
+                           HorizontalOptions="EndAndExpand"
+                           VerticalTextAlignment="Center" FontAttributes="Bold"
+                           FontSize="16"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Margin="0,40,0,0">
+
+                    <Label Text="Total Bill"
+                           FontSize="15" FontAttributes="Bold"
+                           VerticalTextAlignment="End"/>
+
+                    <Label Text="{Binding TotalBill}" VerticalTextAlignment="Center"
+                           FontSize="25" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+
+            <ActivityIndicator Grid.RowSpan="2" IsRunning="true" IsVisible="{Binding IsLoading}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -29,8 +29,7 @@
                                            Padding="0" BackgroundColor="White">
                                         <Grid>
 
-                                            <Image Source="back"
-                                                   Aspect="AspectFill"/>
+                                            <Image Source="back" Aspect="AspectFill"/>
                                    
                                             <Grid RowSpacing="5" ColumnSpacing="0" Margin="10">
                                                 <Grid.RowDefinitions>

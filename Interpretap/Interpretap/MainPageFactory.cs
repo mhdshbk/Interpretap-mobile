@@ -51,18 +51,30 @@ namespace Interpretap
             {
                 Children =
                 {
-                    new Views.InterpreterViews.CallQueuePage(),
+                    new Views.InterpreterViews.CallQueuePage()
+                    {
+                        Icon="callqueue"
+                    },
                     new Views.InterpreterViews.CallLogPage()
+                    {
+                        Icon="calllog"
+                    }
                 }
             };
 
             if (LocalStorage.LoginResponseLS.UserInfo.IsManager)
-                page.Children.Add(new Views.InterpreterViews.AgenciesPage());
+                page.Children.Add(new Views.InterpreterViews.AgenciesPage()
+            {
+                Icon="agency"
+            });
 
-            page.Children.Add(new ProfilePage());
+            page.Children.Add(new ProfilePage()
+            {
+                Icon="profile"
+            });
             page.CurrentPage = null;
             page.Title = "Interpretap";
-            NavigationPage.SetHasNavigationBar(page, false);
+            NavigationPage.SetHasNavigationBar(page, true);
             NavigationPage.SetBackButtonTitle(page, "");
             return page;
         }

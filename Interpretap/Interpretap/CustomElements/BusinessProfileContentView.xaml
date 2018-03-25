@@ -1,62 +1,77 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ce="clr-namespace:Interpretap.CustomElements"
-             x:Class="Interpretap.CustomElements.BusinessProfileContentView">
+             x:Class="Interpretap.CustomElements.BusinessProfileContentView"
+             xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap">
     <ContentView.Content>
-        <AbsoluteLayout>
 
-            <ScrollView
-                x:Name="ControlsView"
-                AbsoluteLayout.LayoutFlags="All"
-                AbsoluteLayout.LayoutBounds="0,0,1,1">
+        <Grid>
 
-                <StackLayout Spacing="0">
+            <ScrollView x:Name="ControlsView">
+
+                <StackLayout Spacing="2" Margin="15,10"
+                             VerticalOptions="StartAndExpand">
 
                     <StackLayout Spacing="0">
                         <ce:GotoDetailsButton Text="Clients" Command="{Binding ClientsListCommand}"/>
                         <BoxView HeightRequest="1" BackgroundColor="Silver"/>
                     </StackLayout>
 
-                    <StackLayout>
-                        <Label Text="Name"/>
-                        <Entry Text="{Binding Name}"/>
+                    <Label Text="Name" FontSize="12" TextColor="Black"/>
+                    <custom:RoundedEntry Text="{Binding Name}" FontSize="14"
+                                         HeightRequest="35" BorderColor="#c7c7c7"
+                                         Placeholder="Enter the Name"
+                                         CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <BoxView HeightRequest="6"/>
-                        <Label Text="Email"/>
-                        <Entry Text="{Binding Email}"/>
+                    <Label Text="Email" FontSize="12" TextColor="Black"/>
+                    <custom:RoundedEntry Text="{Binding Email}" FontSize="14"
+                                         HeightRequest="35" BorderColor="#c7c7c7"
+                                         Placeholder="Enter the Email ID"
+                                         CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <BoxView HeightRequest="6"/>
-                        <Label Text="Phone Number"/>
-                        <Entry Text="{Binding PhoneNumber}"/>
+                    <Label Text="Phone Number" FontSize="12" TextColor="Black"/>
+                    <custom:RoundedEntry Text="{Binding PhoneNumber}" FontSize="14"
+                                         HeightRequest="35" BorderColor="#c7c7c7"
+                                         Placeholder="Enter the Phone Number"
+                                         CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <BoxView HeightRequest="6"/>
-                        <Label Text="Address"/>
-                        <Entry Text="{Binding Address}"/>
+                    <Label Text="Address" FontSize="12" TextColor="Black"/>
+                    <custom:RoundedEntry Text="{Binding Address}" FontSize="14"
+                                         HeightRequest="35" BorderColor="#c7c7c7"
+                                         Placeholder="Enter the Address"
+                                         CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <BoxView HeightRequest="6"/>
-                        <Label Text="City"/>
-                        <Entry Text="{Binding City}"/>
+                    <Label Text="City" FontSize="12" TextColor="Black"/>
+                    <custom:RoundedEntry Text="{Binding City}" FontSize="14"
+                                         HeightRequest="35" BorderColor="#c7c7c7"
+                                         Placeholder="Enter the City"
+                                         CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <BoxView HeightRequest="6"/>
-                        <Label Text="Province"/>
-                        <Entry Text="{Binding Province}"/>
+                    <Label Text="Province" FontSize="12" TextColor="Black"/>
+                    <custom:RoundedEntry Text="{Binding Province}" FontSize="14"
+                                         HeightRequest="35" BorderColor="#c7c7c7"
+                                         Placeholder="Enter the Province"
+                                         CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <BoxView HeightRequest="6"/>
-                        <Label Text="ZipCode"/>
-                        <Entry Text="{Binding ZipCode}"/>
+                    <Label Text="ZIP Code" FontSize="12" TextColor="Black"/>
+                    <custom:RoundedEntry Text="{Binding ZipCode}" FontSize="14"
+                                         HeightRequest="35" BorderColor="#c7c7c7"
+                                         Placeholder="Enter the ZIP Code"
+                                         CornerRadius="0" Margin="0,0,0,10"/>
 
-                        <BoxView HeightRequest="6"/>
-                        <Button Text="Update" Command="{Binding UpdateCommand}" IsEnabled="{Binding CanExecuteUpdateCommand}"/>
-                    </StackLayout>
+                    <Button Text="Update" TextColor="White"
+                            Command="{Binding UpdateCommand}"
+                            IsEnabled="{Binding CanExecuteUpdateCommand}"
+                            BorderRadius="0" BackgroundColor="#2e86c1"
+                            HeightRequest="40" Margin="75,5"
+                            FontAttributes="Bold"/>
                 </StackLayout>
             </ScrollView>
 
-            <ActivityIndicator 
-                IsRunning="True" 
-                IsVisible="{Binding IsBusy}"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
-        </AbsoluteLayout>
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"/>
+            </Grid>
     </ContentView.Content>
 </ContentView>

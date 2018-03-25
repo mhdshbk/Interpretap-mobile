@@ -12,8 +12,8 @@
                                    VerticalTextAlignment="Center"
                                    Lines="2" VerticalOptions="StartAndExpand"
                                    Margin="30,10"/>
-            <Frame Padding="0" HasShadow="true" HeightRequest="300"
-                   VerticalOptions="Center" BackgroundColor="Black" CornerRadius="5">
+            <Frame Padding="0" HasShadow="true" HeightRequest="280"
+                   VerticalOptions="Center" BackgroundColor="White" CornerRadius="5">
 
                 <Grid RowSpacing="0" ColumnSpacing="8">
                     <Grid.RowDefinitions>
@@ -27,7 +27,7 @@
                     </Grid.ColumnDefinitions>
                     <BoxView Grid.Row="0" BackgroundColor="Transparent"/>
                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding CallBusinessName}"
-                           FontAttributes="Bold" FontSize="45" TextColor="White"
+                           FontAttributes="Bold" FontSize="45" TextColor="Black"
                            VerticalTextAlignment="Center" Margin="10,0,0,0"/>
                     <custom:MultiLineLabel Grid.Row="0" Grid.Column="1"
                                            Text="Active Request"
@@ -41,9 +41,9 @@
                     <Label Grid.Row="1" Grid.Column="0" Text="{Binding CallCreatedDate}"
                            FontSize="13" HorizontalTextAlignment="Start"
                            VerticalOptions="Center" Margin="10,0,0,0"
-                           TextColor="White"/>
+                           TextColor="Black"/>
                     <Label Text="{Binding CallId , StringFormat='Call ID: {0}'}"
-                           TextColor="White" Grid.Row="1" Grid.Column="0"
+                           TextColor="#6a6a6a" Grid.Row="1" Grid.Column="0"
                            Grid.ColumnSpan="2" HorizontalOptions="End"
                            VerticalOptions="Center" FontSize="13"/>
 

@@ -189,6 +189,24 @@
     <Reference Include="UXDivers.Gorilla.Common.Droid">
       <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\MonoAndroid10\UXDivers.Gorilla.Common.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="SkiaSharp">
+      <HintPath>..\..\packages\SkiaSharp.1.59.1\lib\MonoAndroid\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Android">
+      <HintPath>..\..\packages\SkiaSharp.Views.1.59.1.1\lib\MonoAndroid\SkiaSharp.Views.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts">
+      <HintPath>..\..\packages\Microcharts.0.8.3-pre\lib\MonoAndroid10\Microcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts.Droid">
+      <HintPath>..\..\packages\Microcharts.0.8.3-pre\lib\MonoAndroid10\Microcharts.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Forms">
+      <HintPath>..\..\packages\SkiaSharp.Views.Forms.1.59.1.1\lib\MonoAndroid\SkiaSharp.Views.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts.Forms">
+      <HintPath>..\..\packages\Microcharts.Forms.0.8.3-pre\lib\netstandard1.3\Microcharts.Forms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Renderers\LockedOrientationContentPageRenderer.cs" />
@@ -253,6 +271,27 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\back.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\call.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\call.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\logout.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\logout.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\logout.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\agency.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\calendar.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\calllog.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\callqueue.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\right.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\agency.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\calendar.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\calllog.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\callqueue.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\right.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\agency.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\calendar.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\calllog.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\callqueue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\right.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\backinter.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\backinter.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\backinter.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

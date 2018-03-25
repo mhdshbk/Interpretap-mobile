@@ -1,4 +1,5 @@
-﻿using Interpretap.Models;
+﻿using System;
+using Interpretap.Models;
 using Interpretap.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -42,7 +43,14 @@ namespace Interpretap.Views
 
             _monthlyCallReportModel = monthlyCallReportModel;
             _userType = userType;
-            Lbl_FromTo.Text = _monthlyCallReportModel.DateFromTo;
+            DateTime start,end;
+            var x = DateTime.TryParse(_monthlyCallReportModel.StartOfMonth, out start);
+            var y = DateTime.TryParse(_monthlyCallReportModel.EndOfMonth, out end);
+            if(x && y)
+            {
+                DateFrom.Text = start.ToString("yyyy-MM-dd");
+                DateTo.Text = end.ToString("yyyy-MM-dd");
+            }
 
             _viewModel = new ABCallReportViewModel();
             BindingContext = _viewModel;

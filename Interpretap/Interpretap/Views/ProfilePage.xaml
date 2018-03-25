@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.ProfilePage"
              Title="Profile">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="logout" Clicked="LogoutButtonClickedAsync"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"
             iOS="0,20,0,0"

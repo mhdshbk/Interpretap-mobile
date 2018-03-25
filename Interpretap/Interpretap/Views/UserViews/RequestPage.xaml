@@ -32,7 +32,8 @@
                     <custom:ImageEntry x:Name="Entry_Call_Ref" FontAttributes="Bold"
                                        Text="{Binding CallRef}" LineColor="#c7c7c7"
                                        HeightRequest="60" TextColor="Black"
-                                       WidthRequest="280" FontSize="25"/>
+                                       WidthRequest="290" FontSize="25"
+                                       Placeholder="Enter Reference Number"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal"
@@ -107,10 +108,10 @@
 
             </AbsoluteLayout>
 
-            <!--<ActivityIndicator IsRunning="True"
+            <ActivityIndicator IsRunning="True"
                                IsVisible="{Binding IsBusy}"
                                HorizontalOptions="CenterAndExpand"
-                               VerticalOptions="CenterAndExpand"/>-->
+                               VerticalOptions="CenterAndExpand"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

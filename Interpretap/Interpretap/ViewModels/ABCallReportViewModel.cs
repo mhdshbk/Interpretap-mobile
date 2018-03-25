@@ -2,6 +2,7 @@
 using Interpretap.Models;
 using Interpretap.Models.RespondModels;
 using Interpretap.Services;
+using Microcharts;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
@@ -16,18 +17,20 @@ namespace Interpretap.ViewModels
     [AddINotifyPropertyChangedInterface]
     class ABCallReportViewModel : BaseViewModel
     {
+        public Chart BusinessReportChart { get; set; }
+        
         private string _totalCallSeconds;
         public string TotalCallSeconds
         {
             get { return _totalCallSeconds; }
-            set { _totalCallSeconds = value + " seconds"; INotifyPropertyChanged(); }
+            set { _totalCallSeconds = value; INotifyPropertyChanged(); }
         }
 
         private string _totalPausedSeconds;
         public string TotalPausedSeconds
         {
             get { return _totalPausedSeconds; }
-            set { _totalPausedSeconds = value + " seconds"; INotifyPropertyChanged(); }
+            set { _totalPausedSeconds = value; INotifyPropertyChanged(); }
         }
 
         private string _businessFee;

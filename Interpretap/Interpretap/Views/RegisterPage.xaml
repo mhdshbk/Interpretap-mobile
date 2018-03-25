@@ -108,13 +108,13 @@
                                                  Margin="0,0,0,10"/>
 
                             <Label Text="ZIP Code" FontSize="13"/>
-                            <custom:RoundedEntry x:Name="Entry_Zip_Code" Placeholder="Enter your Zip Code"
+                            <custom:RoundedEntry x:Name="Entry_Zip_Code" Placeholder="Enter your ZIP Code"
                                                  FontSize="14" Keyboard="Numeric"
                                                  HeightRequest="35" BorderColor="#c7c7c7"
                                                  CornerRadius="0" Margin="0,0,0,10"/>
 
                             <Button x:Name="Btn_Register" Text="Register"
-                                    TextColor="White" BackgroundColor="#2377ba"
+                                    TextColor="White" BackgroundColor="#2e86c1"
                                     Clicked="RegisterProcedure" BorderRadius="0"
                                     FontAttributes="Bold" FontSize="14"/>
                         </StackLayout>

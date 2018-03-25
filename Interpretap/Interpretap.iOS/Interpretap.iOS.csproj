@@ -168,6 +168,27 @@
     <BundleResource Include="Resources\call.png" />
     <BundleResource Include="Resources\call%402x.png" />
     <BundleResource Include="Resources\call%403x.png" />
+    <BundleResource Include="Resources\logout.png" />
+    <BundleResource Include="Resources\logout%402x.png" />
+    <BundleResource Include="Resources\logout%403x.png" />
+    <BundleResource Include="Resources\calendar.png" />
+    <BundleResource Include="Resources\calendar%402x.png" />
+    <BundleResource Include="Resources\calendar%403x.png" />
+    <BundleResource Include="Resources\right.png" />
+    <BundleResource Include="Resources\right%402x.png" />
+    <BundleResource Include="Resources\right%403x.png" />
+    <BundleResource Include="Resources\agency.png" />
+    <BundleResource Include="Resources\agency%402x.png" />
+    <BundleResource Include="Resources\agency%403x.png" />
+    <BundleResource Include="Resources\calllog.png" />
+    <BundleResource Include="Resources\calllog%402x.png" />
+    <BundleResource Include="Resources\calllog%403x.png" />
+    <BundleResource Include="Resources\callqueue.png" />
+    <BundleResource Include="Resources\callqueue%402x.png" />
+    <BundleResource Include="Resources\callqueue%403x.png" />
+    <BundleResource Include="Resources\backinter.png" />
+    <BundleResource Include="Resources\backinter%402x.png" />
+    <BundleResource Include="Resources\backinter%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -236,6 +257,24 @@
     </Reference>
     <Reference Include="UXDivers.Gorilla.Common.iOS">
       <HintPath>..\..\packages\UXDivers.GorillaPlayer.Common.0.9.1.2\lib\Xamarin.iOS10\UXDivers.Gorilla.Common.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp">
+      <HintPath>..\..\packages\SkiaSharp.1.59.1\lib\XamariniOS\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.iOS">
+      <HintPath>..\..\packages\SkiaSharp.Views.1.59.1.1\lib\XamariniOS\SkiaSharp.Views.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts">
+      <HintPath>..\..\packages\Microcharts.0.8.3-pre\lib\Xamarin.iOS10\Microcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts.iOS">
+      <HintPath>..\..\packages\Microcharts.0.8.3-pre\lib\Xamarin.iOS10\Microcharts.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Forms">
+      <HintPath>..\..\packages\SkiaSharp.Views.Forms.1.59.1.1\lib\XamariniOS\SkiaSharp.Views.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts.Forms">
+      <HintPath>..\..\packages\Microcharts.Forms.0.8.3-pre\lib\netstandard1.3\Microcharts.Forms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -1,61 +1,116 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Interpretap.CustomElements.ClientProfileContentView">
+             x:Class="Interpretap.CustomElements.ClientProfileContentView"
+             xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
+             BackgroundColor="White">
+    
   <ContentView.Content>
-        <AbsoluteLayout>
+        <Grid>
+            <ScrollView x:Name="ControlsView">
 
-            <ScrollView
-                x:Name="ControlsView"
-                AbsoluteLayout.LayoutFlags="All"
-                AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout x:Name="MasterLayout" Margin="15,10"
+                             VerticalOptions="StartAndExpand" Spacing="2">
 
-                <StackLayout x:Name="MasterLayout">
+                        <Label x:Name="Lbl_Password" Text="Password"
+                               FontSize="12" TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_Password"
+                                             Placeholder="Enter your Password"
+                                             IsPassword="True" HeightRequest="35"
+                                             FontSize="14" Margin="0,0,0,10"
+                                             CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                    <StackLayout x:Name="ProfileEntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0">
+                        <Label x:Name="Lbl_Password_Confirm" Text="Confirm Password"
+                               FontSize="12" TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_Password_Confirm"
+                                             Placeholder="Confirm your Password"
+                                             IsPassword="True" HeightRequest="35"
+                                             FontSize="14" Margin="0,0,0,10"
+                                             CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                        <Label x:Name="Lbl_Password" Text="Password"/>
-                        <Entry x:Name="Entry_Password" Placeholder="Password" IsPassword="True"/>
+                        <Label x:Name="Lbl_First_Name" Text="First Name"
+                               IsVisible="false" FontSize="12" TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_First_Name"
+                                             Placeholder="Enter your First Name"
+                                             IsVisible="false" HeightRequest="35"
+                                             FontSize="14" Margin="0,0,0,10"
+                                             CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                        <Label x:Name="Lbl_Password_Confirm" Text="Confirm Password"/>
-                        <Entry x:Name="Entry_Password_Confirm" Placeholder="Confirm Password" IsPassword="True"/>
+                        <Label x:Name="Lbl_Last_Name" Text="Last Name"
+                               IsVisible="false" FontSize="12" TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_Last_Name"
+                                             Placeholder="Enter your Last Name"
+                                             IsVisible="false" HeightRequest="35"
+                                             FontSize="14" Margin="0,0,0,10"
+                                             CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                        <Label x:Name="Lbl_First_Name" Text="First Name" IsVisible="false"/>
-                        <Entry x:Name="Entry_First_Name" Placeholder="First Name" IsVisible="false"/>
+                        <Label x:Name="Lbl_Email" Text="Email" FontSize="12"
+                               TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_Email"
+                                             Placeholder="Enter your Email ID"
+                                             Keyboard="Email" HeightRequest="35"
+                                             FontSize="14" Margin="0,0,0,10"
+                                             CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                        <Label x:Name="Lbl_Last_Name" Text="Last Name" IsVisible="false"/>
-                        <Entry x:Name="Entry_Last_Name" Placeholder="Last Name" IsVisible="false"/>
+                        <Label x:Name="Lbl_Phone_Number" Text="Phone Number"
+                               FontSize="12" TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_Phone_Number"
+                                             Placeholder="Enter your Phone Number"
+                                             Keyboard="Telephone" HeightRequest="35"
+                                             FontSize="14" Margin="0,0,0,10"
+                                             CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                        <Label x:Name="Lbl_Email" Text="Email"/>
-                        <Entry x:Name="Entry_Email" Placeholder="Email" Keyboard="Email" />
+                        <Label x:Name="Lbl_Address" Text="Address"
+                               FontSize="12" TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_Address"
+                                             Placeholder="Enter your Address"
+                                             HeightRequest="35" FontSize="14"
+                                             Margin="0,0,0,10" CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                        <Label x:Name="Lbl_Phone_Number" Text="Phone Number"/>
-                        <Entry x:Name="Entry_Phone_Number" Placeholder="Phone Number" Keyboard="Telephone" />
+                        <Label x:Name="Lbl_City" Text="City" FontSize="12"
+                               TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_City"
+                                             Placeholder="Enter your City"
+                                             HeightRequest="35" FontSize="14"
+                                             Margin="0,0,0,10" CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                        <Label x:Name="Lbl_Address" Text="Address"/>
-                        <Entry x:Name="Entry_Address" Placeholder="Address"/>
+                        <Label x:Name="Lbl_Province" Text="Province" FontSize="12"
+                               TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_Province"
+                                             Placeholder="Enter your Province"
+                                             HeightRequest="35" FontSize="14"
+                                             Margin="0,0,0,10" CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                        <Label x:Name="Lbl_City" Text="City"/>
-                        <Entry x:Name="Entry_City" Placeholder="City" />
+                        <Label x:Name="Lbl_Zip_Code" Text="ZIP Code" FontSize="12"
+                               TextColor="Black"/>
+                        <custom:RoundedEntry x:Name="Entry_Zip_Code"
+                                             Placeholder="Enter your ZIP Code"
+                                             HeightRequest="35" FontSize="14"
+                                             Margin="0,0,0,10" CornerRadius="0"
+                                             BorderColor="#c7c7c7"/>
 
-                        <Label x:Name="Lbl_Province" Text="Province"/>
-                        <Entry x:Name="Entry_Province" Placeholder="Province" />
-
-                        <Label x:Name="Lbl_Zip_Code" Text="Zip Code"/>
-                        <Entry x:Name="Entry_Zip_Code" Placeholder="Zip Code" />
-
-                        <Button x:Name="Btn_Update" Text="Update" Clicked="UpdateUserProfile"/>
-                        <Button Text="Logout" Clicked="LogoutButtonClickedAsync"/>
-                    </StackLayout>
+                        <Button x:Name="Btn_Update" Text="Update"
+                                Clicked="UpdateUserProfile"
+                                BackgroundColor="#2e86c1" TextColor="White"
+                                Margin="75,5" BorderRadius="0"
+                                HeightRequest="40" FontSize="14"
+                                FontAttributes="Bold"/>
 
                 </StackLayout>
             </ScrollView>
 
-            <ActivityIndicator 
-                IsRunning="True" 
-                x:Name="ActivityIndicator"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
-        </AbsoluteLayout>
+            <ActivityIndicator IsRunning="True" x:Name="ActivityIndicator"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"/>
+        </Grid>
     </ContentView.Content>
 </ContentView>

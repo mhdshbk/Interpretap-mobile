@@ -11,7 +11,6 @@ namespace Interpretap.Views.UserViews
         public RequestPage()
         {
             InitializeComponent();
-
             _ViewModel = new RequestViewModel();
             
             this.BindingContext = _ViewModel;

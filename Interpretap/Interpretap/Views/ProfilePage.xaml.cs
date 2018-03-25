@@ -1,6 +1,7 @@
 ﻿using Interpretap.CustomElements;
 using Interpretap.ViewModels;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static Interpretap.Common.Constants;
@@ -187,6 +188,11 @@ namespace Interpretap.Views
         private void CalculateProfilesListHeight()
         {
             ProfilesListViewContainer.HeightRequest = Math.Min(SelectorLayout.Height, ProfilesListView.RowHeight * ProfileViewModel.Profiles.Count);
+        }
+
+        private async Task LogoutButtonClickedAsync(object sender, EventArgs e)
+        {
+            await App.LogoutAsync();
         }
     }
 }

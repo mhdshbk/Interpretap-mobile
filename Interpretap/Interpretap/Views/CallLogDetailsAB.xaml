@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.CallLogDetailsAB"
              Title="Call Log Details"
-             BackgroundColor="#eeeeee">
+             BackgroundColor="#eeeeee"
+             NavigationPage.BackButtonTitle="">
     <ContentPage.Content>
         <Grid>
             <StackLayout Margin="5"
@@ -16,7 +17,8 @@
 
                 <Grid VerticalOptions="FillAndExpand">
                     <ListView x:Name="listView" BackgroundColor="#eeeeee"
-                              HasUnevenRows="true" SeparatorVisibility="None">
+                              HasUnevenRows="true" SeparatorVisibility="None"
+                              CachingStrategy="RecycleElement">
                         <ListView.Header>
                             <Label x:Name="Lbl_Title" HorizontalTextAlignment="Center"
                                    FontAttributes="Bold" VerticalTextAlignment="Center"

@@ -1,5 +1,6 @@
 ﻿using Interpretap.Core;
 using Interpretap.Interfaces;
+using Microcharts;
 using PropertyChanged;
 using System.Threading.Tasks;
 using static Interpretap.Common.Constants;
@@ -11,6 +12,8 @@ namespace Interpretap.ViewModels
     {
         ICallReportModel ReportModel { get; set; }
         ICallReportResponce Report { get; set; }
+
+        public Chart ReportChart { get; set; }
 
         string DateFrom => Report != null ? Report.Report.StartDate.ToString("yyyy-MM-dd") : string.Empty;
         string DateTo => Report != null ? Report.Report.EndDate.ToString("yyyy-MM-dd") : string.Empty;
@@ -45,6 +48,26 @@ namespace Interpretap.ViewModels
             if (success)
             {
                 Report = responce;
+
+                //Creating PieChart
+                var entries = new[]
+                {
+                    new Entry(TotalBilledSecondsLong)
+                    {
+                        Color = SkiaSharp.SKColor.Parse("#f37a3f"),
+                        Label = "Billed Seconds",
+                        ValueLabel = TotalBilledSecondsLong.ToString()
+                    },
+                    new Entry(Report.Report.ReportInfo.TotalPauseAmountSeconds)
+                    {
+                        Color = SkiaSharp.SKColor.Parse("#2e86c1"),
+                        Label = "Paused Seconds",
+                        ValueLabel = Report.Report.ReportInfo.TotalPauseAmountSeconds.ToString()
+                    }
+                };
+
+                ReportChart = new PieChart() { Entries = entries, LabelTextSize = 15 };
+                //PieChart Creation Completed
             }
             else
             {
