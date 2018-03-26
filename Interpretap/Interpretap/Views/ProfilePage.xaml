@@ -21,10 +21,8 @@
 
             <StackLayout x:Name="ProfileSelectorView" HeightRequest="128">
                 <Grid VerticalOptions="FillAndExpand">
-
-                    <Image Source="{Binding SelectedProfile , Converter={StaticResource BackgroundConverter}}"
+                    <Image Source="{Binding SelectedProfile.ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}"
                            Aspect="AspectFill" Opacity="0.6"/>
-
                     <StackLayout Orientation="Horizontal" Padding="6,0">
 
                         <StackLayout VerticalOptions="CenterAndExpand">
@@ -95,28 +93,28 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <ViewCell.View>
-                                            <StackLayout 
-                                                Orientation="Horizontal"
-                                                Padding="6,0,6,0">
+<!--                                             <Grid>
+                                                <Image Source="{Binding ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}"
+                                                       Aspect="AspectFill" Opacity="0.8"/> -->
+                                                <StackLayout Orientation="Horizontal"
+                                                             Padding="6,0,6,0">
 
-                                                <StackLayout VerticalOptions="CenterAndExpand">
-                                                    <Image Margin="5" WidthRequest="32" HeightRequest="32" Source="{Binding ProfileTypeImage}" />
-                                                </StackLayout>
+                                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                                        <Image Margin="5" WidthRequest="32" HeightRequest="32" Source="{Binding ProfileTypeImage}" />
+                                                    </StackLayout>
 
-                                                <StackLayout 
-                                                    HorizontalOptions="FillAndExpand" 
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Spacing="3">
-                                                    
-                                                    <Label Text="{Binding ProfileName}" FontSize="Medium" TextColor="Black"/>
-                                                    
-                                                    <Label Text="{Binding ProfileTypeCaption}" FontSize="Small"/>
-                                                </StackLayout>
+                                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                             VerticalOptions="CenterAndExpand"
+                                                             Spacing="3">
+                                                        <Label Text="{Binding ProfileName}" FontSize="Medium" TextColor="Black"/>
+                                                        <Label Text="{Binding ProfileTypeCaption}" FontSize="Small"/>
+                                                    </StackLayout>
 
-                                                <StackLayout VerticalOptions="CenterAndExpand" IsVisible="{Binding IsSelected}">
-                                                    <Image WidthRequest="32" HeightRequest="32" Source="check_green.png" />
+                                                    <StackLayout VerticalOptions="CenterAndExpand" IsVisible="{Binding IsSelected}">
+                                                        <Image WidthRequest="32" HeightRequest="32" Source="check_green.png" />
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
+<!--                                                 </Grid> -->
                                         </ViewCell.View>
                                     </ViewCell>
                                 </DataTemplate>

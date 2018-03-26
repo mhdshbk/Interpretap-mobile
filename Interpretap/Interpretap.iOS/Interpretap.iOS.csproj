@@ -243,6 +243,9 @@
     <BundleResource Include="Resources\user_outline.png" />
     <BundleResource Include="Resources\user_outline%402x.png" />
     <BundleResource Include="Resources\user_outline%403x.png" />
+    <BundleResource Include="Resources\briefbagwhite.png" />
+    <BundleResource Include="Resources\briefbagwhite%402x.png" />
+    <BundleResource Include="Resources\briefbagwhite%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
