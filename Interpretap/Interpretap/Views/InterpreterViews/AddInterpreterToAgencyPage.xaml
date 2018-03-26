@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.InterpreterViews.AddInterpreterToAgencyPage"
              xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
-             Title="Adding Interpreter">
+             Title="Adding Interpreter"
+             BackgroundColor="#eee">
 
     <ContentPage.Content>
         <AbsoluteLayout>

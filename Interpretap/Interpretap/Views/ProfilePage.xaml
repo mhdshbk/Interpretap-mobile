@@ -20,22 +20,27 @@
             Spacing="0">
 
             <StackLayout x:Name="ProfileSelectorView" HeightRequest="128">
-                <Grid VerticalOptions="FillAndExpand" BackgroundColor="{Binding SelectedProfile.ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}">
+                <Grid VerticalOptions="FillAndExpand">
+
+                    <Image Source="{Binding SelectedProfile.ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}"
+                           Aspect="AspectFill" Opacity="0.8"/>
+
                     <StackLayout Orientation="Horizontal" Padding="6,0">
 
                         <StackLayout VerticalOptions="CenterAndExpand">
-                            <Image WidthRequest="50" HeightRequest="50" Margin="5"
-                                   Source="{Binding SelectedProfile.ProfileTypeImage}" />
+                            <Image WidthRequest="50" HeightRequest="50"
+                                   Source="{Binding SelectedProfile.ProfileTypeImage}"
+                                   Margin="5,0"/>
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand"
                                      VerticalOptions="CenterAndExpand">
 
-                            <Label Text="firstnametest lastnametest"
+                            <Label Text="{Binding SelectedProfile.ProfileName}"
                                    FontSize="Medium" FontAttributes="Bold"
                                    TextColor="Black"/>
 
-                            <Label Text="Client" FontSize="Small"
+                            <Label Text="{Binding SelectedProfile.ProfileTypeCaption}" FontSize="Small"
                                    TextColor="Black"/>
                         </StackLayout>
 
@@ -57,10 +62,7 @@
                        Source="arrow_right_green.png" />-->
 
             </StackLayout>
-<!-- 
-            {Binding SelectedProfile , Converter={StaticResource BackgroundConverter}}
-            {Binding SelectedProfile.ProfileName}
-            {Binding SelectedProfile.ProfileTypeCaption}-->
+
             <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray"/>
 
             <AbsoluteLayout VerticalOptions="FillAndExpand">
@@ -91,14 +93,14 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <ViewCell.View>
-<!--                                             <Grid>
+                                            <Grid>
                                                 <Image Source="{Binding ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}"
-                                                       Aspect="AspectFill" Opacity="0.8"/> -->
+                                                       Aspect="AspectFill" Opacity="0.8"/>
                                                 <StackLayout Orientation="Horizontal"
                                                              Padding="6,0,6,0">
 
                                                     <StackLayout VerticalOptions="CenterAndExpand">
-                                                        <Image Margin="5" WidthRequest="32" HeightRequest="32" Source="{Binding ProfileTypeImage}" />
+                                                        <Image WidthRequest="32" HeightRequest="32" Source="{Binding ProfileTypeImage}" />
                                                     </StackLayout>
 
                                                     <StackLayout HorizontalOptions="FillAndExpand"
@@ -112,7 +114,7 @@
                                                         <Image WidthRequest="32" HeightRequest="32" Source="check_green.png" />
                                                     </StackLayout>
                                                 </StackLayout>
-<!--                                                 </Grid> -->
+                                                </Grid>
                                         </ViewCell.View>
                                     </ViewCell>
                                 </DataTemplate>

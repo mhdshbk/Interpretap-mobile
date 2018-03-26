@@ -12,7 +12,7 @@
                                    VerticalTextAlignment="Center"
                                    Lines="2" VerticalOptions="StartAndExpand"
                                    Margin="30,10"/>
-            <Frame Padding="0" HasShadow="true" HeightRequest="280"
+            <Frame Padding="0" HasShadow="true" HeightRequest="280" IsClippedToBounds="true"
                    VerticalOptions="Center" BackgroundColor="White" CornerRadius="5">
 
                 <Grid RowSpacing="0" ColumnSpacing="8">

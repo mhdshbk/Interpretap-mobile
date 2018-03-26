@@ -363,8 +363,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Gorilla.json" />
-    <None Include="SampleData.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\UserViews\BusinessCallsPage.xaml">

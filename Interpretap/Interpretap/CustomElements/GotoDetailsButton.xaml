@@ -11,7 +11,8 @@
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 Text=""
                 BorderRadius="0"
-                x:Name="btn"/>
+                x:Name="btn"
+            BackgroundColor="Transparent"/>
 
             <StackLayout 
                 Padding="6,0,0,0"
