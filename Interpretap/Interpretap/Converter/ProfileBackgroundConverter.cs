@@ -9,9 +9,9 @@ namespace Interpretap.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var res = value as ProfileSelectorItemViewModel;
+            var res = value as string;
 
-            if (res.ProfileTypeCaption == "Client")
+            if (res == "Client")
                 return "clientpro";
             else
                 return "businesspro";

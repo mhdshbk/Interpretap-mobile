@@ -88,7 +88,7 @@ namespace Interpretap.ViewModels
                 ProfileName = $"{_userInfo.FirstName} {_userInfo.LastName}",
                 ProfileTypeCaption = "Interpreter",
                 ProfileType = UserTypes.Interpreter,
-                ProfileTypeImage = ImageSource.FromFile("male.png"),
+                ProfileTypeImage = ImageSource.FromFile("briefbagwhite.png"),
             };
             Profiles.Add(interpreterProfileItem);
         }
@@ -103,7 +103,7 @@ namespace Interpretap.ViewModels
                     ProfileName = business.BusinessInfo.BusinessName,
                     ProfileTypeCaption = "Business",
                     ProfileType = UserTypes.Business,
-                    ProfileTypeImage = ImageSource.FromFile("briefbag.png"),
+                    ProfileTypeImage = ImageSource.FromFile("briefbagwhite.png"),
                 };
                 Profiles.Add(businessProfileItem);
             }
@@ -119,7 +119,7 @@ namespace Interpretap.ViewModels
                     ProfileName = agency.BusinessInfo.BusinessName,
                     ProfileTypeCaption = "Agency",
                     ProfileType = UserTypes.Agency,
-                    ProfileTypeImage = ImageSource.FromFile("briefbag.png"),
+                    ProfileTypeImage = ImageSource.FromFile("briefbagwhite.png"),
                 };
                 Profiles.Add(agencyProfileItem);
             }

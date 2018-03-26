@@ -331,6 +331,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\rightarrow.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\rightarrow.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\rightarrow.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\briefbagwhite.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\briefbagwhite.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\briefbagwhite.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

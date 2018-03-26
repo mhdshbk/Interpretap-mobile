@@ -24,12 +24,13 @@
                                VerticalTextAlignment="Center"/>
 
                         <StackLayout Grid.Row="1" Spacing="40">
-                            <!--<custom:ImageEntry Placeholder="Enter the Interpreter ID"
-                                               FontSize="22"/>-->
-                            <Entry x:Name="lblId" Placeholder="Enter the Interpreter ID"
-                                   FontSize="22" WidthRequest="280"
-                                   HeightRequest="60" TextColor="Black"
-                                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        
+                            <custom:ImageEntry x:Name="lblId" Placeholder="Enter the Interpreter ID"
+                                               FontSize="22" WidthRequest="280"
+                                               HeightRequest="60" TextColor="Black"
+                                               FontAttributes="Bold" HorizontalTextAlignment="Center"
+                                               LineColor="#c7c7c7"
+                                               TextChanged="lblId_TextChanged"/>
 
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Is Manager" HorizontalTextAlignment="Center"
@@ -46,8 +47,14 @@
                 </Frame>
             <Image Grid.Row="2" Source="add.png" HeightRequest="75"
                    WidthRequest="75" Margin="0,30,0,0"
-                   AbsoluteLayout.LayoutBounds="0.5,0.6"
-                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                   AbsoluteLayout.LayoutBounds="0.5,0.62"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   IsEnabled="{Binding CanAddClient}">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AddButton_Clicked"/>
+                </Image.GestureRecognizers>
+            </Image>
             <!--<StackLayout
                 AbsoluteLayout.LayoutFlags="All"
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -76,9 +83,9 @@
                     IsEnabled="{Binding CanAddClient}"/>
             </StackLayout>-->
 
-            <!--<ActivityIndicator IsRunning="True" IsVisible="{Binding IsProcessing}"
-                               HorizontalOptions="CenterAndExpand"
-                               VerticalOptions="CenterAndExpand"/>-->
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsProcessing}"
+                               AbsoluteLayout.LayoutBounds="0,0,1,1"
+                               AbsoluteLayout.LayoutFlags="All"/>
 
         </AbsoluteLayout>
     </ContentPage.Content>
