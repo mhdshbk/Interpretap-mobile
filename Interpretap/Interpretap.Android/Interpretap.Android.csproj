@@ -328,6 +328,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\add.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\businesspro.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\clientpro.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\blue_circle.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\blue_circle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\blue_circle.png" />
     <AndroidResource Include="Resources\drawable-hdpi\rightarrow.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\rightarrow.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\rightarrow.png" />

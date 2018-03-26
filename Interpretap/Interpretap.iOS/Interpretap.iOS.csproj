@@ -216,6 +216,9 @@
     <BundleResource Include="Resources\end_pause%403x.png" />
     <BundleResource Include="Resources\briefbag%402x.png" />
     <BundleResource Include="Resources\briefbag%403x.png" />
+    <BundleResource Include="Resources\blue_circle.png" />
+    <BundleResource Include="Resources\blue_circle%402x.png" />
+    <BundleResource Include="Resources\blue_circle%403x.png" />
     <BundleResource Include="Resources\add.png" />
     <BundleResource Include="Resources\add%402x.png" />
     <BundleResource Include="Resources\add%403x.png" />
