@@ -270,6 +270,8 @@
     </Compile>
     <Compile Include="CustomRenderers\MultiLineLabel.cs" />
     <Compile Include="Converter\CallStatusTextColorConverter.cs" />
+    <Compile Include="Converter\ProfileBackgroundConverter.cs" />
+    <Compile Include="Converter\TextColorConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

@@ -216,6 +216,18 @@
     <BundleResource Include="Resources\end_pause%403x.png" />
     <BundleResource Include="Resources\briefbag%402x.png" />
     <BundleResource Include="Resources\briefbag%403x.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\add%402x.png" />
+    <BundleResource Include="Resources\add%403x.png" />
+    <BundleResource Include="Resources\businesspro.png" />
+    <BundleResource Include="Resources\businesspro%402x.png" />
+    <BundleResource Include="Resources\businesspro%403x.png" />
+    <BundleResource Include="Resources\clientpro.png" />
+    <BundleResource Include="Resources\clientpro%402x.png" />
+    <BundleResource Include="Resources\clientpro%403x.png" />
+    <BundleResource Include="Resources\rightarrow.png" />
+    <BundleResource Include="Resources\rightarrow%402x.png" />
+    <BundleResource Include="Resources\rightarrow%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">

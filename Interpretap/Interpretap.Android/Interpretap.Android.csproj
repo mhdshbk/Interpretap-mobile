@@ -328,6 +328,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\add.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\businesspro.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\clientpro.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\rightarrow.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\rightarrow.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\rightarrow.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -345,9 +348,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\arrow_right_green.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\check_green.png" />
