@@ -20,17 +20,12 @@
             Spacing="0">
 
             <StackLayout x:Name="ProfileSelectorView" HeightRequest="128">
-                <Grid VerticalOptions="FillAndExpand">
-
-                    <Image Source="{Binding SelectedProfile.ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}"
-                           Aspect="AspectFill" Opacity="0.8"/>
-
+                <Grid VerticalOptions="FillAndExpand" BackgroundColor="{Binding SelectedProfile.ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}">
                     <StackLayout Orientation="Horizontal" Padding="6,0">
 
                         <StackLayout VerticalOptions="CenterAndExpand">
-                            <Image WidthRequest="50" HeightRequest="50"
-                                   Source="{Binding SelectedProfile.ProfileTypeImage}"
-                                   Margin="5,0"/>
+                            <Image WidthRequest="50" HeightRequest="50" Margin="5"
+                                   Source="{Binding SelectedProfile.ProfileTypeImage}" />
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand"
@@ -38,10 +33,10 @@
 
                             <Label Text="firstnametest lastnametest"
                                    FontSize="Medium" FontAttributes="Bold"
-                                   TextColor="{Binding SelectedProfile , Converter={StaticResource FontColorConverter}}"/>
+                                   TextColor="Black"/>
 
                             <Label Text="Client" FontSize="Small"
-                                   TextColor="{Binding SelectedProfile , Converter={StaticResource FontColorConverter}}"/>
+                                   TextColor="Black"/>
                         </StackLayout>
 
                         <Image x:Name="ArrowImage" WidthRequest="32"
@@ -96,14 +91,14 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <ViewCell.View>
-                                            <Grid>
+<!--                                             <Grid>
                                                 <Image Source="{Binding ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}"
-                                                       Aspect="AspectFill" Opacity="0.8"/>
+                                                       Aspect="AspectFill" Opacity="0.8"/> -->
                                                 <StackLayout Orientation="Horizontal"
                                                              Padding="6,0,6,0">
 
                                                     <StackLayout VerticalOptions="CenterAndExpand">
-                                                        <Image WidthRequest="32" HeightRequest="32" Source="{Binding ProfileTypeImage}" />
+                                                        <Image Margin="5" WidthRequest="32" HeightRequest="32" Source="{Binding ProfileTypeImage}" />
                                                     </StackLayout>
 
                                                     <StackLayout HorizontalOptions="FillAndExpand"
@@ -117,7 +112,7 @@
                                                         <Image WidthRequest="32" HeightRequest="32" Source="check_green.png" />
                                                     </StackLayout>
                                                 </StackLayout>
-                                                </Grid>
+<!--                                                 </Grid> -->
                                         </ViewCell.View>
                                     </ViewCell>
                                 </DataTemplate>

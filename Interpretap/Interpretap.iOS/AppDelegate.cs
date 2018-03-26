@@ -53,7 +53,6 @@ namespace Interpretap.iOS
             //// FFImageLoading.Forms
             ////.RegisterAssemblyFromType<FFImageLoading.Forms.CachedImage>()
             //));
-            MessagingCenter.Subscribe<RegisterPage,string>(this, "ChangeColour", ChangeColor);
             return base.FinishedLaunching(app, options);
         }
 

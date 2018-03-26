@@ -58,9 +58,8 @@ namespace Interpretap.Views
             base.OnDisappearing();
             if(Device.RuntimePlatform == Device.iOS)
             {
-                //((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
-                //((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Black;
-                MessagingCenter.Send<RegisterPage, string>(this, "ChangeColour", "#f37a3f");
+                ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.White;
+                ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.Black;
             }
 		}
 

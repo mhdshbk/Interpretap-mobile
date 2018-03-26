@@ -18,9 +18,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-               <Grid>
-        <Image Source="call_bg_dark" Aspect="AspectFill"/>
-        <Grid Margin="20" RowSpacing="0" ColumnSpacing="0">
+        <Grid Margin="20" BackgroundColor="Black" RowSpacing="0" ColumnSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="3*"/>
@@ -64,6 +62,5 @@
                 FontSize="20"/>
                 
         </Grid>
-            </Grid>
     </ContentPage.Content>
 </ContentPage>

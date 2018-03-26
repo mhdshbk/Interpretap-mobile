@@ -10,12 +10,11 @@
 
             <ScrollView x:Name="ControlsView">
 
-                <StackLayout Spacing="2" Margin="15,10"
+                <StackLayout Spacing="2" Margin="15,0,15,10"
                              VerticalOptions="StartAndExpand">
 
-                    <StackLayout Spacing="0">
-                        <ce:GotoDetailsButton Text="Clients" Command="{Binding ClientsListCommand}"/>
-                        <BoxView HeightRequest="1" BackgroundColor="Silver"/>
+                    <StackLayout Spacing="0" Margin="-15,0,-15,5">
+                        <ce:GotoDetailsButton Text="Clients" BackgroundColor="#f37a3f" Command="{Binding ClientsListCommand}"/>
                     </StackLayout>
 
                     <Label Text="Name" FontSize="12" TextColor="Black"/>
