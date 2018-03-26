@@ -331,6 +331,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\blue_circle.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\blue_circle.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\blue_circle.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\rightarrow.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\rightarrow.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\rightarrow.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -348,9 +351,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\arrow_right_green.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\check_green.png" />
