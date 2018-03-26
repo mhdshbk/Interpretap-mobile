@@ -4,58 +4,66 @@
              x:Class="Interpretap.Views.CallReportPage"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              Title="Monthly Call Report"
-             BackgroundColor="White">
+             BackgroundColor="#eee">
     <ContentPage.Content>
 
-        <Grid>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="40"/>
-            </Grid.RowDefinitions>
-
-            <Label Text="{Binding DateInterval}" Grid.Row="0"
+    <StackLayout Spacing="30" VerticalOptions="CenterAndExpand">
+            
+            <Label Text="{Binding DateInterval}"
                    FontSize="16" HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Start" Margin="0,25,0,0"
+                   VerticalTextAlignment="Start"
                    TextColor="#6a6a6a"/>
             
-            <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="Center">
                 <microcharts:ChartView Chart="{Binding ReportChart}" HeightRequest="250"/>
             </StackLayout>
-
-            <Label Grid.Row="2"
-                   Text="{Binding TotalCallSeconds}"
-                   FontSize="16" FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"/>
-            
+                
             <ActivityIndicator IsRunning="True" IsVisible="{Binding IsLoading}"
                                HorizontalOptions="CenterAndExpand"
-                               VerticalOptions="CenterAndExpand"
-                               Grid.RowSpan="3"/>
-        </Grid>
+                               VerticalOptions="CenterAndExpand"/>
+            <StackLayout>
 
+                <Label Text="{Binding TotalCallSeconds}"
+                       FontSize="16" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+                
+                <Grid>
+                  <Grid HorizontalOptions="Start">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="7*"/>
+                        </Grid.ColumnDefinitions>
+                         <Grid Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                            <BoxView  BackgroundColor="#f37a3f"  WidthRequest="15" HeightRequest="15"/>
+                        </Grid>
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Total Billed" HorizontalTextAlignment="Start"/>
+                            <Label Text="{Binding TotalBilledSeconds}"
+                                   HorizontalTextAlignment="Start"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Grid>
 
-<!--
-                <BoxView HeightRequest="12" BackgroundColor="Transparent"/>
-                <Label Text="{Binding DateInterval}" Grid.Row="0"
-                   FontSize="16" HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Start" Margin="0,25,0,0"
-                   TextColor="#6a6a6a"/>
-                <Label Text="Total call seconds:"  />
-                <Label Text="{Binding TotalCallSeconds}" />
+                    <Grid HorizontalOptions="End">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                            <BoxView  BackgroundColor="#2e86c1"  WidthRequest="15" HeightRequest="15"/>
+                        </Grid>
+                        <StackLayout Grid.Column="0" Spacing="0">
+                            <Label Text="Total Billed" HorizontalTextAlignment="End"/>
+                            <Label Text="{Binding TotalPausedSeconds}"
+                                   HorizontalTextAlignment="End"
+                                   FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Grid>
+               </Grid>
+                
+            </StackLayout>
 
-                <BoxView HeightRequest="12" BackgroundColor="Transparent"/>
-
-                <Label Text="Total paused seconds:"  />
-                <Label Text="{Binding TotalPausedSeconds}" />
-
-                <BoxView HeightRequest="12" BackgroundColor="Transparent"/>
-
-                <Label Text="Total billed seconds:"  />
-                <Label Text="{Binding TotalBilledSeconds}" />-->
-
-            
+        </StackLayout>
 
     </ContentPage.Content>
 </ContentPage>

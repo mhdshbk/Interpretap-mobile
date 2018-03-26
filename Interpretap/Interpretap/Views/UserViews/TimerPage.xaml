@@ -19,7 +19,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
                <Grid>
-        <Image Source="call_bg_dark.jpg" Aspect="AspectFill"/>
+        <Image Source="call_bg_dark" Aspect="AspectFill"/>
         <Grid Margin="20" RowSpacing="0" ColumnSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -44,12 +44,12 @@
                    HorizontalOptions="CenterAndExpand" />
 
                  <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
-                     <Image Source="businessman.png" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
+                     <Image Source="businessman" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
                 <Label Text="{Binding Agency}" FontSize="20" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
                  </StackLayout>
 
             <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-                <Image Source="male.png" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
+                <Image Source="male" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
                 <Label Text="{Binding InterpreterFullName}" FontSize="20" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
             </StackLayout>
 

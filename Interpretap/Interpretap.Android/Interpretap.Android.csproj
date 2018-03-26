@@ -337,6 +337,15 @@
     <AndroidResource Include="Resources\drawable-hdpi\briefbagwhite.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\briefbagwhite.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\briefbagwhite.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\circleright.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\circleright.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\circleright.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\starfilled.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\staroutline.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\starfilled.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\staroutline.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\starfilled.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\staroutline.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

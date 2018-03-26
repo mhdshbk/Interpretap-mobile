@@ -1,28 +1,41 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.RateUserView"
-             Title="Rate user">
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Label" >
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness"
-                    iOS="0,20,0,0"/>
-    </ContentPage.Padding>
+             Title="Rate user"
+             BackgroundColor="#eee">
 
     <ContentPage.Content>
         <AbsoluteLayout>
+            <Frame AbsoluteLayout.LayoutBounds="0.5,0.5"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   WidthRequest="320" CornerRadius="5"
+                   Padding="5" IsClippedToBounds="true"
+                   HasShadow="false" BackgroundColor="White"
+                   HeightRequest="260">
 
-            <StackLayout
+                <StackLayout Padding="5">
+                    <Label Text="How would you rate your Experience?"
+                           FontSize="25" HorizontalTextAlignment="Center"
+                           TextColor="Black"/>
+
+                    <StackLayout x:Name="StarsView"
+                                 Orientation="Horizontal"
+                                 HorizontalOptions="CenterAndExpand"
+                                 HeightRequest="60" Margin="0,20,0,0"/>
+
+                </StackLayout>
+            </Frame>
+            <Image Source="circleright.png" HeightRequest="75"
+                   WidthRequest="75" AbsoluteLayout.LayoutBounds="0.5,0.75"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   IsEnabled="{Binding CanExecuteRateCommand}">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RateCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+<!--            <StackLayout
                 AbsoluteLayout.LayoutFlags="All"
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 Padding="10">
@@ -51,7 +64,7 @@
                 IsRunning="True" 
                 IsVisible="{Binding IsProcessing}"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+                AbsoluteLayout.LayoutBounds="0.5,0.5"/>-->
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

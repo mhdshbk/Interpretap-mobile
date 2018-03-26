@@ -8,13 +8,14 @@
 
         <Grid>
             <ListView x:Name="listView" RowHeight="140" VerticalOptions="FillAndExpand"
-                      BackgroundColor="#eee" SeparatorVisibility="None">
+                      BackgroundColor="#eee" SeparatorVisibility="None"
+                      CachingStrategy="RecycleElement">
                 <ListView.Header>
                     <Label Text="Monthly Report" TextColor="Gray"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="Center"
                                    VerticalTextAlignment="Center"
-                                   FontSize="18"/>
+                                   FontSize="18" Margin="0,2"/>
                 </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate>

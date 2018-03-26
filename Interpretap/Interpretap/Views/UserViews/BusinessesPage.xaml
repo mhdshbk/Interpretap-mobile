@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.UserViews.BusinessesPage"
-             Title="Business Calls">
+             Title="Business Calls"
+             BackgroundColor="#eee">
 
     <ContentPage.Content>
 
         <Grid Margin="10">
             <ListView x:Name="listView" ItemSelected="listView_ItemSelected"
-                      HasUnevenRows="True" SeparatorColor="#c7c7c7">
+                      HasUnevenRows="True" SeparatorColor="#c7c7c7"
+                      BackgroundColor="#eee">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

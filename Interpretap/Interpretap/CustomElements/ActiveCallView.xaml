@@ -15,7 +15,8 @@
 
                 <Frame Padding="0"
                        VerticalOptions="Center" BackgroundColor="White"
-                       CornerRadius="5" HasShadow="false">
+                       CornerRadius="5" HasShadow="false"
+                       IsClippedToBounds="true">
 
                     <Grid RowSpacing="0" ColumnSpacing="8">
                         <Grid.RowDefinitions>

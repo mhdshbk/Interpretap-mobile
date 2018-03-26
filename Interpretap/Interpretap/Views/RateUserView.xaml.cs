@@ -30,8 +30,8 @@ namespace Interpretap.Views
         private void DrawStars(int rating)
         {
             var maxRating = 5;
-            var emptyStarFileName = "star_border_black.png";
-            var solidStarFileName = "star_black.png";
+            var emptyStarFileName = "staroutline.png";
+            var solidStarFileName = "starfilled.png";
 
             StarsView.Children.Clear();
 

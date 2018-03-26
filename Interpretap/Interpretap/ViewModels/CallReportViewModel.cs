@@ -17,13 +17,13 @@ namespace Interpretap.ViewModels
 
         string DateFrom => Report != null ? Report.Report.StartDate.ToString("yyyy-MM-dd") : string.Empty;
         string DateTo => Report != null ? Report.Report.EndDate.ToString("yyyy-MM-dd") : string.Empty;
-        public string DateInterval => Report != null ? $"{DateFrom} to {DateTo}" : string.Empty;
+        public string DateInterval => Report != null ? $"{DateFrom}   TO   {DateTo}" : string.Empty;
 
         public string TotalCallSeconds => Report != null ? $"{Report.Report.ReportInfo.TotalCallAmountSeconds} seconds" : string.Empty;
-        public string TotalPausedSeconds => Report != null ? $"{Report.Report.ReportInfo.TotalPauseAmountSeconds} seconds" : string.Empty;
+        public string TotalPausedSeconds => Report != null ? $"{Report.Report.ReportInfo.TotalPauseAmountSeconds}" : string.Empty;
 
         long TotalBilledSecondsLong => Report != null ? Report.Report.ReportInfo.TotalCallAmountSeconds - Report.Report.ReportInfo.TotalPauseAmountSeconds : 0;
-        public string TotalBilledSeconds => Report != null ? $"{TotalBilledSecondsLong} seconds" : string.Empty;
+        public string TotalBilledSeconds => Report != null ? $"{TotalBilledSecondsLong}" : string.Empty;
 
         public bool IsLoading { get; set; }
 
@@ -55,18 +55,22 @@ namespace Interpretap.ViewModels
                     new Entry(TotalBilledSecondsLong)
                     {
                         Color = SkiaSharp.SKColor.Parse("#f37a3f"),
-                        Label = "Billed Seconds",
-                        ValueLabel = TotalBilledSecondsLong.ToString()
+                        //Label = "Billed Seconds",
+                        //ValueLabel = TotalBilledSecondsLong.ToString()
                     },
                     new Entry(Report.Report.ReportInfo.TotalPauseAmountSeconds)
                     {
                         Color = SkiaSharp.SKColor.Parse("#2e86c1"),
-                        Label = "Paused Seconds",
-                        ValueLabel = Report.Report.ReportInfo.TotalPauseAmountSeconds.ToString()
+                        //Label = "Paused Seconds",
+                        //ValueLabel = Report.Report.ReportInfo.TotalPauseAmountSeconds.ToString()
                     }
                 };
 
-                ReportChart = new PieChart() { Entries = entries, LabelTextSize = 15 };
+                ReportChart = new PieChart() 
+                { 
+                    Entries = entries,
+                    BackgroundColor = SkiaSharp.SKColor.Parse("#eeeeee")
+                };
                 //PieChart Creation Completed
             }
             else

@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Interpretap.Views.EmployeesListPage">
+             x:Class="Interpretap.Views.EmployeesListPage"
+             BackgroundColor="#eee">
     
     <ContentPage.ToolbarItems>
         
@@ -11,30 +12,36 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <ListView
-            ItemsSource="{Binding Employees}"
-            IsPullToRefreshEnabled="True"
-            RefreshCommand="{Binding RefreshCommand}"
-            IsRefreshing="{Binding IsRefreshing}"
-            ItemSelected="ListView_ItemSelected"
-            ItemAppearing="ListView_ItemAppearing"
-            ItemDisappearing="ListView_ItemDisappearing"
-            RowHeight="60"
-            HasUnevenRows="True">
+
+        <ListView ItemsSource="{Binding Employees}"
+                  IsPullToRefreshEnabled="True"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  IsRefreshing="{Binding IsRefreshing}"
+                  ItemSelected="ListView_ItemSelected"
+                  ItemAppearing="ListView_ItemAppearing"
+                  ItemDisappearing="ListView_ItemDisappearing"
+                  RowHeight="80" Margin="15,10"
+                  HasUnevenRows="True" SeparatorColor="#c7c7c7"
+                  BackgroundColor="White">
 
             <ListView.ItemTemplate>
-
                 <DataTemplate>
-
                     <ViewCell>
+                        <StackLayout VerticalOptions="CenterAndExpand"
+                                     Padding="6" Margin="20,10,0,10">
 
-                        <StackLayout VerticalOptions="CenterAndExpand" Padding="6">
-                            <Label Text="{Binding UserName}" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
-                            <Label Text="{Binding FullName}" FontSize="Small"/>
+                            <Label Text="{Binding UserName}" FontSize="25"
+                                   FontAttributes="Bold" TextColor="Black"/>
+                            
+                            <Label Text="{Binding FullName}" FontSize="15"/>
+                            
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout />
+            </ListView.Footer>
         </ListView>
     </ContentPage.Content>
 </ContentPage>

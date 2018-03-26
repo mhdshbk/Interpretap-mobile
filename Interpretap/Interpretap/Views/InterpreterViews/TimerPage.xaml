@@ -18,13 +18,13 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-        <Image Source="call_bg_dark.jpg" Aspect="AspectFill"/>
+        <Image Source="call_bg_dark" Aspect="AspectFill"/>
         <Grid Margin="20" RowSpacing="0" ColumnSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -41,30 +41,32 @@
 
             <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
                <!-- <Label Text="Company:" />-->
-                <Image Source="male.png" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
+                <Image Source="male" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
                 <Label Text="{Binding ClientFullName}" FontSize="18" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
             </StackLayout>
             
-            <StackLayout Margin="35,0,0,0" Grid.Column="0" Grid.Row="3" Orientation="Horizontal">
-                <Label Text="ID:" />
-                <Label Text="{Binding ClientId}" />
+            <StackLayout Margin="20,0,0,0" Grid.Column="0" Grid.Row="3" Orientation="Horizontal">
+                <Label Text="ID:" FontSize="14" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding ClientId}" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
             </StackLayout>
             
             <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
                 <!--<Label Text="User:" />-->
-                     <Image Source="businessman.png" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
+                     <Image Source="businessman" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
                 <Label Text="{Binding ClientCompany}" FontSize="18" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
             </StackLayout>
             
-            <StackLayout Margin="35,0,0,0" Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
-                <Label Text="Call Ref ID:" />
-                <Label Text="{Binding CallRefId}" />
+            <StackLayout Margin="20,0,0,0" Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                <Label Text="Call Ref ID:" FontSize="14" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding CallRefId}" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
             </StackLayout>
             
 
 
-            <StackLayout Grid.ColumnSpan="2" Grid.Row="3" x:Name="StartCallsStack" VerticalOptions="Center" Orientation="Horizontal" Margin="30,0" IsVisible="true">
-                <Image Source="start_call.png" HeightRequest="65" WidthRequest="65" HorizontalOptions="Start">
+            <StackLayout Grid.ColumnSpan="2" Grid.Row="4" x:Name="StartCallsStack" VerticalOptions="Center" Orientation="Horizontal" Margin="30,0" IsVisible="true">
+                <Image Source="start_call" HeightRequest="65" WidthRequest="65" HorizontalOptions="Start">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="StartCallProcedureAsync"/>
                             </Image.GestureRecognizers>
@@ -77,12 +79,12 @@
             </StackLayout>
 
             <StackLayout Grid.ColumnSpan="2" Grid.Row="4" x:Name="EndCallStack" VerticalOptions="Center" Orientation="Horizontal" Margin="30,0" IsVisible="false">
-              <Image x:Name="BtnTogglePause" Source="pause.png" HeightRequest="65" WidthRequest="65" HorizontalOptions="Start">
+              <Image x:Name="BtnTogglePause" Source="pause" HeightRequest="65" WidthRequest="65" HorizontalOptions="Start">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TogglePauseCallProcedureAsync"/>
                             </Image.GestureRecognizers>
                         </Image>
-                <Image x:Name="BtnEndCall" Source="end_call.png" HeightRequest="65" WidthRequest="65" HorizontalOptions="EndAndExpand">
+                <Image x:Name="BtnEndCall" Source="end_call" HeightRequest="65" WidthRequest="65" HorizontalOptions="EndAndExpand">
                          <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="EndCallProcedureAsync"/>
                             </Image.GestureRecognizers>
