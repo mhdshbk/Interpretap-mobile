@@ -40,18 +40,18 @@ namespace Interpretap.iOS
             //Tab Customization
             UITabBar.Appearance.SelectedImageTintColor = Color.FromHex("#f37a3f").ToUIColor();
 
-            LoadApplication(new App());
-  //          LoadApplication(UXDivers.Gorilla.iOS.Player.CreateApplication(
-  //new UXDivers.Gorilla.Config("Good Gorilla")
-    //  // Register Grial Shared assembly
-    //  //.RegisterAssemblyFromType<UXDivers.Artina.Shared.CircleImage>()
-    //  // Register UXDivers Effects assembly
-    //  //.RegisterAssembly(typeof(UXDivers.Effects.Effects).Assembly)
-    //  // FFImageLoading.Transformations
-    //  //.RegisterAssemblyFromType<FFImageLoading.Transformations.BlurredTransformation>()
-    //  // FFImageLoading.Forms
-    //  //.RegisterAssemblyFromType<FFImageLoading.Forms.CachedImage>()
-    //));
+            //LoadApplication(new App());
+            LoadApplication(UXDivers.Gorilla.iOS.Player.CreateApplication(
+  new UXDivers.Gorilla.Config("Good Gorilla")
+    // Register Grial Shared assembly
+    //.RegisterAssemblyFromType<UXDivers.Artina.Shared.CircleImage>()
+    // Register UXDivers Effects assembly
+    //.RegisterAssembly(typeof(UXDivers.Effects.Effects).Assembly)
+    // FFImageLoading.Transformations
+    //.RegisterAssemblyFromType<FFImageLoading.Transformations.BlurredTransformation>()
+    // FFImageLoading.Forms
+    //.RegisterAssemblyFromType<FFImageLoading.Forms.CachedImage>()
+    ));
 
             return base.FinishedLaunching(app, options);
         }

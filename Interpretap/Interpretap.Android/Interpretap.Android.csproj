@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -95,9 +95,6 @@
     </Reference>
     <Reference Include="Xamarin.Android.Support.Annotations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Android.Support.Annotations.26.1.0.1\lib\MonoAndroid80\Xamarin.Android.Support.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Compat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Android.Support.Compat.26.1.0.1\lib\MonoAndroid80\Xamarin.Android.Support.Compat.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Core.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Android.Support.Core.UI.26.1.0.1\lib\MonoAndroid80\Xamarin.Android.Support.Core.UI.dll</HintPath>
@@ -207,6 +204,9 @@
     <Reference Include="Microcharts.Forms">
       <HintPath>..\..\packages\Microcharts.Forms.0.8.3-pre\lib\netstandard1.3\Microcharts.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.Compat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.Support.Compat.26.1.0.1\lib\MonoAndroid80\Xamarin.Android.Support.Compat.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Renderers\LockedOrientationContentPageRenderer.cs" />
@@ -292,6 +292,30 @@
     <AndroidResource Include="Resources\drawable-hdpi\backinter.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\backinter.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\backinter.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\businessman.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\male.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\businessman.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\male.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\businessman.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\male.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\call_bg_dark.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\call_bg_dark.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\call_bg_dark.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\cancel.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\end_call.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\pause.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\start_call.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\cancel.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\end_call.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\pause.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\start_call.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\cancel.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\end_call.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\pause.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\start_call.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\end_pause.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\end_pause.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\end_pause.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

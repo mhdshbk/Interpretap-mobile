@@ -269,6 +269,7 @@
       <DependentUpon>ActiveCallRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomRenderers\MultiLineLabel.cs" />
+    <Compile Include="Converter\CallStatusTextColorConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -529,6 +530,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenderers\" />
+    <Folder Include="Converter\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
