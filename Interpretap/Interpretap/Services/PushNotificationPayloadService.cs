@@ -23,11 +23,11 @@ namespace Interpretap.Services
 
         public PushNotificationPayloadService()
         {
-            //OneSignal.Current.StartInit(OneSignalUserId)
-            //         .HandleNotificationReceived(OnNotificationReceived)
-            //         .InFocusDisplaying(OSInFocusDisplayOption.None)
-            //         .EndInit();
-            //OneSignal.Current.IdsAvailable(async (id, token) => await OnIdsAvailableAsync(id, token));
+            OneSignal.Current.StartInit(OneSignalUserId)
+                     .HandleNotificationReceived(OnNotificationReceived)
+                     .InFocusDisplaying(OSInFocusDisplayOption.None)
+                     .EndInit();
+            OneSignal.Current.IdsAvailable(async (id, token) => await OnIdsAvailableAsync(id, token));
         }
 
         private async Task OnIdsAvailableAsync(string playerID, string pushToken)
