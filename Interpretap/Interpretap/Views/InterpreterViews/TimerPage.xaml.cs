@@ -123,7 +123,8 @@ namespace Interpretap.Views.InterpreterViews
                 await service.UnpauseCall(request);
                 timer.Start();
                 _timerStarted = true;
-                ((Button)sender).Text = "Pause";
+                ((Image)sender).Source = "pause.png";
+                //((Button)sender).Text = "Pause";
                 BtnEndCall.IsEnabled = true;
             }
             else
@@ -132,7 +133,8 @@ namespace Interpretap.Views.InterpreterViews
                 await service.PauseCall(request);
                 timer.Stop();
                 _timerStarted = false;
-                ((Button)sender).Text = "Unpause";
+                ((Image)sender).Source = "end_pause.png";
+                //((Button)sender).Text = "Unpause";
                 BtnEndCall.IsEnabled = false;
             }
 
@@ -193,7 +195,7 @@ namespace Interpretap.Views.InterpreterViews
                 RestoreTimerForCall(call);
 
                 _isPaused = true;
-                BtnTogglePause.Text = "Unpause"; // I don't proud of this
+                BtnTogglePause.Source = "end_pause.png"; // I don't proud of this
             }
             if (call.CallStatusInfo.CallStatusId == CallLiveStatusId)
             {
@@ -205,7 +207,7 @@ namespace Interpretap.Views.InterpreterViews
                     timer.Start();
                     _timerStarted = true;
                 }
-                BtnTogglePause.Text = "Pause"; // I don't proud of this
+                BtnTogglePause.Source = "pause.png"; // I don't proud of this
             }
 
         }

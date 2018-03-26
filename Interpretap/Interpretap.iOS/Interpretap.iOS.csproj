@@ -51,6 +51,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision></CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -189,6 +190,30 @@
     <BundleResource Include="Resources\backinter.png" />
     <BundleResource Include="Resources\backinter%402x.png" />
     <BundleResource Include="Resources\backinter%403x.png" />
+    <BundleResource Include="Resources\businessman.png" />
+    <BundleResource Include="Resources\businessman%402x.png" />
+    <BundleResource Include="Resources\businessman%403x.png" />
+    <BundleResource Include="Resources\male.png" />
+    <BundleResource Include="Resources\male%402x.png" />
+    <BundleResource Include="Resources\male%403x.png" />
+    <BundleResource Include="Resources\call_bg_dark.png" />
+    <BundleResource Include="Resources\call_bg_dark%402x.png" />
+    <BundleResource Include="Resources\call_bg_dark%403x.png" />
+    <BundleResource Include="Resources\cancel.png" />
+    <BundleResource Include="Resources\cancel%402x.png" />
+    <BundleResource Include="Resources\cancel%403x.png" />
+    <BundleResource Include="Resources\end_call.png" />
+    <BundleResource Include="Resources\end_call%402x.png" />
+    <BundleResource Include="Resources\end_call%403x.png" />
+    <BundleResource Include="Resources\pause.png" />
+    <BundleResource Include="Resources\pause%402x.png" />
+    <BundleResource Include="Resources\pause%403x.png" />
+    <BundleResource Include="Resources\start_call.png" />
+    <BundleResource Include="Resources\start_call%402x.png" />
+    <BundleResource Include="Resources\start_call%403x.png" />
+    <BundleResource Include="Resources\end_pause.png" />
+    <BundleResource Include="Resources\end_pause%402x.png" />
+    <BundleResource Include="Resources\end_pause%403x.png" />
     <BundleResource Include="Resources\briefbag%402x.png" />
     <BundleResource Include="Resources\briefbag%403x.png" />
   </ItemGroup>
@@ -229,9 +254,6 @@
     </Reference>
     <Reference Include="OneSignal.iOS.Binding">
       <HintPath>..\..\packages\Com.OneSignal.3.0.1\lib\Xamarin.iOS10\OneSignal.iOS.Binding.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections.Immutable">
       <HintPath>..\..\packages\System.Collections.Immutable.1.4.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
@@ -277,6 +299,9 @@
     </Reference>
     <Reference Include="Microcharts.Forms">
       <HintPath>..\..\packages\Microcharts.Forms.0.8.3-pre\lib\netstandard1.3\Microcharts.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

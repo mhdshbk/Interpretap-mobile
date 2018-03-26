@@ -90,7 +90,7 @@ namespace Interpretap.ViewModels
         void OnStarted(object sender, EventArgs e)
         {
             _ellipsisAnimationAlive = false;
-            CallStatus = "Call active";
+            CallStatus = "Call Active";
             _timer.Start();
         }
 
@@ -101,26 +101,26 @@ namespace Interpretap.ViewModels
             {
                 _ellipsisAnimationAlive = false;
             }
-            CallStatus = "Call paused";
+            CallStatus = "Call Paused";
         }
 
         void OnUnpaused(object sender, EventArgs e)
         {
             _timer.Start();
-            CallStatus = "Call active";
+            CallStatus = "Call Active";
         }
 
         void OnFinished(object sender, EventArgs e)
         {
             _timer.Stop();
-            CallStatus = "Call finished";
+            CallStatus = "Call Finished";
             OnTimerDone();
         }
 
         void OnCanceled(object sender, EventArgs e)
         {
             _ellipsisAnimationAlive = false;
-            CallStatus = "Call canceled";
+            CallStatus = "Call Cancelled";
             OnTimerDone();
         }
 
@@ -131,7 +131,7 @@ namespace Interpretap.ViewModels
 
         async void AnimateEllipsis()
         {
-            var callStatusString = "Waiting for interpreter to start call";
+            var callStatusString = "Waiting for Interpreter to Start Call";
             var ellipsisAnimationDelayMillis = 500;
             while (_ellipsisAnimationAlive)
             {

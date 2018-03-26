@@ -2,53 +2,68 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.UserViews.TimerPage"
-             NavigationPage.HasNavigationBar="false">
-    
+             xmlns:convert="clr-namespace:Interpretap.Converter;assemly=Interpretap"
+             NavigationPage.HasNavigationBar="false">  
     <ContentPage.Padding>
         <OnPlatform
             x:TypeArguments="Thickness"
             iOS="0,20,0,0" />
     </ContentPage.Padding>   
-
     <ContentPage.Resources>
         <ResourceDictionary>
+            <convert:CallStatusTextColorConverter x:Key="CallStatusTextColorConverter"/>
             <Style TargetType="Label" >
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="White"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" BackgroundColor="AliceBlue">
-            <Label Text="{Binding ElapsedTime}"
-                   FontSize="52" 
-                HorizontalOptions="CenterAndExpand" />
-            <BoxView Color="Black" WidthRequest="100" HeightRequest="2" />
+               <Grid>
+        <Image Source="call_bg_dark.jpg" Aspect="AspectFill"/>
+        <Grid Margin="20" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
 
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Agency:" />
-                <Label Text="{Binding Agency}" />
-            </StackLayout>
+            <StackLayout Margin="35,0,0,0" Grid.ColumnSpan="2" HorizontalOptions="Center" Grid.Row="0" Orientation="Horizontal">
+                <Label Text="Call ID:" FontSize="15" />
+                <Label Text="{Binding CallRefId}" FontSize="15" />
+            </StackLayout>  
             
-            <StackLayout Orientation="Horizontal">
-                <Label Text="User:" />
-                <Label Text="{Binding InterpreterFullName}" />
-            </StackLayout>
-            
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Call ID:" />
-                <Label Text="{Binding CallRefId}"  />
+            <Label Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding ElapsedTime}"
+                   FontSize="65"
+                   x:Name="Lbl_Time"
+                   HorizontalOptions="CenterAndExpand" />
+
+                 <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
+                     <Image Source="businessman.png" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
+                <Label Text="{Binding Agency}" FontSize="20" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
+                 </StackLayout>
+
+            <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+                <Image Source="male.png" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
+                <Label Text="{Binding InterpreterFullName}" FontSize="20" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
             </StackLayout>
 
-            <Label 
+                <Label 
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                TextColor="{Binding CallStatus,Converter={StaticResource CallStatusTextColorConverter}"
+                FontAttributes="Bold"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
                 Text="{Binding CallStatus}" 
-                HorizontalTextAlignment="Center" 
-                VerticalOptions="EndAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                Margin="0,0,0,50" 
-                FontSize="Default" 
-                FontAttributes="None"/>
-        </StackLayout>
+                FontSize="20"/>
+                
+        </Grid>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>
