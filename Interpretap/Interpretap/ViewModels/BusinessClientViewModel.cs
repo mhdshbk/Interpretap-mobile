@@ -20,9 +20,9 @@ namespace Interpretap.ViewModels
         public string UserName => _client.UserName;
         public string Email => _client.ClientEmail;
         public string PhoneNumber => _client.ClientPhoneNumber;
-        public string Address => _client.ClientAddress;
-        public string City => _client.ClientCity;
-        public string Province => _client.ClientProvince;
+        public string Address => _client.ClientAddress + "\n" + _client.ClientCity + "\n" + _client.ClientProvince;
+        //public string City => _client.ClientCity;
+        //public string Province => _client.ClientProvince;
         public string Id => _client.ClientId;
         public string IsManager
         {
