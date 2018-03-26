@@ -13,7 +13,7 @@
                 <StackLayout Spacing="2" Margin="15,0,15,10"
                              VerticalOptions="StartAndExpand">
 
-                    <StackLayout Spacing="0" Margin="-15,0,-15,5">
+                    <StackLayout Spacing="0" Margin="0,5">
                         <ce:GotoDetailsButton Text="Clients" BackgroundColor="#f37a3f" Command="{Binding ClientsListCommand}"/>
                     </StackLayout>
 
