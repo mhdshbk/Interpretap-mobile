@@ -20,9 +20,7 @@
             Spacing="0">
 
             <StackLayout x:Name="ProfileSelectorView" HeightRequest="128">
-                <Grid VerticalOptions="FillAndExpand">
-                    <Image Source="{Binding SelectedProfile.ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}"
-                           Aspect="AspectFill" Opacity="0.6"/>
+                <Grid VerticalOptions="FillAndExpand" BackgroundColor="{Binding SelectedProfile.ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}">
                     <StackLayout Orientation="Horizontal" Padding="6,0">
 
                         <StackLayout VerticalOptions="CenterAndExpand">
