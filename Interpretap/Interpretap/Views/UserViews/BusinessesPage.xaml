@@ -4,50 +4,36 @@
              x:Class="Interpretap.Views.UserViews.BusinessesPage"
              Title="Business Calls">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Label" >
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
-    <ContentPage.Padding>
-        <OnPlatform
-            x:TypeArguments="Thickness"
-            iOS="0,20,0,0" />
-    </ContentPage.Padding>
-
     <ContentPage.Content>
 
-        <AbsoluteLayout>
-
-            <ListView 
-                x:Name="listView"
-                ItemSelected="listView_ItemSelected"
-                HasUnevenRows="True"
-                AbsoluteLayout.LayoutFlags="All"
-                AbsoluteLayout.LayoutBounds="0,0,1,1">
-
+        <Grid Margin="10">
+            <ListView x:Name="listView" ItemSelected="listView_ItemSelected"
+                      HasUnevenRows="True" SeparatorColor="#c7c7c7">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout BackgroundColor="#eee" Orientation="Horizontal">
-                                <Image Source="briefbag.png" MinimumWidthRequest="20" MinimumHeightRequest="20" Margin="8"/>
-                                <Label Text="{Binding BusinessInfo.BusinessName}" VerticalOptions="Center"/>
+                            <StackLayout BackgroundColor="White" Orientation="Horizontal"
+                                         Spacing="15">
+                                <Image Source="briefbag.png" Margin="8"
+                                       Aspect="AspectFit" VerticalOptions="Center"/>
+                                <Label Text="{Binding BusinessInfo.BusinessName}"
+                                       VerticalTextAlignment="Center" FontSize="20"
+                                       FontAttributes="Bold"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+
+                <ListView.Footer>
+                    <StackLayout />
+                </ListView.Footer>
+
             </ListView>
 
-            <ActivityIndicator 
-                IsRunning="True" 
-                IsVisible="{Binding IsBusy}"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"/>
 
-        </AbsoluteLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -292,6 +292,18 @@
     <AndroidResource Include="Resources\drawable-hdpi\backinter.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\backinter.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\backinter.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\briefbag.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\briefbag.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\briefbag.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\businesspro.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\clientpro.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\businesspro.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\clientpro.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\add.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\businesspro.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\clientpro.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -309,12 +321,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\call_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\briefbag.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\arrow_right_green.png" />

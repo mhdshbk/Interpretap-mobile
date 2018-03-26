@@ -16,30 +16,40 @@
         <StackLayout
             Spacing="0">
 
-            <StackLayout 
-                x:Name="ProfileSelectorView"
-                Orientation="Horizontal" 
-                HeightRequest="128"
-                Padding="6,0,6,0">
-
-                <StackLayout VerticalOptions="CenterAndExpand">
+            <StackLayout x:Name="ProfileSelectorView" HeightRequest="128"
+                         BackgroundColor="Black">
+                <Grid BackgroundColor="Aqua" Padding="6,0"
+                      VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout VerticalOptions="CenterAndExpand">
                     <Image WidthRequest="96" HeightRequest="96" Source="{Binding SelectedProfile.ProfileTypeImage}" />
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <Label Text="{Binding SelectedProfile.ProfileName}" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Text="{Binding SelectedProfile.ProfileTypeCaption}" FontSize="Small"/>
+                    <Label Text="firstnametest lastnametest" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Label Text="Client" FontSize="Small"/>
                 </StackLayout>
 
-                <StackLayout VerticalOptions="CenterAndExpand">
-                    <Image 
-                        x:Name="ArrowImage"
-                        WidthRequest="32" 
-                        HeightRequest="32" 
-                        Source="arrow_right_green.png" />
+                <Image x:Name="ArrowImage" WidthRequest="32" HeightRequest="32" 
+                       Source="arrow_right_green.png" />
+                    </StackLayout>
+                </Grid>
+
+                <!--<StackLayout VerticalOptions="CenterAndExpand">
+                    <Image WidthRequest="96" HeightRequest="96" Source="{Binding SelectedProfile.ProfileTypeImage}" />
                 </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="firstnametest lastnametest" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Label Text="Client" FontSize="Small"/>
+                </StackLayout>
+
+                <Image x:Name="ArrowImage" WidthRequest="32" HeightRequest="32" 
+                       Source="arrow_right_green.png" />-->
+
             </StackLayout>
-
+<!-- {Binding SelectedProfile.ProfileName}
+            {Binding SelectedProfile.ProfileTypeCaption}-->
             <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray"/>
 
             <AbsoluteLayout VerticalOptions="FillAndExpand">

@@ -32,8 +32,7 @@
                     <custom:ImageEntry x:Name="Entry_Call_Ref" FontAttributes="Bold"
                                        Text="{Binding CallRef}" LineColor="#c7c7c7"
                                        HeightRequest="60" TextColor="Black"
-                                       WidthRequest="290" FontSize="25"
-                                       Placeholder="Enter Reference Number"/>
+                                       WidthRequest="280" FontSize="25"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal"
@@ -94,7 +93,7 @@
                 </StackLayout>-->
 
 
-                    <Image x:Name="Btn_CallReq" Source="phone.png"
+                    <Image x:Name="Btn_CallReq" Source="start_call.png"
                            AbsoluteLayout.LayoutBounds="0.5,0.7"
                            AbsoluteLayout.LayoutFlags="PositionProportional"
                            HeightRequest="80" WidthRequest="80"

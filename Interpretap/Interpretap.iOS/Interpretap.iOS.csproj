@@ -189,6 +189,8 @@
     <BundleResource Include="Resources\backinter.png" />
     <BundleResource Include="Resources\backinter%402x.png" />
     <BundleResource Include="Resources\backinter%403x.png" />
+    <BundleResource Include="Resources\briefbag%402x.png" />
+    <BundleResource Include="Resources\briefbag%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">

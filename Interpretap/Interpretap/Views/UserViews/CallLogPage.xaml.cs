@@ -24,7 +24,6 @@ namespace Interpretap.Views.UserViews
             ActiveCallView.BindingContext = _activeCallViewModel;
             _activeCallViewModel.CallCanceled += _activeCallViewModel_CallCanceled;
 
-
             listView.ItemsSource = _viewModel.CallLogs;
 
             listView.ItemSelected += (sender, e) =>
