@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.CallLogDetailsAB"
+             xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
              Title="Call Log Details"
              BackgroundColor="#eeeeee"
              NavigationPage.BackButtonTitle="">
@@ -11,7 +12,7 @@
                               HasUnevenRows="true" SeparatorVisibility="None"
                               CachingStrategy="RecycleElement">
                      <ListView.Header>
-                            <Grid BackgroundColor="#2e86c1" Padding="10" Spacing="10">
+                            <Grid BackgroundColor="#2e86c1" Padding="10" ColumnSpacing="10">
                                 <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ShowReportProcedure" />
                                 </Grid.GestureRecognizers>
@@ -20,14 +21,14 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="8.5*"/>
-                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                              <Label Grid.Row="0" Grid.Column="0" Text="View Full Month Report" FontSize="18" HorizontalTextAlignment="Center" TextColor="White"/>
                             <Label Grid.Row="1" Grid.Column="0" x:Name="Lbl_Title" HorizontalTextAlignment="Center"
                                    VerticalTextAlignment="Center"
                                    FontSize="13" TextColor="White"/>
-                         <Image Grid.RowSpan="2" Grid.Column="1" Source="" Aspect="AspectFit" HeightRequest="30" WidthRequest="30"/>
+                         <Image Grid.RowSpan="2" Grid.Column="1" Source="rightarrow.png" Aspect="AspectFit" HeightRequest="25" WidthRequest="25"/>
                             </Grid>
                         </ListView.Header>
                         <ListView.ItemTemplate>
@@ -50,28 +51,30 @@
                                         <Frame Grid.Column="2" Padding="2" Margin="3,5" CornerRadius="5" HasShadow="true">
                                             <Grid RowSpacing="10">
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="7*"/>
-                                                    <ColumnDefinition Width="3*"/>
+                                                    <ColumnDefinition Width="8*"/>
+                                                    <ColumnDefinition Width="2*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="2*"/>
                                                 <RowDefinition Height="Auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Label Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="End"
                                                    Text="{Binding CallInfoId , StringFormat='Call ID {0}'}"
                                                    FontSize="11" TextColor="#f37a3f" Margin="2"/>
                                                 
-                                                <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="0,10,0,0"
+                                                 <custom:MultiLineLabel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="0,10"
                                                        Text="{Binding ClientName}"
+                                                       LineBreakMode="TailTruncation"
+                                                       Lines="2"
                                                        FontSize="20" FontAttributes="Bold"
                                                        HorizontalTextAlignment="Center"
-                                                       TextColor="Black"/>
-
+                                                       TextColor="Black"/>  
                                                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                                        Text="{Binding CallDuration}"
                                                        FontSize="22"
-                                                       Margin="0,10,0,0"
+                                                       Margin="0,10"
+                                                       VerticalTextAlignment="End"
                                                        HorizontalTextAlignment="Center"
                                                        TextColor="#2e86c1"/>
                                                 </Grid>
