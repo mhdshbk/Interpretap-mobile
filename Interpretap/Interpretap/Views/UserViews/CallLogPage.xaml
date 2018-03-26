@@ -33,11 +33,7 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <Frame Margin="5" CornerRadius="5"
-                                           Padding="0" BackgroundColor="White">
-                                        <Grid>
-
-                                            <Image Source="back" Aspect="AspectFill"/>
-                                   
+                                           Padding="0" BackgroundColor="#2e86c1">
                                             <Grid RowSpacing="5" ColumnSpacing="0" Margin="10">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto"/>
@@ -93,7 +89,6 @@
                                                     </StackLayout>
                                                 </Grid>
                                             </Grid>
-                                        </Grid>
                                     </Frame>
                                 </ViewCell>
                             </DataTemplate>

@@ -12,9 +12,9 @@ namespace Interpretap.Converter
             var res = value as string;
 
             if (res == "Client")
-                return "clientpro";
+                return Color.FromHex("#f37a3f");
             else
-                return "businesspro";
+                return Color.FromHex("#2e86c1");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
