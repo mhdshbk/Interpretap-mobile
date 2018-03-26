@@ -1,11 +1,57 @@
 ﻿{
-  "TimerPage.xaml": [
+  //"CallLogDetails.xaml": {
+  //  [
+  //    {
+  //      "CreatedDate": "Mar 13 4:00 PM",
+  //      "FullName": "Khadeeja Alif",
+  //      "CallDuration": "00:54:89",
+  //      "CallInfoId": "JAJA45"
+  //    },
+  //    {
+  //      "CreatedDate": "Mar 13 4:00 PM",
+  //      "FullName": "Khadeeja Alif",
+  //      "CallDuration": "00:54:89",
+  //      "CallInfoId": "JAJA45"
+  //    },
+  //    {
+  //      "CreatedDate": "Mar 13 4:00 PM",
+  //      "FullName": "Khadeeja Alif",
+  //      "CallDuration": "00:54:89",
+  //      "CallInfoId": "JAJA45"
+  //    },
+  //    {
+  //      "CreatedDate": "Mar 13 4:00 PM",
+  //      "FullName": "Khadeeja Alif",
+  //      "CallDuration": "00:54:89",
+  //      "CallInfoId": "JAJA45"
+  //    }
+  //  ]
+  //},
+
+  "CallLogDetailsAB.xaml": [
     {
-      "ClientCompany": "Penny Lane",
-      "ClientId": "12",
-      "ClientFullName": "FirstName LastName",
-      "CallRefId": "JAJA",
-      "ClientPhone": "359205145045"
+      "CreatedDate": "Mar 13 4:00 PM",
+      "ClientName": "Khadeeja Alif",
+      "CallDuration": "00:54:89",
+      "CallInfoId": "JAJA45"
+    },
+    {
+      "CreatedDate": "Mar 13 4:00 PM",
+      "ClientName": "Khadeeja Alif",
+      "CallDuration": "00:54:89",
+      "CallInfoId": "JAJA45"
+    },
+    {
+      "CreatedDate": "Mar 13 4:00 PM",
+      "ClientName": "Khadeeja Alif",
+      "CallDuration": "00:54:89",
+      "CallInfoId": "JAJA45"
+    },
+    {
+      "CreatedDate": "Mar 13 4:00 PM",
+      "ClientName": "Khadeeja Alif",
+      "CallDuration": "00:54:89",
+      "CallInfoId": "JAJA45"
     }
   ]
 }
