@@ -1,22 +1,54 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Interpretap.Views.UserViews.AddClientToBusinessPage">
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Label" >
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+             x:Class="Interpretap.Views.UserViews.AddClientToBusinessPage"
+             xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
+             BackgroundColor="#eee">
 
     <ContentPage.Content>
         <AbsoluteLayout>
+                <Frame HasShadow="false" BackgroundColor="White"
+                       CornerRadius="5" IsClippedToBounds="true"
+                       Padding="5" HeightRequest="270"
+                       WidthRequest="320"
+                       AbsoluteLayout.LayoutBounds="0.5,0.3"
+                       AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Grid Margin="5,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="Interpreter ID" FontSize="13"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
 
-            <StackLayout
+                        <StackLayout Grid.Row="1" Spacing="40">
+                            <!--<custom:ImageEntry Placeholder="Enter the Interpreter ID"
+                                               FontSize="22"/>-->
+                            <Entry x:Name="lblId" Placeholder="Enter the Interpreter ID"
+                                   FontSize="22" WidthRequest="280"
+                                   HeightRequest="60" TextColor="Black"
+                                   FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Is Manager" HorizontalTextAlignment="Center"
+                                       FontSize="18" TextColor="Black"
+                                       Margin="10,0,0,0"/>
+
+                                <Switch x:Name="SwitchIsManager"
+                                        HorizontalOptions="EndAndExpand"
+                                        HeightRequest="25"/>
+
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            <Image Grid.Row="2" Source="add.png" HeightRequest="75"
+                   WidthRequest="75" Margin="0,30,0,0"
+                   AbsoluteLayout.LayoutBounds="0.5,0.6"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            <!--<StackLayout
                 AbsoluteLayout.LayoutFlags="All"
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 Padding="10">
@@ -30,26 +62,24 @@
                     <Entry 
                         x:Name="lblId"
                         Placeholder="Id..." 
-                        TextChanged="lblId_TextChanged"/>
+                        TextChanged="lblId_TextChanged"/>-->
 
-                    <BoxView HeightRequest="20"/>
+                    <!--<BoxView HeightRequest="20"/>
 
                     <Label Text="Is manager:"/>
-                    <Switch x:Name="SwitchIsManager" HorizontalOptions="Center"/>
-                </StackLayout>
+                </StackLayout>-->
 
-                <Button 
+                <!--<Button 
                     VerticalOptions="End"
                     Text="Add" 
                     Clicked="AddButton_Clicked"
                     IsEnabled="{Binding CanAddClient}"/>
-            </StackLayout>
+            </StackLayout>-->
 
-            <ActivityIndicator 
-                IsRunning="True" 
-                IsVisible="{Binding IsProcessing}"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                AbsoluteLayout.LayoutBounds="0.5,0.5"/>
+            <!--<ActivityIndicator IsRunning="True" IsVisible="{Binding IsProcessing}"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"/>-->
+
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

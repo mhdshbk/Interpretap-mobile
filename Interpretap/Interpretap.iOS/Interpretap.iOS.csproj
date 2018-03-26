@@ -214,6 +214,8 @@
     <BundleResource Include="Resources\end_pause.png" />
     <BundleResource Include="Resources\end_pause%402x.png" />
     <BundleResource Include="Resources\end_pause%403x.png" />
+    <BundleResource Include="Resources\briefbag%402x.png" />
+    <BundleResource Include="Resources\briefbag%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
