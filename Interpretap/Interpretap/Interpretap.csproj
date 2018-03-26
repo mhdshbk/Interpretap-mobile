@@ -272,6 +272,7 @@
     <Compile Include="Converter\CallStatusTextColorConverter.cs" />
     <Compile Include="Converter\ProfileBackgroundConverter.cs" />
     <Compile Include="Converter\TextColorConverter.cs" />
+    <Compile Include="Converter\IsManagerConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

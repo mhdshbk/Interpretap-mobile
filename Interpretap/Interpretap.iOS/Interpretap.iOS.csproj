@@ -231,6 +231,15 @@
     <BundleResource Include="Resources\rightarrow.png" />
     <BundleResource Include="Resources\rightarrow%402x.png" />
     <BundleResource Include="Resources\rightarrow%403x.png" />
+    <BundleResource Include="Resources\home.png" />
+    <BundleResource Include="Resources\home%402x.png" />
+    <BundleResource Include="Resources\home%403x.png" />
+    <BundleResource Include="Resources\idcard.png" />
+    <BundleResource Include="Resources\idcard%402x.png" />
+    <BundleResource Include="Resources\idcard%403x.png" />
+    <BundleResource Include="Resources\mail.png" />
+    <BundleResource Include="Resources\mail%402x.png" />
+    <BundleResource Include="Resources\mail%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">

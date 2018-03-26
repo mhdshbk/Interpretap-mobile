@@ -334,6 +334,15 @@
     <AndroidResource Include="Resources\drawable-hdpi\rightarrow.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\rightarrow.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\rightarrow.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\home.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\idcard.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\mail.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\home.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\idcard.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\mail.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\home.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\idcard.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\mail.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

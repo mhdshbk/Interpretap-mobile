@@ -20,9 +20,9 @@ namespace Interpretap.ViewModels
         public string UserName => _employee.UserName;
         public string Email => _employee.InterpreterEmail;
         public string PhoneNumber => _employee.InterpreterPhoneNumber;
-        public string Address => _employee.InterpreterAddress;
-        public string City => _employee.InterpreterCity;
-        public string Province => _employee.InterpreterProvince;
+        public string Address => _employee.InterpreterAddress + "\n" + _employee.InterpreterCity + "\n" + _employee.InterpreterProvince;
+        //public string City => _employee.InterpreterCity;
+        //public string Province => _employee.InterpreterProvince;
         public string Id => _employee.InterpreterId;
         public string IsManager
         {
@@ -43,7 +43,7 @@ namespace Interpretap.ViewModels
         public ICommand DeleteCommand { get; set; }
 
         public bool IsProcessing { get; private set; }
-        
+
         public AgencyEmployeeProfileViewModel(AgencyInterpreter employee, AgencyInterpretersListViewModel parentViewModel)
         {
             _employee = employee;
@@ -65,7 +65,7 @@ namespace Interpretap.ViewModels
         private async Task DeleteEmployeeAsync()
         {
             IsProcessing = true;
-            
+
             var request = new RemoveInterpreterFromAgencyRequestModel()
             {
                 AgencyId = _agencyId.ToString(),
