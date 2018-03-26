@@ -343,6 +343,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\home.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\idcard.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\mail.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\user_outline.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\user_outline.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\user_outline.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

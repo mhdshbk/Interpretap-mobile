@@ -1,28 +1,16 @@
 ﻿{
-  "CallLogDetails.xaml": [
+  "ProfilePage.xaml": [
     {
-      "CreatedDate": "Mar 13 4:00 PM",
-      "FullName": "firstnametest lastnametest",
-      "CallDuration": "00:54:89",
-      "CallInfoId": "JAJA45"
+      "ProfileName": "Penny Lane",
+      "ProfileTypeCaption": "Interpreter"
     },
     {
-      "CreatedDate": "Mar 13 4:00 PM",
-      "FullName": "Khadeeja Alif",
-      "CallDuration": "00:54:89",
-      "CallInfoId": "JAJA45"
+      "ProfileName": "Penny Lane",
+      "ProfileTypeCaption": "Interpreter"
     },
     {
-      "CreatedDate": "Mar 13 4:00 PM",
-      "FullName": "Khadeeja Alif",
-      "CallDuration": "00:54:89",
-      "CallInfoId": "JAJA45"
-    },
-    {
-      "CreatedDate": "Mar 13 4:00 PM",
-      "FullName": "Khadeeja Alif",
-      "CallDuration": "00:54:89",
-      "CallInfoId": "JAJA45"
+      "ProfileName": "Penny Lane",
+      "ProfileTypeCaption": "Interpreter"
     }
   ]
 }

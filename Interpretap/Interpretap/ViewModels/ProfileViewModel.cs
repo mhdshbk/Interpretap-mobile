@@ -88,7 +88,7 @@ namespace Interpretap.ViewModels
                 ProfileName = $"{_userInfo.FirstName} {_userInfo.LastName}",
                 ProfileTypeCaption = "Interpreter",
                 ProfileType = UserTypes.Interpreter,
-                ProfileTypeImage = ImageSource.FromFile("male.png"),
+                ProfileTypeImage = ImageSource.FromFile("user_outline.png"),
             };
             Profiles.Add(interpreterProfileItem);
         }

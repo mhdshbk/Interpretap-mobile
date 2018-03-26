@@ -11,7 +11,7 @@ namespace Interpretap.CustomElements
             nameof(Command),
             typeof(ICommand),
             typeof(GotoDetailsButton),
-            null, 
+            null,
             propertyChanged: CommandPropertyChanged
             );
 
