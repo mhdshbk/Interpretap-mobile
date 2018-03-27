@@ -53,7 +53,7 @@
                             <BoxView  BackgroundColor="#2e86c1"  WidthRequest="15" HeightRequest="15"/>
                         </Grid>
                         <StackLayout Grid.Column="0" Spacing="0">
-                            <Label Text="Total Billed" HorizontalTextAlignment="End"/>
+                            <Label Text="Total Paused" HorizontalTextAlignment="End"/>
                             <Label Text="{Binding TotalPausedSeconds}"
                                    HorizontalTextAlignment="End"
                                    FontAttributes="Bold"/>
