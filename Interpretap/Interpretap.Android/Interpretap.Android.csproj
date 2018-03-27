@@ -307,9 +307,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\user_outline.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\user_outline.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\user_outline.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\briefbagwhite.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\briefbagwhite.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\briefbagwhite.png" />
     <AndroidResource Include="Resources\drawable-hdpi\circleright.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\circleright.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\circleright.png" />

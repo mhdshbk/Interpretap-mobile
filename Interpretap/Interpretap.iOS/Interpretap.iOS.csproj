@@ -111,9 +111,6 @@
     <BundleResource Include="Resources\Default-Portrait%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Icon-60%403x.png" />
-    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
-    <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\logo.png" />
     <BundleResource Include="Resources\logo%402x.png" />
@@ -136,18 +133,12 @@
     <BundleResource Include="Resources\eye.png" />
     <BundleResource Include="Resources\eye%402x.png" />
     <BundleResource Include="Resources\eye%403x.png" />
-    <BundleResource Include="Resources\splash.png" />
-    <BundleResource Include="Resources\splash%402x.png" />
-    <BundleResource Include="Resources\splash%403x.png" />
     <BundleResource Include="Resources\lock.png" />
     <BundleResource Include="Resources\lock%402x.png" />
     <BundleResource Include="Resources\lock%403x.png" />
     <BundleResource Include="Resources\user.png" />
     <BundleResource Include="Resources\user%402x.png" />
     <BundleResource Include="Resources\user%403x.png" />
-    <BundleResource Include="Resources\password.png" />
-    <BundleResource Include="Resources\password%402x.png" />
-    <BundleResource Include="Resources\password%403x.png" />
     <BundleResource Include="Resources\phone.png" />
     <BundleResource Include="Resources\phone%402x.png" />
     <BundleResource Include="Resources\phone%403x.png" />
@@ -222,9 +213,6 @@
     <BundleResource Include="Resources\user_outline.png" />
     <BundleResource Include="Resources\user_outline%402x.png" />
     <BundleResource Include="Resources\user_outline%403x.png" />
-    <BundleResource Include="Resources\briefbagwhite.png" />
-    <BundleResource Include="Resources\briefbagwhite%402x.png" />
-    <BundleResource Include="Resources\briefbagwhite%403x.png" />
     <BundleResource Include="Resources\circleright.png" />
     <BundleResource Include="Resources\circleright%402x.png" />
     <BundleResource Include="Resources\circleright%403x.png" />
@@ -321,15 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\check_green.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\account_circle_gray.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\star_black.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\star_border_black.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenderers\" />
