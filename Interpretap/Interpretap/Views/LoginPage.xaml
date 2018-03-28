@@ -74,10 +74,11 @@
                     </Label.GestureRecognizers>
                     </Label>
 
-                 
-                   
-
-                 
+                    <Button AbsoluteLayout.LayoutBounds="0.5,1"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            Text="Credits" TextColor="Black"
+                            BackgroundColor="Transparent" Clicked="CreditsButtonClicked"
+                            FontSize="14"/>
             </AbsoluteLayout>
             
             <ActivityIndicator x:Name="ActivityIndicator" IsRunning="true"

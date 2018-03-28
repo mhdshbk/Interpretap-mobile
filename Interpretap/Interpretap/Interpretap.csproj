@@ -273,6 +273,10 @@
     <Compile Include="Converter\TextColorConverter.cs" />
     <Compile Include="Converter\IsManagerConverter.cs" />
     <Compile Include="Converter\DateFormatConverter.cs" />
+    <Compile Include="Views\CreditsPage.xaml.cs">
+      <DependentUpon>CreditsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\ButtonColorConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -304,6 +308,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomElements\ActiveCallRequest.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreditsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

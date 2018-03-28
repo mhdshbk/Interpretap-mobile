@@ -23,7 +23,6 @@ namespace Interpretap.iOS.CustomRenderers
                 Layer.ShadowColor = UIColor.Gray.CGColor;
                 Layer.ShadowOffset = new CGSize(2, 2);
                 Layer.ShadowOpacity = 0.80f;
-                Layer.ShadowPath = UIBezierPath.FromRect(Layer.Bounds).CGPath;
                 Layer.MasksToBounds = false;
             }
 		}

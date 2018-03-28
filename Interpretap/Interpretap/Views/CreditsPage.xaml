@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpretap.Views.CreditsPage"
+             Title="Credits"
+             BackgroundColor="#fefefe">
+
+    <StackLayout Margin="20" VerticalOptions="Start">
+        <Label Text="Different Icons made by different Authors from www.flaticon.com"
+               TextColor="Black" FontSize="16" HorizontalTextAlignment="Center"/>
+        <Label Text="Authors:" TextColor="Black" FontSize="16"
+               HorizontalTextAlignment="Start" Margin="0,15,0,8"/>
+        <StackLayout Margin="15,0">
+            <Label Text="Freepik" TextColor="Black" FontSize="14"
+                   FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+            <Label Text="Hadrien" TextColor="Black" FontSize="14"
+                   FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+            <Label Text="Lyolya" TextColor="Black" FontSize="14"
+                   FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+            <Label Text="SimpleIcon" TextColor="Black" FontSize="14"
+                   FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+            <Label Text="Gregor Cresnar" TextColor="Black" FontSize="14"
+                   FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+            <Label Text="Smashicons" TextColor="Black" FontSize="14"
+                   FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>
+
+
+
+
+

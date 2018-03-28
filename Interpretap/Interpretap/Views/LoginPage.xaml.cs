@@ -99,6 +99,11 @@ namespace Interpretap.Views
             await Navigation.PopToRootAsync();
         }
 
+        private async void CreditsButtonClicked()
+        {
+            await Navigation.PushAsync(new CreditsPage());
+        }
+
         private async Task RegistrationProcedure(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegisterPage());
