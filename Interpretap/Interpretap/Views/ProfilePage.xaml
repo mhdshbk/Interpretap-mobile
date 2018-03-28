@@ -9,6 +9,7 @@
         <ToolbarItem Text="Logout" Clicked="LogoutButtonClickedAsync"/>
     </ContentPage.ToolbarItems>
 
+
     <ContentPage.Content>
 
         <StackLayout
@@ -86,8 +87,6 @@
                                     <ViewCell>
                                         <ViewCell.View>
                                             <Grid>
-                                                <Image Source="{Binding ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}"
-                                                       Aspect="AspectFill" Opacity="0.8"/>
                                                 <StackLayout Orientation="Horizontal"
                                                              Padding="6,0,6,0">
 
