@@ -61,7 +61,7 @@
                        
                     </StackLayout>
 
-                    <Label Text="Doesn't have an account? Register now!" FontSize="12"
+                    <Label Text="Don't have an account? Register now!" FontSize="12"
                            HorizontalTextAlignment="Center" HeightRequest="40"
                            AbsoluteLayout.LayoutBounds="0.5,0.72" VerticalTextAlignment="Center"
                            AbsoluteLayout.LayoutFlags="PositionProportional"
