@@ -58,8 +58,8 @@ namespace Interpretap.ViewModels
                 SelectedBusiness = Businesses.Last();
             }
             CreateCallRequestCommand = new Command(async () => await ExecuteCreateCallRequestAsync());
-            ActiveCallViewModel = new ActiveCallViewModel();
 
+            ActiveCallViewModel = new ActiveCallViewModel();
             ActiveCallViewModel.CallCanceled += ActiveCallViewModel_CallCanceled;
             App.ActiveCall.PropertyChanged += ActiveCall_PropertyChanged;
         }
@@ -197,6 +197,8 @@ namespace Interpretap.ViewModels
                 await LoadLanguagesAsync();
             }
             NotifyPropertiesChanged();
+            CallRef = "";
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CallRef)));
             ActiveCallViewModel.OnAppearing();
         }
     }
