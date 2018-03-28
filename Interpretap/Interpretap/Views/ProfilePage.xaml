@@ -5,7 +5,7 @@
              Title="Profile"
              xmlns:convert="clr-namespace:Interpretap.Converter;assemly=Interpretap">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="logout" Clicked="LogoutButtonClickedAsync"/>
+        <ToolbarItem Text="Logout" Clicked="LogoutButtonClickedAsync"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
