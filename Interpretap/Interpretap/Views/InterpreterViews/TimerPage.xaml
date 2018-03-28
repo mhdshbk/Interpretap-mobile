@@ -3,13 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.InterpreterViews.TimerPage"
              NavigationPage.HasNavigationBar="false"
-             BackgroundColor="Black">
+             BackgroundColor="#1f1f1f">
 
-    <ContentPage.Padding>
-        <OnPlatform
-            x:TypeArguments="Thickness"
-            iOS="0,20,0,0" />
-    </ContentPage.Padding>
      <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label" >
@@ -18,7 +13,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid BackgroundColor="Black" RowSpacing="0" ColumnSpacing="10">
+        <Grid BackgroundColor="#1f1f1f" RowSpacing="0" Margin="0,20,0,0" ColumnSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="3*"/>

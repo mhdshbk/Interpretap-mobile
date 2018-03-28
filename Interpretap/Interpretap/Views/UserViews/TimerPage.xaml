@@ -4,12 +4,8 @@
              x:Class="Interpretap.Views.UserViews.TimerPage"
              xmlns:convert="clr-namespace:Interpretap.Converter;assemly=Interpretap"
              NavigationPage.HasNavigationBar="false"
-             BackgroundColor="Black">  
-    <ContentPage.Padding>
-        <OnPlatform
-            x:TypeArguments="Thickness"
-            iOS="0,20,0,0" />
-    </ContentPage.Padding>   
+             BackgroundColor="#1f1f1f">  
+   
     <ContentPage.Resources>
         <ResourceDictionary>
             <convert:CallStatusTextColorConverter x:Key="CallStatusTextColorConverter"/>
@@ -19,7 +15,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid BackgroundColor="Black" RowSpacing="0" ColumnSpacing="0">
+        <Grid BackgroundColor="#1f1f1f" RowSpacing="0" Margin="0,20,0,0" ColumnSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="3*"/>
@@ -32,7 +28,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout Margin="35,0,0,0" Grid.ColumnSpan="2" HorizontalOptions="Center" Grid.Row="0" Orientation="Horizontal">
+            <StackLayout Margin="35,10,0,0" Grid.ColumnSpan="2" HorizontalOptions="Center" Grid.Row="0" Orientation="Horizontal">
                 <Label Text="Call ID:" FontSize="15" />
                 <Label Text="{Binding CallRefId}" FontSize="15" />
             </StackLayout>  
