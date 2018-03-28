@@ -61,49 +61,18 @@
                                      IsVisible="{Binding CanSelectBusiness}"
                                      Image="down"/>
 
-                <!--<StackLayout x:Name="EntriesStack" VerticalOptions="StartAndExpand" Padding="10,0,10,0" Margin="0,30,0,0">
 
-                    <Label x:Name="Lbl_Call_Ref" Text="Call Reference Number"/>
-                    <Entry 
-                        x:Name="Entry_Call_Ref" 
-                        Placeholder="Call Reference Number" 
-                        Text="{Binding CallRef}"/>
+                <Image x:Name="Btn_CallReq" Source="requestcall.png"
+                       AbsoluteLayout.LayoutBounds="0.5,0.75"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       HeightRequest="120" WidthRequest="120"
+                       IsVisible="{Binding RequestCallEnabled}"
+                       Aspect="AspectFit">
 
-                    <Label Text="Language to translate from"/>
-                    <Picker
-                        Title="Select a language" 
-                        ItemsSource="{Binding ClientLanguages}" 
-                        ItemDisplayBinding="{Binding Name}" 
-                        SelectedItem="{Binding SelectedClientLanguage}"/>
-
-                    <Label Text="Language to translate to"/>
-                    <Picker 
-                        Title="Select a language" 
-                        ItemsSource="{Binding RequestLanguages}" 
-                        ItemDisplayBinding="{Binding Name}" 
-                        SelectedItem="{Binding SelectedRequestLanguage}"/>
-
-                    <Label Text="Business" IsVisible="{Binding CanSelectBusiness}"/>
-                    <Picker 
-                        Title="Select a business" 
-                        ItemsSource="{Binding Businesses}" 
-                        ItemDisplayBinding="{Binding BusinessInfo.BusinessName}" 
-                        SelectedItem="{Binding SelectedBusiness}"
-                        IsVisible="{Binding CanSelectBusiness}"/>
-                </StackLayout>-->
-
-
-                    <Image x:Name="Btn_CallReq" Source="start_call.png"
-                           AbsoluteLayout.LayoutBounds="0.5,0.7"
-                           AbsoluteLayout.LayoutFlags="PositionProportional"
-                           HeightRequest="80" WidthRequest="80"
-                           IsVisible="{Binding RequestCallEnabled}"
-                           Aspect="AspectFit">
-
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding CreateCallRequestCommand}"/>
-                        </Image.GestureRecognizers>
-                    </Image>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CreateCallRequestCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
 
             </AbsoluteLayout>
 

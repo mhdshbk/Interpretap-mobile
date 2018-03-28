@@ -213,6 +213,9 @@
     <BundleResource Include="Resources\staroutline.png" />
     <BundleResource Include="Resources\staroutline%402x.png" />
     <BundleResource Include="Resources\staroutline%403x.png" />
+    <BundleResource Include="Resources\requestcall.png" />
+    <BundleResource Include="Resources\requestcall%402x.png" />
+    <BundleResource Include="Resources\requestcall%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
