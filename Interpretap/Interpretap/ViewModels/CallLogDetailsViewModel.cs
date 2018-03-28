@@ -81,6 +81,7 @@ namespace Interpretap.ViewModels
             if (response != null)
                 foreach (var call in response.Calls)
                     CallLogs.Add(call);
+                
 
             if (ABresponse != null && ABresponse.Call != null)
                 foreach (var call in ABresponse.Call.Calls)

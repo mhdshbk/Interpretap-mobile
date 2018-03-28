@@ -270,9 +270,9 @@
     </Compile>
     <Compile Include="CustomRenderers\MultiLineLabel.cs" />
     <Compile Include="Converter\CallStatusTextColorConverter.cs" />
-    <Compile Include="Converter\ProfileBackgroundConverter.cs" />
     <Compile Include="Converter\TextColorConverter.cs" />
     <Compile Include="Converter\IsManagerConverter.cs" />
+    <Compile Include="Converter\DateFormatConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

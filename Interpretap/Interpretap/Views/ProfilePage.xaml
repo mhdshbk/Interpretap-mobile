@@ -4,16 +4,11 @@
              x:Class="Interpretap.Views.ProfilePage"
              Title="Profile"
              xmlns:convert="clr-namespace:Interpretap.Converter;assemly=Interpretap">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Logout" Clicked="LogoutButtonClickedAsync"/>
     </ContentPage.ToolbarItems>
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <convert:ProfileBackgroundConverter x:Key="BackgroundConverter"/>
-            <convert:TextColorConverter x:Key="FontColorConverter"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Content>
 
         <StackLayout
@@ -21,9 +16,6 @@
 
             <StackLayout x:Name="ProfileSelectorView" HeightRequest="128">
                 <Grid VerticalOptions="FillAndExpand">
-
-                    <Image Source="{Binding SelectedProfile.ProfileTypeCaption , Converter={StaticResource BackgroundConverter}}"
-                           Aspect="AspectFill" Opacity="0.8"/>
 
                     <StackLayout Orientation="Horizontal" Padding="6,0">
 

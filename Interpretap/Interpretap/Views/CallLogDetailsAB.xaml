@@ -5,7 +5,16 @@
              xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
              Title="Call Log Details"
              BackgroundColor="#eeeeee"
-             NavigationPage.BackButtonTitle="">
+             NavigationPage.BackButtonTitle=""
+             xmlns:convert="clr-namespace:Interpretap.Converter;assemly=Interpretap">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <convert:DateFormatConverter x:Key="DateTimeConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
                 <Grid VerticalOptions="FillAndExpand">
                     <ListView x:Name="listView" BackgroundColor="#eeeeee"
@@ -42,7 +51,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Grid.Column="0" BackgroundColor="Transparent"
-                                                   Text="{Binding CreatedDate}"
+                                                   Text="{Binding CreatedDate , Converter={StaticResource DateTimeConverter}}"
                                                    FontSize="15" TextColor="Black"
                                                    VerticalTextAlignment="Center"
                                                    HorizontalTextAlignment="Center"/>
