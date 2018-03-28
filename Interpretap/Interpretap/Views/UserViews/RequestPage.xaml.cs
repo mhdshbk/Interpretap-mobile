@@ -10,6 +10,7 @@ namespace Interpretap.Views.UserViews
         RequestViewModel _ViewModel;
         public RequestPage()
         {
+
             InitializeComponent();
             _ViewModel = new RequestViewModel();
             

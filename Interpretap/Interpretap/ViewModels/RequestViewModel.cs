@@ -51,6 +51,7 @@ namespace Interpretap.ViewModels
         {
             ClientLanguages = LocalStorage.LoginResponseLS.UserInfo.LanguageInfo;
             RequestLanguages = new ObservableCollection<LanguageModel>();
+
             Businesses = LocalStorage.LoginResponseLS.UserInfo.ClientInfo.Businesses;
             if (Businesses.Count == 1)
             {
@@ -143,6 +144,12 @@ namespace Interpretap.ViewModels
             }
             finally
             {
+                SelectedClientLanguage = ClientLanguages[0];
+                for (int i = 0; i < RequestLanguages.Count; i++)
+                {
+                    if (RequestLanguages[i].Name == "Spanish")
+                        SelectedRequestLanguage = RequestLanguages[i];
+                }
                 _isLoadingLanguages = false;
                 IsBusy = false;
             }

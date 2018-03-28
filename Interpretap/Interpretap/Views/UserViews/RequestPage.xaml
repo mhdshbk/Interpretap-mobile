@@ -39,7 +39,7 @@
                              AbsoluteLayout.LayoutBounds="0.5,0.45"
                              AbsoluteLayout.LayoutFlags="PositionProportional"
                              Spacing="15">
-                    <custom:CustomPicker Title="From"
+                    <custom:CustomPicker Title="From" x:Name="FromPicker"
                                          ItemsSource="{Binding ClientLanguages}"
                                          ItemDisplayBinding="{Binding Name}"
                                          SelectedItem="{Binding SelectedClientLanguage}"
@@ -47,7 +47,7 @@
 
                     <Image Source="transfer.png" WidthRequest="18" HeightRequest="18"/>
 
-                    <custom:CustomPicker Title="To"
+                    <custom:CustomPicker Title="To" x:Name="ToPicker"
                                          ItemsSource="{Binding RequestLanguages}"
                                          ItemDisplayBinding="{Binding Name}"
                                          SelectedItem="{Binding SelectedRequestLanguage}"
