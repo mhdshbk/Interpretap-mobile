@@ -271,9 +271,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\end_call.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\pause.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\start_call.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\end_pause.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\end_pause.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\end_pause.png" />
     <AndroidResource Include="Resources\drawable-hdpi\briefbag.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\briefbag.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\briefbag.png" />
@@ -315,6 +312,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\requestcall.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\requestcall.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\requestcall.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\play.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\play.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\play.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

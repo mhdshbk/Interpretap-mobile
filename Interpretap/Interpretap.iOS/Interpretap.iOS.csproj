@@ -173,9 +173,6 @@
     <BundleResource Include="Resources\start_call.png" />
     <BundleResource Include="Resources\start_call%402x.png" />
     <BundleResource Include="Resources\start_call%403x.png" />
-    <BundleResource Include="Resources\end_pause.png" />
-    <BundleResource Include="Resources\end_pause%402x.png" />
-    <BundleResource Include="Resources\end_pause%403x.png" />
     <BundleResource Include="Resources\briefbag%402x.png" />
     <BundleResource Include="Resources\briefbag%403x.png" />
     <BundleResource Include="Resources\blue_circle.png" />
@@ -211,6 +208,9 @@
     <BundleResource Include="Resources\requestcall.png" />
     <BundleResource Include="Resources\requestcall%402x.png" />
     <BundleResource Include="Resources\requestcall%403x.png" />
+    <BundleResource Include="Resources\play.png" />
+    <BundleResource Include="Resources\play%402x.png" />
+    <BundleResource Include="Resources\play%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Connectivity, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
