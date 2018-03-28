@@ -15,7 +15,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid BackgroundColor="#1f1f1f" RowSpacing="0" Margin="0,20,0,0" ColumnSpacing="0">
+        <Grid BackgroundColor="#1f1f1f" RowSpacing="0" Margin="0,25,0,0" ColumnSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="3*"/>
@@ -28,24 +28,22 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout Margin="35,10,0,0" Grid.ColumnSpan="2" HorizontalOptions="Center" Grid.Row="0" Orientation="Horizontal">
-                <Label Text="Call ID:" FontSize="15" />
-                <Label Text="{Binding CallRefId}" FontSize="15" />
-            </StackLayout>  
+            <Label Text="{Binding CallRefId , StringFormat='Call ID: {0}'}"
+                   Grid.ColumnSpan="2" Grid.Row="0" HorizontalTextAlignment="Center"/> 
             
             <Label Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding ElapsedTime}"
                    FontSize="65"
                    x:Name="Lbl_Time"
                    HorizontalOptions="CenterAndExpand" />
 
-                 <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
-                     <Image Source="businessman" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
-                <Label Text="{Binding Agency}" FontSize="20" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
-                 </StackLayout>
+            <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
+                <Image Source="businessman" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
+                <Label Text="{Binding Agency}" FontSize="18" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
+            </StackLayout>
 
             <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
                 <Image Source="male" Margin="5" HeightRequest="20" WidthRequest="20" Aspect="AspectFit"/>
-                <Label Text="{Binding InterpreterFullName}" FontSize="20" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
+                <Label Text="{Binding InterpreterFullName}" FontSize="18" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
             </StackLayout>
 
                 <Label 
