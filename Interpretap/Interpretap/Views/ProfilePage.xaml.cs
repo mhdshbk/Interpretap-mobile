@@ -156,7 +156,7 @@ namespace Interpretap.Views
             else
             {
                 SelectorLayout.IsVisible = true;
-                ArrowImage.RotateTo(90, 100);
+                ArrowImage.RotateTo(180, 100);
             }
 
             _selectorExpanded = !_selectorExpanded;

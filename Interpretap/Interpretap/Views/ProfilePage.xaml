@@ -45,7 +45,7 @@
                         </StackLayout>
 
                         <Image x:Name="ArrowImage" WidthRequest="32"
-                               HeightRequest="32" Source="rightarrow.png"/>
+                               HeightRequest="32" Source="down"/>
                     </StackLayout>
                 </Grid>
 
