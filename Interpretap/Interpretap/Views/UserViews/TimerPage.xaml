@@ -46,15 +46,12 @@
                 <Label Text="{Binding InterpreterFullName}" FontSize="18" LineBreakMode="WordWrap" VerticalTextAlignment="Center" />
             </StackLayout>
 
-                <Label 
-                Grid.Row="4"
-                Grid.ColumnSpan="2"
-                TextColor="{Binding CallStatus,Converter={StaticResource CallStatusTextColorConverter}"
-                FontAttributes="Bold"
-                VerticalTextAlignment="Center"
-                HorizontalTextAlignment="Center"
-                Text="{Binding CallStatus}" 
-                FontSize="20"/>
+
+            <Label Grid.Row="4" Grid.ColumnSpan="2" 
+                   TextColor="{Binding CallStatus,Converter={StaticResource CallStatusTextColorConverter}"
+                   FontAttributes="Bold" VerticalTextAlignment="Center"
+                   Text="{Binding CallStatus}" FontSize="16"
+                   HorizontalOptions="CenterAndExpand"/>
                 
         </Grid>
     </ContentPage.Content>

@@ -22,7 +22,7 @@
                              VerticalOptions="StartAndExpand">
 
                     <StackLayout Spacing="0" Margin="0,5">
-                        <ce:GotoDetailsButton Text="Clients" BackgroundColor="#f37a3f" Command="{Binding ClientsListCommand}"/>
+                        <ce:GotoDetailsButton Text="Clients" BackgroundColor="#2e86c1" Command="{Binding ClientsListCommand}"/>
                     </StackLayout>
 
                     <Label Text="Name" FontSize="12" TextColor="Black"/>

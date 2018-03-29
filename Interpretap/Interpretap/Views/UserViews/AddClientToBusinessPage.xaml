@@ -3,29 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.UserViews.AddClientToBusinessPage"
              xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
-             BackgroundColor="#eee">
+             BackgroundColor="#eee"
+             Title="Add Client">
 
     <ContentPage.Content>
-        <AbsoluteLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
                 <Frame HasShadow="false" BackgroundColor="White"
                        CornerRadius="5" IsClippedToBounds="true"
-                       Padding="5" HeightRequest="270"
-                       WidthRequest="320"
-                       AbsoluteLayout.LayoutBounds="0.5,0.3"
-                       AbsoluteLayout.LayoutFlags="PositionProportional">
+                       Padding="5" Grid.Row="1" Margin="20">
                     <Grid Margin="5,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="3*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Text="Interpreter ID" FontSize="13"
+                        <Label Grid.Row="0" Text="Client ID" FontSize="13"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"/>
 
                         <StackLayout Grid.Row="1" Spacing="40">
                         
-                            <custom:ImageEntry x:Name="lblId" Placeholder="Enter the Interpreter ID"
+                            <custom:ImageEntry x:Name="lblId" Placeholder="Enter the Client ID"
                                                FontSize="22" WidthRequest="280"
                                                HeightRequest="60" TextColor="Black"
                                                FontAttributes="Bold" HorizontalTextAlignment="Center"
@@ -45,11 +49,10 @@
                         </StackLayout>
                     </Grid>
                 </Frame>
-            <Image Source="add.png" HeightRequest="75"
-                   WidthRequest="75" Margin="0,30,0,0"
-                   AbsoluteLayout.LayoutBounds="0.5,0.62"
-                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                   IsEnabled="{Binding CanAddClient}">
+            <Image Source="add.png" HeightRequest="80"
+                   WidthRequest="80"
+                   IsEnabled="{Binding CanAddClient}"
+                   Grid.Row="2" VerticalOptions="Start">
 
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="AddButton_Clicked"/>
@@ -83,10 +86,9 @@
                     IsEnabled="{Binding CanAddClient}"/>
             </StackLayout>-->
 
-            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsProcessing}"
-                               AbsoluteLayout.LayoutBounds="0,0,1,1"
-                               AbsoluteLayout.LayoutFlags="All"/>
+            <ActivityIndicator IsRunning="True"
+                               IsVisible="{Binding IsProcessing}"/>
 
-        </AbsoluteLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

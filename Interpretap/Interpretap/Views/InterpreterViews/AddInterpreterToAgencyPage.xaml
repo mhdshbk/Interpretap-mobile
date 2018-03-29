@@ -3,17 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Interpretap.Views.InterpreterViews.AddInterpreterToAgencyPage"
              xmlns:custom="clr-namespace:Interpretap.CustomRenderers;assemly=Interpretap"
-             Title="Adding Interpreter"
+             Title="Add Interpreter"
              BackgroundColor="#eee">
 
     <ContentPage.Content>
-        <AbsoluteLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <Frame HasShadow="false" BackgroundColor="White"
                    CornerRadius="5" IsClippedToBounds="true"
-                   Padding="5" HeightRequest="270"
-                   WidthRequest="320"
-                   AbsoluteLayout.LayoutBounds="0.5,0.3"
-                   AbsoluteLayout.LayoutFlags="PositionProportional">
+                   Padding="5" Margin="20" Grid.Row="1">
                 <Grid Margin="5,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -49,15 +52,14 @@
             </Frame>
 
             <Image Source="add.png" HeightRequest="75" WidthRequest="75"
-                   Margin="0,30,0,0" AbsoluteLayout.LayoutBounds="0.5,0.62"
-                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                   IsEnabled="{Binding CanAddInterpreter}">
+                   IsEnabled="{Binding CanAddInterpreter}"
+                   Grid.Row="2">
 
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="AddButton_Clicked"/>
                 </Image.GestureRecognizers>
             </Image>
 
-        </AbsoluteLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
