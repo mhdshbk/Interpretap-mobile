@@ -34,9 +34,9 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/ios/AppIcon.appiconset</string>
-	<key>XSLaunchImageAssets</key>
-	<string>Assets.xcassets/LaunchImage-1.launchimage</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.interpretap.interpretap</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Assets.xcassets/LaunchImage.launchimage</string>
 </dict>
 </plist>

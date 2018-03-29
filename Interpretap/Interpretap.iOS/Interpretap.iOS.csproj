@@ -325,12 +325,11 @@
     <ImageAsset Include="Assets.xcassets\ios\AppIcon.appiconset\Icon-Small%402x.png" />
     <ImageAsset Include="Assets.xcassets\ios\AppIcon.appiconset\Icon-Small%403x.png" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\1125x2436.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\1242x2208.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\750x1334.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\640x960.png" />
-    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\640x1136.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1125x2436.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1242x2208.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\750x1334.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x960.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x1136.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets')" />
